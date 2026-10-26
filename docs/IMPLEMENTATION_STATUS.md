@@ -10,7 +10,7 @@
 | Stok | Moving average, ledger, reservasi, transfer/transit, lima resolusi, opname delta | Migrasi massal dan rekonsiliasi stok sistem lama belum dilakukan |
 | Titipan | Masuk/keluar ketika dijual POS, kartu fisik manual, settlement bersih retur | Barang supplier SO batal ditransfer petugas ke toko sebagai owned |
 | POS | Katalog/barcode, harga, produk/kemasan terpisah, split tender, struk, shift/kas, retur/refund supervisor | Struk terminal lain diretur di Backoffice; belum ada pencarian lintas terminal langsung dari POS |
-| Offline/sync | DB/outbox atomik, event berurutan, UUID/hash/HMAC, retry/ACK, overlay saldo, konflik | Full master snapshot; cache incremental dan uji beban cabang belum ada |
+| Offline/sync | DB/outbox atomik, event berurutan, UUID/hash/HMAC, retry/ACK, overlay saldo, konflik, interval per POS yang dapat diubah tanpa restart | Full master snapshot; cache incremental dan uji beban cabang belum ada |
 | Harga/pajak | Snapshot, diskon supervisor, promo global fixed/percent, pajak inclusive/exclusive POS/SO/beli | Promo per item/kombinasi kompleks dan faktur pajak elektronik belum ada |
 | Voucher/loyalty | Cloud hold eksklusif, penukaran poin, accrual saat cloud replay, pembalikan earned points retur | Voucher/poin ditukar tidak otomatis diterbitkan kembali; perlu kebijakan perusahaan |
 | Keuangan | Double entry, DP/kredit/refund/alokasi terpisah, beban, neraca saldo, close/reopen | P&L, neraca berformat final, aging dan laporan manajemen khusus belum selesai |
@@ -25,6 +25,7 @@
 - Mutasi titipan berpasangan tidak mengubah average cost owned atau menyelesaikan minus owned.
 - Retur SO dilakukan setelah invoice. Nilai paket untuk kredit komponen dialokasikan berdasarkan jumlah unit komponen; akuntan perlu menguji dengan contoh perusahaan.
 - Cache akun offline default 72 jam; maksimal lima gagal login/PIN, lock 15 menit. Perubahan master/akun baru efektif di POS setelah sync.
+- Interval sinkronisasi default 15 detik; administrator dapat mengatur 15, 60, 600 atau angka bulat 1–86400 detik pada POS. Konfigurasi per terminal bertahan setelah restart. Seluruh koneksi tetap dibuka oleh POS, tanpa IP publik pada kasir. Lihat [desain sinkronisasi](SYNC.md).
 - Hold voucher/poin tidak kedaluwarsa otomatis karena penjualan offline mungkin belum terkirim; batalkan dari POS sebelum penjualan jika tidak digunakan.
 - Retur membalik earned points proporsional. Jika sudah dibelanjakan, saldo dapat negatif dan accrual berikutnya menutupnya. Kebijakan penerbitan ulang manfaat belum diimplementasikan.
 - Status pembayaran elektronik verified berasal dari verifikasi petugas, belum callback bank.

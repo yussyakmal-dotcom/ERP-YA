@@ -96,9 +96,83 @@ async function posPage() {
         "occurred_at",
       ]),
     );
+    p.append(await syncSettingsForm());
     return;
   }
   return shiftPage();
+}
+async function syncSettingsForm() {
+  const policy = await api("/pos/sync-settings");
+  const form = el("form", { className: "panel" });
+  form.append(el("h2", { textContent: "Interval sinkronisasi otomatis" }));
+  form.append(
+    el("p", {
+      className: "muted",
+      textContent:
+        "Berlaku pada mesin kasir ini. POS memulai koneksi ke cloud sesuai interval yang dipilih.",
+    }),
+  );
+  const canEdit =
+    user.permissions.includes("*") || user.permissions.includes("users");
+  if (!canEdit) {
+    form.append(
+      el("p", {
+        textContent:
+          policy.interval_seconds + " detik · Perubahan oleh administrator.",
+      }),
+    );
+    return form;
+  }
+  const label = el("label", {
+    htmlFor: "sync-interval",
+    textContent: "Interval (detik)",
+  });
+  const input = el("input", {
+    id: "sync-interval",
+    name: "interval_seconds",
+    type: "number",
+    min: "1",
+    max: "86400",
+    step: "1",
+    required: true,
+    value: policy.interval_seconds,
+  });
+  const presets = el("div", { className: "toolbar" });
+  for (const value of [15, 60, 600]) {
+    const preset = button(value + " detik", () => {
+      input.value = value;
+    });
+    preset.type = "button";
+    presets.append(preset);
+  }
+  const status = el("p", { role: "status", className: "muted" });
+  const footer = el("div", { className: "form-footer" });
+  const save = el("button", {
+    type: "submit",
+    className: "primary",
+    textContent: "Simpan interval",
+  });
+  footer.append(save);
+  form.append(label, input, presets, status, footer);
+  form.onsubmit = async (e) => {
+    e.preventDefault();
+    save.disabled = true;
+    try {
+      const result = await api("/pos/sync-settings", {
+        method: "PUT",
+        body: JSON.stringify({ interval_seconds: Number(input.value) }),
+      });
+      status.textContent =
+        "Interval tersimpan: " +
+        result.interval_seconds +
+        " detik. Jadwal diperbarui tanpa restart.";
+    } catch (err) {
+      status.textContent = err.message;
+    } finally {
+      save.disabled = false;
+    }
+  };
+  return form;
 }
 async function shiftPage() {
   const p = $("#pos-main");

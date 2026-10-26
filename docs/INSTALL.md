@@ -55,7 +55,9 @@ Cetak struk memakai dialog browser. Atur printer/kertas pada mesin kasir dan uji
 
 ## Sinkronisasi dan alur khusus
 
-Worker mengirim setiap 15 detik. Layar Sinkronisasi membedakan tersimpan lokal dan diterima cloud. ACK setelah cloud commit, retry tidak menambah penjualan kedua kali. Jika putus koneksi, jangan menghapus volume. Pilih Coba sinkron sekarang setelah koneksi pulih.
+POS memulai seluruh koneksi sinkronisasi ke API cloud. Interval default 15 detik dapat diubah administrator pada POS → Sinkronisasi → Interval sinkronisasi otomatis. Pilihan cepat tersedia untuk 15, 60, dan 600 detik; angka bulat lain 1–86400 detik juga diterima. Pengaturan berlaku per mesin kasir, tersimpan pada database lokal, bertahan setelah restart dan tidak ditimpa pembaruan master dari cloud. Perubahan menghitung ulang jadwal tanpa restart; satu siklus yang sedang berjalan diselesaikan terlebih dahulu. Interval adalah jeda setelah siklus sebelumnya selesai. Tombol Coba sinkron sekarang tetap tersedia untuk menjalankan sinkronisasi manual kapan saja.
+
+Layar Sinkronisasi membedakan tersimpan lokal dan diterima cloud. ACK setelah cloud commit, retry tidak menambah penjualan kedua kali. Jika putus koneksi, jangan menghapus volume. Pilih Coba sinkron sekarang setelah koneksi pulih. Lihat [SYNC.md](SYNC.md) untuk arah koneksi, konsekuensi interval, dan jumlah container.
 
 Event konflik menghentikan urutan berikutnya. Untuk event periode tertutup: buat dokumen tinjauan dari Konflik sinkronisasi, buka dokumennya pada daftar Dokumen, ajukan tindakan `sync_correction`, selesaikan approval, lalu posting penyelesaian pada periode terbuka. Payload asli dan nomor struk tetap tersimpan. Payload rusak atau versi event tidak dikenal tidak dipulihkan lewat koreksi tanggal ini.
 

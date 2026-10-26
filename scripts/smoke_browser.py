@@ -91,12 +91,20 @@ with tempfile.TemporaryDirectory() as temporary:
         page.get_by_role(
             "heading", name="Status penyimpanan dan sinkronisasi"
         ).wait_for()
+        page.get_by_role("button", name="600 detik", exact=True).click()
+        page.get_by_role("button", name="Simpan interval", exact=True).click()
+        page.get_by_text("Interval tersimpan: 600 detik.", exact=False).wait_for()
+        page.reload()
+        page.get_by_role("button", name="Sinkronisasi", exact=True).click()
+        page.locator("[name=interval_seconds]").wait_for()
+        assert page.locator("[name=interval_seconds]").input_value() == "600"
         from app.db import rows
 
         with local.state.db.read() as c:
             assert len(rows(c, "pos_sales")) == 1
             assert len(rows(c, "sync_outbox")) == 3
             assert rows(c, "pos_shifts")[0]["variance"] == 0
+            assert sync.sync_policy(c)["interval_seconds"] == 600
         if os.getenv("BROWSER_QA_OUTPUT"):
             dest = Path(os.environ["BROWSER_QA_OUTPUT"])
             dest.mkdir(parents=True, exist_ok=True)
@@ -106,5 +114,5 @@ with tempfile.TemporaryDirectory() as temporary:
     posserver.should_exit = True
     posthread.join(timeout=5)
 print(
-    "Browser smoke passed: pair, login, open shift, sell with cloud down, receipt, close shift, durable queue."
+    "Browser smoke passed: pair, login, open shift, sell with cloud down, receipt, close shift, durable queue, persistent sync interval changed offline."
 )

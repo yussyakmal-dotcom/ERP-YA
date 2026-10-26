@@ -4,7 +4,7 @@ Pemeriksaan dengan data fiktif, 26 Oktober 2026 WIB. Tidak membuat transaksi per
 
 | Pemeriksaan | Hasil lokal |
 | --- | --- |
-| Regresi otomatis SQLite | 52 passed, satu peringatan library pengujian; 18,15 detik pada pemeriksaan final |
+| Regresi otomatis SQLite | 55 passed, satu peringatan library pengujian; 22,59 detik setelah penambahan pengaturan interval |
 | Browser Backoffice | Setup, login, dashboard, tambah produk berhasil; tanpa JavaScript page error pada alur tersebut |
 | Browser POS | Pair, login, buka shift, cloud dimatikan, jual barang, struk, tutup shift, antrean persisten berhasil |
 | Rekonsiliasi browser POS | Kas awal 200.000 + penjualan 8.000 = tutup 208.000, selisih nol; tiga event antrean |
@@ -19,7 +19,7 @@ Workflow CI menjalankan suite pada SQLite dan PostgreSQL 17. Job container juga 
 
 Belum diuji menyeluruh: 40 UAT perusahaan, audit keamanan independen, load/soak panjang, perangkat kasir fisik, callback bank, backup/restore PostgreSQL produksi, migrasi sistem lama dan deploy server perusahaan. Browser smoke memakai SQLite dan cloud sengaja dimatikan; hasilnya tidak membuktikan semua kondisi jaringan/perangkat.
 
-## CI kode final
+## CI build awal
 
 [Run 40257733670](https://github.com/yussyakmal-dotcom/ERP-YA/actions/runs/40257733670), commit `801981c8bcf764a6de5b24e06b50768ca2578154`, selesai sukses pada 26 Oktober 2026.
 
@@ -30,3 +30,9 @@ Belum diuji menyeluruh: 40 UAT perusahaan, audit keamanan independen, load/soak 
 | Containers | Build image sukses; Backoffice dan POS masing-masing hidup dengan PostgreSQL/volume sendiri dan endpoint health sukses |
 
 Job container memeriksa build/startup, bukan UAT bisnis lengkap melalui Docker. Bukti POS offline berasal dari browser smoke lokal; batas pemeriksaan di atas tetap berlaku.
+
+## Pengaturan interval sinkronisasi
+
+Tambahan 26 Oktober 2026: interval otomatis per POS dapat diubah dari aplikasi tanpa restart, termasuk 15, 60, dan 600 detik. Suite lokal bertambah menjadi **55 test lulus**. Pengujian memeriksa penyimpanan per terminal/restart, snapshot cloud tidak menimpa interval, audit, akses administrator, validasi, penjadwalan ulang saat worker aktif, dan sinkron manual saat interval panjang.
+
+Browser smoke kembali lulus dengan server cloud dimatikan: penjualan/struk/tutup shift dan tiga event antrean tetap utuh; administrator mengganti interval ke 600 detik dari layar POS, memuat ulang halaman, lalu nilai 600 tetap tersimpan. Hasil CI build awal di atas merujuk commit sebelum tambahan ini; hasil CI perubahan interval dicatat setelah run selesai.

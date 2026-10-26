@@ -20,6 +20,7 @@ Backoffice cloud dan POS lokal per mesin kasir. **Implementasi awal 0.1.0 untuk 
 - **POS lokal:** penjualan barang toko dan kemasan terpisah, sumber owned/titipan, split payment, struk, shift, retur lokal dengan supervisor dan antrean persisten. SO berada di Backoffice.
 - FastAPI, SQLAlchemy, HTML/CSS/JavaScript lokal tanpa CDN. PostgreSQL 17 pada Docker; SQLite untuk pengembangan dan pengujian.
 - Satu instalasi dan database POS per komputer kasir. Event berurutan, UUID/hash, pengiriman ulang dan ACK setelah commit; saldo lokal tidak dikirim untuk menimpa saldo cloud.
+- POS memulai seluruh koneksi sinkronisasi. Interval otomatis dapat diatur per kasir melalui layar Sinkronisasi, termasuk 15, 60, atau 600 detik. Lihat [desain sinkronisasi dan container](docs/SYNC.md).
 
 ## Mulai dengan Docker
 

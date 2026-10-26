@@ -1,5 +1,6 @@
 """Authenticated event transport: durable outbox, ACK after commit, replay detection."""
 
+import asyncio
 import httpx
 from sqlalchemy import select
 from app.core import *
@@ -41,6 +42,52 @@ OPS = {
     "pos.close": pos.close_shift,
     "pos.return": pos.pos_return,
 }
+
+
+def sync_policy(c):
+    return {
+        "interval_seconds": setting(c, "pos_sync_policy", {}).get(
+            "interval_seconds", 15
+        )
+    }
+
+
+def configure_policy(c, actor, p):
+    allowed(c, actor, "users")
+    need(isinstance(p, dict), "Pengaturan sinkronisasi harus berupa objek")
+    interval = p.get("interval_seconds")
+    need(
+        type(interval) is int and 1 <= interval <= 86400,
+        "Interval sinkronisasi harus bilangan bulat 1–86400 detik",
+    )
+    policy = {"interval_seconds": interval}
+    set_setting(c, actor, "pos_sync_policy", policy)
+    return policy
+
+
+async def worker(db, settings_changed):
+    """The POS schedules outbound sync using its durable terminal policy.
+
+    Recalculate the next deadline after configuration changes, including when
+    shortening a long wait. Each attempt finishes before another is scheduled.
+    """
+    loop = asyncio.get_running_loop()
+    last_finished = loop.time()
+    while True:
+        settings_changed.clear()
+        with db.read() as c:
+            interval = sync_policy(c)["interval_seconds"]
+        remaining = max(0, interval - (loop.time() - last_finished))
+        try:
+            await asyncio.wait_for(settings_changed.wait(), timeout=remaining)
+            continue
+        except TimeoutError:
+            pass
+        try:
+            await asyncio.to_thread(run, db)
+        except Exception:
+            pass  # failed/pending events remain durable; subsequent cycles retry
+        last_finished = loop.time()
 
 
 def token_hash(token):

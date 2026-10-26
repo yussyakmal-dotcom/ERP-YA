@@ -120,24 +120,22 @@ def create_app(database_url=None, mode=None, start_worker=True):
     @asynccontextmanager
     async def lifespan(app):
         task = None
-
-        async def worker():
-            while True:
-                await asyncio.sleep(15)
-                try:
-                    await asyncio.to_thread(sync.run, db)
-                except Exception:
-                    pass  # status retained; operational detail is visible in the outbox
-
         if mode == "pos" and start_worker:
-            task = asyncio.create_task(worker())
-        yield
-        if task:
-            task.cancel()
+            app.state.sync_settings_changed = asyncio.Event()
+            task = asyncio.create_task(sync.worker(db, app.state.sync_settings_changed))
+        try:
+            yield
+        finally:
+            app.state.sync_settings_changed = None
+            if task:
+                task.cancel()
+                with contextlib.suppress(asyncio.CancelledError):
+                    await task
 
     app = FastAPI(title="ERP Yussy Akmal " + mode, version="0.1.0", lifespan=lifespan)
     app.state.db = db
     app.state.mode = mode
+    app.state.sync_settings_changed = None
     root = Path(__file__).resolve().parent
 
     @app.middleware("http")
@@ -634,6 +632,24 @@ def create_app(database_url=None, mode=None, start_worker=True):
                     }
                 )
             return clean(result)
+
+    @app.get("/api/pos/sync-settings")
+    def sync_settings(req: Request):
+        need(mode == "pos", "Pengaturan ini tersedia pada POS lokal", 403)
+        with db.read() as c:
+            session(req, c)
+            return sync.sync_policy(c)
+
+    @app.put("/api/pos/sync-settings")
+    async def save_sync_settings(req: Request):
+        need(mode == "pos", "Pengaturan ini tersedia pada POS lokal", 403)
+        p = await req.json()
+        with db.write() as c:
+            actor, _ = session(req, c, True)
+            policy = sync.configure_policy(c, actor, p)
+        if app.state.sync_settings_changed is not None:
+            app.state.sync_settings_changed.set()
+        return policy
 
     @app.post("/api/sync/run")
     def run_sync(req: Request):
