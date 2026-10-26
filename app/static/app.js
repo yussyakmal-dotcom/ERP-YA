@@ -728,7 +728,9 @@ async function listing(t, offset = 0, q = "") {
     );
   if (t === "production_orders")
     tools.append(button("Lihat kebutuhan", () => listing("demand_lines")));
-  tools.append(button("Ekspor CSV", () => exportCSV(t, currentRows)));
+  if ((model.csv_tables || []).includes(t)) {
+    tools.append(button("Template CSV", () => csvDownload(t, "template")), button("Ekspor seluruh master", () => csvDownload(t, "export")), button("Impor CSV", () => csvImport(t)));
+  } else tools.append(button("Ekspor CSV", () => exportCSV(t, currentRows)));
   m.append(tools);
   const result = await api(
     `/tables/${t}?limit=50&offset=${offset}&q=${encodeURIComponent(q)}`,

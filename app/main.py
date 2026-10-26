@@ -23,6 +23,7 @@ from app.services import (
     sync,
     master,
     commerce,
+    master_csv,
 )
 
 COMMANDS = {
@@ -405,7 +406,14 @@ def create_app(database_url=None, mode=None, start_worker=True):
     def model(req: Request):
         with db.read() as c:
             actor, _ = session(req, c)
-            return {"tables": MODEL, "editable": sorted(master.EDITABLE), "mode": mode}
+            return {
+                "tables": MODEL,
+                "editable": sorted(master.EDITABLE),
+                "csv_tables": (
+                    master_csv.tables_for(c, actor) if mode == "backoffice" else []
+                ),
+                "mode": mode,
+            }
 
     @app.get("/api/tables/{name}")
     def listing(
@@ -450,6 +458,70 @@ def create_app(database_url=None, mode=None, start_worker=True):
                         if "cost" in key or "inventory_value" in key:
                             r.pop(key, None)
             return clean({"rows": result, "total": c.scalar(count), "offset": offset})
+
+    @app.get("/api/master-csv/{name}/template")
+    def csv_template(name: str, req: Request):
+        need(mode == "backoffice", "CSV master tersedia di Backoffice", 403)
+        with db.read() as c:
+            actor, _ = session(req, c)
+            content = master_csv.export(c, actor, name, template=True)
+        return Response(
+            content,
+            media_type="text/csv; charset=utf-8",
+            headers={
+                "Content-Disposition": 'attachment; filename="master-template.csv"'
+            },
+        )
+
+    @app.get("/api/master-csv/{name}/export")
+    def csv_export(name: str, req: Request):
+        need(mode == "backoffice", "CSV master tersedia di Backoffice", 403)
+        with db.read() as c:
+            actor, _ = session(req, c)
+            content = master_csv.export(c, actor, name)
+        return Response(
+            content,
+            media_type="text/csv; charset=utf-8",
+            headers={"Content-Disposition": 'attachment; filename="master-export.csv"'},
+        )
+
+    @app.post("/api/master-csv/{name}/preview")
+    async def csv_preview(name: str, req: Request):
+        need(mode == "backoffice", "CSV master tersedia di Backoffice", 403)
+        with db.read() as c:
+            actor, _ = session(req, c, True)
+            master_csv.authorize(c, actor, name)
+        content = bytearray()
+        async for chunk in req.stream():
+            content.extend(chunk)
+            need(len(content) <= master_csv.MAX_BYTES, "CSV maksimal 5 MB", 413)
+        try:
+            text = content.decode("utf-8-sig")
+        except UnicodeDecodeError:
+            raise BusinessError("Simpan file sebagai CSV UTF-8")
+
+        def validate():
+            with db.write() as c:
+                return master_csv.preview(c, actor, name, text)
+
+        return clean(await asyncio.to_thread(validate))
+
+    @app.post("/api/master-csv/{name}/apply")
+    async def csv_apply(name: str, req: Request):
+        need(mode == "backoffice", "CSV master tersedia di Backoffice", 403)
+        p = await req.json()
+        need(
+            isinstance(p, dict) and isinstance(p.get("preview_id"), str),
+            "preview_id wajib diisi",
+        )
+        with db.read() as c:
+            actor, _ = session(req, c, True)
+
+        def apply():
+            with db.write() as c:
+                return master_csv.apply(c, actor, name, p["preview_id"])
+
+        return clean(await asyncio.to_thread(apply))
 
     @app.post("/api/master/{name}")
     async def create_master(name: str, req: Request):

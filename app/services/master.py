@@ -24,6 +24,7 @@ EDITABLE = {
     "taxes",
     "fiscal_periods",
     "roles",
+    "production_schedules",
 }
 IMMUTABLE_VERSIONS = {
     "schedule_versions",
