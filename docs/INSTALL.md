@@ -47,6 +47,8 @@ docker compose --env-file .env.pos -f compose.pos.yml up -d --build --wait
 
 Di Backoffice, daftarkan Terminal kasir dan pilih toko yang benar. Simpan token yang hanya tampil sekali. Buka `http://localhost:8081`, masukkan URL HTTPS Backoffice dan token. Pair/sinkronisasi pertama wajib online. Login, kemudian buka shift.
 
+Sesuai keputusan versi awal, gunakan URL berbasis domain HTTPS, misalnya `https://erp.example.com` (contoh). Jika hanya IP server berubah dengan layanan/domain tetap sama, perbarui DNS domain; alamat tersimpan di POS tetap digunakan setelah cache DNS diperbarui. Fitur mengganti URL/IP dari pengaturan lokal POS setelah pairing **ditunda ke versi berikutnya**. Lihat [keputusan alamat Backoffice](SYNC.md).
+
 Kasir kedua memakai instalasi, volume dan token berbeda walau tokonya sama. Jangan menyalin database POS yang sudah dipasangkan ke kasir kedua. Jika dua instalasi diuji pada satu komputer, pakai direktori terpisah, `POS_PORT` berbeda dan project Compose berbeda (`-p pos-a`, `-p pos-b`).
 
 Saat internet mati, Docker, server lokal, database, browser dan listrik tetap harus berjalan. Cache akun berlaku 72 jam secara default. Diskon/refund offline membutuhkan aturan `offline_allowed` dengan satu supervisor dan PIN. Voucher berkuota/penukaran poin membutuhkan cloud. Akumulasi poin dapat dicatat offline lalu dibukukan saat cloud menerima event.

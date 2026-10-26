@@ -13,6 +13,14 @@ Backoffice menyediakan API HTTPS yang dapat dijangkau kasir. Seluruh koneksi sin
 
 Penjualan dan antreannya disimpan dalam transaksi database lokal yang sama. POS mengirim berurutan dengan identitas event unik, Backoffice memvalidasi/membukukan, lalu membalas setelah commit. Pengiriman ulang event yang sudah diterima mengembalikan hasil yang sama. Saldo stok resmi dihitung dari transaksi gabungan setiap kasir, bukan penimpaan dengan saldo lokal.
 
+## Alamat Backoffice: keputusan versi awal dan versi berikutnya
+
+Keputusan pengguna pada 26 Oktober 2026: versi awal menggunakan **URL berbasis domain HTTPS** saat pemasangan POS, misalnya `https://erp.example.com` (contoh). URL tersebut disimpan di database lokal POS bersama identitas dan token terminal.
+
+Jika yang berubah hanya IP server Backoffice, administrator memperbarui record DNS domain ke IP baru. Domain, protokol, port dan layanan Backoffice tetap sama, sehingga konfigurasi alamat pada setiap POS tetap digunakan. POS mengikuti alamat hasil DNS setelah cache DNS diperbarui sesuai TTL dan mencoba sinkronisasi kembali menurut intervalnya. Pemindahan database/layanan Backoffice merupakan pekerjaan migrasi tersendiri.
+
+**Fitur mengedit URL/IP Backoffice pada POS setelah pemasangan ditunda ke versi berikutnya.** Versi awal belum menyediakan layar penggantian koneksi setelah pairing. Pada versi berikutnya administrator akan dapat mengubah alamat melalui pengaturan lokal, menguji koneksi dan identitas perusahaan/terminal sebelum menyimpan, serta mempertahankan transaksi lokal dan antrean untuk Backoffice yang sama. Fitur tersebut tidak diimplementasikan dalam perubahan keputusan ini.
+
 ## Interval melalui pengaturan aplikasi
 
 Pada implementasi ini administrator membuka **POS → Sinkronisasi → Interval sinkronisasi otomatis**. Tersedia pilihan cepat:

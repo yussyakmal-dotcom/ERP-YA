@@ -26,6 +26,7 @@
 - Retur SO dilakukan setelah invoice. Nilai paket untuk kredit komponen dialokasikan berdasarkan jumlah unit komponen; akuntan perlu menguji dengan contoh perusahaan.
 - Cache akun offline default 72 jam; maksimal lima gagal login/PIN, lock 15 menit. Perubahan master/akun baru efektif di POS setelah sync.
 - Interval sinkronisasi default 15 detik; administrator dapat mengatur 15, 60, 600 atau angka bulat 1–86400 detik pada POS. Konfigurasi per terminal bertahan setelah restart. Seluruh koneksi tetap dibuka oleh POS, tanpa IP publik pada kasir. Lihat [desain sinkronisasi](SYNC.md).
+- Keputusan versi awal: URL Backoffice menggunakan domain HTTPS. Perubahan IP server dengan domain/layanan yang sama ditangani melalui DNS. Fitur administrator mengedit URL/IP pada POS setelah pairing **ditunda ke versi berikutnya** dan belum tersedia di build ini.
 - Hold voucher/poin tidak kedaluwarsa otomatis karena penjualan offline mungkin belum terkirim; batalkan dari POS sebelum penjualan jika tidak digunakan.
 - Retur membalik earned points proporsional. Jika sudah dibelanjakan, saldo dapat negatif dan accrual berikutnya menutupnya. Kebijakan penerbitan ulang manfaat belum diimplementasikan.
 - Status pembayaran elektronik verified berasal dari verifikasi petugas, belum callback bank.
