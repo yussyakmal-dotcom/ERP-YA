@@ -13,6 +13,30 @@ from tests.test_business import make_po, receive_po, open_shift, sale_params, so
 from tests.test_commerce import tax
 
 
+def test_cutoff_and_production_date_use_wib_after_database_roundtrip(env, monkeypatch):
+    import datetime as dt
+    from app.core import WIB
+    from app.db import update
+    from app.services import production
+
+    e = env
+    today = now().astimezone(WIB).date()
+    with e.db.write() as c:
+        update(c, "schedule_versions", e.sv, delivery_time="00:30")
+    order = so(e, qty=1, product=e.bread)
+    monkeypatch.setattr(
+        sales, "now", lambda: dt.datetime.combine(today, dt.time(23, 0), WIB)
+    )
+    e.call(sales.confirm_so, order["id"])
+    with e.db.read() as c:
+        demands = rows(c, "demand_lines", source_document_id=order["id"])
+    work = e.call(production.plan, {"demand_ids": [demands[0]["id"]]})[0]
+    with e.db.read() as c:
+        assert get(c, "production_orders", work["id"])[
+            "plan_date"
+        ] == today + dt.timedelta(days=1)
+
+
 def test_purchase_approval_uses_server_value_instead_of_claimed_amount(env):
     e = env
     e.call(

@@ -155,8 +155,7 @@ def so_components(c, so):
 def confirm_so(c, actor, id):
     d = document(c, id, ["draft"], "SO")
     so = require(c, "sales_orders", id)
-    cutoff = so["cutoff_at_snapshot"]
-    cutoff = cutoff.replace(tzinfo=WIB) if cutoff.tzinfo is None else cutoff
+    cutoff = as_utc(so["cutoff_at_snapshot"])
     wo = [
         x
         for x in rows(

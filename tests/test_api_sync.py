@@ -123,11 +123,18 @@ def test_two_offline_cashiers_replay_and_no_double_ack(env, tmp_path):
     for terminal, app, sale in terminals:
         with app.state.db.read() as c:
             events = sorted(rows(c, "sync_outbox"), key=lambda x: x["local_sequence"])
+            original_sold_at = get(c, "pos_sales", sale["id"])["sold_at"]
         for event in events:
             with e.db.write() as c:
                 result = sync.apply_event(c, terminal["terminal"], clean(event))
                 again = sync.apply_event(c, terminal["terminal"], clean(event))
                 assert result == again
+        with e.db.read() as c:
+            from app.core import as_utc
+
+            assert as_utc(get(c, "pos_sales", sale["id"])["sold_at"]) == as_utc(
+                original_sold_at
+            )
     with e.db.read() as c:
         assert len(rows(c, "pos_sales")) == 2
         assert inventory.balance(c, e.bread, e.wh["T01"])["quantity"] == -1
@@ -144,6 +151,44 @@ def test_same_event_id_changed_payload_rejected(env, tmp_path):
     bad["payload_hash"] = digest(bad["payload"])
     with pytest.raises(BusinessError), e.db.write() as c:
         sync.apply_event(c, e.terminal["terminal"], bad)
+
+
+def test_one_planner_command_creates_distinct_work_orders_for_multiple_dates(env):
+    from app.services import production
+    from app.core import WIB
+
+    e = env
+    for days in (1, 2):
+        e.call(
+            production.store_request,
+            dict(
+                warehouse_id=e.wh["T01"],
+                required_date=str(
+                    now().astimezone(WIB).date() + dt.timedelta(days=days)
+                ),
+                schedule_version_id=e.sv,
+                lines=[dict(product_id=e.bread, quantity=10)],
+            ),
+        )
+    with e.db.read() as c:
+        demand_ids = [d["id"] for d in rows(c, "demand_lines")]
+    client = TestClient(
+        create_app(
+            e.db.engine.url.render_as_string(hide_password=False), start_worker=False
+        )
+    )
+    headers = login(client)
+    result = cmd(
+        client, headers, "wo.plan", {"demand_ids": demand_ids}, key="planner-two-dates"
+    )
+    assert result.status_code == 200, result.text
+    assert len({d["id"] for d in result.json()}) == 2
+    again = cmd(
+        client, headers, "wo.plan", {"demand_ids": demand_ids}, key="planner-two-dates"
+    )
+    assert again.json() == result.json()
+    with e.db.read() as c:
+        assert len(rows(c, "production_orders")) == 2
 
 
 def test_snapshot_watermark_overlays_only_unapplied_movement(env, tmp_path):

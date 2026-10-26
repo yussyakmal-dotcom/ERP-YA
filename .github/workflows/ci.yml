@@ -1,5 +1,9 @@
 name: ERP integrity and offline transactions
-on: [push, pull_request]
+on:
+  push:
+    paths-ignore: ['docs/**', 'README.md']
+  pull_request:
+    paths-ignore: ['docs/**', 'README.md']
 jobs:
   sqlite:
     runs-on: ubuntu-latest

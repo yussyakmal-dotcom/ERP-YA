@@ -351,6 +351,11 @@ function cell(t, key, v) {
     const rt = f.ref.split(".")[0];
     return escape(lookup(rt, v));
   }
+  if (f?.type === "timestamptz")
+    return escape(
+      new Date(v).toLocaleString("id-ID", { timeZone: "Asia/Jakarta" }) +
+        " WIB",
+    );
   if (typeof v === "object") return escape(JSON.stringify(v));
   if (/amount|price|cost|total|value|cash|debit|credit/.test(key))
     return escape(rupiah(v));

@@ -148,7 +148,12 @@ def now():
 def clean(v):
     if isinstance(v, Decimal):
         return str(v)
-    if isinstance(v, (dt.datetime, dt.date, dt.time)):
+    if isinstance(v, dt.datetime):
+        # SQLite strips timezone info on read; stored timestamps are always UTC.
+        if v.tzinfo is None:
+            v = v.replace(tzinfo=dt.timezone.utc)
+        return v.astimezone(dt.timezone.utc).isoformat()
+    if isinstance(v, (dt.date, dt.time)):
         return v.isoformat()
     if isinstance(v, dict):
         return {k: clean(a) for k, a in v.items()}

@@ -46,7 +46,7 @@ def plan(c, actor, p):
             product["id"],
             route["kitchen_id"],
             bom["id"],
-            str(d["required_at"].date()),
+            str(as_utc(d["required_at"]).astimezone(WIB).date()),
             d["schedule_version_id"],
         )
         groups.setdefault(key, dict(route=route, bom=bom, alloc=[]))["alloc"].append(
@@ -54,7 +54,14 @@ def plan(c, actor, p):
         )
     out = []
     for key, g in groups.items():
-        d = doc(c, actor, "WO", p)
+        # A single planner command can produce several documents. Its command
+        # identity must not be reused as every work order's primary key.
+        d = doc(
+            c,
+            actor,
+            "WO",
+            {k: v for k, v in p.items() if k not in ("id", "document_no")},
+        )
         q = sum(x[1] for x in g["alloc"])
         route = g["route"]
         bom = g["bom"]
