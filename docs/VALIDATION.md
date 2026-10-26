@@ -35,4 +35,8 @@ Job container memeriksa build/startup, bukan UAT bisnis lengkap melalui Docker. 
 
 Tambahan 26 Oktober 2026: interval otomatis per POS dapat diubah dari aplikasi tanpa restart, termasuk 15, 60, dan 600 detik. Suite lokal bertambah menjadi **55 test lulus**. Pengujian memeriksa penyimpanan per terminal/restart, snapshot cloud tidak menimpa interval, audit, akses administrator, validasi, penjadwalan ulang saat worker aktif, dan sinkron manual saat interval panjang.
 
-Browser smoke kembali lulus dengan server cloud dimatikan: penjualan/struk/tutup shift dan tiga event antrean tetap utuh; administrator mengganti interval ke 600 detik dari layar POS, memuat ulang halaman, lalu nilai 600 tetap tersimpan. Hasil CI build awal di atas merujuk commit sebelum tambahan ini; hasil CI perubahan interval dicatat setelah run selesai.
+Browser smoke kembali lulus dengan server cloud dimatikan: penjualan/struk/tutup shift dan tiga event antrean tetap utuh; administrator mengganti interval ke 600 detik dari layar POS, memuat ulang halaman, lalu nilai 600 tetap tersimpan. Hasil CI build awal di atas merujuk commit sebelum tambahan ini; hasil CI perubahan interval tercatat di bawah.
+
+### CI pengaturan interval
+
+[Run 40261299260](https://github.com/yussyakmal-dotcom/ERP-YA/actions/runs/40261299260), commit `5c1ec05257278f56cc92beff0891bbd0b001eab3`, selesai sukses pada 26 Oktober 2026. SQLite dan PostgreSQL 17 masing-masing **55 test lulus**; build/startup kedua mode Docker dan pemeriksaan syntax JavaScript juga lulus. Pengujian Docker tetap sebatas build/startup; batas UAT perusahaan/perangkat fisik di atas tidak berubah.
