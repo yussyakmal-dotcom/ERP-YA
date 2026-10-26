@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000">
+<rect x="0" y="0" width="1440" height="1000" rx="0" fill="#F6F3EB" stroke="#F6F3EB" stroke-width="0.8"/>
+<text x="38" y="42" font-family="DejaVu Sans" font-size="13" font-weight="700" fill="#243E35" text-anchor="start">YUSSY AKMAL</text>
+<text x="1402" y="42" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">WIREFRAME / POS LOKAL</text>
+<line x1="38" y1="57" x2="1402" y2="57" stroke="#D8E1D9" stroke-width="1"/>
+<text x="38" y="110" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#243E35" text-anchor="start">PS-06  /  Retur dan refund POS</text>
+<text x="38" y="145" font-family="DejaVu Sans" font-size="14" font-weight="400" fill="#63756D" text-anchor="start">Cari struk asal, pilih barang dan kondisi, lalu otorisasi.</text>
+<rect x="36" y="184" width="1050" height="660" rx="10" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="36" y="184" width="1050" height="58" rx="8" fill="#243E35" stroke="#243E35" stroke-width="0.8"/>
+<text x="58" y="219" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="start">YA  /  KASIR</text>
+<text x="264" y="219" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#DAE7DD" text-anchor="start">Toko 01  |  K01  |  Kasir A</text>
+<rect x="780" y="200" width="69.4560546875" height="25" rx="12" fill="#F8DDC3" stroke="#F8DDC3" stroke-width="0.8"/>
+<text x="791" y="217" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#A74E2F" text-anchor="start">OFFLINE</text>
+<text x="878" y="220" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#FFFFFF" text-anchor="start">12 antrean  /  09:40 WIB</text>
+<line x1="58" y1="286" x2="1064" y2="286" stroke="#D8E1D9" stroke-width="1"/>
+<text x="68" y="273" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">Jual</text>
+<text x="119.1171875" y="273" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#346B50" text-anchor="start">Riwayat &amp; retur</text>
+<rect x="109.1171875" y="284" width="126.32861328125" height="3" rx="0" fill="#346B50" stroke="#346B50" stroke-width="0.8"/>
+<text x="245.44580078125" y="273" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">Shift</text>
+<text x="303.013671875" y="273" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">Sinkronisasi</text>
+<text x="58" y="322" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#63756D" text-anchor="start">Cari struk asal *</text>
+<rect x="58" y="332" width="470" height="34" rx="5" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="68" y="354" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">T01-K01-000123</text>
+<text x="552" y="322" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#63756D" text-anchor="start">Ketersediaan transaksi</text>
+<rect x="552" y="332" width="512" height="34" rx="5" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="562" y="354" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Tersedia lokal / terminal ini</text>
+<rect x="58" y="386" width="1006" height="44" rx="7" fill="#F9EADD" stroke="#F9EADD" stroke-width="0.8"/>
+<circle cx="72" cy="403" r="3" fill="#A74E2F"/>
+<text x="83" y="405" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#A74E2F" text-anchor="start">Struk terminal lain? Sambungkan internet untuk validasi sebelum retur / refund.</text>
+<rect x="58" y="453" width="1006" height="34" rx="4" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="68" y="475" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#243E35" text-anchor="start">Item asal</text>
+<text x="398" y="475" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#243E35" text-anchor="start">Terjual / sudah retur</text>
+<text x="628" y="475" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#243E35" text-anchor="start">Retur sekarang</text>
+<text x="848" y="475" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#243E35" text-anchor="start">Kondisi</text>
+<rect x="58" y="487" width="1006" height="44" rx="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.8"/>
+<text x="68" y="511" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Roti A</text>
+<text x="398" y="511" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">2 / 0 pcs</text>
+<text x="628" y="511" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">1 pcs</text>
+<text x="848" y="511" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Layak jual</text>
+<line x1="58" y1="531" x2="1064" y2="531" stroke="#D8E1D9" stroke-width="1"/>
+<rect x="58" y="531" width="1006" height="44" rx="0" fill="#F8FAF7" stroke="#F8FAF7" stroke-width="0.8"/>
+<text x="68" y="555" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Risol</text>
+<text x="398" y="555" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">2 / 0 pcs</text>
+<text x="628" y="555" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">0 pcs</text>
+<text x="848" y="555" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">-</text>
+<line x1="58" y1="575" x2="1064" y2="575" stroke="#D8E1D9" stroke-width="1"/>
+<text x="58" y="623" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#63756D" text-anchor="start">Hak refund contoh</text>
+<rect x="58" y="633" width="310" height="34" rx="5" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="68" y="655" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Rp8.000</text>
+<text x="394" y="623" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#63756D" text-anchor="start">Metode refund *</text>
+<rect x="394" y="633" width="310" height="34" rx="5" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="404" y="655" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Tunai</text>
+<text x="730" y="623" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#63756D" text-anchor="start">Alasan *</text>
+<rect x="730" y="633" width="334" height="34" rx="5" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="740" y="655" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Pelanggan mengembalikan barang</text>
+<text x="58" y="708" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#63756D" text-anchor="start">Barang + kredit + uang dicatat terpisah dan saling tertaut. Persetujuan mengikuti aturan.</text>
+<line x1="58" y1="775" x2="1064" y2="775" stroke="#D8E1D9" stroke-width="1"/>
+<rect x="909.88671875" y="789" width="154.11328125" height="40" rx="7" fill="#346B50" stroke="#346B50" stroke-width="0.8"/>
+<text x="986.943359375" y="814" font-family="DejaVu Sans" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">Minta persetujuan</text>
+<rect x="743.224609375" y="789" width="156.662109375" height="40" rx="7" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="821.5556640625" y="814" font-family="DejaVu Sans" font-size="12" font-weight="700" fill="#243E35" text-anchor="middle">Simpan draft retur</text>
+<text x="1114" y="204" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#A74E2F" text-anchor="start">PERILAKU LAYAR</text>
+<rect x="1114" y="225" width="35.916015625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="1125" y="242" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">01</text>
+<text x="1158" y="242" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Batas offline</text>
+<text x="1114" y="275" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Saat offline hanya transaksi lokal yang</text>
+<text x="1114" y="294" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">tersedia dapat diretur. Struk terminal lain</text>
+<text x="1114" y="313" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">menunggu validasi cloud agar tidak refund</text>
+<text x="1114" y="332" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">ganda.</text>
+<rect x="1114" y="364" width="35.916015625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="1125" y="381" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">02</text>
+<text x="1158" y="381" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Jumlah dan kondisi</text>
+<text x="1114" y="414" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Retur kumulatif dibatasi sisa transaksi. Barang</text>
+<text x="1114" y="433" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">layak owned masuk stok toko; rusak tidak</text>
+<text x="1114" y="452" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">menjadi stok layak. Titipan mengikuti</text>
+<text x="1114" y="471" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">pembalikan sumber asal.</text>
+<rect x="1114" y="503" width="35.916015625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="1125" y="520" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">03</text>
+<text x="1158" y="520" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Refund sesuai hak</text>
+<text x="1114" y="553" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Harga, potongan, pajak dan biaya mengikuti</text>
+<text x="1114" y="572" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">transaksi asal. Refund tidak boleh melebihi hak</text>
+<text x="1114" y="591" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">tersisa; bukti dana dicatat terpisah dari</text>
+<text x="1114" y="610" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">barang.</text>
+<line x1="1114" y1="866" x2="1400" y2="866" stroke="#D8E1D9" stroke-width="1"/>
+<text x="1114" y="888" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#63756D" text-anchor="start">LANJUT KE</text>
+<text x="1114" y="909" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#346B50" text-anchor="start">PS-05 / PS-08</text>
+<text x="38" y="877" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#A74E2F" text-anchor="start">MODEL DATA</text>
+<text x="150" y="877" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">returns, return_lines, credit_notes, refunds, pos_sales, pos_sale_lines</text>
+<text x="38" y="918" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#A74E2F" text-anchor="start">UAT TERKAIT</text>
+<text x="150" y="918" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">U24, U25, U30</text>
+<line x1="38" y1="950" x2="1402" y2="950" stroke="#D8E1D9" stroke-width="1"/>
+<text x="38" y="976" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">ERP Yussy Akmal  /  25 Oktober 2026  /  Desain usulan, bukan aplikasi operasional</text>
+<text x="1402" y="976" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">PS-06  /  46</text>
+</svg>

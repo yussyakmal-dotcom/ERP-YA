@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000">
+<rect x="0" y="0" width="1440" height="1000" rx="0" fill="#F6F3EB" stroke="#F6F3EB" stroke-width="0.8"/>
+<text x="38" y="42" font-family="DejaVu Sans" font-size="13" font-weight="700" fill="#243E35" text-anchor="start">YUSSY AKMAL</text>
+<text x="1402" y="42" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">ALUR UI / F-02</text>
+<line x1="38" y1="57" x2="1402" y2="57" stroke="#D8E1D9" stroke-width="1"/>
+<text x="38" y="110" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#243E35" text-anchor="start">PO hanya satu kali penerimaan</text>
+<text x="38" y="145" font-family="DejaVu Sans" font-size="14" font-weight="400" fill="#63756D" text-anchor="start">Sisa yang belum datang ditutup, bukan dibuat backorder.</text>
+<line x1="355" y1="285.0" x2="400" y2="285.0" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="400" y1="285.0" x2="393.17980382352397" y2="289.18149783144526" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="400" y1="285.0" x2="393.17980382352397" y2="280.81850216855474" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="690" y1="285.0" x2="735" y2="285.0" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="735" y1="285.0" x2="728.1798038235239" y2="289.18149783144526" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="735" y1="285.0" x2="728.1798038235239" y2="280.81850216855474" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="575.0" y1="336" x2="575.0" y2="387" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="575.0" y1="387" x2="236.0" y2="387" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="236.0" y1="387" x2="236.0" y2="422" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="236.0" y1="422" x2="231.81850216855472" y2="415.17980382352397" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="236.0" y1="422" x2="240.18149783144528" y2="415.17980382352397" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="850.0" y1="336" x2="850.0" y2="397" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="850.0" y1="397" x2="519.0" y2="397" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="519.0" y1="397" x2="519.0" y2="422" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="519.0" y1="422" x2="514.8185021685547" y2="415.17980382352397" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="519.0" y1="422" x2="523.1814978314453" y2="415.17980382352397" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="690" y1="473.0" x2="735" y2="473.0" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="735" y1="473.0" x2="728.1798038235239" y2="477.18149783144526" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="735" y1="473.0" x2="728.1798038235239" y2="468.81850216855474" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="575.0" y1="524" x2="575.0" y2="565" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="575.0" y1="565" x2="236.0" y2="565" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="236.0" y1="565" x2="236.0" y2="610" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="236.0" y1="610" x2="231.81850216855472" y2="603.1798038235239" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="236.0" y1="610" x2="240.18149783144528" y2="603.1798038235239" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="515.0" y1="524" x2="515.0" y2="575" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="515.0" y1="575" x2="854.0" y2="575" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="854.0" y1="575" x2="854.0" y2="610" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="854.0" y1="610" x2="849.8185021685547" y2="603.1798038235239" stroke="#9AAC9E" stroke-width="1.4"/>
+<line x1="854.0" y1="610" x2="858.1814978314453" y2="603.1798038235239" stroke="#9AAC9E" stroke-width="1.4"/>
+<rect x="65" y="234" width="290" height="102" rx="10" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="77" y="246" width="29.7392578125" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="88" y="263" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">A</text>
+<text x="121" y="265" font-family="DejaVu Sans" font-size="13" font-weight="700" fill="#243E35" text-anchor="start">PO confirmed</text>
+<text x="81" y="303.0" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#63756D" text-anchor="start">BO-06</text>
+<rect x="400" y="234" width="290" height="102" rx="10" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="412" y="246" width="29.6220703125" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="423" y="263" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">B</text>
+<text x="456" y="265" font-family="DejaVu Sans" font-size="13" font-weight="700" fill="#243E35" text-anchor="start">Input aktual per baris</text>
+<text x="416" y="303.0" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#63756D" text-anchor="start">BO-07</text>
+<rect x="735" y="234" width="290" height="102" rx="10" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="747" y="246" width="29.3388671875" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="758" y="263" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">C</text>
+<text x="791" y="265" font-family="DejaVu Sans" font-size="13" font-weight="700" fill="#243E35" text-anchor="start">Terima 5 dari 10</text>
+<text x="751" y="303.0" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#63756D" text-anchor="start">Tutup kekurangan 5</text>
+<rect x="65" y="422" width="290" height="102" rx="10" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="77" y="434" width="30.30078125" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="88" y="451" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">D</text>
+<text x="121" y="453" font-family="DejaVu Sans" font-size="13" font-weight="700" fill="#243E35" text-anchor="start">Semua aktual nol</text>
+<text x="81" y="491.0" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#63756D" text-anchor="start">Catat penolakan</text>
+<rect x="400" y="422" width="290" height="102" rx="10" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="412" y="434" width="28.8310546875" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="423" y="451" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">E</text>
+<text x="456" y="453" font-family="DejaVu Sans" font-size="13" font-weight="700" fill="#243E35" text-anchor="start">PO selesai diterima</text>
+<text x="416" y="491.0" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#63756D" text-anchor="start">Receive kedua terkunci</text>
+<rect x="735" y="422" width="290" height="102" rx="10" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="747" y="434" width="28.8310546875" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="758" y="451" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">F</text>
+<text x="791" y="453" font-family="DejaVu Sans" font-size="13" font-weight="700" fill="#243E35" text-anchor="start">Faktur + pembayaran</text>
+<text x="751" y="491.0" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#63756D" text-anchor="start">BO-29 / BO-20</text>
+<rect x="65" y="610" width="290" height="102" rx="10" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="77" y="622" width="30.2080078125" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="88" y="639" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">G</text>
+<text x="121" y="641" font-family="DejaVu Sans" font-size="13" font-weight="700" fill="#243E35" text-anchor="start">Kedatangan berikutnya</text>
+<text x="81" y="679.0" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#63756D" text-anchor="start">BO-08: kembalikan</text>
+<rect x="735" y="610" width="290" height="102" rx="10" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="747" y="622" width="30.369140625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="758" y="639" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">H</text>
+<text x="791" y="641" font-family="DejaVu Sans" font-size="13" font-weight="700" fill="#243E35" text-anchor="start">Retur dari receipt</text>
+<text x="751" y="679.0" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#63756D" text-anchor="start">BO-19: kredit supplier</text>
+<text x="1114" y="229" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#A74E2F" text-anchor="start">ATURAN PENTING</text>
+<text x="1114" y="269" font-family="DejaVu Sans" font-size="20" font-weight="700" fill="#346B50" text-anchor="start">01</text>
+<text x="1114" y="299" font-family="DejaVu Sans" font-size="13" font-weight="400" fill="#24342F" text-anchor="start">Jumlah aktual tidak melebihi pesanan.</text>
+<text x="1114" y="321" font-family="DejaVu Sans" font-size="13" font-weight="400" fill="#24342F" text-anchor="start">Baris nol perlu alasan; satu PO tidak dapat</text>
+<text x="1114" y="343" font-family="DejaVu Sans" font-size="13" font-weight="400" fill="#24342F" text-anchor="start">diposting oleh dua petugas sekaligus.</text>
+<text x="1114" y="400" font-family="DejaVu Sans" font-size="20" font-weight="700" fill="#346B50" text-anchor="start">02</text>
+<text x="1114" y="430" font-family="DejaVu Sans" font-size="13" font-weight="400" fill="#24342F" text-anchor="start">Barang pada kedatangan berikutnya</text>
+<text x="1114" y="452" font-family="DejaVu Sans" font-size="13" font-weight="400" fill="#24342F" text-anchor="start">ditolak tanpa mutasi stok/utang. Bukti</text>
+<text x="1114" y="474" font-family="DejaVu Sans" font-size="13" font-weight="400" fill="#24342F" text-anchor="start">penolakan disimpan.</text>
+<text x="1114" y="531" font-family="DejaVu Sans" font-size="20" font-weight="700" fill="#346B50" text-anchor="start">03</text>
+<text x="1114" y="561" font-family="DejaVu Sans" font-size="13" font-weight="400" fill="#24342F" text-anchor="start">Retur mengurangi stok/kewajiban yang</text>
+<text x="1114" y="583" font-family="DejaVu Sans" font-size="13" font-weight="400" fill="#24342F" text-anchor="start">sah, tetapi tidak membuka PO untuk</text>
+<text x="1114" y="605" font-family="DejaVu Sans" font-size="13" font-weight="400" fill="#24342F" text-anchor="start">penerimaan kedua.</text>
+<text x="65" y="867" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">B &gt; C: Ada aktual &gt; 0 | B &gt; D: Semua nol | C &gt; E: Final | E &gt; G: Sisa datang | E &gt; H: Barang bermasalah</text>
+<line x1="38" y1="950" x2="1402" y2="950" stroke="#D8E1D9" stroke-width="1"/>
+<text x="38" y="976" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">ERP Yussy Akmal  /  25 Oktober 2026  /  Desain usulan, bukan aplikasi operasional</text>
+<text x="1402" y="976" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">F-02  /  06</text>
+</svg>

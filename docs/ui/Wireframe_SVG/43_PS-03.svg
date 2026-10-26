@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000">
+<rect x="0" y="0" width="1440" height="1000" rx="0" fill="#F6F3EB" stroke="#F6F3EB" stroke-width="0.8"/>
+<text x="38" y="42" font-family="DejaVu Sans" font-size="13" font-weight="700" fill="#243E35" text-anchor="start">YUSSY AKMAL</text>
+<text x="1402" y="42" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">WIREFRAME / POS LOKAL</text>
+<line x1="38" y1="57" x2="1402" y2="57" stroke="#D8E1D9" stroke-width="1"/>
+<text x="38" y="110" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#243E35" text-anchor="start">PS-03  /  Pilih sumber barang</text>
+<text x="38" y="145" font-family="DejaVu Sans" font-size="14" font-weight="400" fill="#63756D" text-anchor="start">SKU yang sama dapat berasal dari stok owned atau titipan.</text>
+<rect x="36" y="184" width="1050" height="660" rx="10" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="36" y="184" width="1050" height="58" rx="8" fill="#243E35" stroke="#243E35" stroke-width="0.8"/>
+<text x="58" y="219" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="start">YA  /  KASIR</text>
+<text x="264" y="219" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#DAE7DD" text-anchor="start">Toko 01  |  K01  |  Kasir A</text>
+<rect x="780" y="200" width="69.4560546875" height="25" rx="12" fill="#F8DDC3" stroke="#F8DDC3" stroke-width="0.8"/>
+<text x="791" y="217" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#A74E2F" text-anchor="start">OFFLINE</text>
+<text x="878" y="220" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#FFFFFF" text-anchor="start">12 antrean  /  09:40 WIB</text>
+<line x1="58" y1="286" x2="1064" y2="286" stroke="#D8E1D9" stroke-width="1"/>
+<text x="68" y="273" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#346B50" text-anchor="start">Jual</text>
+<rect x="58" y="284" width="51.1171875" height="3" rx="0" fill="#346B50" stroke="#346B50" stroke-width="0.8"/>
+<text x="119.1171875" y="273" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">Riwayat &amp; retur</text>
+<text x="245.44580078125" y="273" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">Shift</text>
+<text x="303.013671875" y="273" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">Sinkronisasi</text>
+<text x="98" y="343" font-family="DejaVu Sans" font-size="23" font-weight="700" fill="#243E35" text-anchor="start">Asal barang yang sedang dijual</text>
+<rect x="98" y="379" width="446" height="247" rx="10" fill="#EAF1EB" stroke="#D8E1D9" stroke-width="0.8"/>
+<circle cx="122" cy="409" r="7" fill="#346B50"/>
+<text x="142" y="416" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#243E35" text-anchor="start">Milik perusahaan</text>
+<text x="121" y="465" font-family="DejaVu Sans" font-size="14" font-weight="400" fill="#24342F" text-anchor="start">Termasuk barang supplier dari SO batal yang sudah</text>
+<text x="121" y="488" font-family="DejaVu Sans" font-size="14" font-weight="400" fill="#24342F" text-anchor="start">diterima dan ditransfer ke toko.</text>
+<rect x="121" y="575" width="157.8984375" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="132" y="592" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">Mengurangi stok owned</text>
+<rect x="568" y="379" width="446" height="247" rx="10" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<circle cx="592" cy="409" r="7" fill="#D8E1D9"/>
+<text x="612" y="416" font-family="DejaVu Sans" font-size="19" font-weight="700" fill="#243E35" text-anchor="start">Titipan supplier</text>
+<text x="591" y="465" font-family="DejaVu Sans" font-size="14" font-weight="400" fill="#24342F" text-anchor="start">Barang fisik di kartu manual. Pengakuan masuk dan</text>
+<text x="591" y="488" font-family="DejaVu Sans" font-size="14" font-weight="400" fill="#24342F" text-anchor="start">keluar terjadi bersamaan saat terjual.</text>
+<rect x="591" y="575" width="193.19140625" height="25" rx="12" fill="#F9EADD" stroke="#F9EADD" stroke-width="0.8"/>
+<text x="602" y="592" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#A74E2F" text-anchor="start">Perjanjian lokal wajib tersedia</text>
+<rect x="98" y="656" width="916" height="44" rx="7" fill="#F9EADD" stroke="#F9EADD" stroke-width="0.8"/>
+<circle cx="112" cy="673" r="3" fill="#A74E2F"/>
+<text x="123" y="675" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#A74E2F" text-anchor="start">Jika sumber fisik tidak jelas, minta konfirmasi petugas toko. Sistem tidak menebak dari saldo yang minus.</text>
+<line x1="58" y1="775" x2="1064" y2="775" stroke="#D8E1D9" stroke-width="1"/>
+<rect x="865.888671875" y="789" width="198.111328125" height="40" rx="7" fill="#346B50" stroke="#346B50" stroke-width="0.8"/>
+<text x="964.9443359375" y="814" font-family="DejaVu Sans" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">Gunakan sumber terpilih</text>
+<rect x="678.537109375" y="789" width="177.3515625" height="40" rx="7" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="767.212890625" y="814" font-family="DejaVu Sans" font-size="12" font-weight="700" fill="#243E35" text-anchor="middle">Kembali ke keranjang</text>
+<text x="1114" y="204" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#A74E2F" text-anchor="start">PERILAKU LAYAR</text>
+<rect x="1114" y="225" width="35.916015625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="1125" y="242" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">01</text>
+<text x="1158" y="242" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Pilihan eksplisit</text>
+<text x="1114" y="275" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Kasir memilih berdasarkan asal barang fisik.</text>
+<text x="1114" y="294" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Jangan otomatis mengubah owned menjadi</text>
+<text x="1114" y="313" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">titipan ketika stok terlihat habis.</text>
+<rect x="1114" y="345" width="35.916015625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="1125" y="362" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">02</text>
+<text x="1158" y="362" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Owned dari SO batal</text>
+<text x="1114" y="395" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Barang ini sudah diakui saat penerimaan PO.</text>
+<text x="1114" y="414" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Penjualan hanya mengurangi stok dan</text>
+<text x="1114" y="433" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">mencatat penjualan; tidak membentuk utang</text>
+<text x="1114" y="452" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">supplier baru.</text>
+<rect x="1114" y="484" width="35.916015625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="1125" y="501" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">03</text>
+<text x="1158" y="501" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Titipan</text>
+<text x="1114" y="534" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Sistem mencatat masuk dan terjual</text>
+<text x="1114" y="553" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">bersamaan. Jika perjanjian/harga supplier tidak</text>
+<text x="1114" y="572" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">tersedia lokal, pilihan titipan dinonaktifkan</text>
+<text x="1114" y="591" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">dengan alasan.</text>
+<line x1="1114" y1="866" x2="1400" y2="866" stroke="#D8E1D9" stroke-width="1"/>
+<text x="1114" y="888" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#63756D" text-anchor="start">LANJUT KE</text>
+<text x="1114" y="909" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#346B50" text-anchor="start">PS-02 / BO-27</text>
+<text x="38" y="877" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#A74E2F" text-anchor="start">MODEL DATA</text>
+<text x="150" y="877" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">pos_sale_lines, consignment_agreements, consignment_sales</text>
+<text x="38" y="918" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#A74E2F" text-anchor="start">UAT TERKAIT</text>
+<text x="150" y="918" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">U05, U06, U07</text>
+<line x1="38" y1="950" x2="1402" y2="950" stroke="#D8E1D9" stroke-width="1"/>
+<text x="38" y="976" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">ERP Yussy Akmal  /  25 Oktober 2026  /  Desain usulan, bukan aplikasi operasional</text>
+<text x="1402" y="976" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">PS-03  /  43</text>
+</svg>

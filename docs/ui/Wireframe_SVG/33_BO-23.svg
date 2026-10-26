@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000">
+<rect x="0" y="0" width="1440" height="1000" rx="0" fill="#F6F3EB" stroke="#F6F3EB" stroke-width="0.8"/>
+<text x="38" y="42" font-family="DejaVu Sans" font-size="13" font-weight="700" fill="#243E35" text-anchor="start">YUSSY AKMAL</text>
+<text x="1402" y="42" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">WIREFRAME / BACKOFFICE</text>
+<line x1="38" y1="57" x2="1402" y2="57" stroke="#D8E1D9" stroke-width="1"/>
+<text x="38" y="110" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#243E35" text-anchor="start">BO-23  /  Jadwal dan batas pesanan</text>
+<text x="38" y="145" font-family="DejaVu Sans" font-size="14" font-weight="400" fill="#63756D" text-anchor="start">Pagi, siang, dan sore memakai versi konfigurasi.</text>
+<rect x="36" y="184" width="1050" height="660" rx="10" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="36" y="184" width="166" height="660" rx="8" fill="#243E35" stroke="#243E35" stroke-width="0.8"/>
+<text x="55" y="216" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#FFFFFF" text-anchor="start">YA</text>
+<text x="55" y="239" font-family="DejaVu Sans" font-size="9" font-weight="700" fill="#B4CDBB" text-anchor="start">BACKOFFICE</text>
+<text x="57" y="281" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Dashboard</text>
+<text x="57" y="323" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Penjualan SO</text>
+<text x="57" y="365" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Pembelian</text>
+<text x="57" y="407" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Gudang &amp; transit</text>
+<text x="57" y="449" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Produksi</text>
+<text x="57" y="491" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Persetujuan</text>
+<text x="57" y="533" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Keuangan</text>
+<text x="57" y="575" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Laporan</text>
+<text x="57" y="617" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Master</text>
+<text x="57" y="659" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Sinkronisasi</text>
+<rect x="46" y="680" width="146" height="34" rx="5" fill="#456251" stroke="#456251" stroke-width="0.8"/>
+<text x="57" y="701" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="start">Pengaturan</text>
+<text x="55" y="801" font-family="DejaVu Sans" font-size="9" font-weight="700" fill="#B4CDBB" text-anchor="start">SEMUA LOKASI</text>
+<rect x="203" y="184" width="883" height="52" rx="8" fill="#FCFDFB" stroke="#FCFDFB" stroke-width="0.8"/>
+<line x1="203" y1="236" x2="1086" y2="236" stroke="#D8E1D9" stroke-width="1"/>
+<text x="224" y="216" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">Yussy Akmal / Pengaturan</text>
+<text x="1064" y="216" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">Data ilustrasi   |   Staf operasional</text>
+<text x="224" y="277" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#243E35" text-anchor="start">Jadwal dan batas pesanan</text>
+<text x="224" y="304" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">Pagi, siang, dan sore memakai versi konfigurasi.</text>
+<rect x="224" y="324" width="838" height="44" rx="7" fill="#F9EADD" stroke="#F9EADD" stroke-width="0.8"/>
+<circle cx="238" cy="341" r="3" fill="#A74E2F"/>
+<text x="249" y="343" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#A74E2F" text-anchor="start">Nilai jam belum ditentukan pengguna. Aktivasi hanya setelah semua jam wajib valid.</text>
+<text x="224.0" y="397" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#63756D" text-anchor="start">Zona waktu</text>
+<rect x="224.0" y="407" width="268.6666666666667" height="34" rx="5" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="234.0" y="429" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Asia/Jakarta / WIB</text>
+<text x="508.6666666666667" y="397" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#63756D" text-anchor="start">Aturan hari</text>
+<rect x="508.6666666666667" y="407" width="268.6666666666667" height="34" rx="5" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="518.6666666666667" y="429" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">H-1 - tetap</text>
+<text x="793.3333333333334" y="397" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#63756D" text-anchor="start">Tanggal mulai berlaku *</text>
+<rect x="793.3333333333334" y="407" width="268.6666666666667" height="34" rx="5" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="803.3333333333334" y="429" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Pilih tanggal</text>
+<text x="224.0" y="465" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#63756D" text-anchor="start">Status versi</text>
+<rect x="224.0" y="475" width="268.6666666666667" height="34" rx="5" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="234.0" y="497" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Draft konfigurasi</text>
+<rect x="224" y="536" width="838" height="34" rx="4" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="234" y="558" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#243E35" text-anchor="start">Jadwal</text>
+<text x="359.7" y="558" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#243E35" text-anchor="start">Jam batas H-1 *</text>
+<text x="585.96" y="558" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#243E35" text-anchor="start">Jam pengiriman *</text>
+<text x="812.22" y="558" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#243E35" text-anchor="start">Status</text>
+<rect x="224" y="570" width="838" height="44" rx="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.8"/>
+<text x="234" y="594" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Pagi</text>
+<text x="359.7" y="594" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Belum diisi</text>
+<text x="585.96" y="594" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Belum diisi</text>
+<text x="812.22" y="594" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Tidak dapat dipakai</text>
+<line x1="224" y1="614" x2="1062" y2="614" stroke="#D8E1D9" stroke-width="1"/>
+<rect x="224" y="614" width="838" height="44" rx="0" fill="#F8FAF7" stroke="#F8FAF7" stroke-width="0.8"/>
+<text x="234" y="638" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Siang</text>
+<text x="359.7" y="638" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Belum diisi</text>
+<text x="585.96" y="638" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Belum diisi</text>
+<text x="812.22" y="638" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Tidak dapat dipakai</text>
+<line x1="224" y1="658" x2="1062" y2="658" stroke="#D8E1D9" stroke-width="1"/>
+<rect x="224" y="658" width="838" height="44" rx="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.8"/>
+<text x="234" y="682" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Sore</text>
+<text x="359.7" y="682" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Belum diisi</text>
+<text x="585.96" y="682" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Belum diisi</text>
+<text x="812.22" y="682" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Tidak dapat dipakai</text>
+<line x1="224" y1="702" x2="1062" y2="702" stroke="#D8E1D9" stroke-width="1"/>
+<line x1="224" y1="775" x2="1062" y2="775" stroke="#D8E1D9" stroke-width="1"/>
+<rect x="937.728515625" y="789" width="124.271484375" height="40" rx="7" fill="#D8E1D9" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="999.8642578125" y="814" font-family="DejaVu Sans" font-size="12" font-weight="700" fill="#63756D" text-anchor="middle">Aktifkan versi</text>
+<rect x="809.498046875" y="789" width="118.23046875" height="40" rx="7" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="868.61328125" y="814" font-family="DejaVu Sans" font-size="12" font-weight="700" fill="#243E35" text-anchor="middle">Simpan draft</text>
+<text x="1114" y="204" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#A74E2F" text-anchor="start">PERILAKU LAYAR</text>
+<rect x="1114" y="225" width="35.916015625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="1125" y="242" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">01</text>
+<text x="1158" y="242" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Tidak hardcode</text>
+<text x="1114" y="275" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Jam cutoff dan kirim bisa diubah melalui tabel.</text>
+<text x="1114" y="294" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Hari tetap H-1 sesuai keputusan bisnis.</text>
+<rect x="1114" y="326" width="35.916015625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="1125" y="343" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">02</text>
+<text x="1158" y="343" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Snapshot pesanan</text>
+<text x="1114" y="376" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">SO terkonfirmasi mempertahankan jadwal</text>
+<text x="1114" y="395" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">lama. Pesanan baru menggunakan versi yang</text>
+<text x="1114" y="414" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">berlaku.</text>
+<rect x="1114" y="446" width="35.916015625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="1125" y="463" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">03</text>
+<text x="1158" y="463" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Pesan validasi</text>
+<text x="1114" y="496" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Jadwal Pagi belum lengkap. Isi jam batas dan</text>
+<text x="1114" y="515" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">jam kirim sebelum aktivasi. Jangan mengganti</text>
+<text x="1114" y="534" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">isian kosong dengan jam perkiraan.</text>
+<line x1="1114" y1="866" x2="1400" y2="866" stroke="#D8E1D9" stroke-width="1"/>
+<text x="1114" y="888" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#63756D" text-anchor="start">LANJUT KE</text>
+<text x="1114" y="909" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#346B50" text-anchor="start">BO-03</text>
+<text x="38" y="877" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#A74E2F" text-anchor="start">MODEL DATA</text>
+<text x="150" y="877" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">production_schedules, schedule_versions, sales_orders</text>
+<text x="38" y="918" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#A74E2F" text-anchor="start">UAT TERKAIT</text>
+<text x="150" y="918" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">U11, U12</text>
+<line x1="38" y1="950" x2="1402" y2="950" stroke="#D8E1D9" stroke-width="1"/>
+<text x="38" y="976" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">ERP Yussy Akmal  /  25 Oktober 2026  /  Desain usulan, bukan aplikasi operasional</text>
+<text x="1402" y="976" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">BO-23  /  33</text>
+</svg>

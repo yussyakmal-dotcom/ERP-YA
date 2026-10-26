@@ -1,0 +1,7609 @@
+{
+  "companies": {
+    "name": "companies",
+    "group": "01 Organisasi dan produk",
+    "desc": "Satu perusahaan pemilik seluruh transaksi.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "code",
+        "type": "varchar(30)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "name",
+        "type": "varchar(150)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "timezone",
+        "type": "varchar(50)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "currency_code",
+        "type": "char(3)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "code"
+      ]
+    ],
+    "note": "Versi pertama hanya satu perusahaan aktif; bukan desain konsolidasi multi company.",
+    "doc": false
+  },
+  "outlets": {
+    "name": "outlets",
+    "group": "01 Organisasi dan produk",
+    "desc": "Toko fisik dan outlet virtual Dahlia.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "company_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "companies.id"
+      },
+      {
+        "name": "code",
+        "type": "varchar(30)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "name",
+        "type": "varchar(150)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "kind",
+        "type": "varchar(20)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "pos_enabled",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "code"
+      ]
+    ],
+    "note": "kind store atau virtual; virtual tidak memiliki POS.",
+    "doc": false
+  },
+  "kitchens": {
+    "name": "kitchens",
+    "group": "01 Organisasi dan produk",
+    "desc": "Dapur produksi dan bagian packing.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "company_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "companies.id"
+      },
+      {
+        "name": "code",
+        "type": "varchar(30)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "name",
+        "type": "varchar(150)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "kind",
+        "type": "varchar(20)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "code"
+      ]
+    ],
+    "note": "",
+    "doc": false
+  },
+  "warehouses": {
+    "name": "warehouses",
+    "group": "01 Organisasi dan produk",
+    "desc": "Lokasi fisik atau virtual untuk saldo stok.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "company_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "companies.id"
+      },
+      {
+        "name": "code",
+        "type": "varchar(40)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "name",
+        "type": "varchar(150)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "kind",
+        "type": "varchar(25)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "outlet_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "outlets.id"
+      },
+      {
+        "name": "kitchen_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "kitchens.id"
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "code"
+      ]
+    ],
+    "note": "kind central, kitchen_raw, kitchen_finished, packing, store, transit. Transit bukan stok toko dan bukan entitas perusahaan baru; owner FK mengikuti kind.",
+    "doc": false
+  },
+  "uoms": {
+    "name": "uoms",
+    "group": "01 Organisasi dan produk",
+    "desc": "Satuan dasar dan satuan transaksi.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "code",
+        "type": "varchar(20)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "name",
+        "type": "varchar(80)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "dimension",
+        "type": "varchar(20)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "allow_decimal",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "code"
+      ]
+    ],
+    "note": "",
+    "doc": false
+  },
+  "categories": {
+    "name": "categories",
+    "group": "01 Organisasi dan produk",
+    "desc": "Pengelompokan SKU.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "name",
+        "type": "varchar(100)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "parent_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "categories.id"
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Tidak boleh siklus parent.",
+    "doc": false
+  },
+  "products": {
+    "name": "products",
+    "group": "01 Organisasi dan produk",
+    "desc": "SKU bahan, produk, kemasan, turunan atau paket.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "sku",
+        "type": "varchar(60)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "name",
+        "type": "varchar(200)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "category_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "categories.id"
+      },
+      {
+        "name": "base_uom_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "uoms.id"
+      },
+      {
+        "name": "is_saleable",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "is_purchasable",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "is_manufacturable",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "is_phantom",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "intermediate_type",
+        "type": "varchar(20)",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "default_purchase_cost",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "default_sale_price",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "sku"
+      ]
+    ],
+    "note": "intermediate_type premik atau wip. Phantom tidak memiliki stock_balances; stok komponen digunakan. Produk turunan menggunakan SKU biasa.",
+    "doc": false
+  },
+  "product_uoms": {
+    "name": "product_uoms",
+    "group": "01 Organisasi dan produk",
+    "desc": "Konversi SKU per satuan dan barcode.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "product_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "products.id"
+      },
+      {
+        "name": "uom_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "uoms.id"
+      },
+      {
+        "name": "factor_to_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "barcode",
+        "type": "varchar(80)",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "is_base",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "allow_sale",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "allow_purchase",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "product_id",
+        "uom_id"
+      ],
+      [
+        "barcode"
+      ]
+    ],
+    "note": "Faktor >0; tepat satu satuan dasar bernilai 1 per SKU. Transaksi menyimpan snapshot, bukan lookup historis.",
+    "doc": false
+  },
+  "product_kitchen_routes": {
+    "name": "product_kitchen_routes",
+    "group": "01 Organisasi dan produk",
+    "desc": "Pemetaan SKU yang dapat dibuat per dapur.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "product_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "products.id"
+      },
+      {
+        "name": "kitchen_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "kitchens.id"
+      },
+      {
+        "name": "raw_warehouse_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "warehouses.id"
+      },
+      {
+        "name": "output_warehouse_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "warehouses.id"
+      },
+      {
+        "name": "is_default",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "product_id",
+        "kitchen_id"
+      ]
+    ],
+    "note": "Maksimal satu default aktif per SKU; sumber WIP dapat ditentukan pada komponen BOM.",
+    "doc": false
+  },
+  "suppliers": {
+    "name": "suppliers",
+    "group": "01 Organisasi dan produk",
+    "desc": "Master supplier.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "code",
+        "type": "varchar(40)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "name",
+        "type": "varchar(150)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "contact",
+        "type": "jsonb",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "payment_terms_days",
+        "type": "int",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "code"
+      ]
+    ],
+    "note": "",
+    "doc": false
+  },
+  "customers": {
+    "name": "customers",
+    "group": "01 Organisasi dan produk",
+    "desc": "Pelanggan SO dan member POS.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "code",
+        "type": "varchar(40)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "name",
+        "type": "varchar(150)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "phone",
+        "type": "varchar(40)",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "contact",
+        "type": "jsonb",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "code"
+      ]
+    ],
+    "note": "",
+    "doc": false
+  },
+  "users": {
+    "name": "users",
+    "group": "02 Dokumen akses dan persetujuan",
+    "desc": "Pengguna backoffice dan kasir.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "username",
+        "type": "varchar(100)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "name",
+        "type": "varchar(150)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "password_hash",
+        "type": "text",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "pin_hash",
+        "type": "text",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "credential_version",
+        "type": "int",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "username"
+      ]
+    ],
+    "note": "Tidak menyimpan PIN/password polos. Tidak ada pembatasan akses toko/dapur pada user.",
+    "doc": false
+  },
+  "roles": {
+    "name": "roles",
+    "group": "02 Dokumen akses dan persetujuan",
+    "desc": "Peran dan kumpulan hak tindakan.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "code",
+        "type": "varchar(50)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "name",
+        "type": "varchar(100)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "permissions",
+        "type": "jsonb",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "code"
+      ]
+    ],
+    "note": "permissions berupa daftar kode hak tervalidasi.",
+    "doc": false
+  },
+  "user_roles": {
+    "name": "user_roles",
+    "group": "02 Dokumen akses dan persetujuan",
+    "desc": "Hubungan pengguna dan peran.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "users.id"
+      },
+      {
+        "name": "role_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "roles.id"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "user_id",
+        "role_id"
+      ]
+    ],
+    "note": "",
+    "doc": false
+  },
+  "documents": {
+    "name": "documents",
+    "group": "02 Dokumen akses dan persetujuan",
+    "desc": "Identitas lintas modul untuk audit dan posting.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "company_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "companies.id"
+      },
+      {
+        "name": "document_type",
+        "type": "varchar(40)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "document_no",
+        "type": "varchar(80)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "business_date",
+        "type": "date",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "status",
+        "type": "varchar(30)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "revision",
+        "type": "int",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_by",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "users.id"
+      },
+      {
+        "name": "posted_by",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "users.id"
+      },
+      {
+        "name": "posted_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "reversal_of_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "documents.id"
+      },
+      {
+        "name": "idempotency_key",
+        "type": "varchar(120)",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "document_type",
+        "document_no"
+      ],
+      [
+        "idempotency_key"
+      ]
+    ],
+    "note": "Tabel subtype memakai id yang sama. Constraint/layanan memastikan tepat satu subtype yang sesuai document_type. Posted immutable.",
+    "doc": false
+  },
+  "settings": {
+    "name": "settings",
+    "group": "02 Dokumen akses dan persetujuan",
+    "desc": "Pengaturan berversi dan tanggal efektif.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "key",
+        "type": "varchar(120)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "version",
+        "type": "int",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "value",
+        "type": "jsonb",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "effective_from",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "changed_by",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "users.id"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "key",
+        "version"
+      ]
+    ],
+    "note": "",
+    "doc": false
+  },
+  "approval_rules": {
+    "name": "approval_rules",
+    "group": "02 Dokumen akses dan persetujuan",
+    "desc": "Aturan persetujuan tindakan.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "action_code",
+        "type": "varchar(80)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "version",
+        "type": "int",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "min_amount",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "max_amount",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "conditions",
+        "type": "jsonb",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "offline_allowed",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "effective_from",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "action_code",
+        "version"
+      ]
+    ],
+    "note": "Kondisi harus deterministik; rule yang tumpang tindih perlu prioritas di conditions atau ditolak saat konfigurasi.",
+    "doc": false
+  },
+  "approval_steps": {
+    "name": "approval_steps",
+    "group": "02 Dokumen akses dan persetujuan",
+    "desc": "Penyetuju per langkah rule.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "rule_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "approval_rules.id"
+      },
+      {
+        "name": "step_no",
+        "type": "int",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "approver_user_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "users.id"
+      },
+      {
+        "name": "approver_role_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "roles.id"
+      },
+      {
+        "name": "required_count",
+        "type": "int",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "allow_self_approval",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "rule_id",
+        "step_no"
+      ]
+    ],
+    "note": "Tepat satu approver_user_id atau approver_role_id; required_count >0.",
+    "doc": false
+  },
+  "approval_requests": {
+    "name": "approval_requests",
+    "group": "02 Dokumen akses dan persetujuan",
+    "desc": "Permintaan persetujuan revisi dokumen.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "document_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "document_revision",
+        "type": "int",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "rule_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "approval_rules.id"
+      },
+      {
+        "name": "requested_by",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "users.id"
+      },
+      {
+        "name": "status",
+        "type": "varchar(30)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "rule_snapshot",
+        "type": "jsonb",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "reason",
+        "type": "text",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Perubahan revisi material membuat approval lama tidak berlaku.",
+    "doc": false
+  },
+  "approval_actions": {
+    "name": "approval_actions",
+    "group": "02 Dokumen akses dan persetujuan",
+    "desc": "Keputusan penyetuju online atau offline.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "request_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "approval_requests.id"
+      },
+      {
+        "name": "step_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "approval_steps.id"
+      },
+      {
+        "name": "actor_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "users.id"
+      },
+      {
+        "name": "terminal_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "pos_terminals.id"
+      },
+      {
+        "name": "decision",
+        "type": "varchar(20)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "decided_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "credential_version",
+        "type": "int",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "evidence",
+        "type": "jsonb",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "request_id",
+        "step_id",
+        "actor_id"
+      ]
+    ],
+    "note": "Offline signature/evidence serta rule version diverifikasi saat sync; replay tidak membuat keputusan ganda.",
+    "doc": false
+  },
+  "audit_logs": {
+    "name": "audit_logs",
+    "group": "02 Dokumen akses dan persetujuan",
+    "desc": "Riwayat aksi dan perubahan.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "actor_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "users.id"
+      },
+      {
+        "name": "document_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "documents.id"
+      },
+      {
+        "name": "entity_name",
+        "type": "varchar(80)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "entity_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "action",
+        "type": "varchar(50)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "before_data",
+        "type": "jsonb",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "after_data",
+        "type": "jsonb",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "occurred_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Append-only; entity_name/entity_id referensi audit umum, bukan sumber pembukuan.",
+    "doc": false
+  },
+  "attachments": {
+    "name": "attachments",
+    "group": "02 Dokumen akses dan persetujuan",
+    "desc": "Lampiran dokumen bisnis.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "document_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "uploaded_by",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "users.id"
+      },
+      {
+        "name": "storage_key",
+        "type": "text",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "file_name",
+        "type": "varchar(255)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "content_hash",
+        "type": "varchar(80)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "",
+    "doc": false
+  },
+  "production_schedules": {
+    "name": "production_schedules",
+    "group": "03 Jadwal harga dan promosi",
+    "desc": "Identitas jadwal yang dapat dikonfigurasi.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "code",
+        "type": "varchar(30)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "name",
+        "type": "varchar(100)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "code"
+      ]
+    ],
+    "note": "",
+    "doc": false
+  },
+  "schedule_versions": {
+    "name": "schedule_versions",
+    "group": "03 Jadwal harga dan promosi",
+    "desc": "Jam batas H-1 dan jam pengiriman berversi.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "schedule_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "production_schedules.id"
+      },
+      {
+        "name": "version",
+        "type": "int",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "cutoff_day_offset",
+        "type": "int",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "cutoff_time",
+        "type": "time",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "delivery_time",
+        "type": "time",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "effective_from",
+        "type": "date",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "effective_to",
+        "type": "date",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "schedule_id",
+        "version"
+      ]
+    ],
+    "note": "cutoff_day_offset = -1 untuk versi pertama; interval versi aktif tidak tumpang tindih. Tidak seed jam fiktif.",
+    "doc": false
+  },
+  "price_lists": {
+    "name": "price_lists",
+    "group": "03 Jadwal harga dan promosi",
+    "desc": "Daftar harga berdasarkan kanal/kebutuhan.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "code",
+        "type": "varchar(40)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "name",
+        "type": "varchar(100)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "is_default",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "code"
+      ]
+    ],
+    "note": "",
+    "doc": false
+  },
+  "price_list_items": {
+    "name": "price_list_items",
+    "group": "03 Jadwal harga dan promosi",
+    "desc": "Harga SKU dan satuan pada periode tertentu.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "price_list_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "price_lists.id"
+      },
+      {
+        "name": "product_uom_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "product_uoms.id"
+      },
+      {
+        "name": "price",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "valid_from",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "valid_to",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Tidak ada dua harga efektif tumpang tindih untuk daftar dan satuan yang sama.",
+    "doc": false
+  },
+  "promotion_rules": {
+    "name": "promotion_rules",
+    "group": "03 Jadwal harga dan promosi",
+    "desc": "Diskon item/global yang tervalidasi.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "code",
+        "type": "varchar(50)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "version",
+        "type": "int",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "scope",
+        "type": "varchar(20)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "discount_type",
+        "type": "varchar(20)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "value",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "conditions",
+        "type": "jsonb",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "valid_from",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "valid_to",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "code",
+        "version"
+      ]
+    ],
+    "note": "",
+    "doc": false
+  },
+  "vouchers": {
+    "name": "vouchers",
+    "group": "03 Jadwal harga dan promosi",
+    "desc": "Voucher dengan kontrol penggunaan bersama.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "code",
+        "type": "varchar(60)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "promotion_rule_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "promotion_rules.id"
+      },
+      {
+        "name": "max_uses",
+        "type": "int",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "valid_from",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "valid_to",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "code"
+      ]
+    ],
+    "note": "",
+    "doc": false
+  },
+  "voucher_redemptions": {
+    "name": "voucher_redemptions",
+    "group": "03 Jadwal harga dan promosi",
+    "desc": "Penggunaan voucher tertaut penjualan.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "voucher_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "vouchers.id"
+      },
+      {
+        "name": "sale_document_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "customer_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "customers.id"
+      },
+      {
+        "name": "amount",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "status",
+        "type": "varchar(20)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "reversal_of_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "voucher_redemptions.id"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "voucher_id",
+        "sale_document_id"
+      ]
+    ],
+    "note": "Quota diperiksa atomik online. Koreksi tidak menghapus penggunaan asal.",
+    "doc": false
+  },
+  "loyalty_accounts": {
+    "name": "loyalty_accounts",
+    "group": "03 Jadwal harga dan promosi",
+    "desc": "Akun poin pelanggan.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "customer_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "customers.id"
+      },
+      {
+        "name": "points_balance",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "version",
+        "type": "bigint",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "customer_id"
+      ]
+    ],
+    "note": "",
+    "doc": false
+  },
+  "loyalty_entries": {
+    "name": "loyalty_entries",
+    "group": "03 Jadwal harga dan promosi",
+    "desc": "Ledger poin diperoleh dan ditukar.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "account_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "loyalty_accounts.id"
+      },
+      {
+        "name": "source_document_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "kind",
+        "type": "varchar(20)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "points_delta",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "reversal_of_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "loyalty_entries.id"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Earn offline diterapkan sekali setelah sync; redeem saldo bersama memerlukan koneksi.",
+    "doc": false
+  },
+  "stock_balances": {
+    "name": "stock_balances",
+    "group": "04 Persediaan dan reservasi",
+    "desc": "Saldo cepat per SKU dan lokasi.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "product_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "products.id"
+      },
+      {
+        "name": "warehouse_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "warehouses.id"
+      },
+      {
+        "name": "quantity",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "reserved_quantity",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "inventory_value",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "avg_cost",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "version",
+        "type": "bigint",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "product_id",
+        "warehouse_id"
+      ]
+    ],
+    "note": "Saldo cache dari ledger. quantity boleh minus akibat POS; reserved >=0. Phantom tidak boleh memiliki baris saldo.",
+    "doc": false
+  },
+  "stock_movements": {
+    "name": "stock_movements",
+    "group": "04 Persediaan dan reservasi",
+    "desc": "Ledger append-only semua mutasi stok.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "source_document_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "source_line_key",
+        "type": "varchar(120)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "product_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "products.id"
+      },
+      {
+        "name": "warehouse_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "warehouses.id"
+      },
+      {
+        "name": "movement_kind",
+        "type": "varchar(40)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "qty_input",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "uom_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "uoms.id"
+      },
+      {
+        "name": "factor_snapshot",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "qty_delta",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "unit_cost",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "value_delta",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "effective_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "posted_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "is_provisional",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "negative_reason",
+        "type": "varchar(80)",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "reversal_of_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "stock_movements.id"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "source_document_id",
+        "source_line_key",
+        "movement_kind",
+        "warehouse_id"
+      ]
+    ],
+    "note": "source_line_key stabil dan tervalidasi pada subtype. Nilai bertanda mengikuti arah. Tidak UPDATE/DELETE posted.",
+    "doc": false
+  },
+  "stock_reservations": {
+    "name": "stock_reservations",
+    "group": "04 Persediaan dan reservasi",
+    "desc": "Alokasi stok untuk kebutuhan yang pasti.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "demand_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "demand_lines.id"
+      },
+      {
+        "name": "product_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "products.id"
+      },
+      {
+        "name": "warehouse_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "warehouses.id"
+      },
+      {
+        "name": "qty_reserved",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "qty_consumed",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "qty_released",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "status",
+        "type": "varchar(20)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Sisa reservasi >=0; produk demand dan stock wajib sama. Konsumsi delivery mengurangi saldo dan reservasi atomik.",
+    "doc": false
+  },
+  "inventory_adjustments": {
+    "name": "inventory_adjustments",
+    "group": "04 Persediaan dan reservasi",
+    "desc": "Header koreksi, scrap, atau opname.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "warehouse_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "warehouses.id"
+      },
+      {
+        "name": "reason",
+        "type": "varchar(30)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "counted_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "notes",
+        "type": "text",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "",
+    "doc": true
+  },
+  "inventory_adjustment_lines": {
+    "name": "inventory_adjustment_lines",
+    "group": "04 Persediaan dan reservasi",
+    "desc": "Baris selisih stok dan nilai koreksi.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "adjustment_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "inventory_adjustments.id"
+      },
+      {
+        "name": "product_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "products.id"
+      },
+      {
+        "name": "qty_input",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "uom_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "uoms.id"
+      },
+      {
+        "name": "factor_snapshot",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "qty_delta",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "counted_qty",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "baseline_qty",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "movement_watermark",
+        "type": "bigint",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "unit_cost",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Untuk opname rekonsiliasi mutasi setelah counted_at; jangan menimpa saldo terkini.",
+    "doc": false
+  },
+  "negative_stock_cases": {
+    "name": "negative_stock_cases",
+    "group": "04 Persediaan dan reservasi",
+    "desc": "Kekurangan stok POS dengan HPP sementara.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "out_movement_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "stock_movements.id"
+      },
+      {
+        "name": "product_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "products.id"
+      },
+      {
+        "name": "warehouse_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "warehouses.id"
+      },
+      {
+        "name": "qty_short",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "qty_settled",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "provisional_unit_cost",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "status",
+        "type": "varchar(20)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "out_movement_id"
+      ]
+    ],
+    "note": "Penerimaan penutup kekurangan dialokasikan ke kasus ini, tanpa rumus rata-rata dengan penyebut nonpositif.",
+    "doc": false
+  },
+  "inventory_cost_adjustments": {
+    "name": "inventory_cost_adjustments",
+    "group": "04 Persediaan dan reservasi",
+    "desc": "Koreksi nilai tertaut penerimaan dan kekurangan.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "source_document_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "negative_case_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "negative_stock_cases.id"
+      },
+      {
+        "name": "receipt_movement_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "stock_movements.id"
+      },
+      {
+        "name": "qty_settled",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "value_delta",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "journal_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "journal_entries.id"
+      },
+      {
+        "name": "reason",
+        "type": "text",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Tidak mengubah movement historis; jumlah settlement tidak melebihi kekurangan atau penerimaan tersedia.",
+    "doc": false
+  },
+  "transfer_orders": {
+    "name": "transfer_orders",
+    "group": "05 Transfer dan transit",
+    "desc": "Dokumen perpindahan antarlokasi.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "from_warehouse_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "warehouses.id"
+      },
+      {
+        "name": "to_warehouse_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "warehouses.id"
+      },
+      {
+        "name": "transit_warehouse_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "warehouses.id"
+      },
+      {
+        "name": "dispatch_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "expected_arrival",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "notes",
+        "type": "text",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Sumber, tujuan dan transit berbeda. Status di documents: draft, dispatched, partial_received, discrepancy, completed, cancelled.",
+    "doc": true
+  },
+  "transfer_lines": {
+    "name": "transfer_lines",
+    "group": "05 Transfer dan transit",
+    "desc": "Kuantitas dikirim dan biaya yang dibawa.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "transfer_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "transfer_orders.id"
+      },
+      {
+        "name": "product_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "products.id"
+      },
+      {
+        "name": "demand_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "demand_lines.id"
+      },
+      {
+        "name": "qty_input",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "uom_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "uoms.id"
+      },
+      {
+        "name": "factor_snapshot",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "qty_dispatched",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "unit_cost_snapshot",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "",
+    "doc": false
+  },
+  "transfer_receipts": {
+    "name": "transfer_receipts",
+    "group": "05 Transfer dan transit",
+    "desc": "Penerimaan aktual satu kiriman.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "transfer_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "transfer_orders.id"
+      },
+      {
+        "name": "received_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "received_by",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "users.id"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Satu transfer boleh beberapa penerimaan sampai terselesaikan.",
+    "doc": true
+  },
+  "transfer_receipt_lines": {
+    "name": "transfer_receipt_lines",
+    "group": "05 Transfer dan transit",
+    "desc": "Jumlah aktual diterima per baris kiriman.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "receipt_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "transfer_receipts.id"
+      },
+      {
+        "name": "transfer_line_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "transfer_lines.id"
+      },
+      {
+        "name": "qty_received",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "receipt_id",
+        "transfer_line_id"
+      ]
+    ],
+    "note": "Akumulasi diterima dan disposisi tidak boleh melebihi jumlah dikirim.",
+    "doc": false
+  },
+  "transfer_discrepancies": {
+    "name": "transfer_discrepancies",
+    "group": "05 Transfer dan transit",
+    "desc": "Kasus selisih yang masih berada dalam transit.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "transfer_line_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "transfer_lines.id"
+      },
+      {
+        "name": "qty_disputed",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "qty_resolved",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "reason",
+        "type": "text",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "status",
+        "type": "varchar(30)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "responsible_user_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "users.id"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Kasus tidak menciptakan mutasi tambahan; sisa transit dihitung dari ledger.",
+    "doc": false
+  },
+  "transfer_resolutions": {
+    "name": "transfer_resolutions",
+    "group": "05 Transfer dan transit",
+    "desc": "Keputusan dan mutasi penyelesaian selisih.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "discrepancy_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "transfer_discrepancies.id"
+      },
+      {
+        "name": "resolution_type",
+        "type": "varchar(30)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "qty_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "destination_warehouse_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "warehouses.id"
+      },
+      {
+        "name": "related_receipt_line_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "transfer_receipt_lines.id"
+      },
+      {
+        "name": "notes",
+        "type": "text",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Jenis waiting, received_later, returned, damaged, lost, dispatch_correction. Waiting tidak mengurangi transit; received_later merujuk penerimaan tanpa posting ganda.",
+    "doc": true
+  },
+  "purchase_orders": {
+    "name": "purchase_orders",
+    "group": "06 Pembelian dan titipan",
+    "desc": "PO reguler atau khusus satu SO.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "supplier_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "suppliers.id"
+      },
+      {
+        "name": "receiving_warehouse_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "warehouses.id"
+      },
+      {
+        "name": "sales_order_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "sales_orders.id"
+      },
+      {
+        "name": "purpose",
+        "type": "varchar(25)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "order_date",
+        "type": "date",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "expected_date",
+        "type": "date",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "original_total",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "actual_total",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "purpose regular atau so_fulfillment; so_fulfillment wajib sales_order_id dan lokasi packing.",
+    "doc": true
+  },
+  "purchase_order_lines": {
+    "name": "purchase_order_lines",
+    "group": "06 Pembelian dan titipan",
+    "desc": "Baris pesanan dan sumber kebutuhan SO.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "purchase_order_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "purchase_orders.id"
+      },
+      {
+        "name": "product_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "products.id"
+      },
+      {
+        "name": "demand_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "demand_lines.id"
+      },
+      {
+        "name": "qty_input",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "uom_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "uoms.id"
+      },
+      {
+        "name": "factor_snapshot",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "qty_ordered_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "unit_price_input",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "unit_cost_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "tax_snapshot",
+        "type": "jsonb",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Demand SO yang dirujuk harus berasal dari sales_order_id header.",
+    "doc": false
+  },
+  "goods_receipts": {
+    "name": "goods_receipts",
+    "group": "06 Pembelian dan titipan",
+    "desc": "Penerimaan supplier final sekali per PO.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "purchase_order_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "purchase_orders.id"
+      },
+      {
+        "name": "warehouse_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "warehouses.id"
+      },
+      {
+        "name": "receipt_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "supplier_reference",
+        "type": "varchar(100)",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "purchase_order_id"
+      ]
+    ],
+    "note": "Satu slot receipt per PO termasuk setelah koreksi; draft boleh diedit, posted tidak dibuat ulang. Terima kurang menutup sisa.",
+    "doc": true
+  },
+  "goods_receipt_lines": {
+    "name": "goods_receipt_lines",
+    "group": "06 Pembelian dan titipan",
+    "desc": "Kuantitas aktual dan nilai penerimaan.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "receipt_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "goods_receipts.id"
+      },
+      {
+        "name": "po_line_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "purchase_order_lines.id"
+      },
+      {
+        "name": "qty_received_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "qty_closed_short",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "unit_cost_snapshot",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "variance_reason",
+        "type": "varchar(50)",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "receipt_id",
+        "po_line_id"
+      ]
+    ],
+    "note": "received >=0 dan <= ordered; seluruh PO lines tercakup; minimal satu positif.",
+    "doc": false
+  },
+  "supplier_arrival_rejections": {
+    "name": "supplier_arrival_rejections",
+    "group": "06 Pembelian dan titipan",
+    "desc": "Kedatangan terlambat yang ditolak setelah receive.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "purchase_order_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "purchase_orders.id"
+      },
+      {
+        "name": "arrival_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "items",
+        "type": "jsonb",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "reason",
+        "type": "text",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "recorded_by",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "users.id"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Audit fisik saja; tidak menambah stok atau kewajiban supplier. Items menyimpan SKU/satuan/jumlah ditolak.",
+    "doc": false
+  },
+  "purchase_invoices": {
+    "name": "purchase_invoices",
+    "group": "06 Pembelian dan titipan",
+    "desc": "Tagihan supplier berdasarkan penerimaan.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "supplier_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "suppliers.id"
+      },
+      {
+        "name": "goods_receipt_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "goods_receipts.id"
+      },
+      {
+        "name": "supplier_invoice_no",
+        "type": "varchar(100)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "invoice_date",
+        "type": "date",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "due_date",
+        "type": "date",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "subtotal",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "tax_total",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "total",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "supplier_id",
+        "supplier_invoice_no"
+      ]
+    ],
+    "note": "",
+    "doc": true
+  },
+  "purchase_invoice_lines": {
+    "name": "purchase_invoice_lines",
+    "group": "06 Pembelian dan titipan",
+    "desc": "Detail tagihan dan selisih harga.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "invoice_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "purchase_invoices.id"
+      },
+      {
+        "name": "receipt_line_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "goods_receipt_lines.id"
+      },
+      {
+        "name": "qty_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "unit_price_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "net_amount",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "tax_snapshot",
+        "type": "jsonb",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Kuantitas kumulatif invoice valid tidak melampaui penerimaan bersih yang dapat ditagih.",
+    "doc": false
+  },
+  "consignment_agreements": {
+    "name": "consignment_agreements",
+    "group": "06 Pembelian dan titipan",
+    "desc": "Harga supplier untuk titipan POS per lokasi.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "supplier_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "suppliers.id"
+      },
+      {
+        "name": "product_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "products.id"
+      },
+      {
+        "name": "warehouse_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "warehouses.id"
+      },
+      {
+        "name": "version",
+        "type": "int",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "unit_cost_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "valid_from",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "valid_to",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "settlement_terms",
+        "type": "jsonb",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Tidak ada perjanjian aktif ambigu untuk pilihan supplier/SKU/lokasi. Tidak mencatat penerimaan fisik belum terjual.",
+    "doc": false
+  },
+  "consignment_sales": {
+    "name": "consignment_sales",
+    "group": "06 Pembelian dan titipan",
+    "desc": "Pengakuan titipan saat baris POS terjual.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "pos_sale_line_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "pos_sale_lines.id"
+      },
+      {
+        "name": "agreement_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "consignment_agreements.id"
+      },
+      {
+        "name": "supplier_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "suppliers.id"
+      },
+      {
+        "name": "qty_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "unit_cost_snapshot",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "recognized_in_movement_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "stock_movements.id"
+      },
+      {
+        "name": "recognized_out_movement_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "stock_movements.id"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "pos_sale_line_id"
+      ]
+    ],
+    "note": "Kedua movement, sale, dan kewajiban diposting atomik. Sumber owned tidak memiliki baris ini.",
+    "doc": false
+  },
+  "consignment_settlements": {
+    "name": "consignment_settlements",
+    "group": "06 Pembelian dan titipan",
+    "desc": "Dokumen utang supplier dari titipan terjual.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "supplier_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "suppliers.id"
+      },
+      {
+        "name": "period_from",
+        "type": "date",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "period_to",
+        "type": "date",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "due_date",
+        "type": "date",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "total",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "",
+    "doc": true
+  },
+  "consignment_settlement_lines": {
+    "name": "consignment_settlement_lines",
+    "group": "06 Pembelian dan titipan",
+    "desc": "Alokasi penjualan bersih ke settlement.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "settlement_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "consignment_settlements.id"
+      },
+      {
+        "name": "consignment_sale_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "consignment_sales.id"
+      },
+      {
+        "name": "return_line_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "return_lines.id"
+      },
+      {
+        "name": "qty_signed",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "amount_signed",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Penjualan/retur dialokasikan sekali; batas kumulatif mencegah tagih ganda. Retur sesudah settlement dapat menjadi credit note supplier.",
+    "doc": false
+  },
+  "sales_orders": {
+    "name": "sales_orders",
+    "group": "07 Sales Order dan pemenuhan",
+    "desc": "Pesanan pelanggan hanya dari backoffice.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "outlet_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "outlets.id"
+      },
+      {
+        "name": "customer_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "customers.id"
+      },
+      {
+        "name": "fulfillment_warehouse_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "warehouses.id"
+      },
+      {
+        "name": "order_date",
+        "type": "date",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "delivery_date",
+        "type": "date",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "schedule_version_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "schedule_versions.id"
+      },
+      {
+        "name": "cutoff_at_snapshot",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "delivery_at_snapshot",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "price_list_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "price_lists.id"
+      },
+      {
+        "name": "sales_user_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "users.id"
+      },
+      {
+        "name": "sales_group_name",
+        "type": "varchar(100)",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "subtotal",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "discount_total",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "tax_total",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "total",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "delivery_date > order_date. Warehouse packing. Satu jadwal per SO; semua transaksi terkait ada di backoffice.",
+    "doc": true
+  },
+  "sales_order_lines": {
+    "name": "sales_order_lines",
+    "group": "07 Sales Order dan pemenuhan",
+    "desc": "Baris harga pelanggan termasuk paket.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "sales_order_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "sales_orders.id"
+      },
+      {
+        "name": "product_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "products.id"
+      },
+      {
+        "name": "qty_input",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "uom_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "uoms.id"
+      },
+      {
+        "name": "factor_snapshot",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "qty_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "unit_price_input",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "discount_amount",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "tax_snapshot",
+        "type": "jsonb",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "line_total",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "is_package_snapshot",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Paket memiliki satu harga pelanggan. Komponen tidak dijumlah ulang sebagai pendapatan.",
+    "doc": false
+  },
+  "sales_order_components": {
+    "name": "sales_order_components",
+    "group": "07 Sales Order dan pemenuhan",
+    "desc": "Snapshot barang fisik yang memenuhi baris SO.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "sales_order_line_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "sales_order_lines.id"
+      },
+      {
+        "name": "product_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "products.id"
+      },
+      {
+        "name": "bom_line_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "bom_lines.id"
+      },
+      {
+        "name": "qty_per_parent_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "qty_required_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "source_method",
+        "type": "varchar(20)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "version",
+        "type": "int",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Semua baris SO memiliki komponen: standalone satu self; paket produk+kemasan. source stock, manufacture, purchase. Tidak explode ulang snapshot saat delivery.",
+    "doc": false
+  },
+  "deliveries": {
+    "name": "deliveries",
+    "group": "07 Sales Order dan pemenuhan",
+    "desc": "Pengiriman penjualan pelanggan.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "sales_order_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "sales_orders.id"
+      },
+      {
+        "name": "warehouse_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "warehouses.id"
+      },
+      {
+        "name": "delivery_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "recipient_name",
+        "type": "varchar(150)",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Berbeda dari transfer internal. Bisa beberapa delivery per SO; stok tidak boleh minus.",
+    "doc": true
+  },
+  "delivery_lines": {
+    "name": "delivery_lines",
+    "group": "07 Sales Order dan pemenuhan",
+    "desc": "Barang fisik yang keluar untuk SO.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "delivery_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "deliveries.id"
+      },
+      {
+        "name": "so_component_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "sales_order_components.id"
+      },
+      {
+        "name": "reservation_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "stock_reservations.id"
+      },
+      {
+        "name": "qty_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "unit_cost_snapshot",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "stock_movement_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "stock_movements.id"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Cumulative qty <= kebutuhan tersisa; komponen paket lengkap sesuai rasio untuk paket yang diserahkan.",
+    "doc": false
+  },
+  "sales_invoices": {
+    "name": "sales_invoices",
+    "group": "07 Sales Order dan pemenuhan",
+    "desc": "Tagihan SO pelanggan.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "sales_order_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "sales_orders.id"
+      },
+      {
+        "name": "customer_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "customers.id"
+      },
+      {
+        "name": "invoice_date",
+        "type": "date",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "due_date",
+        "type": "date",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "subtotal",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "discount_total",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "tax_total",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "total",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Satu SO dapat beberapa invoice untuk delivery parsial; batas kuantitas ditagih dijaga.",
+    "doc": true
+  },
+  "sales_invoice_lines": {
+    "name": "sales_invoice_lines",
+    "group": "07 Sales Order dan pemenuhan",
+    "desc": "Baris tagihan produk atau paket satu harga.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "invoice_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "sales_invoices.id"
+      },
+      {
+        "name": "so_line_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "sales_order_lines.id"
+      },
+      {
+        "name": "qty_parent_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "unit_price_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "discount_amount",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "tax_snapshot",
+        "type": "jsonb",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "line_total",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Tidak menagih komponen paket sebagai baris tambahan. Cumulative invoice qty <= delivered parent equivalent.",
+    "doc": false
+  },
+  "customer_deposits": {
+    "name": "customer_deposits",
+    "group": "07 Sales Order dan pemenuhan",
+    "desc": "Penerimaan DP yang terikat SO.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "sales_order_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "sales_orders.id"
+      },
+      {
+        "name": "customer_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "customers.id"
+      },
+      {
+        "name": "receipt_payment_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "payments.id"
+      },
+      {
+        "name": "amount",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "receipt_payment_id"
+      ]
+    ],
+    "note": "DP adalah kewajiban sampai diaplikasikan; refund DP tercatat melalui refund_allocations.",
+    "doc": true
+  },
+  "deposit_applications": {
+    "name": "deposit_applications",
+    "group": "07 Sales Order dan pemenuhan",
+    "desc": "Pemakaian DP untuk melunasi invoice SO.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "deposit_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "customer_deposits.id"
+      },
+      {
+        "name": "invoice_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "sales_invoices.id"
+      },
+      {
+        "name": "amount",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "reversal_of_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "deposit_applications.id"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Invoice harus satu pelanggan/SO; batas saldo DP dan outstanding invoice divalidasi atomik.",
+    "doc": true
+  },
+  "boms": {
+    "name": "boms",
+    "group": "08 Resep kebutuhan dan produksi",
+    "desc": "Resep produksi atau susunan paket berversi.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "product_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "products.id"
+      },
+      {
+        "name": "version",
+        "type": "int",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "purpose",
+        "type": "varchar(20)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "kitchen_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "kitchens.id"
+      },
+      {
+        "name": "output_qty_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "valid_from",
+        "type": "date",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "valid_to",
+        "type": "date",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "product_id",
+        "version",
+        "purpose"
+      ]
+    ],
+    "note": "purpose manufacturing atau package; versi aktif efektif tidak ambigu; output >0.",
+    "doc": false
+  },
+  "bom_lines": {
+    "name": "bom_lines",
+    "group": "08 Resep kebutuhan dan produksi",
+    "desc": "Bahan atau komponen paket.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "bom_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "boms.id"
+      },
+      {
+        "name": "component_product_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "products.id"
+      },
+      {
+        "name": "qty_input",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "uom_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "uoms.id"
+      },
+      {
+        "name": "factor_snapshot",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "qty_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "source_warehouse_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "warehouses.id"
+      },
+      {
+        "name": "sequence",
+        "type": "int",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Tidak ada siklus resep. Pada package hanya satu level. Kuantitas resep eksplisit termasuk kebutuhan normal; tidak menambahkan waste dua kali.",
+    "doc": false
+  },
+  "bom_byproducts": {
+    "name": "bom_byproducts",
+    "group": "08 Resep kebutuhan dan produksi",
+    "desc": "Hasil turunan yang diharapkan pada resep.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "bom_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "boms.id"
+      },
+      {
+        "name": "product_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "products.id"
+      },
+      {
+        "name": "expected_qty_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "cost_policy",
+        "type": "varchar(20)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "bom_id",
+        "product_id"
+      ]
+    ],
+    "note": "cost_policy zero; aktual ditimbang pada production_outputs, tidak menggunakan hasil perkiraan sebagai stok otomatis.",
+    "doc": false
+  },
+  "replenishment_policies": {
+    "name": "replenishment_policies",
+    "group": "08 Resep kebutuhan dan produksi",
+    "desc": "Minimum dan target stok toko.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "product_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "products.id"
+      },
+      {
+        "name": "warehouse_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "warehouses.id"
+      },
+      {
+        "name": "source_warehouse_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "warehouses.id"
+      },
+      {
+        "name": "min_qty",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "target_qty",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "order_multiple",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "product_id",
+        "warehouse_id"
+      ]
+    ],
+    "note": "target >= min >=0; kelipatan >0; perhitungan net termasuk kiriman dan permintaan terbuka.",
+    "doc": false
+  },
+  "store_requests": {
+    "name": "store_requests",
+    "group": "08 Resep kebutuhan dan produksi",
+    "desc": "Permintaan barang toko manual atau hasil minimum.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "outlet_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "outlets.id"
+      },
+      {
+        "name": "warehouse_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "warehouses.id"
+      },
+      {
+        "name": "required_date",
+        "type": "date",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "schedule_version_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "schedule_versions.id"
+      },
+      {
+        "name": "origin",
+        "type": "varchar(20)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "origin manual atau minimum; usulan minimum tidak otomatis posted.",
+    "doc": true
+  },
+  "store_request_lines": {
+    "name": "store_request_lines",
+    "group": "08 Resep kebutuhan dan produksi",
+    "desc": "Baris kebutuhan etalase toko.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "store_request_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "store_requests.id"
+      },
+      {
+        "name": "product_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "products.id"
+      },
+      {
+        "name": "qty_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "policy_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "replenishment_policies.id"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "store_request_id",
+        "product_id"
+      ]
+    ],
+    "note": "",
+    "doc": false
+  },
+  "demand_lines": {
+    "name": "demand_lines",
+    "group": "08 Resep kebutuhan dan produksi",
+    "desc": "Kebutuhan terstruktur lintas stok produksi pembelian.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "product_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "products.id"
+      },
+      {
+        "name": "so_component_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "sales_order_components.id"
+      },
+      {
+        "name": "store_request_line_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "store_request_lines.id"
+      },
+      {
+        "name": "source_document_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "documents.id"
+      },
+      {
+        "name": "origin",
+        "type": "varchar(25)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "required_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "schedule_version_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "schedule_versions.id"
+      },
+      {
+        "name": "revision",
+        "type": "int",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "qty_required",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "status",
+        "type": "varchar(25)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Tepat satu sumber: komponen SO, permintaan toko, atau manual replenishment terdokumentasi. Net shortfall dikurangi stok/alokasi/produksi/pembelian aktif tanpa duplikasi.",
+    "doc": false
+  },
+  "production_orders": {
+    "name": "production_orders",
+    "group": "08 Resep kebutuhan dan produksi",
+    "desc": "WO gabungan atau replenishment.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "product_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "products.id"
+      },
+      {
+        "name": "bom_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "boms.id"
+      },
+      {
+        "name": "kitchen_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "kitchens.id"
+      },
+      {
+        "name": "output_warehouse_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "warehouses.id"
+      },
+      {
+        "name": "schedule_version_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "schedule_versions.id"
+      },
+      {
+        "name": "plan_date",
+        "type": "date",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "planned_qty_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "actual_good_qty_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "material_net_cost",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "parent_wo_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "production_orders.id"
+      },
+      {
+        "name": "started_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "completed_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Konsolidasi SKU+dapur+BOM+jadwal+tanggal dan revisi. Retry generate tidak membuat kebutuhan/WO ganda; WO tambahan merujuk parent setelah approval.",
+    "doc": true
+  },
+  "wo_demand_allocations": {
+    "name": "wo_demand_allocations",
+    "group": "08 Resep kebutuhan dan produksi",
+    "desc": "Kuantitas demand yang dicover satu WO.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "production_order_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "production_orders.id"
+      },
+      {
+        "name": "demand_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "demand_lines.id"
+      },
+      {
+        "name": "qty_planned",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "qty_fulfilled",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "qty_cancelled",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "production_order_id",
+        "demand_id"
+      ]
+    ],
+    "note": "Alokasi banyak SO ke WO dan satu SO ke beberapa WO; jangan simpan hanya di notes.",
+    "doc": false
+  },
+  "production_materials": {
+    "name": "production_materials",
+    "group": "08 Resep kebutuhan dan produksi",
+    "desc": "Snapshot resep dan bahan dikeluarkan saat mulai.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "production_order_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "production_orders.id"
+      },
+      {
+        "name": "bom_line_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "bom_lines.id"
+      },
+      {
+        "name": "product_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "products.id"
+      },
+      {
+        "name": "warehouse_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "warehouses.id"
+      },
+      {
+        "name": "planned_qty_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "issued_qty_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "unit_cost_snapshot",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "issue_movement_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "stock_movements.id"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Start mengeluarkan sesuai snapshot otomatis; non-minus; perubahan setelah start melalui koreksi terotorisasi.",
+    "doc": false
+  },
+  "production_material_returns": {
+    "name": "production_material_returns",
+    "group": "08 Resep kebutuhan dan produksi",
+    "desc": "Sisa layak dikembalikan dari WO ke bahan baku.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "production_material_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "production_materials.id"
+      },
+      {
+        "name": "warehouse_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "warehouses.id"
+      },
+      {
+        "name": "qty_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "unit_cost_snapshot",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "stock_movement_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "stock_movements.id"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Biaya sama dengan pengeluaran asal; akumulasi kembali <= issued; mengurangi biaya material bersih.",
+    "doc": false
+  },
+  "production_outputs": {
+    "name": "production_outputs",
+    "group": "08 Resep kebutuhan dan produksi",
+    "desc": "Hasil utama atau produk turunan aktual.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "production_order_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "production_orders.id"
+      },
+      {
+        "name": "product_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "products.id"
+      },
+      {
+        "name": "warehouse_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "warehouses.id"
+      },
+      {
+        "name": "kind",
+        "type": "varchar(20)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "qty_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "unit_cost",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "stock_movement_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "stock_movements.id"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "kind main atau byproduct. Byproduct cost=0; biaya bersih WO dibebankan seluruhnya ke main layak.",
+    "doc": false
+  },
+  "production_failures": {
+    "name": "production_failures",
+    "group": "08 Resep kebutuhan dan produksi",
+    "desc": "Jumlah gagal dan disposisi produksi.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "production_order_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "production_orders.id"
+      },
+      {
+        "name": "product_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "products.id"
+      },
+      {
+        "name": "qty_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "reason",
+        "type": "text",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "disposition",
+        "type": "varchar(30)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "loss_amount",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Gagal normal tidak membuat stok jual/biaya kedua; total gagal diposting loss melalui approval jika tidak ada hasil utama layak.",
+    "doc": false
+  },
+  "pos_terminals": {
+    "name": "pos_terminals",
+    "group": "09 POS lokal",
+    "desc": "Identitas mesin kasir yang unik.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "code",
+        "type": "varchar(40)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "outlet_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "outlets.id"
+      },
+      {
+        "name": "warehouse_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "warehouses.id"
+      },
+      {
+        "name": "device_public_key",
+        "type": "text",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "code"
+      ]
+    ],
+    "note": "Satu instalasi satu terminal UUID. Lokasi gudang menentukan sumber stok POS, bukan pembatasan akses staf.",
+    "doc": false
+  },
+  "pos_shifts": {
+    "name": "pos_shifts",
+    "group": "09 POS lokal",
+    "desc": "Sesi kas per terminal.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "terminal_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "pos_terminals.id"
+      },
+      {
+        "name": "opened_by",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "users.id"
+      },
+      {
+        "name": "closed_by",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "users.id"
+      },
+      {
+        "name": "opened_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "closed_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "opening_cash",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "actual_closing_cash",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "expected_closing_cash",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "variance",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Unique partial terminal_id WHERE closed_at IS NULL.",
+    "doc": false
+  },
+  "pos_sales": {
+    "name": "pos_sales",
+    "group": "09 POS lokal",
+    "desc": "Struk penjualan barang toko.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "terminal_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "pos_terminals.id"
+      },
+      {
+        "name": "shift_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "pos_shifts.id"
+      },
+      {
+        "name": "customer_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "customers.id"
+      },
+      {
+        "name": "price_list_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "price_lists.id"
+      },
+      {
+        "name": "local_sequence",
+        "type": "bigint",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "sold_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "subtotal",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "discount_total",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "tax_total",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "total",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "offline",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "terminal_id",
+        "local_sequence"
+      ]
+    ],
+    "note": "Tidak mempunyai sales_order_id; POS tidak menerima DP/pelunasan SO. Struk unik terminal+sequence.",
+    "doc": true
+  },
+  "pos_sale_lines": {
+    "name": "pos_sale_lines",
+    "group": "09 POS lokal",
+    "desc": "Baris barang atau kemasan dan sumber kepemilikan.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "pos_sale_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "pos_sales.id"
+      },
+      {
+        "name": "product_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "products.id"
+      },
+      {
+        "name": "qty_input",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "uom_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "uoms.id"
+      },
+      {
+        "name": "factor_snapshot",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "qty_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "unit_price_input",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "discount_amount",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "tax_snapshot",
+        "type": "jsonb",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "line_total",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "stock_source",
+        "type": "varchar(20)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "agreement_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "consignment_agreements.id"
+      },
+      {
+        "name": "cost_snapshot",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "negative_reason",
+        "type": "varchar(80)",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "stock_source owned atau consignment; agreement wajib hanya untuk consignment. Phantom SO tidak dijual sebagai baris paket POS.",
+    "doc": false
+  },
+  "payment_methods": {
+    "name": "payment_methods",
+    "group": "09 POS lokal",
+    "desc": "Jenis pembayaran tunai dan elektronik.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "code",
+        "type": "varchar(30)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "name",
+        "type": "varchar(100)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "is_cash",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "code"
+      ]
+    ],
+    "note": "",
+    "doc": false
+  },
+  "pos_tenders": {
+    "name": "pos_tenders",
+    "group": "09 POS lokal",
+    "desc": "Pembayaran satu struk termasuk split tender.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "pos_sale_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "pos_sales.id"
+      },
+      {
+        "name": "method_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "payment_methods.id"
+      },
+      {
+        "name": "amount_applied",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "amount_received",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "change_amount",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "provider_reference",
+        "type": "varchar(150)",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "verification_status",
+        "type": "varchar(30)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "cash_bank_account_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "cash_bank_accounts.id"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "SUM applied = sale total; kembalian hanya tunai. Pembayaran tidak diakui provider verified tanpa bukti.",
+    "doc": false
+  },
+  "pos_cash_entries": {
+    "name": "pos_cash_entries",
+    "group": "09 POS lokal",
+    "desc": "Kas masuk keluar di luar penjualan pada shift.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "shift_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "pos_shifts.id"
+      },
+      {
+        "name": "document_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "kind",
+        "type": "varchar(25)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "amount_signed",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "reason",
+        "type": "text",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Untuk setoran/petty cash; refund yang sudah tercatat tidak ditambahkan lagi sebagai kas keluar kedua.",
+    "doc": false
+  },
+  "returns": {
+    "name": "returns",
+    "group": "10 Retur kredit dan refund",
+    "desc": "Retur pelanggan atau supplier dengan dokumen asal.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "side",
+        "type": "varchar(20)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "channel",
+        "type": "varchar(20)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "source_document_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "supplier_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "suppliers.id"
+      },
+      {
+        "name": "customer_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "customers.id"
+      },
+      {
+        "name": "warehouse_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "warehouses.id"
+      },
+      {
+        "name": "terminal_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "pos_terminals.id"
+      },
+      {
+        "name": "reason",
+        "type": "text",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "side customer/supplier; channel pos/backoffice. SO dan purchase returns selalu backoffice.",
+    "doc": true
+  },
+  "return_lines": {
+    "name": "return_lines",
+    "group": "10 Retur kredit dan refund",
+    "desc": "Baris barang retur dengan sumber pasti.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "return_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "returns.id"
+      },
+      {
+        "name": "pos_sale_line_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "pos_sale_lines.id"
+      },
+      {
+        "name": "delivery_line_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "delivery_lines.id"
+      },
+      {
+        "name": "goods_receipt_line_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "goods_receipt_lines.id"
+      },
+      {
+        "name": "product_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "products.id"
+      },
+      {
+        "name": "qty_base",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "condition",
+        "type": "varchar(30)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "stock_disposition",
+        "type": "varchar(30)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "original_unit_cost",
+        "type": "decimal(20,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "refund_basis_amount",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Tepat satu sumber FK sesuai jenis retur. Kuantitas kumulatif <= transaksi asal. Retur komponen paket tidak otomatis refund penuh paket.",
+    "doc": false
+  },
+  "credit_notes": {
+    "name": "credit_notes",
+    "group": "10 Retur kredit dan refund",
+    "desc": "Hak kredit pelanggan atau klaim supplier.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "return_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "returns.id"
+      },
+      {
+        "name": "source_document_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "direction",
+        "type": "varchar(20)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "customer_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "customers.id"
+      },
+      {
+        "name": "supplier_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "suppliers.id"
+      },
+      {
+        "name": "amount",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "reason",
+        "type": "text",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Juga mendukung koreksi pembatalan/selisih. Hanya posted menjadi hak refund atau pengurang outstanding.",
+    "doc": true
+  },
+  "credit_applications": {
+    "name": "credit_applications",
+    "group": "10 Retur kredit dan refund",
+    "desc": "Penggunaan kredit terhadap tagihan.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "credit_note_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "credit_notes.id"
+      },
+      {
+        "name": "invoice_document_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "amount",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "reversal_of_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "credit_applications.id"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Partner/arah harus cocok; tidak melampaui saldo kredit atau tagihan.",
+    "doc": true
+  },
+  "refunds": {
+    "name": "refunds",
+    "group": "10 Retur kredit dan refund",
+    "desc": "Pengembalian uang customer atau penerimaan dari supplier.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "payment_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "payments.id"
+      },
+      {
+        "name": "return_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "returns.id"
+      },
+      {
+        "name": "terminal_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "pos_terminals.id"
+      },
+      {
+        "name": "shift_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "pos_shifts.id"
+      },
+      {
+        "name": "reason",
+        "type": "text",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "payment_id"
+      ]
+    ],
+    "note": "Uang berada pada payments; refunds hanya konteks, tidak menciptakan pembayaran kedua. POS refund wajib shift/terminal.",
+    "doc": true
+  },
+  "refund_allocations": {
+    "name": "refund_allocations",
+    "group": "10 Retur kredit dan refund",
+    "desc": "Hak yang dipakai untuk refund.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "refund_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "refunds.id"
+      },
+      {
+        "name": "credit_note_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "credit_notes.id"
+      },
+      {
+        "name": "deposit_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "customer_deposits.id"
+      },
+      {
+        "name": "amount",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Tepat satu credit note atau deposit. SUM alokasi = refund payment amount; saldo hak tidak boleh negatif.",
+    "doc": false
+  },
+  "chart_of_accounts": {
+    "name": "chart_of_accounts",
+    "group": "11 Keuangan",
+    "desc": "Daftar akun keuangan.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "code",
+        "type": "varchar(40)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "name",
+        "type": "varchar(150)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "account_type",
+        "type": "varchar(20)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "normal_balance",
+        "type": "varchar(10)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "parent_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "chart_of_accounts.id"
+      },
+      {
+        "name": "is_postable",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "code"
+      ]
+    ],
+    "note": "",
+    "doc": false
+  },
+  "fiscal_periods": {
+    "name": "fiscal_periods",
+    "group": "11 Keuangan",
+    "desc": "Periode pembukuan dan penguncian.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "name",
+        "type": "varchar(30)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "start_date",
+        "type": "date",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "end_date",
+        "type": "date",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "status",
+        "type": "varchar(20)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "closed_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "closed_by",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "users.id"
+      },
+      {
+        "name": "closing_document_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "documents.id"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "name"
+      ]
+    ],
+    "note": "Rentang tidak tumpang tindih. Buka kembali memerlukan approval; close memeriksa late sync.",
+    "doc": false
+  },
+  "cash_bank_accounts": {
+    "name": "cash_bank_accounts",
+    "group": "11 Keuangan",
+    "desc": "Rekening kas bank atau clearing pembayaran.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "code",
+        "type": "varchar(40)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "name",
+        "type": "varchar(150)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "account_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "chart_of_accounts.id"
+      },
+      {
+        "name": "currency_code",
+        "type": "char(3)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "code"
+      ]
+    ],
+    "note": "",
+    "doc": false
+  },
+  "taxes": {
+    "name": "taxes",
+    "group": "11 Keuangan",
+    "desc": "Tarif dan pemetaan pajak terkonfigurasi.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "code",
+        "type": "varchar(40)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "version",
+        "type": "int",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "rate",
+        "type": "decimal(12,6)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "price_inclusive",
+        "type": "boolean",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "input_account_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "chart_of_accounts.id"
+      },
+      {
+        "name": "output_account_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "chart_of_accounts.id"
+      },
+      {
+        "name": "effective_from",
+        "type": "date",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "effective_to",
+        "type": "date",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "code",
+        "version"
+      ]
+    ],
+    "note": "Tarif tidak hardcode; snapshot tarif/nominal disimpan pada transaksi.",
+    "doc": false
+  },
+  "journal_entries": {
+    "name": "journal_entries",
+    "group": "11 Keuangan",
+    "desc": "Header jurnal otomatis atau koreksi.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "source_document_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "posting_event",
+        "type": "varchar(50)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "period_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "fiscal_periods.id"
+      },
+      {
+        "name": "entry_date",
+        "type": "date",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "status",
+        "type": "varchar(20)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "reversal_of_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "journal_entries.id"
+      },
+      {
+        "name": "posted_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "source_document_id",
+        "posting_event"
+      ]
+    ],
+    "note": "Exactly once per kejadian. Jurnal reversal terpisah; laporan menghitung efek asal dan pembalik tanpa membuang asal secara salah.",
+    "doc": false
+  },
+  "journal_lines": {
+    "name": "journal_lines",
+    "group": "11 Keuangan",
+    "desc": "Debit kredit per akun.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "journal_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "journal_entries.id"
+      },
+      {
+        "name": "account_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "chart_of_accounts.id"
+      },
+      {
+        "name": "outlet_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "outlets.id"
+      },
+      {
+        "name": "warehouse_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "warehouses.id"
+      },
+      {
+        "name": "debit",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "credit",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Debit/credit >=0, tepat satu sisi positif; SUM debit=credit pada jurnal posted. Append-only.",
+    "doc": false
+  },
+  "payments": {
+    "name": "payments",
+    "group": "11 Keuangan",
+    "desc": "Arus kas non-penjualan POS langsung dan refund.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "direction",
+        "type": "varchar(10)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "customer_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "customers.id"
+      },
+      {
+        "name": "supplier_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "suppliers.id"
+      },
+      {
+        "name": "method_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "payment_methods.id"
+      },
+      {
+        "name": "cash_bank_account_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "cash_bank_accounts.id"
+      },
+      {
+        "name": "payment_date",
+        "type": "date",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "amount",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "purpose",
+        "type": "varchar(30)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "reference",
+        "type": "varchar(150)",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "POS sale biasa memakai pos_tenders. Payments untuk invoice, DP, settlement, refund dan biaya; jangan menduplikasi tender POS.",
+    "doc": true
+  },
+  "payment_allocations": {
+    "name": "payment_allocations",
+    "group": "11 Keuangan",
+    "desc": "Alokasi pembayaran ke tagihan atau settlement.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "payment_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "payments.id"
+      },
+      {
+        "name": "target_document_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "amount",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "reversal_of_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "payment_allocations.id"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Target purchase invoice, sales invoice atau settlement; tipe/partner/arah divalidasi. DP dicatat sekali pada customer_deposits, bukan alokasi tagihan sebelum invoice.",
+    "doc": false
+  },
+  "expenses": {
+    "name": "expenses",
+    "group": "11 Keuangan",
+    "desc": "Beban periode termasuk tenaga kerja dan jasa.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "supplier_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "suppliers.id"
+      },
+      {
+        "name": "account_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "chart_of_accounts.id"
+      },
+      {
+        "name": "amount",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "payment_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "payments.id"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Beban tidak otomatis dimasukkan ke unit_output_cost produksi.",
+    "doc": true
+  },
+  "account_period_balances": {
+    "name": "account_period_balances",
+    "group": "11 Keuangan",
+    "desc": "Snapshot saldo akun saat tutup periode.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "period_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "fiscal_periods.id"
+      },
+      {
+        "name": "account_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "chart_of_accounts.id"
+      },
+      {
+        "name": "opening_balance",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "debit_total",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "credit_total",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "closing_balance",
+        "type": "decimal(20,4)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "period_id",
+        "account_id"
+      ]
+    ],
+    "note": "Snapshot dapat dibangun ulang dari jurnal sah; bukan ledger utama.",
+    "doc": false
+  },
+  "sync_outbox": {
+    "name": "sync_outbox",
+    "group": "12 Sinkronisasi",
+    "desc": "Antrean durable pada masing-masing terminal.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "terminal_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "pos_terminals.id"
+      },
+      {
+        "name": "local_sequence",
+        "type": "bigint",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "aggregate_document_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "documents.id"
+      },
+      {
+        "name": "event_type",
+        "type": "varchar(50)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "schema_version",
+        "type": "int",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "occurred_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "payload",
+        "type": "jsonb",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "payload_hash",
+        "type": "varchar(80)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "status",
+        "type": "varchar(20)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "attempt_count",
+        "type": "int",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "acknowledged_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "terminal_id",
+        "local_sequence"
+      ]
+    ],
+    "note": "id adalah event_id UUID yang dipertahankan saat retry. Disimpan atomik dengan transaksi lokal.",
+    "doc": false
+  },
+  "sync_inbox": {
+    "name": "sync_inbox",
+    "group": "12 Sinkronisasi",
+    "desc": "Penerimaan event di cloud dengan deduplikasi.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "terminal_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "pos_terminals.id"
+      },
+      {
+        "name": "local_sequence",
+        "type": "bigint",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "aggregate_document_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "documents.id"
+      },
+      {
+        "name": "event_type",
+        "type": "varchar(50)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "schema_version",
+        "type": "int",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "occurred_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "received_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "applied_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "payload_hash",
+        "type": "varchar(80)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "payload",
+        "type": "jsonb",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "status",
+        "type": "varchar(20)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "result",
+        "type": "jsonb",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "terminal_id",
+        "local_sequence"
+      ]
+    ],
+    "note": "id sama dengan event_id outbox, bukan FK lintas database. ACK sesudah applied commit; event sebelum dokumen memakai aggregate UUID di payload.",
+    "doc": false
+  },
+  "sync_checkpoints": {
+    "name": "sync_checkpoints",
+    "group": "12 Sinkronisasi",
+    "desc": "Cursor master dan ACK per terminal/stream.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "terminal_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "pos_terminals.id"
+      },
+      {
+        "name": "stream",
+        "type": "varchar(50)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "cursor_value",
+        "type": "text",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "last_ack_sequence",
+        "type": "bigint",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "last_success_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [
+      [
+        "terminal_id",
+        "stream"
+      ]
+    ],
+    "note": "Watermark snapshot stok harus mencakup local sequence yang sudah masuk agar saldo lokal tidak double count.",
+    "doc": false
+  },
+  "sync_conflicts": {
+    "name": "sync_conflicts",
+    "group": "12 Sinkronisasi",
+    "desc": "Pengecualian yang perlu penyelesaian cloud.",
+    "fields": [
+      {
+        "name": "id",
+        "type": "uuid",
+        "pk": true,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "inbox_event_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": false,
+        "ref": "sync_inbox.id"
+      },
+      {
+        "name": "conflict_type",
+        "type": "varchar(50)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "details",
+        "type": "jsonb",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "status",
+        "type": "varchar(20)",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      },
+      {
+        "name": "resolved_by",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "users.id"
+      },
+      {
+        "name": "resolution_document_id",
+        "type": "uuid",
+        "pk": false,
+        "nullable": true,
+        "ref": "documents.id"
+      },
+      {
+        "name": "resolved_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": true,
+        "ref": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamptz",
+        "pk": false,
+        "nullable": false,
+        "ref": null
+      }
+    ],
+    "unique": [],
+    "note": "Tidak menghapus event asli. Resolusi/replay harus idempotent dan mempertahankan transaksi kasir.",
+    "doc": false
+  }
+}

@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000">
+<rect x="0" y="0" width="1440" height="1000" rx="0" fill="#F6F3EB" stroke="#F6F3EB" stroke-width="0.8"/>
+<text x="38" y="42" font-family="DejaVu Sans" font-size="13" font-weight="700" fill="#243E35" text-anchor="start">YUSSY AKMAL</text>
+<text x="1402" y="42" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">WIREFRAME / POS LOKAL</text>
+<line x1="38" y1="57" x2="1402" y2="57" stroke="#D8E1D9" stroke-width="1"/>
+<text x="38" y="110" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#243E35" text-anchor="start">PS-07  /  Tutup shift dan hitung kas</text>
+<text x="38" y="145" font-family="DejaVu Sans" font-size="14" font-weight="400" fill="#63756D" text-anchor="start">Pisahkan uang fisik dari pembayaran non-tunai.</text>
+<rect x="36" y="184" width="1050" height="660" rx="10" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="36" y="184" width="1050" height="58" rx="8" fill="#243E35" stroke="#243E35" stroke-width="0.8"/>
+<text x="58" y="219" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="start">YA  /  KASIR</text>
+<text x="264" y="219" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#DAE7DD" text-anchor="start">Toko 01  |  K01  |  Kasir A</text>
+<rect x="780" y="200" width="69.4560546875" height="25" rx="12" fill="#F8DDC3" stroke="#F8DDC3" stroke-width="0.8"/>
+<text x="791" y="217" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#A74E2F" text-anchor="start">OFFLINE</text>
+<text x="878" y="220" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#FFFFFF" text-anchor="start">12 antrean  /  09:40 WIB</text>
+<line x1="58" y1="286" x2="1064" y2="286" stroke="#D8E1D9" stroke-width="1"/>
+<text x="68" y="273" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">Jual</text>
+<text x="119.1171875" y="273" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">Riwayat &amp; retur</text>
+<text x="245.44580078125" y="273" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#346B50" text-anchor="start">Shift</text>
+<rect x="235.44580078125" y="284" width="57.56787109375" height="3" rx="0" fill="#346B50" stroke="#346B50" stroke-width="0.8"/>
+<text x="303.013671875" y="273" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">Sinkronisasi</text>
+<rect x="78" y="324" width="560" height="34" rx="4" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="88" y="346" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#243E35" text-anchor="start">Komponen kas fisik</text>
+<text x="428" y="346" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#243E35" text-anchor="start">Nilai contoh</text>
+<rect x="78" y="358" width="560" height="44" rx="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.8"/>
+<text x="88" y="382" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Kas awal</text>
+<text x="428" y="382" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Rp200.000</text>
+<line x1="78" y1="402" x2="638" y2="402" stroke="#D8E1D9" stroke-width="1"/>
+<rect x="78" y="402" width="560" height="44" rx="0" fill="#F8FAF7" stroke="#F8FAF7" stroke-width="0.8"/>
+<text x="88" y="426" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Penjualan tunai</text>
+<text x="428" y="426" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Rp1.000.000</text>
+<line x1="78" y1="446" x2="638" y2="446" stroke="#D8E1D9" stroke-width="1"/>
+<rect x="78" y="446" width="560" height="44" rx="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.8"/>
+<text x="88" y="470" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Refund tunai</text>
+<text x="428" y="470" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">-Rp50.000</text>
+<line x1="78" y1="490" x2="638" y2="490" stroke="#D8E1D9" stroke-width="1"/>
+<rect x="78" y="490" width="560" height="44" rx="0" fill="#F8FAF7" stroke="#F8FAF7" stroke-width="0.8"/>
+<text x="88" y="514" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Kas keluar / setoran</text>
+<text x="428" y="514" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">-Rp500.000</text>
+<line x1="78" y1="534" x2="638" y2="534" stroke="#D8E1D9" stroke-width="1"/>
+<rect x="78" y="534" width="560" height="44" rx="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.8"/>
+<text x="88" y="558" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Kas diharapkan</text>
+<text x="428" y="558" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Rp650.000</text>
+<line x1="78" y1="578" x2="638" y2="578" stroke="#D8E1D9" stroke-width="1"/>
+<text x="670" y="340" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#63756D" text-anchor="start">Kas aktual dihitung *</text>
+<rect x="670" y="350" width="374" height="34" rx="5" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="680" y="372" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Rp640.000</text>
+<rect x="670" y="413" width="374" height="117" rx="10" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="670" y="413" width="4" height="117" rx="2" fill="#A74E2F" stroke="#A74E2F" stroke-width="0.8"/>
+<text x="688" y="442" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#63756D" text-anchor="start">Selisih kas</text>
+<text x="688" y="478" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#243E35" text-anchor="start">-Rp10.000</text>
+<text x="688" y="501" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">Butuh alasan dan aturan persetujuan</text>
+<text x="670" y="570" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#63756D" text-anchor="start">Alasan selisih *</text>
+<rect x="670" y="580" width="374" height="34" rx="5" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="680" y="602" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Tulis hasil pemeriksaan</text>
+<rect x="78" y="649" width="966" height="44" rx="7" fill="#F9EADD" stroke="#F9EADD" stroke-width="0.8"/>
+<circle cx="92" cy="666" r="3" fill="#A74E2F"/>
+<text x="103" y="668" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#A74E2F" text-anchor="start">Pembayaran non-tunai tidak masuk hitungan kas fisik. Tutup shift offline tetap menyimpan laporan dan antrean lokal.</text>
+<line x1="58" y1="775" x2="1064" y2="775" stroke="#D8E1D9" stroke-width="1"/>
+<rect x="948" y="789" width="116" height="40" rx="7" fill="#346B50" stroke="#346B50" stroke-width="0.8"/>
+<text x="1006.0" y="814" font-family="DejaVu Sans" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">Tutup shift</text>
+<rect x="797.9140625" y="789" width="140.0859375" height="40" rx="7" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="867.95703125" y="814" font-family="DejaVu Sans" font-size="12" font-weight="700" fill="#243E35" text-anchor="middle">Kembali ke shift</text>
+<text x="1114" y="204" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#A74E2F" text-anchor="start">PERILAKU LAYAR</text>
+<rect x="1114" y="225" width="35.916015625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="1125" y="242" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">01</text>
+<text x="1158" y="242" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Perhitungan kas</text>
+<text x="1114" y="275" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Kas diharapkan = kas awal + penjualan tunai -</text>
+<text x="1114" y="294" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">refund tunai + kas masuk - kas keluar -</text>
+<text x="1114" y="313" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">setoran. Non-tunai dilaporkan terpisah.</text>
+<rect x="1114" y="345" width="35.916015625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="1125" y="362" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">02</text>
+<text x="1158" y="362" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Selisih wajib dijelaskan</text>
+<text x="1114" y="395" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Jika kas aktual berbeda, alasan dan approval</text>
+<text x="1114" y="414" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">mengikuti konfigurasi. Jangan menyesuaikan</text>
+<text x="1114" y="433" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">transaksi penjualan agar kas tampak cocok.</text>
+<rect x="1114" y="465" width="35.916015625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="1125" y="482" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">03</text>
+<text x="1158" y="482" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Tutup ketika offline</text>
+<text x="1114" y="515" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Ringkasan shift disimpan lokal dan masuk</text>
+<text x="1114" y="534" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">antrean. Status belum diterima cloud tetap</text>
+<text x="1114" y="553" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">ditampilkan; shift tidak boleh dihapus untuk</text>
+<text x="1114" y="572" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">mengatasi kegagalan sync.</text>
+<line x1="1114" y1="866" x2="1400" y2="866" stroke="#D8E1D9" stroke-width="1"/>
+<text x="1114" y="888" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#63756D" text-anchor="start">LANJUT KE</text>
+<text x="1114" y="909" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#346B50" text-anchor="start">PS-01 / PS-08</text>
+<text x="38" y="877" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#A74E2F" text-anchor="start">MODEL DATA</text>
+<text x="150" y="877" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">pos_shifts, pos_cash_entries, pos_tenders, sync_outbox</text>
+<text x="38" y="918" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#A74E2F" text-anchor="start">UAT TERKAIT</text>
+<text x="150" y="918" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">U26, U29</text>
+<line x1="38" y1="950" x2="1402" y2="950" stroke="#D8E1D9" stroke-width="1"/>
+<text x="38" y="976" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">ERP Yussy Akmal  /  25 Oktober 2026  /  Desain usulan, bukan aplikasi operasional</text>
+<text x="1402" y="976" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">PS-07  /  47</text>
+</svg>

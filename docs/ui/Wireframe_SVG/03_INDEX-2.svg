@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000">
+<rect x="0" y="0" width="1440" height="1000" rx="0" fill="#F6F3EB" stroke="#F6F3EB" stroke-width="0.8"/>
+<text x="38" y="42" font-family="DejaVu Sans" font-size="13" font-weight="700" fill="#243E35" text-anchor="start">YUSSY AKMAL</text>
+<text x="1402" y="42" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">DESAIN UI / V1.0</text>
+<line x1="38" y1="57" x2="1402" y2="57" stroke="#D8E1D9" stroke-width="1"/>
+<text x="38" y="110" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#243E35" text-anchor="start">Peta layar dan navigasi</text>
+<text x="38" y="145" font-family="DejaVu Sans" font-size="14" font-weight="400" fill="#63756D" text-anchor="start">Kontrol backoffice dan pengalaman kasir lokal.</text>
+<rect x="38" y="198" width="670" height="58" rx="7" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="50" y="213" width="56.189453125" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="61" y="230" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">BO-20</text>
+<text x="134" y="223" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Pembayaran dan refund</text>
+<text x="134" y="244" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">Keuangan</text>
+<rect x="38" y="267" width="670" height="58" rx="7" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="50" y="282" width="56.189453125" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="61" y="299" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">BO-21</text>
+<text x="134" y="292" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Tutup periode</text>
+<text x="134" y="313" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">Keuangan</text>
+<rect x="38" y="336" width="670" height="58" rx="7" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="50" y="351" width="56.189453125" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="61" y="368" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">BO-22</text>
+<text x="134" y="361" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Pusat persetujuan</text>
+<text x="134" y="382" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">Persetujuan</text>
+<rect x="38" y="405" width="670" height="58" rx="7" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="50" y="420" width="56.189453125" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="61" y="437" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">BO-23</text>
+<text x="134" y="430" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Jadwal dan batas pesanan</text>
+<text x="134" y="451" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">Pengaturan</text>
+<rect x="38" y="474" width="670" height="58" rx="7" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="50" y="489" width="56.189453125" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="61" y="506" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">BO-24</text>
+<text x="134" y="499" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Monitor sinkronisasi POS</text>
+<text x="134" y="520" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">Sinkronisasi</text>
+<rect x="38" y="543" width="670" height="58" rx="7" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="50" y="558" width="56.189453125" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="61" y="575" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">BO-25</text>
+<text x="134" y="568" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Produk dan resep</text>
+<text x="134" y="589" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">Master</text>
+<rect x="38" y="612" width="670" height="58" rx="7" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="50" y="627" width="56.189453125" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="61" y="644" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">BO-26</text>
+<text x="134" y="637" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Pengguna dan matriks akses</text>
+<text x="134" y="658" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">Pengaturan</text>
+<rect x="38" y="681" width="670" height="58" rx="7" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="50" y="696" width="56.189453125" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="61" y="713" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">BO-27</text>
+<text x="134" y="706" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Titipan dan settlement supplier</text>
+<text x="134" y="727" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">Pembelian</text>
+<rect x="38" y="750" width="670" height="58" rx="7" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="50" y="765" width="56.189453125" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="61" y="782" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">BO-28</text>
+<text x="134" y="775" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Laporan dan penelusuran</text>
+<text x="134" y="796" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">Laporan</text>
+<rect x="38" y="819" width="670" height="58" rx="7" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="50" y="834" width="56.189453125" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="61" y="851" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">BO-29</text>
+<text x="134" y="844" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Faktur, beban, dan jurnal</text>
+<text x="134" y="865" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">Keuangan</text>
+<rect x="733" y="198" width="670" height="58" rx="7" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="745" y="213" width="56.189453125" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="756" y="230" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">BO-30</text>
+<text x="829" y="223" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Harga, promosi, dan master pendukung</text>
+<text x="829" y="244" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">Master</text>
+<rect x="733" y="267" width="670" height="58" rx="7" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="745" y="282" width="54.59765625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="756" y="299" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">PS-01</text>
+<text x="829" y="292" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Masuk dan buka shift</text>
+<text x="829" y="313" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">POS lokal</text>
+<rect x="733" y="336" width="670" height="58" rx="7" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="745" y="351" width="54.59765625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="756" y="368" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">PS-02</text>
+<text x="829" y="361" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Penjualan kasir</text>
+<text x="829" y="382" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">POS lokal</text>
+<rect x="733" y="405" width="670" height="58" rx="7" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="745" y="420" width="54.59765625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="756" y="437" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">PS-03</text>
+<text x="829" y="430" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Pilih sumber barang</text>
+<text x="829" y="451" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">POS lokal</text>
+<rect x="733" y="474" width="670" height="58" rx="7" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="745" y="489" width="54.59765625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="756" y="506" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">PS-04</text>
+<text x="829" y="499" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Pembayaran dan struk</text>
+<text x="829" y="520" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">POS lokal</text>
+<rect x="733" y="543" width="670" height="58" rx="7" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="745" y="558" width="54.59765625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="756" y="575" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">PS-05</text>
+<text x="829" y="568" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Persetujuan supervisor offline</text>
+<text x="829" y="589" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">POS lokal</text>
+<rect x="733" y="612" width="670" height="58" rx="7" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="745" y="627" width="54.59765625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="756" y="644" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">PS-06</text>
+<text x="829" y="637" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Retur dan refund POS</text>
+<text x="829" y="658" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">POS lokal</text>
+<rect x="733" y="681" width="670" height="58" rx="7" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="745" y="696" width="54.59765625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="756" y="713" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">PS-07</text>
+<text x="829" y="706" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Tutup shift dan hitung kas</text>
+<text x="829" y="727" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">POS lokal</text>
+<rect x="733" y="750" width="670" height="58" rx="7" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="745" y="765" width="54.59765625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="756" y="782" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">PS-08</text>
+<text x="829" y="775" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Status lokal dan antrean sync</text>
+<text x="829" y="796" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">POS lokal</text>
+<line x1="38" y1="950" x2="1402" y2="950" stroke="#D8E1D9" stroke-width="1"/>
+<text x="38" y="976" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">ERP Yussy Akmal  /  25 Oktober 2026  /  Desain usulan, bukan aplikasi operasional</text>
+<text x="1402" y="976" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">INDEX-2  /  03</text>
+</svg>

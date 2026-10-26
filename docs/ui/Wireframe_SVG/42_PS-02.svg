@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000">
+<rect x="0" y="0" width="1440" height="1000" rx="0" fill="#F6F3EB" stroke="#F6F3EB" stroke-width="0.8"/>
+<text x="38" y="42" font-family="DejaVu Sans" font-size="13" font-weight="700" fill="#243E35" text-anchor="start">YUSSY AKMAL</text>
+<text x="1402" y="42" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">WIREFRAME / POS LOKAL</text>
+<line x1="38" y1="57" x2="1402" y2="57" stroke="#D8E1D9" stroke-width="1"/>
+<text x="38" y="110" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#243E35" text-anchor="start">PS-02  /  Penjualan kasir</text>
+<text x="38" y="145" font-family="DejaVu Sans" font-size="14" font-weight="400" fill="#63756D" text-anchor="start">Scan, pilih barang, lalu terima pembayaran.</text>
+<rect x="36" y="184" width="1050" height="660" rx="10" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="36" y="184" width="1050" height="58" rx="8" fill="#243E35" stroke="#243E35" stroke-width="0.8"/>
+<text x="58" y="219" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="start">YA  /  KASIR</text>
+<text x="264" y="219" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#DAE7DD" text-anchor="start">Toko 01  |  K01  |  Kasir A</text>
+<rect x="780" y="200" width="69.4560546875" height="25" rx="12" fill="#F8DDC3" stroke="#F8DDC3" stroke-width="0.8"/>
+<text x="791" y="217" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#A74E2F" text-anchor="start">OFFLINE</text>
+<text x="878" y="220" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#FFFFFF" text-anchor="start">12 antrean  /  09:40 WIB</text>
+<line x1="58" y1="286" x2="1064" y2="286" stroke="#D8E1D9" stroke-width="1"/>
+<text x="68" y="273" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#346B50" text-anchor="start">Jual</text>
+<rect x="58" y="284" width="51.1171875" height="3" rx="0" fill="#346B50" stroke="#346B50" stroke-width="0.8"/>
+<text x="119.1171875" y="273" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">Riwayat &amp; retur</text>
+<text x="245.44580078125" y="273" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">Shift</text>
+<text x="303.013671875" y="273" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">Sinkronisasi</text>
+<text x="58" y="322" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#63756D" text-anchor="start">Cari / scan produk</text>
+<rect x="58" y="332" width="560" height="34" rx="5" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="68" y="354" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Scan barcode atau ketik nama produk</text>
+<line x1="58" y1="408" x2="618" y2="408" stroke="#D8E1D9" stroke-width="1"/>
+<text x="68" y="395" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#346B50" text-anchor="start">Semua</text>
+<rect x="58" y="406" width="70.0986328125" height="3" rx="0" fill="#346B50" stroke="#346B50" stroke-width="0.8"/>
+<text x="138.0986328125" y="395" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">Roti</text>
+<text x="191.15478515625" y="395" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">Kue</text>
+<text x="242.97021484375" y="395" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">Kemasan</text>
+<rect x="58" y="422" width="178" height="124" rx="8" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<circle cx="83" cy="447" r="10" fill="#F9EADD"/>
+<text x="72" y="478" font-family="DejaVu Sans" font-size="12" font-weight="700" fill="#243E35" text-anchor="start">Roti A</text>
+<text x="72" y="502" font-family="DejaVu Sans" font-size="13" font-weight="700" fill="#346B50" text-anchor="start">Rp8.000</text>
+<text x="72" y="525" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">Stok lokal: 78 pcs</text>
+<rect x="247" y="422" width="178" height="124" rx="8" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<circle cx="272" cy="447" r="10" fill="#F9EADD"/>
+<text x="261" y="478" font-family="DejaVu Sans" font-size="12" font-weight="700" fill="#243E35" text-anchor="start">Risol</text>
+<text x="261" y="502" font-family="DejaVu Sans" font-size="13" font-weight="700" fill="#346B50" text-anchor="start">Rp6.000</text>
+<text x="261" y="525" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">Stok lokal: 35 pcs</text>
+<rect x="436" y="422" width="178" height="124" rx="8" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<circle cx="461" cy="447" r="10" fill="#F9EADD"/>
+<text x="450" y="478" font-family="DejaVu Sans" font-size="12" font-weight="700" fill="#243E35" text-anchor="start">Kue supplier</text>
+<text x="450" y="502" font-family="DejaVu Sans" font-size="13" font-weight="700" fill="#346B50" text-anchor="start">Rp5.000</text>
+<text x="450" y="525" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">Pilih sumber barang</text>
+<rect x="58" y="561" width="178" height="124" rx="8" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<circle cx="83" cy="586" r="10" fill="#F9EADD"/>
+<text x="72" y="617" font-family="DejaVu Sans" font-size="12" font-weight="700" fill="#243E35" text-anchor="start">Kemasan box</text>
+<text x="72" y="641" font-family="DejaVu Sans" font-size="13" font-weight="700" fill="#346B50" text-anchor="start">Rp2.000</text>
+<text x="72" y="664" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">Harga terpisah</text>
+<rect x="247" y="561" width="178" height="124" rx="8" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<circle cx="272" cy="586" r="10" fill="#F9EADD"/>
+<text x="261" y="617" font-family="DejaVu Sans" font-size="12" font-weight="700" fill="#243E35" text-anchor="start">Putih telur</text>
+<text x="261" y="641" font-family="DejaVu Sans" font-size="13" font-weight="700" fill="#346B50" text-anchor="start">Harga sesuai master</text>
+<text x="261" y="664" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">Satuan kg</text>
+<rect x="436" y="561" width="178" height="124" rx="8" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<circle cx="461" cy="586" r="10" fill="#F9EADD"/>
+<text x="450" y="617" font-family="DejaVu Sans" font-size="12" font-weight="700" fill="#243E35" text-anchor="start">Produk lainnya</text>
+<text x="450" y="641" font-family="DejaVu Sans" font-size="13" font-weight="700" fill="#346B50" text-anchor="start">Cari SKU</text>
+<text x="450" y="664" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">Data ilustrasi</text>
+<rect x="644" y="310" width="420" height="431" rx="10" fill="#F3F6F3" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="662" y="339" font-family="DejaVu Sans" font-size="15" font-weight="700" fill="#243E35" text-anchor="start">Keranjang / pelanggan umum</text>
+<rect x="658" y="358" width="392" height="34" rx="4" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="668" y="380" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#243E35" text-anchor="start">Item</text>
+<text x="840" y="380" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#243E35" text-anchor="start">Jumlah</text>
+<text x="910" y="380" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#243E35" text-anchor="start">Total</text>
+<rect x="658" y="392" width="392" height="44" rx="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.8"/>
+<text x="668" y="416" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Roti A</text>
+<text x="840" y="416" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">2</text>
+<text x="910" y="416" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Rp16.000</text>
+<line x1="658" y1="436" x2="1050" y2="436" stroke="#D8E1D9" stroke-width="1"/>
+<rect x="658" y="436" width="392" height="44" rx="0" fill="#F8FAF7" stroke="#F8FAF7" stroke-width="0.8"/>
+<text x="668" y="460" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Risol</text>
+<text x="840" y="460" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">2</text>
+<text x="910" y="460" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Rp12.000</text>
+<line x1="658" y1="480" x2="1050" y2="480" stroke="#D8E1D9" stroke-width="1"/>
+<rect x="658" y="480" width="392" height="44" rx="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.8"/>
+<text x="668" y="504" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Kemasan</text>
+<text x="840" y="504" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">1</text>
+<text x="910" y="504" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Rp2.000</text>
+<line x1="658" y1="524" x2="1050" y2="524" stroke="#D8E1D9" stroke-width="1"/>
+<text x="664" y="561" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#63756D" text-anchor="start">Subtotal</text>
+<text x="1044" y="561" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="end">Rp30.000</text>
+<text x="664" y="593" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">Diskon / pajak contoh</text>
+<text x="1044" y="593" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#243E35" text-anchor="end">Rp0</text>
+<line x1="664" y1="611" x2="1044" y2="611" stroke="#D8E1D9" stroke-width="1"/>
+<text x="664" y="645" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#243E35" text-anchor="start">Total</text>
+<text x="1044" y="645" font-family="DejaVu Sans" font-size="25" font-weight="700" fill="#243E35" text-anchor="end">Rp30.000</text>
+<rect x="664" y="675" width="185.515625" height="25" rx="12" fill="#F9EADD" stroke="#F9EADD" stroke-width="0.8"/>
+<text x="675" y="692" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#A74E2F" text-anchor="start">STOK LOKAL / BISA BERBEDA</text>
+<text x="58" y="724" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#A74E2F" text-anchor="start">Voucher berkuota / penukaran poin: perlu online</text>
+<line x1="58" y1="775" x2="1064" y2="775" stroke="#D8E1D9" stroke-width="1"/>
+<rect x="926.603515625" y="789" width="137.396484375" height="40" rx="7" fill="#346B50" stroke="#346B50" stroke-width="0.8"/>
+<text x="995.3017578125" y="814" font-family="DejaVu Sans" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">Bayar Rp30.000</text>
+<rect x="772.9375" y="789" width="143.666015625" height="40" rx="7" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="844.7705078125" y="814" font-family="DejaVu Sans" font-size="12" font-weight="700" fill="#243E35" text-anchor="middle">Tahan keranjang</text>
+<text x="1114" y="204" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#A74E2F" text-anchor="start">PERILAKU LAYAR</text>
+<rect x="1114" y="225" width="35.916015625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="1125" y="242" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">01</text>
+<text x="1158" y="242" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Produk dan kemasan</text>
+<text x="1158" y="262" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">terpisah</text>
+<text x="1114" y="295" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Contoh keranjang: roti 2 x Rp8.000, risol 2 x</text>
+<text x="1114" y="314" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Rp6.000, kemasan Rp2.000. Total Rp30.000</text>
+<text x="1114" y="333" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">sebelum diskon/pajak terkonfigurasi.</text>
+<rect x="1114" y="365" width="35.916015625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="1125" y="382" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">02</text>
+<text x="1158" y="382" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Status selalu terlihat</text>
+<text x="1114" y="415" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Tampilkan koneksi, sinkron terakhir, antrean,</text>
+<text x="1114" y="434" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">terminal, dan shift. Stok lokal diberi label</text>
+<text x="1114" y="453" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">perkiraan saat offline; penjualan minus perlu</text>
+<text x="1114" y="472" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">alasan.</text>
+<rect x="1114" y="504" width="35.916015625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="1125" y="521" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">03</text>
+<text x="1158" y="521" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Batas POS</text>
+<text x="1114" y="554" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Tidak ada menu SO, DP SO, pembelian,</text>
+<text x="1114" y="573" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">produksi, atau penerimaan toko. Pilihan</text>
+<text x="1114" y="592" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">sumber muncul bila SKU punya owned dan</text>
+<text x="1114" y="611" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">titipan.</text>
+<line x1="1114" y1="866" x2="1400" y2="866" stroke="#D8E1D9" stroke-width="1"/>
+<text x="1114" y="888" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#63756D" text-anchor="start">LANJUT KE</text>
+<text x="1114" y="909" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#346B50" text-anchor="start">PS-03 / PS-04 / PS-05</text>
+<text x="38" y="877" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#A74E2F" text-anchor="start">MODEL DATA</text>
+<text x="150" y="877" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">pos_sales, pos_sale_lines, pos_shifts, stock_balances</text>
+<text x="38" y="918" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#A74E2F" text-anchor="start">UAT TERKAIT</text>
+<text x="150" y="918" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">U05, U16, U26, U31</text>
+<line x1="38" y1="950" x2="1402" y2="950" stroke="#D8E1D9" stroke-width="1"/>
+<text x="38" y="976" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">ERP Yussy Akmal  /  25 Oktober 2026  /  Desain usulan, bukan aplikasi operasional</text>
+<text x="1402" y="976" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">PS-02  /  42</text>
+</svg>

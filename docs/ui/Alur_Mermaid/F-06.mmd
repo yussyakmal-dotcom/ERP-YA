@@ -1,0 +1,17 @@
+%% F-06 - Pembatalan, retur, dan refund
+flowchart TD
+  a["Pilih transaksi asal / SO / POS / receipt"]
+  b["SO belum delivery / BO-05: pembatalan"]
+  c["Penjualan sudah terjadi / BO-19 / PS-06: retur"]
+  d["Retur supplier / BO-19"]
+  e["Approval + hak refund / BO-22 / PS-05"]
+  f["Barang / kredit tercatat / Disposisi sesuai asal"]
+  g["Realisasi dana / BO-20 / POS refund"]
+  a --> b
+  a --> c
+  a --> d
+  b --> e
+  c --> f
+  d --> f
+  e --> g
+  f -->|"Hak tersisa"| g

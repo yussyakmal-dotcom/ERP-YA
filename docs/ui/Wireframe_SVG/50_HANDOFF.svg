@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000">
+<rect x="0" y="0" width="1440" height="1000" rx="0" fill="#F6F3EB" stroke="#F6F3EB" stroke-width="0.8"/>
+<text x="38" y="42" font-family="DejaVu Sans" font-size="13" font-weight="700" fill="#243E35" text-anchor="start">YUSSY AKMAL</text>
+<text x="1402" y="42" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">DESAIN UI / V1.0</text>
+<line x1="38" y1="57" x2="1402" y2="57" stroke="#D8E1D9" stroke-width="1"/>
+<text x="38" y="110" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#243E35" text-anchor="start">Handoff desain ke pengembangan</text>
+<text x="38" y="145" font-family="DejaVu Sans" font-size="14" font-weight="400" fill="#63756D" text-anchor="start">Desain v1.0 mengikuti PRD dan ERD v1.0 tanpa mengubah skema bisnis.</text>
+<rect x="38" y="199" width="1364" height="34" rx="4" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="48" y="221" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#243E35" text-anchor="start">Area</text>
+<text x="276" y="221" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#243E35" text-anchor="start">Kontrak yang perlu dipertahankan</text>
+<text x="952" y="221" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#243E35" text-anchor="start">Berkas pendamping</text>
+<rect x="38" y="233" width="1364" height="44" rx="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.8"/>
+<text x="48" y="257" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Pemetaan layar</text>
+<text x="276" y="257" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">38 layar, field, aksi, validasi, transisi dan entitas sumber</text>
+<text x="952" y="257" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Spesifikasi_UI_Yussy_Akmal_v1.0.md</text>
+<line x1="38" y1="277" x2="1402" y2="277" stroke="#D8E1D9" stroke-width="1"/>
+<rect x="38" y="277" width="1364" height="44" rx="0" fill="#F8FAF7" stroke="#F8FAF7" stroke-width="0.8"/>
+<text x="48" y="301" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Sumber visual</text>
+<text x="276" y="301" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Setiap halaman tersedia sebagai SVG vektor yang dapat diedit</text>
+<text x="952" y="301" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Wireframe_SVG/</text>
+<line x1="38" y1="321" x2="1402" y2="321" stroke="#D8E1D9" stroke-width="1"/>
+<rect x="38" y="321" width="1364" height="44" rx="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.8"/>
+<text x="48" y="345" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Alur UI</text>
+<text x="276" y="345" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">6 alur dengan ID layar dan jalur pengecualian</text>
+<text x="952" y="345" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Alur_UI_Yussy_Akmal_v1.0.md</text>
+<line x1="38" y1="365" x2="1402" y2="365" stroke="#D8E1D9" stroke-width="1"/>
+<rect x="38" y="365" width="1364" height="44" rx="0" fill="#F8FAF7" stroke="#F8FAF7" stroke-width="0.8"/>
+<text x="48" y="389" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Data</text>
+<text x="276" y="389" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">104 entitas dan 282 foreign key; sama dengan ERD sebelumnya</text>
+<text x="952" y="389" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">ERP_Yussy_Akmal_v1.0.dbml</text>
+<line x1="38" y1="409" x2="1402" y2="409" stroke="#D8E1D9" stroke-width="1"/>
+<rect x="38" y="409" width="1364" height="44" rx="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.8"/>
+<text x="48" y="433" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Pengujian</text>
+<text x="276" y="433" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">UAT mengacu PRD. Contoh layar bukan hasil tes aplikasi</text>
+<text x="952" y="433" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Daftar layar dan referensi UAT pada spesifikasi</text>
+<line x1="38" y1="453" x2="1402" y2="453" stroke="#D8E1D9" stroke-width="1"/>
+<text x="38" y="622" font-family="DejaVu Sans" font-size="21" font-weight="700" fill="#243E35" text-anchor="start">Yang masih berupa konfigurasi</text>
+<text x="38" y="659" font-family="DejaVu Sans" font-size="16" font-weight="400" fill="#24342F" text-anchor="start">Jam cutoff/kirim, harga, nama penyetuju, ambang approval, minimum stok, pajak, rekening, printer, dan kebijakan offline diisi perusahaan. Nilai contoh dalam</text>
+<text x="38" y="685" font-family="DejaVu Sans" font-size="16" font-weight="400" fill="#24342F" text-anchor="start">wireframe tidak boleh menjadi seed produksi tanpa validasi.</text>
+<text x="38" y="759" font-family="DejaVu Sans" font-size="21" font-weight="700" fill="#243E35" text-anchor="start">Batas paket desain ini</text>
+<text x="38" y="797" font-family="DejaVu Sans" font-size="16" font-weight="400" fill="#24342F" text-anchor="start">Ini adalah desain visual statis dan spesifikasi interaksi, bukan aplikasi yang dapat bertransaksi. DBML adalah model logis; migrasi database, API, keamanan,</text>
+<text x="38" y="823" font-family="DejaVu Sans" font-size="16" font-weight="400" fill="#24342F" text-anchor="start">sinkronisasi nyata, dan UAT dijalankan pada tahap implementasi.</text>
+<line x1="38" y1="950" x2="1402" y2="950" stroke="#D8E1D9" stroke-width="1"/>
+<text x="38" y="976" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">ERP Yussy Akmal  /  25 Oktober 2026  /  Desain usulan, bukan aplikasi operasional</text>
+<text x="1402" y="976" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">HANDOFF  /  50</text>
+</svg>

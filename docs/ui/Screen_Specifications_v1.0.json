@@ -1,0 +1,3440 @@
+{
+  "screens": [
+    {
+      "id": "BO-01",
+      "title": "Ringkasan operasional",
+      "module": "Dashboard",
+      "kind": "dashboard",
+      "subtitle": "Prioritaskan pekerjaan yang perlu tindakan hari ini.",
+      "fields": [],
+      "cols": [],
+      "rows": [],
+      "actions": [
+        "Lihat persetujuan",
+        "Buka selisih transit"
+      ],
+      "banner": "",
+      "notes": [
+        [
+          "Filter lintas lokasi",
+          "Pilihan toko dan dapur adalah filter tampilan, bukan pembatasan akses staf. Angka dapat dibuka sampai dokumen sumber."
+        ],
+        [
+          "Peringatan yang dapat ditindaklanjuti",
+          "Selisih transit, pesanan mendekati kirim, dan terminal belum sinkron dipisahkan. Data cloud menampilkan waktu pemutakhiran."
+        ],
+        [
+          "Tindakan berikutnya",
+          "Klik kartu membuka daftar terfilter. Tugas persetujuan hanya muncul bagi peran yang berhak."
+        ]
+      ],
+      "entities": [
+        "documents",
+        "stock_balances",
+        "approval_requests",
+        "sync_conflicts"
+      ],
+      "uat": [],
+      "next": [
+        "BO-02",
+        "BO-15",
+        "BO-24"
+      ]
+    },
+    {
+      "id": "BO-02",
+      "title": "Sales Order",
+      "module": "Penjualan SO",
+      "kind": "list",
+      "subtitle": "Semua pesanan pelanggan dikelola melalui backoffice.",
+      "fields": [
+        [
+          "Cari pesanan",
+          "Nomor SO / nama pelanggan"
+        ],
+        [
+          "Tanggal kirim",
+          "26 - 27 Okt 2026"
+        ],
+        [
+          "Jadwal",
+          "Semua jadwal"
+        ],
+        [
+          "Status",
+          "Semua status"
+        ]
+      ],
+      "cols": [
+        "Pesanan / pelanggan",
+        "Kirim / jadwal",
+        "Nilai",
+        "Status"
+      ],
+      "rows": [
+        [
+          "SO-1026-012 / Pelanggan A",
+          "26 Okt / Pagi",
+          "Rp2.500.000",
+          "Dikonfirmasi"
+        ],
+        [
+          "SO-1026-013 / Pelanggan B",
+          "26 Okt / Siang",
+          "Rp1.200.000",
+          "Menunggu approval"
+        ],
+        [
+          "SO-1026-014 / Pelanggan C",
+          "27 Okt / Sore",
+          "Rp750.000",
+          "Draft"
+        ]
+      ],
+      "actions": [
+        "Ekspor daftar",
+        "Buat SO"
+      ],
+      "banner": "",
+      "notes": [
+        [
+          "Daftar dan detail",
+          "Klik baris membuka BO-04. Filter outlet asal dan pelanggan tersedia dalam filter lanjutan."
+        ],
+        [
+          "Pesanan tambahan",
+          "Label tambahan setelah WO membedakan kebutuhan revisi dari kebutuhan semula. Approval mengikuti penanggung jawab produksi."
+        ],
+        [
+          "Batas kanal",
+          "Menu SO dan pembayaran SO tidak tersedia di aplikasi POS."
+        ]
+      ],
+      "entities": [
+        "sales_orders",
+        "sales_order_lines",
+        "documents"
+      ],
+      "uat": [
+        "U11",
+        "U13"
+      ],
+      "next": [
+        "BO-03",
+        "BO-04"
+      ]
+    },
+    {
+      "id": "BO-03",
+      "title": "Buat pesanan pelanggan",
+      "module": "Penjualan SO",
+      "kind": "form",
+      "subtitle": "Paket tampil satu harga; komponen menjadi dasar pemenuhan.",
+      "fields": [
+        [
+          "Pelanggan *",
+          "Pelanggan A"
+        ],
+        [
+          "Outlet asal *",
+          "Dahlia"
+        ],
+        [
+          "Tanggal pesan",
+          "25 Okt 2026"
+        ],
+        [
+          "Tanggal kirim *",
+          "26 Okt 2026"
+        ],
+        [
+          "Jadwal *",
+          "Pagi - versi tersimpan"
+        ],
+        [
+          "Alamat / instruksi",
+          "Alamat pengiriman pelanggan"
+        ]
+      ],
+      "cols": [
+        "Item pesanan",
+        "Jumlah",
+        "Harga satuan",
+        "Total"
+      ],
+      "rows": [
+        [
+          "Snack box A / paket",
+          "100 box",
+          "Rp25.000",
+          "Rp2.500.000"
+        ]
+      ],
+      "actions": [
+        "Simpan draft",
+        "Konfirmasi SO"
+      ],
+      "banner": "H-1 wajib. Jam cutoff dan kirim mengikuti konfigurasi jadwal; bukan isian bebas kasir.",
+      "notes": [
+        [
+          "Komponen paket",
+          "Panel komponen berisi produk dapur, produk supplier, dan kemasan. Snapshot dibuat saat konfirmasi; paket bertingkat ditolak."
+        ],
+        [
+          "Validasi sebelum konfirmasi",
+          "Tanggal harus setelah tanggal pesan; satu SO satu jadwal. Jadwal tanpa jam lengkap tidak dapat digunakan. Tambahan setelah WO masuk approval."
+        ],
+        [
+          "Aksi dan transisi",
+          "Simpan draft tidak memesan stok. Konfirmasi yang lolos validasi membuat kebutuhan; DP tetap dicatat melalui BO-04."
+        ]
+      ],
+      "entities": [
+        "sales_orders",
+        "sales_order_lines",
+        "sales_order_components",
+        "schedule_versions",
+        "demand_lines"
+      ],
+      "uat": [
+        "U11",
+        "U12",
+        "U13",
+        "U15"
+      ],
+      "next": [
+        "BO-04",
+        "BO-09"
+      ]
+    },
+    {
+      "id": "BO-04",
+      "title": "Detail SO dan pembayaran",
+      "module": "Penjualan SO",
+      "kind": "so",
+      "subtitle": "SO-1026-012 / Pelanggan A / 100 snack box",
+      "fields": [],
+      "cols": [],
+      "rows": [],
+      "actions": [
+        "Catat DP / pelunasan",
+        "Siapkan pengiriman"
+      ],
+      "banner": "",
+      "notes": [
+        [
+          "Pembayaran di satu tempat",
+          "Tab Pembayaran memisahkan DP diterima, alokasi ke invoice, pelunasan, dan refund. DP tidak otomatis menjadi pendapatan."
+        ],
+        [
+          "Dokumen saling terhubung",
+          "Tab Pemenuhan menautkan WO, PO khusus SO, reservasi, dan delivery. Paket dijual satu harga; komponen tidak menambah omzet lagi."
+        ],
+        [
+          "Perubahan setelah konfirmasi",
+          "Revisi menyimpan versi sebelumnya. Perubahan setelah WO memerlukan approval dan hanya menambah kebutuhan selisih."
+        ]
+      ],
+      "entities": [
+        "sales_orders",
+        "customer_deposits",
+        "deposit_applications",
+        "sales_invoices",
+        "payments",
+        "deliveries"
+      ],
+      "uat": [
+        "U13",
+        "U15",
+        "U22"
+      ],
+      "next": [
+        "BO-05",
+        "BO-12",
+        "BO-20"
+      ]
+    },
+    {
+      "id": "BO-05",
+      "title": "Pembatalan SO dan refund",
+      "module": "Penjualan SO",
+      "kind": "form",
+      "subtitle": "Tinjau dampak pembatalan sebelum mengajukan persetujuan.",
+      "fields": [
+        [
+          "Dokumen asal *",
+          "SO-1026-012"
+        ],
+        [
+          "Alasan *",
+          "Pelanggan membatalkan acara"
+        ],
+        [
+          "Saldo DP tersedia",
+          "Rp1.000.000"
+        ],
+        [
+          "Refund diajukan *",
+          "Rp1.000.000"
+        ],
+        [
+          "Barang supplier diterima",
+          "40 pcs di packing"
+        ],
+        [
+          "Tujuan pengalihan",
+          "Toko tujuan - pilih"
+        ]
+      ],
+      "cols": [
+        "Objek terdampak",
+        "Posisi sekarang",
+        "Tindak lanjut"
+      ],
+      "rows": [
+        [
+          "Reservasi / demand",
+          "Masih terbuka",
+          "Lepas / batalkan sisa"
+        ],
+        [
+          "WO sudah mulai",
+          "Bahan sudah terpakai",
+          "Tinjau penanggung jawab"
+        ],
+        [
+          "PO supplier sudah received",
+          "40 pcs tersedia",
+          "Transfer ke toko sebagai owned"
+        ]
+      ],
+      "actions": [
+        "Kembali ke SO",
+        "Ajukan pembatalan"
+      ],
+      "banner": "Utang supplier tetap berlaku. Setelah delivery, gunakan retur penjualan; jangan hapus SO.",
+      "notes": [
+        [
+          "Konfirmasi berdampak",
+          "Dialog akhir merangkum refund, reservasi, WO, dan PO. Tidak ada pengembalian bahan otomatis untuk WO yang sudah berjalan."
+        ],
+        [
+          "Barang untuk dijual di toko",
+          "Buat transfer setelah pembatalan disetujui. Barang diterima toko sebagai stok milik perusahaan; POS tidak mengakuinya sebagai titipan baru."
+        ],
+        [
+          "Refund terpisah",
+          "Persetujuan batal tidak berarti uang telah dikirim. BO-20 mencatat realisasi dana dan bukti pembayaran."
+        ]
+      ],
+      "entities": [
+        "sales_orders",
+        "approval_requests",
+        "refunds",
+        "transfer_orders",
+        "stock_reservations"
+      ],
+      "uat": [
+        "U04",
+        "U05",
+        "U23"
+      ],
+      "next": [
+        "BO-13",
+        "BO-20",
+        "BO-22"
+      ]
+    },
+    {
+      "id": "BO-06",
+      "title": "Purchase Order",
+      "module": "Pembelian",
+      "kind": "form",
+      "subtitle": "PO reguler atau PO khusus pemenuhan satu Sales Order.",
+      "fields": [
+        [
+          "Jenis PO *",
+          "Khusus SO"
+        ],
+        [
+          "Sales Order *",
+          "SO-1026-012"
+        ],
+        [
+          "Supplier *",
+          "Supplier A"
+        ],
+        [
+          "Gudang penerima",
+          "Packing - terkunci untuk SO"
+        ],
+        [
+          "Tanggal dokumen *",
+          "25 Okt 2026"
+        ],
+        [
+          "Status",
+          "Draft"
+        ]
+      ],
+      "cols": [
+        "Barang supplier",
+        "Jumlah pesan",
+        "Satuan",
+        "Referensi"
+      ],
+      "rows": [
+        [
+          "Kue supplier A",
+          "100",
+          "pcs",
+          "Komponen SO-1026-012"
+        ],
+        [
+          "Kemasan snack box",
+          "100",
+          "pcs",
+          "Komponen SO-1026-012"
+        ]
+      ],
+      "actions": [
+        "Simpan draft",
+        "Ajukan / konfirmasi PO"
+      ],
+      "banner": "PO khusus SO hanya terhubung ke satu SO. Komponen pembelian tidak dibuat WO.",
+      "notes": [
+        [
+          "Daftar dan pencarian",
+          "Daftar PO memakai pola BO-02 dengan filter supplier, jenis, SO, dan status penerimaan. Detail menampilkan jumlah pesan dan aktual terpisah."
+        ],
+        [
+          "Kontrol persetujuan",
+          "Tombol konfirmasi mengikuti aturan approval. Perubahan nilai atau baris membatalkan persetujuan revisi sebelumnya."
+        ],
+        [
+          "Penerimaan",
+          "Setelah PO confirmed, penerimaan hanya melalui BO-07 satu kali. Retur supplier tidak membuka PO kembali."
+        ]
+      ],
+      "entities": [
+        "purchase_orders",
+        "purchase_order_lines",
+        "approval_requests"
+      ],
+      "uat": [
+        "U01",
+        "U03",
+        "U32"
+      ],
+      "next": [
+        "BO-07",
+        "BO-22"
+      ]
+    },
+    {
+      "id": "BO-07",
+      "title": "Penerimaan final PO",
+      "module": "Pembelian",
+      "kind": "receive",
+      "subtitle": "PO-1026-031 / Tepung terigu / Supplier B",
+      "fields": [
+        [
+          "PO",
+          "PO-1026-031"
+        ],
+        [
+          "Gudang tujuan",
+          "CDC"
+        ],
+        [
+          "Tanggal terima *",
+          "25 Okt 2026"
+        ],
+        [
+          "Surat jalan supplier *",
+          "SJ-SUP-001"
+        ]
+      ],
+      "cols": [
+        "Barang",
+        "Pesan",
+        "Aktual terima *",
+        "Kurang ditutup"
+      ],
+      "rows": [
+        [
+          "Tepung terigu / dus",
+          "10",
+          "5",
+          "5"
+        ]
+      ],
+      "actions": [
+        "Simpan draft",
+        "Terima dan tutup PO"
+      ],
+      "banner": "Satu kali penerimaan: sisa 5 dus ditutup. Barang berikutnya untuk PO ini harus dikembalikan.",
+      "notes": [
+        [
+          "Dialog sebelum posting",
+          "Tampilkan: pesan 10 dus, diterima 5, kekurangan ditutup 5. Persetujuan sadar pengguna diperlukan melalui tombol Terima 5 dan tutup PO."
+        ],
+        [
+          "Validasi jumlah",
+          "Tidak boleh lebih dari pesan. Semua baris harus diisi, termasuk nol beralasan. Jika seluruh baris nol, catat penolakan tanpa penerimaan."
+        ],
+        [
+          "Sesudah berhasil",
+          "Status menjadi Selesai - kurang ditutup. Tombol receive diganti Lihat penerimaan dan Catat kedatangan ditolak. Konflik dua petugas tidak membuat penerimaan kedua."
+        ]
+      ],
+      "entities": [
+        "goods_receipts",
+        "goods_receipt_lines",
+        "purchase_orders"
+      ],
+      "uat": [
+        "U01",
+        "U02"
+      ],
+      "next": [
+        "BO-08",
+        "BO-20"
+      ]
+    },
+    {
+      "id": "BO-08",
+      "title": "Kedatangan ditolak",
+      "module": "Pembelian",
+      "kind": "form",
+      "subtitle": "Catat bukti kedatangan setelah PO selesai diterima.",
+      "fields": [
+        [
+          "PO asal *",
+          "PO-1026-031 / sudah selesai"
+        ],
+        [
+          "Tanggal kedatangan *",
+          "26 Okt 2026"
+        ],
+        [
+          "Barang / jumlah *",
+          "Tepung terigu / 5 dus"
+        ],
+        [
+          "Alasan",
+          "PO sudah diterima final"
+        ],
+        [
+          "Tindakan",
+          "Dikembalikan ke supplier"
+        ],
+        [
+          "Bukti *",
+          "Foto surat jalan / tanda terima"
+        ]
+      ],
+      "cols": [
+        "Riwayat penerimaan",
+        "Diterima",
+        "Kekurangan ditutup",
+        "Status"
+      ],
+      "rows": [
+        [
+          "25 Okt 2026 / GR-1026-019",
+          "5 dus",
+          "5 dus",
+          "Final"
+        ]
+      ],
+      "actions": [
+        "Kembali ke PO",
+        "Simpan penolakan"
+      ],
+      "banner": "Catatan ini tidak menambah stok atau utang dan tidak membuka penerimaan baru.",
+      "notes": [
+        [
+          "Tujuan layar",
+          "Petugas mencatat kejadian fisik yang perlu audit. Tidak ada tombol Terima sisa."
+        ],
+        [
+          "Dokumen terkait",
+          "Tautkan foto, petugas, waktu kedatangan, dan bukti pengembalian. Catatan dapat dibuka dari detail PO."
+        ],
+        [
+          "Bedakan dengan retur",
+          "Barang belum pernah diakui memakai penolakan ini. Barang yang sudah diterima memakai retur supplier BO-19."
+        ]
+      ],
+      "entities": [
+        "supplier_arrival_rejections",
+        "attachments",
+        "purchase_orders"
+      ],
+      "uat": [
+        "U01",
+        "U36"
+      ],
+      "next": [
+        "BO-06",
+        "BO-19"
+      ]
+    },
+    {
+      "id": "BO-09",
+      "title": "Perencanaan kebutuhan",
+      "module": "Produksi",
+      "kind": "planner",
+      "subtitle": "Gabungkan kebutuhan tanpa menghitung permintaan dua kali.",
+      "fields": [
+        [
+          "Tanggal produksi",
+          "26 Okt 2026"
+        ],
+        [
+          "Jadwal",
+          "Pagi"
+        ],
+        [
+          "Dapur",
+          "Semua dapur"
+        ],
+        [
+          "Sumber kebutuhan",
+          "SO + toko + minimum stok"
+        ]
+      ],
+      "cols": [
+        "SKU / sumber",
+        "Kebutuhan bersih",
+        "Pemenuhan",
+        "Alokasi"
+      ],
+      "rows": [
+        [
+          "Roti A / SO + permintaan toko",
+          "180 pcs",
+          "Produksi / Dapur 01",
+          "SO 100 + toko 80"
+        ],
+        [
+          "Kue supplier A / SO",
+          "100 pcs",
+          "Pembelian",
+          "PO khusus SO"
+        ],
+        [
+          "Kemasan / SO + toko",
+          "180 pcs",
+          "Stok packing",
+          "Reservasi"
+        ]
+      ],
+      "actions": [
+        "Tinjau alokasi",
+        "Buat WO / PO terpilih"
+      ],
+      "banner": "Stok tersedia, reservasi, transit, dan kebutuhan terbuka diperhitungkan sebelum usulan dibuat.",
+      "notes": [
+        [
+          "Penggabungan WO",
+          "Gabung hanya SKU, dapur, versi BOM, tanggal, dan jadwal yang kompatibel. Detail alokasi tetap menunjukkan setiap demand asal."
+        ],
+        [
+          "Bukan posting otomatis",
+          "Usulan minimum stok menjadi draft untuk ditinjau. Permintaan toko yang sudah terlayani tidak dibuat dua kali."
+        ],
+        [
+          "Pesanan tambahan",
+          "Sesudah WO dibuat, tambahan tampil terpisah dengan status Menunggu approval. Hanya selisih disetujui yang masuk WO tambahan."
+        ]
+      ],
+      "entities": [
+        "demand_lines",
+        "wo_demand_allocations",
+        "production_orders",
+        "store_request_lines",
+        "replenishment_policies"
+      ],
+      "uat": [
+        "U13",
+        "U14",
+        "U17"
+      ],
+      "next": [
+        "BO-10",
+        "BO-06",
+        "BO-17"
+      ]
+    },
+    {
+      "id": "BO-10",
+      "title": "Perintah produksi",
+      "module": "Produksi",
+      "kind": "form",
+      "subtitle": "WO-1026-008 / Dapur 01 / Roti A",
+      "fields": [
+        [
+          "Target hasil",
+          "100 pcs"
+        ],
+        [
+          "Versi resep",
+          "BOM Roti A / v3"
+        ],
+        [
+          "Tanggal / jadwal",
+          "26 Okt 2026 / Pagi"
+        ],
+        [
+          "Status",
+          "Siap dimulai"
+        ]
+      ],
+      "cols": [
+        "Bahan snapshot",
+        "Kebutuhan",
+        "Sumber",
+        "Ketersediaan"
+      ],
+      "rows": [
+        [
+          "Telur",
+          "100 butir",
+          "RAW Dapur 01",
+          "Cukup"
+        ],
+        [
+          "Tepung",
+          "10 kg",
+          "RAW Dapur 01",
+          "Cukup"
+        ],
+        [
+          "Adonan WIP",
+          "5 kg",
+          "FIN dapur asal",
+          "Cukup"
+        ]
+      ],
+      "actions": [
+        "Lihat alokasi demand",
+        "Mulai produksi"
+      ],
+      "banner": "Mulai produksi mengeluarkan seluruh bahan otomatis sesuai snapshot BOM. Stok bahan tidak boleh minus.",
+      "notes": [
+        [
+          "Pemeriksaan sebelum mulai",
+          "Tampilkan bahan yang kurang dan tautan pemenuhan. Satu bahan tidak cukup membatalkan seluruh start; tidak ada pemakaian parsial diam-diam."
+        ],
+        [
+          "Snapshot dan tambahan",
+          "Resep master yang berubah tidak mengubah WO ini. Bahan di luar BOM harus melalui revisi/koreksi terotorisasi."
+        ],
+        [
+          "Setelah dimulai",
+          "Tombol berubah menjadi Catat penyelesaian. Pengeluaran bahan tertaut dan tidak dapat diedit sebagai saldo langsung."
+        ]
+      ],
+      "entities": [
+        "production_orders",
+        "production_materials",
+        "boms",
+        "bom_lines",
+        "wo_demand_allocations"
+      ],
+      "uat": [
+        "U17",
+        "U18"
+      ],
+      "next": [
+        "BO-11",
+        "BO-25"
+      ]
+    },
+    {
+      "id": "BO-11",
+      "title": "Penyelesaian produksi",
+      "module": "Produksi",
+      "kind": "production",
+      "subtitle": "Catat hasil aktual, sisa layak, produk gagal, dan turunan.",
+      "fields": [],
+      "cols": [],
+      "rows": [],
+      "actions": [
+        "Simpan draft hasil",
+        "Selesaikan produksi"
+      ],
+      "banner": "",
+      "notes": [
+        [
+          "Empat kelompok pencatatan",
+          "Hasil utama 96 pcs, gagal 4 pcs, sisa tepung layak 0,5 kg, dan putih telur 3 kg adalah data ilustrasi. Setiap kelompok punya tujuan dan satuan sendiri."
+        ],
+        [
+          "Biaya putih telur nol",
+          "Kolom biaya hasil turunan terkunci Rp0. Seluruh biaya telur tetap pada produk utama. Harga jual diatur di master harga, bukan di penyelesaian WO."
+        ],
+        [
+          "Validasi penyelesaian",
+          "Sisa layak tidak melebihi pengeluaran asal. Bila hasil utama nol, minta approval kerugian produksi. Hasil kurang menyisakan demand terbuka."
+        ]
+      ],
+      "entities": [
+        "production_outputs",
+        "production_material_returns",
+        "production_failures",
+        "production_materials"
+      ],
+      "uat": [
+        "U19",
+        "U20",
+        "U21"
+      ],
+      "next": [
+        "BO-13",
+        "BO-09"
+      ]
+    },
+    {
+      "id": "BO-12",
+      "title": "Packing dan pengiriman SO",
+      "module": "Penjualan SO",
+      "kind": "form",
+      "subtitle": "Pesanan paket diperiksa melalui komponen fisiknya.",
+      "fields": [
+        [
+          "Sales Order *",
+          "SO-1026-012"
+        ],
+        [
+          "Gudang sumber",
+          "Packing"
+        ],
+        [
+          "Rencana kirim",
+          "26 Okt 2026 / Pagi"
+        ],
+        [
+          "Tujuan",
+          "Alamat pelanggan"
+        ]
+      ],
+      "cols": [
+        "Komponen",
+        "Dibutuhkan",
+        "Tersedia / reserved",
+        "Kirim sekarang"
+      ],
+      "rows": [
+        [
+          "Produk dapur A",
+          "100 pcs",
+          "100 / 100",
+          "100"
+        ],
+        [
+          "Produk supplier A",
+          "100 pcs",
+          "100 / 100",
+          "100"
+        ],
+        [
+          "Kemasan snack box",
+          "100 pcs",
+          "100 / 100",
+          "100"
+        ]
+      ],
+      "actions": [
+        "Cetak daftar packing",
+        "Posting pengiriman"
+      ],
+      "banner": "Paket SO tetap satu harga. Pengurangan stok mengikuti komponen; tidak ada stok paket fiktif.",
+      "notes": [
+        [
+          "Pengiriman sebagian",
+          "Tampilkan jumlah tersisa per baris dan komponen. Tidak boleh melebihi kebutuhan tersisa atau stok yang sah."
+        ],
+        [
+          "Pemeriksaan packing",
+          "Komponen dibeli berasal dari PO khusus SO; komponen produksi berasal dari hasil yang sudah diterima packing."
+        ],
+        [
+          "Dokumen sesudah posting",
+          "Cetak surat jalan dan tautkan delivery, invoice, dan saldo pembayaran pada BO-04. Koreksi setelah delivery melalui retur."
+        ]
+      ],
+      "entities": [
+        "deliveries",
+        "delivery_lines",
+        "sales_order_components",
+        "stock_reservations"
+      ],
+      "uat": [
+        "U03",
+        "U15",
+        "U22"
+      ],
+      "next": [
+        "BO-04",
+        "BO-19"
+      ]
+    },
+    {
+      "id": "BO-13",
+      "title": "Kirim transfer antar lokasi",
+      "module": "Gudang & transit",
+      "kind": "form",
+      "subtitle": "TR-1026-044 / Packing ke Toko 01",
+      "fields": [
+        [
+          "Gudang asal *",
+          "Packing"
+        ],
+        [
+          "Gudang tujuan *",
+          "Toko 01"
+        ],
+        [
+          "Tanggal kirim *",
+          "26 Okt 2026"
+        ],
+        [
+          "Petugas / kendaraan",
+          "Petugas pengiriman"
+        ]
+      ],
+      "cols": [
+        "Barang",
+        "Tersedia",
+        "Jumlah kirim *",
+        "Alokasi"
+      ],
+      "rows": [
+        [
+          "Roti A",
+          "120 pcs",
+          "100 pcs",
+          "Permintaan toko"
+        ],
+        [
+          "Kemasan",
+          "200 pcs",
+          "100 pcs",
+          "Permintaan toko"
+        ]
+      ],
+      "actions": [
+        "Simpan draft",
+        "Kirim ke transit"
+      ],
+      "banner": "Saat dikirim: stok asal berkurang, stok transit bertambah. Stok toko belum bertambah.",
+      "notes": [
+        [
+          "Pilih rute yang sah",
+          "Premik melalui CDC; WIP bisa antardapur; produk final melalui packing. Rute retur/koreksi tetap tersedia sesuai dokumen asal."
+        ],
+        [
+          "Validasi stok",
+          "Stok tidak boleh minus dan reservasi milik pesanan lain tidak boleh dipakai. Validasi ulang saat posting."
+        ],
+        [
+          "Bukti pengiriman",
+          "Setelah dispatch, tampilkan surat jalan dan status Dalam perjalanan. Jumlah terkirim tidak diedit; koreksi lewat selisih tertaut."
+        ]
+      ],
+      "entities": [
+        "transfer_orders",
+        "transfer_lines",
+        "stock_movements"
+      ],
+      "uat": [
+        "U08"
+      ],
+      "next": [
+        "BO-14",
+        "BO-15"
+      ]
+    },
+    {
+      "id": "BO-14",
+      "title": "Terima transfer di toko",
+      "module": "Gudang & transit",
+      "kind": "receive",
+      "subtitle": "TR-1026-044 / Roti A / Packing ke Toko 01",
+      "fields": [
+        [
+          "Jumlah dikirim",
+          "100 pcs"
+        ],
+        [
+          "Sudah diterima",
+          "0 pcs"
+        ],
+        [
+          "Sisa di transit",
+          "100 pcs"
+        ],
+        [
+          "Diterima sekarang *",
+          "98 pcs"
+        ]
+      ],
+      "cols": [
+        "Barang",
+        "Terima aktual",
+        "Sisa transit",
+        "Tindak lanjut"
+      ],
+      "rows": [
+        [
+          "Roti A",
+          "98 pcs",
+          "2 pcs",
+          "Buka kasus selisih"
+        ]
+      ],
+      "actions": [
+        "Simpan draft",
+        "Terima 98 pcs"
+      ],
+      "banner": "98 pcs masuk stok toko. Dua pcs tetap di transit sampai penyelesaian dicatat.",
+      "notes": [
+        [
+          "Berjalan di backoffice",
+          "Petugas toko memakai backoffice untuk penerimaan. Aplikasi POS tidak mempunyai modul penerimaan gudang."
+        ],
+        [
+          "Penerimaan berikutnya",
+          "Transfer boleh diterima bertahap sampai sisa transit habis. Aturan receive sekali hanya berlaku untuk PO supplier."
+        ],
+        [
+          "Lebih dari sisa transit",
+          "Jumlah di atas sisa ditolak dengan pesan yang jelas. Kelebihan fisik dicatat sebagai kasus pemeriksaan, bukan stok otomatis."
+        ]
+      ],
+      "entities": [
+        "transfer_receipts",
+        "transfer_receipt_lines",
+        "transfer_discrepancies"
+      ],
+      "uat": [
+        "U08"
+      ],
+      "next": [
+        "BO-15",
+        "BO-16"
+      ]
+    },
+    {
+      "id": "BO-15",
+      "title": "Penyelesaian selisih transit",
+      "module": "Gudang & transit",
+      "kind": "resolution",
+      "subtitle": "SEL-1026-006 / TR-1026-044 / 2 pcs belum selesai",
+      "fields": [],
+      "cols": [],
+      "rows": [],
+      "actions": [
+        "Simpan tindak lanjut",
+        "Ajukan penyelesaian"
+      ],
+      "banner": "",
+      "notes": [
+        [
+          "Masih dalam perjalanan",
+          "Simpan penanggung jawab dan tanggal tindak lanjut. Status kasus tetap terbuka, dua pcs tetap transit."
+        ],
+        [
+          "Perubahan stok perlu bukti",
+          "Kembali packing membutuhkan konfirmasi tiba. Salah kirim membutuhkan bukti hitung dan koreksi tertaut. Rusak/hilang mengikuti approval kerugian."
+        ],
+        [
+          "Terima kemudian",
+          "Buka penerimaan tambahan BO-14. Penyelesaian sebagian diperbolehkan sampai jumlah seluruh keputusan sama dengan sisa kasus."
+        ]
+      ],
+      "entities": [
+        "transfer_discrepancies",
+        "transfer_resolutions",
+        "approval_requests",
+        "stock_movements"
+      ],
+      "uat": [
+        "U08",
+        "U09",
+        "U10"
+      ],
+      "next": [
+        "BO-14",
+        "BO-22"
+      ]
+    },
+    {
+      "id": "BO-16",
+      "title": "Stok dan kartu mutasi",
+      "module": "Gudang & transit",
+      "kind": "list",
+      "subtitle": "Saldo, reservasi, dan transit ditampilkan terpisah.",
+      "fields": [
+        [
+          "Gudang",
+          "Toko 01"
+        ],
+        [
+          "SKU",
+          "Roti A"
+        ],
+        [
+          "Rentang tanggal",
+          "25 - 26 Okt 2026"
+        ],
+        [
+          "Sumber stok",
+          "Milik perusahaan"
+        ]
+      ],
+      "cols": [
+        "Waktu / sumber",
+        "Masuk",
+        "Keluar",
+        "Saldo / status"
+      ],
+      "rows": [
+        [
+          "26 Okt / penerimaan TR-044",
+          "98 pcs",
+          "-",
+          "98 pcs"
+        ],
+        [
+          "26 Okt / POS terminal 01",
+          "-",
+          "20 pcs",
+          "78 pcs"
+        ],
+        [
+          "26 Okt / reservasi aktif",
+          "-",
+          "-",
+          "10 pcs reserved"
+        ]
+      ],
+      "actions": [
+        "Lihat valuasi",
+        "Ekspor kartu stok"
+      ],
+      "banner": "Contoh: stok layak 78 pcs, reservasi 10 pcs, tersedia 68 pcs. Transit adalah lokasi terpisah.",
+      "notes": [
+        [
+          "Bisa ditelusuri",
+          "Klik dokumen sumber untuk melihat baris transaksi dan jurnal. Filter biaya hanya terlihat bagi pengguna yang memiliki hak."
+        ],
+        [
+          "Anomali POS",
+          "Saldo negatif ditandai bersama HPP provisional dan penyesuaian tertaut. Gudang dan produksi tetap tidak boleh minus."
+        ],
+        [
+          "Titipan dan kedaluwarsa",
+          "Barang titipan belum terjual ada di kartu manual, bukan saldo owned. Tidak ada filter batch atau tanggal kedaluwarsa versi pertama."
+        ]
+      ],
+      "entities": [
+        "stock_balances",
+        "stock_movements",
+        "stock_reservations",
+        "negative_stock_cases",
+        "inventory_cost_adjustments"
+      ],
+      "uat": [
+        "U06",
+        "U31"
+      ],
+      "next": [
+        "BO-18",
+        "BO-28"
+      ]
+    },
+    {
+      "id": "BO-17",
+      "title": "Permintaan toko dan minimum stok",
+      "module": "Produksi",
+      "kind": "form",
+      "subtitle": "Usulan tambahan menuju target dihitung setelah kebutuhan terbuka.",
+      "fields": [
+        [
+          "Toko *",
+          "Toko 01"
+        ],
+        [
+          "Tanggal dibutuhkan *",
+          "26 Okt 2026"
+        ],
+        [
+          "Jadwal *",
+          "Pagi"
+        ],
+        [
+          "Sumber",
+          "Permintaan toko / usulan minimum"
+        ]
+      ],
+      "cols": [
+        "SKU",
+        "Posisi bersih",
+        "Minimum / target",
+        "Usulan baru"
+      ],
+      "rows": [
+        [
+          "Roti A",
+          "20 pcs",
+          "30 / 100 pcs",
+          "80 pcs"
+        ],
+        [
+          "Kue B",
+          "50 pcs",
+          "40 / 80 pcs",
+          "0 pcs"
+        ]
+      ],
+      "actions": [
+        "Simpan draft",
+        "Kirim permintaan"
+      ],
+      "banner": "Posisi bersih memasukkan stok tersedia, transit, dan pemenuhan terbuka yang relevan. Buka rincian perhitungan.",
+      "notes": [
+        [
+          "Toko tidak mengelola di POS",
+          "Permintaan dibuat dari backoffice. Pilihan toko tidak membatasi akses staf ke toko lain."
+        ],
+        [
+          "Cegah duplikasi",
+          "Jika 80 pcs sudah menjadi permintaan terbuka, penghitungan berikutnya tidak mengusulkan 80 pcs lagi."
+        ],
+        [
+          "Pengaturan kebijakan",
+          "Tab Kebijakan menyimpan minimum, target, kelipatan dan sumber. Nilai pada wireframe hanyalah contoh, bukan konfigurasi final."
+        ]
+      ],
+      "entities": [
+        "store_requests",
+        "store_request_lines",
+        "replenishment_policies",
+        "demand_lines"
+      ],
+      "uat": [
+        "U14"
+      ],
+      "next": [
+        "BO-09"
+      ]
+    },
+    {
+      "id": "BO-18",
+      "title": "Opname dan koreksi stok",
+      "module": "Gudang & transit",
+      "kind": "form",
+      "subtitle": "Hitungan fisik menjadi koreksi yang tertelusur.",
+      "fields": [
+        [
+          "Gudang *",
+          "Toko 01"
+        ],
+        [
+          "Waktu hitung *",
+          "26 Okt 2026 / 10:00 WIB"
+        ],
+        [
+          "Alasan *",
+          "Opname rutin"
+        ],
+        [
+          "Bukti",
+          "Lembar hitung fisik"
+        ]
+      ],
+      "cols": [
+        "SKU",
+        "Saldo saat hitung",
+        "Fisik",
+        "Selisih"
+      ],
+      "rows": [
+        [
+          "Roti A",
+          "78 pcs",
+          "76 pcs",
+          "-2 pcs"
+        ],
+        [
+          "Kemasan",
+          "100 pcs",
+          "100 pcs",
+          "0 pcs"
+        ]
+      ],
+      "actions": [
+        "Simpan hitungan",
+        "Ajukan koreksi"
+      ],
+      "banner": "Mutasi sesudah waktu hitung direkonsiliasi sebelum posting. Jangan menimpa saldo sekarang dengan jumlah fisik lama.",
+      "notes": [
+        [
+          "Koreksi bukan edit saldo",
+          "Simpan basis hitung, waktu, mutasi setelah hitung, dan koreksi final. Approval mengikuti nilai/kuantitas sesuai tabel."
+        ],
+        [
+          "Reservasi dan stok tersedia",
+          "Jika koreksi mengganggu reservasi, arahkan ke penyelesaian reservasi terlebih dahulu. Pengurangan tidak boleh membuat stok minus."
+        ],
+        [
+          "Dokumen posted",
+          "Dokumen yang sudah posted hanya dapat dikoreksi melalui dokumen pembalik/terkait, bukan dihapus."
+        ]
+      ],
+      "entities": [
+        "inventory_adjustments",
+        "inventory_adjustment_lines",
+        "stock_movements",
+        "approval_requests"
+      ],
+      "uat": [
+        "U32",
+        "U37"
+      ],
+      "next": [
+        "BO-22",
+        "BO-16"
+      ]
+    },
+    {
+      "id": "BO-19",
+      "title": "Retur barang",
+      "module": "Pembelian / penjualan",
+      "kind": "form",
+      "subtitle": "Pilih transaksi asal sebelum mencatat barang kembali.",
+      "fields": [
+        [
+          "Jenis retur *",
+          "Ke supplier"
+        ],
+        [
+          "Dokumen asal *",
+          "GR-1026-019"
+        ],
+        [
+          "Pihak terkait",
+          "Supplier B"
+        ],
+        [
+          "Gudang sumber *",
+          "CDC"
+        ],
+        [
+          "Alasan *",
+          "Kualitas tidak sesuai"
+        ],
+        [
+          "Penyelesaian nilai",
+          "Kredit supplier"
+        ]
+      ],
+      "cols": [
+        "Barang asal",
+        "Diterima / dijual",
+        "Pernah retur",
+        "Retur sekarang"
+      ],
+      "rows": [
+        [
+          "Tepung terigu",
+          "5 dus",
+          "0 dus",
+          "1 dus"
+        ]
+      ],
+      "actions": [
+        "Simpan draft",
+        "Ajukan / posting retur"
+      ],
+      "banner": "Jumlah kumulatif retur tidak boleh melebihi transaksi asal. Retur supplier tidak membuka PO untuk receive ulang.",
+      "notes": [
+        [
+          "Dua varian backoffice",
+          "Retur supplier merujuk goods receipt; retur pelanggan SO merujuk delivery/invoice. Retur POS dilakukan pada PS-06."
+        ],
+        [
+          "Kondisi barang",
+          "Retur pelanggan meminta kondisi layak/rusak dan disposisi. Hanya barang layak masuk stok jual; barang rusak mengikuti kerugian/klaim."
+        ],
+        [
+          "Nilai dan uang terpisah",
+          "Posting retur menautkan kredit. Refund atau kompensasi faktur dicatat terpisah di BO-20; batas hak pengembalian diperiksa."
+        ]
+      ],
+      "entities": [
+        "returns",
+        "return_lines",
+        "credit_notes",
+        "credit_applications",
+        "refunds"
+      ],
+      "uat": [
+        "U24",
+        "U25",
+        "U36"
+      ],
+      "next": [
+        "BO-20",
+        "BO-22"
+      ]
+    },
+    {
+      "id": "BO-20",
+      "title": "Pembayaran dan refund",
+      "module": "Keuangan",
+      "kind": "form",
+      "subtitle": "Alokasikan pembayaran hanya ke saldo yang masih terbuka.",
+      "fields": [
+        [
+          "Jenis transaksi *",
+          "Penerimaan DP pelanggan"
+        ],
+        [
+          "Pelanggan / supplier *",
+          "Pelanggan A"
+        ],
+        [
+          "Referensi *",
+          "SO-1026-012"
+        ],
+        [
+          "Metode / rekening *",
+          "Transfer / rekening perusahaan"
+        ],
+        [
+          "Jumlah *",
+          "Rp1.000.000"
+        ],
+        [
+          "Bukti / referensi *",
+          "Nomor referensi pembayaran"
+        ]
+      ],
+      "cols": [
+        "Dokumen tujuan",
+        "Saldo terbuka",
+        "Alokasi",
+        "Sesudah alokasi"
+      ],
+      "rows": [
+        [
+          "DP untuk SO-1026-012",
+          "Rp2.500.000",
+          "Rp1.000.000",
+          "Rp1.500.000 belum dibayar"
+        ]
+      ],
+      "actions": [
+        "Simpan draft",
+        "Posting pembayaran"
+      ],
+      "banner": "DP, pelunasan, invoice, dan refund SO seluruhnya di backoffice. Satu penerimaan tidak dihitung dua kali.",
+      "notes": [
+        [
+          "Varian transaksi",
+          "Penerimaan DP, pelunasan pelanggan, bayar supplier, dan realisasi refund menggunakan field sesuai jenis. Pilihan jenis tidak boleh mengubah dokumen asal diam-diam."
+        ],
+        [
+          "Batas alokasi",
+          "Nilai tidak boleh melampaui pembayaran dan saldo dokumen. Refund dibatasi hak pengembalian setelah kredit/kompensasi dan refund sebelumnya."
+        ],
+        [
+          "Bukti keberhasilan",
+          "Sesudah posting tampil nomor pembayaran, alokasi, jurnal, dan tautan dokumen. Kegagalan kirim tidak boleh menyebabkan posting ganda."
+        ]
+      ],
+      "entities": [
+        "payments",
+        "payment_allocations",
+        "customer_deposits",
+        "deposit_applications",
+        "refunds",
+        "refund_allocations"
+      ],
+      "uat": [
+        "U22",
+        "U23"
+      ],
+      "next": [
+        "BO-04",
+        "BO-21",
+        "BO-29"
+      ]
+    },
+    {
+      "id": "BO-21",
+      "title": "Tutup periode",
+      "module": "Keuangan",
+      "kind": "list",
+      "subtitle": "Pemeriksaan harus selesai atau mendapat pengecualian terotorisasi.",
+      "fields": [
+        [
+          "Periode",
+          "Oktober 2026"
+        ],
+        [
+          "Status",
+          "Terbuka"
+        ],
+        [
+          "Pemeriksaan terakhir",
+          "Belum dijalankan"
+        ],
+        [
+          "Periode sesudahnya",
+          "Belum ditutup"
+        ]
+      ],
+      "cols": [
+        "Pemeriksaan",
+        "Hasil contoh",
+        "Status",
+        "Tindakan"
+      ],
+      "rows": [
+        [
+          "Jurnal seimbang",
+          "Debit = kredit",
+          "Lulus",
+          "Lihat jurnal"
+        ],
+        [
+          "Terminal belum sinkron",
+          "1 terminal",
+          "Perlu tindakan",
+          "Buka sinkronisasi"
+        ],
+        [
+          "Selisih transit",
+          "2 pcs",
+          "Perlu tindakan",
+          "Buka kasus"
+        ],
+        [
+          "Stok minus / HPP provisional",
+          "1 SKU",
+          "Perlu tindakan",
+          "Tinjau penyesuaian"
+        ]
+      ],
+      "actions": [
+        "Jalankan pemeriksaan",
+        "Ajukan tutup periode"
+      ],
+      "banner": "Buka kembali memerlukan approval. Tidak boleh membuka periode lama ketika periode sesudahnya sudah ditutup.",
+      "notes": [
+        [
+          "Checklist lengkap",
+          "Termasuk draft belum posted, penerimaan belum ditagih, saldo DP dan pengecualian lain. Tampilkan pemilik tindak lanjut dan bukti persetujuan."
+        ],
+        [
+          "Event offline terlambat",
+          "Tanggal transaksi asli dipertahankan. Posting pada periode terbuka mengikuti otorisasi koreksi, bukan mengubah jurnal lama."
+        ],
+        [
+          "Setelah ditutup",
+          "Layar menjadi baca saja dan menunjukkan snapshot saldo. Tombol Buka kembali muncul hanya jika hak dan prasyarat terpenuhi."
+        ]
+      ],
+      "entities": [
+        "fiscal_periods",
+        "account_period_balances",
+        "journal_entries",
+        "approval_requests"
+      ],
+      "uat": [
+        "U34",
+        "U35",
+        "U39"
+      ],
+      "next": [
+        "BO-24",
+        "BO-22",
+        "BO-29"
+      ]
+    },
+    {
+      "id": "BO-22",
+      "title": "Pusat persetujuan",
+      "module": "Persetujuan",
+      "kind": "approval",
+      "subtitle": "Tinjau dokumen, dampak, dan revisi yang diajukan.",
+      "fields": [],
+      "cols": [],
+      "rows": [],
+      "actions": [
+        "Tolak dengan alasan",
+        "Setujui revisi ini"
+      ],
+      "banner": "",
+      "notes": [
+        [
+          "Peran menentukan tindakan",
+          "Akses staf lintas toko/dapur tetap tersedia. Hak menyetujui ditentukan tabel tindakan, nilai, langkah, dan penyetuju."
+        ],
+        [
+          "Revisi terikat approval",
+          "Perubahan material membatalkan persetujuan sebelumnya. Jika orang lain mengubah dokumen saat dibuka, minta muat ulang dan tinjau ulang."
+        ],
+        [
+          "Audit keputusan",
+          "Simpan identitas penyetuju, waktu, alasan, dan metode otorisasi. Rancangan awal melarang persetujuan sendiri kecuali aturan eksplisit."
+        ]
+      ],
+      "entities": [
+        "approval_rules",
+        "approval_steps",
+        "approval_requests",
+        "approval_actions",
+        "audit_logs"
+      ],
+      "uat": [
+        "U13",
+        "U32",
+        "U33"
+      ],
+      "next": [
+        "BO-26",
+        "BO-07",
+        "BO-15"
+      ]
+    },
+    {
+      "id": "BO-23",
+      "title": "Jadwal dan batas pesanan",
+      "module": "Pengaturan",
+      "kind": "form",
+      "subtitle": "Pagi, siang, dan sore memakai versi konfigurasi.",
+      "fields": [
+        [
+          "Zona waktu",
+          "Asia/Jakarta / WIB"
+        ],
+        [
+          "Aturan hari",
+          "H-1 - tetap"
+        ],
+        [
+          "Tanggal mulai berlaku *",
+          "Pilih tanggal"
+        ],
+        [
+          "Status versi",
+          "Draft konfigurasi"
+        ]
+      ],
+      "cols": [
+        "Jadwal",
+        "Jam batas H-1 *",
+        "Jam pengiriman *",
+        "Status"
+      ],
+      "rows": [
+        [
+          "Pagi",
+          "Belum diisi",
+          "Belum diisi",
+          "Tidak dapat dipakai"
+        ],
+        [
+          "Siang",
+          "Belum diisi",
+          "Belum diisi",
+          "Tidak dapat dipakai"
+        ],
+        [
+          "Sore",
+          "Belum diisi",
+          "Belum diisi",
+          "Tidak dapat dipakai"
+        ]
+      ],
+      "actions": [
+        "Simpan draft",
+        "Aktifkan versi"
+      ],
+      "banner": "Nilai jam belum ditentukan pengguna. Aktivasi hanya setelah semua jam wajib valid.",
+      "notes": [
+        [
+          "Tidak hardcode",
+          "Jam cutoff dan kirim bisa diubah melalui tabel. Hari tetap H-1 sesuai keputusan bisnis."
+        ],
+        [
+          "Snapshot pesanan",
+          "SO terkonfirmasi mempertahankan jadwal lama. Pesanan baru menggunakan versi yang berlaku."
+        ],
+        [
+          "Pesan validasi",
+          "Jadwal Pagi belum lengkap. Isi jam batas dan jam kirim sebelum aktivasi. Jangan mengganti isian kosong dengan jam perkiraan."
+        ]
+      ],
+      "entities": [
+        "production_schedules",
+        "schedule_versions",
+        "sales_orders"
+      ],
+      "uat": [
+        "U11",
+        "U12"
+      ],
+      "next": [
+        "BO-03"
+      ]
+    },
+    {
+      "id": "BO-24",
+      "title": "Monitor sinkronisasi POS",
+      "module": "Sinkronisasi",
+      "kind": "list",
+      "subtitle": "Pantau setiap terminal; transaksi lokal tidak boleh hilang.",
+      "fields": [
+        [
+          "Toko",
+          "Semua toko"
+        ],
+        [
+          "Status",
+          "Semua"
+        ],
+        [
+          "Tanggal bisnis",
+          "26 Okt 2026"
+        ],
+        [
+          "Pencarian",
+          "Terminal / nomor struk"
+        ]
+      ],
+      "cols": [
+        "Terminal / lokasi",
+        "Sinkron terakhir",
+        "Antrean / konflik",
+        "Status"
+      ],
+      "rows": [
+        [
+          "T01-K01 / Toko 01",
+          "10:05 WIB",
+          "0 / 0",
+          "Online"
+        ],
+        [
+          "T01-K02 / Toko 01",
+          "09:40 WIB",
+          "12 / 0",
+          "Offline - estimasi"
+        ],
+        [
+          "T02-K01 / Toko 02",
+          "10:04 WIB",
+          "2 / 1",
+          "Perlu tinjauan"
+        ]
+      ],
+      "actions": [
+        "Lihat rekonsiliasi",
+        "Buka konflik"
+      ],
+      "banner": "Antrean terminal offline adalah status terakhir yang diterima cloud. Jumlah lokal terbaru baru diketahui setelah tersambung.",
+      "notes": [
+        [
+          "Dua terminal independen",
+          "Setiap terminal memiliki identitas dan antrean sendiri. Cloud menggabungkan kejadian; jangan menimpa saldo toko dengan saldo lokal."
+        ],
+        [
+          "Tinjau konflik",
+          "Drawer menampilkan struk asli, alasan, versi kebijakan, dan tindakan terotorisasi. Tidak ada tombol Hapus transaksi agar antrean bersih."
+        ],
+        [
+          "Rekonsiliasi harian",
+          "Bandingkan jumlah struk, nilai tender, event diterima, dan dokumen posted per terminal. Tandai periode tertutup atau payload berbeda."
+        ]
+      ],
+      "entities": [
+        "pos_terminals",
+        "sync_inbox",
+        "sync_checkpoints",
+        "sync_conflicts"
+      ],
+      "uat": [
+        "U26",
+        "U27",
+        "U28",
+        "U29",
+        "U35",
+        "U40"
+      ],
+      "next": [
+        "BO-21",
+        "BO-29"
+      ]
+    },
+    {
+      "id": "BO-25",
+      "title": "Produk dan resep",
+      "module": "Master",
+      "kind": "master",
+      "subtitle": "SKU, satuan, rute dapur, dan BOM berversi.",
+      "fields": [],
+      "cols": [],
+      "rows": [],
+      "actions": [
+        "Simpan draft versi",
+        "Aktifkan versi BOM"
+      ],
+      "banner": "",
+      "notes": [
+        [
+          "Master produk",
+          "Field utama: SKU, nama, kategori, satuan dasar, barcode per satuan, dapat dijual/dibeli/diproduksi, jenis premik/WIP/paket dan aktif."
+        ],
+        [
+          "Konversi dan BOM",
+          "Faktor satuan per SKU; resep menyimpan hasil standar, gudang bahan, dapur dan hasil turunan. Versi baru tidak mengubah transaksi lama."
+        ],
+        [
+          "Putih telur dan paket",
+          "Putih telur adalah SKU tersendiri. Penerimaan sebagai turunan berbiaya nol; harga jual terpisah. Paket SO bersifat phantom dan tidak boleh bersarang."
+        ]
+      ],
+      "entities": [
+        "products",
+        "product_uoms",
+        "product_kitchen_routes",
+        "boms",
+        "bom_lines",
+        "bom_byproducts"
+      ],
+      "uat": [
+        "U15",
+        "U17",
+        "U20"
+      ],
+      "next": [
+        "BO-09",
+        "BO-10",
+        "BO-30"
+      ]
+    },
+    {
+      "id": "BO-26",
+      "title": "Pengguna dan matriks akses",
+      "module": "Pengaturan",
+      "kind": "form",
+      "subtitle": "Hak tindakan mengikuti peran; akses tidak dibatasi toko atau dapur.",
+      "fields": [
+        [
+          "Pengguna",
+          "Staf operasional"
+        ],
+        [
+          "Peran *",
+          "Pilih satu / beberapa peran"
+        ],
+        [
+          "Status akun",
+          "Aktif"
+        ],
+        [
+          "Kebijakan offline",
+          "Sesuai peran dan masa berlaku"
+        ]
+      ],
+      "cols": [
+        "Tindakan",
+        "Melihat",
+        "Mengerjakan",
+        "Menyetujui"
+      ],
+      "rows": [
+        [
+          "Pembelian / penerimaan",
+          "Sesuai peran",
+          "Sesuai peran",
+          "Tabel approval"
+        ],
+        [
+          "Koreksi stok / selisih",
+          "Sesuai peran",
+          "Sesuai peran",
+          "Tabel approval"
+        ],
+        [
+          "Diskon / batal / refund POS",
+          "Sesuai peran",
+          "Sesuai peran",
+          "Online / offline"
+        ],
+        [
+          "Buka periode",
+          "Sesuai peran",
+          "Sesuai peran",
+          "Tabel approval"
+        ]
+      ],
+      "actions": [
+        "Lihat audit perubahan",
+        "Simpan konfigurasi"
+      ],
+      "banner": "Tidak ada pembatasan staf berdasarkan toko/dapur. Terminal tetap memiliki gudang penjualan yang ditetapkan.",
+      "notes": [
+        [
+          "Matriks persetujuan",
+          "Tab Aturan berisi tindakan, rentang nilai/kuantitas, urutan langkah, peran/pengguna, masa berlaku dan izin offline."
+        ],
+        [
+          "PIN supervisor",
+          "Pengaturan PIN dilakukan aman dan tidak pernah ditampilkan kembali. POS menerima kebijakan berversi, bukan PIN polos."
+        ],
+        [
+          "Perubahan sensitif",
+          "Hak melihat biaya, posting, diskon, dan buka periode dipisahkan. Audit menyimpan nilai sebelum/sesudah dan pelaku."
+        ]
+      ],
+      "entities": [
+        "users",
+        "roles",
+        "user_roles",
+        "approval_rules",
+        "approval_steps",
+        "pos_terminals"
+      ],
+      "uat": [
+        "U32",
+        "U33"
+      ],
+      "next": [
+        "BO-22",
+        "PS-05"
+      ]
+    },
+    {
+      "id": "BO-27",
+      "title": "Titipan dan settlement supplier",
+      "module": "Pembelian",
+      "kind": "form",
+      "subtitle": "Kewajiban berdasarkan penjualan bersih, bukan stok fisik manual.",
+      "fields": [
+        [
+          "Supplier *",
+          "Supplier titipan A"
+        ],
+        [
+          "Periode *",
+          "1 - 25 Okt 2026"
+        ],
+        [
+          "Toko",
+          "Toko 01"
+        ],
+        [
+          "Status settlement",
+          "Draft"
+        ]
+      ],
+      "cols": [
+        "Barang titipan",
+        "Terjual",
+        "Retur",
+        "Bersih / kewajiban"
+      ],
+      "rows": [
+        [
+          "Kue titipan A",
+          "20 pcs",
+          "2 pcs",
+          "18 pcs / Rp90.000"
+        ]
+      ],
+      "actions": [
+        "Lihat rincian struk",
+        "Posting settlement"
+      ],
+      "banner": "Contoh harga supplier Rp5.000/pcs. Fisik belum terjual tetap di kartu manual, bukan penerimaan sistem.",
+      "notes": [
+        [
+          "Perjanjian supplier",
+          "Tab Perjanjian memuat SKU, toko, harga supplier, masa berlaku dan aturan settlement. Harga disimpan sebagai snapshot ketika POS menjual."
+        ],
+        [
+          "Pemisahan sumber barang",
+          "Barang supplier dari SO batal yang sudah diterima adalah owned. Jangan masukkan lagi ke settlement titipan."
+        ],
+        [
+          "Retur setelah dibayar",
+          "Buat kredit/klaim supplier tertaut. Nilai settlement tidak ditimpa dan penjualan yang sama tidak dibayar dua kali."
+        ]
+      ],
+      "entities": [
+        "consignment_agreements",
+        "consignment_sales",
+        "consignment_settlements",
+        "consignment_settlement_lines"
+      ],
+      "uat": [
+        "U05",
+        "U06",
+        "U07",
+        "U25"
+      ],
+      "next": [
+        "BO-20",
+        "PS-03"
+      ]
+    },
+    {
+      "id": "BO-28",
+      "title": "Laporan dan penelusuran",
+      "module": "Laporan",
+      "kind": "reports",
+      "subtitle": "Setiap angka terhubung ke transaksi sumber.",
+      "fields": [],
+      "cols": [],
+      "rows": [],
+      "actions": [
+        "Ekspor XLSX / PDF",
+        "Buka rincian"
+      ],
+      "banner": "",
+      "notes": [
+        [
+          "Kelompok laporan",
+          "Penjualan; persediaan/transit/valuasi; produksi; pembelian; keuangan; kontrol dan audit. Gunakan tanggal bisnis dan filter kanal/lokasi."
+        ],
+        [
+          "Angka tidak berganda",
+          "Omzet paket tidak ditambah omzet komponennya. Kuantitas gram, pcs, dan ml tidak dijumlahkan menjadi satu total."
+        ],
+        [
+          "Hak dan snapshot",
+          "Biaya hanya bagi peran berhak. Gunakan harga/pajak transaksi asal. Label waktu pembaruan membantu membaca data POS yang belum sinkron."
+        ]
+      ],
+      "entities": [
+        "documents",
+        "journal_entries",
+        "journal_lines",
+        "stock_movements",
+        "pos_sales",
+        "sales_invoices"
+      ],
+      "uat": [
+        "U15",
+        "U31",
+        "U39"
+      ],
+      "next": [
+        "BO-16",
+        "BO-24",
+        "BO-29"
+      ]
+    },
+    {
+      "id": "BO-29",
+      "title": "Faktur, beban, dan jurnal",
+      "module": "Keuangan",
+      "kind": "finance",
+      "subtitle": "Dokumen posted ditelusuri dan dikoreksi melalui reversal.",
+      "fields": [],
+      "cols": [],
+      "rows": [],
+      "actions": [
+        "Lihat dokumen sumber",
+        "Posting dokumen"
+      ],
+      "banner": "",
+      "notes": [
+        [
+          "Varian faktur",
+          "Faktur supplier merujuk penerimaan bersih; kumulatif tagihan tidak boleh melebihi penerimaan. Invoice pelanggan merujuk penjualan/pengiriman yang sah."
+        ],
+        [
+          "Beban periode",
+          "Tab Beban mencatat jasa, tenaga kerja, dan overhead sebagai beban periode. Tidak dialokasikan sebagai biaya produk dalam versi pertama."
+        ],
+        [
+          "Jurnal dan koreksi",
+          "Debit wajib sama dengan kredit. Setelah posted, aksi edit/hapus diganti Buat koreksi. COA, pajak dan pemetaan akun tetap konfigurasi perusahaan."
+        ]
+      ],
+      "entities": [
+        "purchase_invoices",
+        "purchase_invoice_lines",
+        "sales_invoices",
+        "expenses",
+        "journal_entries",
+        "journal_lines",
+        "chart_of_accounts",
+        "taxes"
+      ],
+      "uat": [
+        "U22",
+        "U36",
+        "U39"
+      ],
+      "next": [
+        "BO-20",
+        "BO-21",
+        "BO-28"
+      ]
+    },
+    {
+      "id": "BO-30",
+      "title": "Harga, promosi, dan master pendukung",
+      "module": "Master",
+      "kind": "form",
+      "subtitle": "Pengaturan harga per kanal dan periode berlaku.",
+      "fields": [
+        [
+          "Daftar harga",
+          "Semua daftar / ringkasan"
+        ],
+        [
+          "Masa berlaku",
+          "Pilih tanggal mulai / akhir"
+        ],
+        [
+          "Kanal",
+          "Semua kanal"
+        ],
+        [
+          "Status",
+          "Draft"
+        ]
+      ],
+      "cols": [
+        "SKU",
+        "Satuan",
+        "Harga jual contoh",
+        "Aturan kanal"
+      ],
+      "rows": [
+        [
+          "Roti A",
+          "pcs",
+          "Rp8.000",
+          "POS - per item"
+        ],
+        [
+          "Kemasan snack box",
+          "pcs",
+          "Rp2.000",
+          "POS - per item"
+        ],
+        [
+          "Snack box A",
+          "paket",
+          "Rp25.000",
+          "SO - satu harga"
+        ],
+        [
+          "Putih telur",
+          "kg",
+          "Diatur terpisah",
+          "Dapat dijual / bahan"
+        ]
+      ],
+      "actions": [
+        "Buat daftar harga",
+        "Buka daftar terpilih"
+      ],
+      "banner": "Harga di layar hanya contoh. Perubahan harga tidak menghitung ulang transaksi yang sudah diposting.",
+      "notes": [
+        [
+          "Promosi dan loyalty",
+          "Tab Promosi menyimpan diskon, voucher, dan loyalty. POS offline boleh memakai promosi lokal; penukaran saldo bersama/voucher berkuota perlu online."
+        ],
+        [
+          "Master lain",
+          "Pola daftar-detail berlaku untuk supplier, pelanggan, lokasi, UOM, rekening, pajak, metode pembayaran, dan terminal. Nonaktifkan data yang telah digunakan."
+        ],
+        [
+          "Harga per kanal",
+          "Buka satu daftar untuk mengedit kanal, periode, dan harga. Aktivasi membuat versi baru untuk disinkronkan; tampilkan status terminal yang belum menerima versi itu."
+        ]
+      ],
+      "entities": [
+        "price_lists",
+        "price_list_items",
+        "promotion_rules",
+        "vouchers",
+        "loyalty_accounts",
+        "suppliers",
+        "customers",
+        "payment_methods"
+      ],
+      "uat": [
+        "U12",
+        "U16"
+      ],
+      "next": [
+        "BO-25",
+        "BO-24",
+        "PS-02"
+      ]
+    },
+    {
+      "id": "PS-01",
+      "title": "Masuk dan buka shift",
+      "module": "POS lokal",
+      "kind": "shiftopen",
+      "subtitle": "Toko 01 / Terminal K01 / aplikasi lokal",
+      "fields": [],
+      "cols": [],
+      "rows": [],
+      "actions": [
+        "Periksa printer",
+        "Buka shift"
+      ],
+      "banner": "",
+      "notes": [
+        [
+          "Identitas terminal",
+          "Toko dan gudang berasal dari registrasi terminal, bukan dipilih bebas setiap penjualan. Kasir masuk dengan akun miliknya."
+        ],
+        [
+          "Satu shift aktif",
+          "Kas awal wajib. Jika ada shift aktif, arahkan Lanjutkan shift alih-alih membuat shift kedua."
+        ],
+        [
+          "Saat offline",
+          "Akun dan kebijakan lokal harus masih valid. Jika login offline tidak dapat diverifikasi, tampilkan alasan dan langkah pemulihan tanpa menghapus data."
+        ]
+      ],
+      "entities": [
+        "pos_terminals",
+        "pos_shifts",
+        "users"
+      ],
+      "uat": [
+        "U29",
+        "U40"
+      ],
+      "next": [
+        "PS-02",
+        "PS-08"
+      ]
+    },
+    {
+      "id": "PS-02",
+      "title": "Penjualan kasir",
+      "module": "POS lokal",
+      "kind": "pos",
+      "subtitle": "Scan, pilih barang, lalu terima pembayaran.",
+      "fields": [],
+      "cols": [],
+      "rows": [],
+      "actions": [
+        "Tahan keranjang",
+        "Bayar Rp30.000"
+      ],
+      "banner": "",
+      "notes": [
+        [
+          "Produk dan kemasan terpisah",
+          "Contoh keranjang: roti 2 x Rp8.000, risol 2 x Rp6.000, kemasan Rp2.000. Total Rp30.000 sebelum diskon/pajak terkonfigurasi."
+        ],
+        [
+          "Status selalu terlihat",
+          "Tampilkan koneksi, sinkron terakhir, antrean, terminal, dan shift. Stok lokal diberi label perkiraan saat offline; penjualan minus perlu alasan."
+        ],
+        [
+          "Batas POS",
+          "Tidak ada menu SO, DP SO, pembelian, produksi, atau penerimaan toko. Pilihan sumber muncul bila SKU punya owned dan titipan."
+        ]
+      ],
+      "entities": [
+        "pos_sales",
+        "pos_sale_lines",
+        "pos_shifts",
+        "stock_balances"
+      ],
+      "uat": [
+        "U05",
+        "U16",
+        "U26",
+        "U31"
+      ],
+      "next": [
+        "PS-03",
+        "PS-04",
+        "PS-05"
+      ]
+    },
+    {
+      "id": "PS-03",
+      "title": "Pilih sumber barang",
+      "module": "POS lokal",
+      "kind": "source",
+      "subtitle": "SKU yang sama dapat berasal dari stok owned atau titipan.",
+      "fields": [],
+      "cols": [],
+      "rows": [],
+      "actions": [
+        "Kembali ke keranjang",
+        "Gunakan sumber terpilih"
+      ],
+      "banner": "",
+      "notes": [
+        [
+          "Pilihan eksplisit",
+          "Kasir memilih berdasarkan asal barang fisik. Jangan otomatis mengubah owned menjadi titipan ketika stok terlihat habis."
+        ],
+        [
+          "Owned dari SO batal",
+          "Barang ini sudah diakui saat penerimaan PO. Penjualan hanya mengurangi stok dan mencatat penjualan; tidak membentuk utang supplier baru."
+        ],
+        [
+          "Titipan",
+          "Sistem mencatat masuk dan terjual bersamaan. Jika perjanjian/harga supplier tidak tersedia lokal, pilihan titipan dinonaktifkan dengan alasan."
+        ]
+      ],
+      "entities": [
+        "pos_sale_lines",
+        "consignment_agreements",
+        "consignment_sales"
+      ],
+      "uat": [
+        "U05",
+        "U06",
+        "U07"
+      ],
+      "next": [
+        "PS-02",
+        "BO-27"
+      ]
+    },
+    {
+      "id": "PS-04",
+      "title": "Pembayaran dan struk",
+      "module": "POS lokal",
+      "kind": "payment",
+      "subtitle": "Selesaikan penjualan lokal sebelum mencetak struk.",
+      "fields": [],
+      "cols": [],
+      "rows": [],
+      "actions": [
+        "Kembali ke keranjang",
+        "Selesaikan pembayaran"
+      ],
+      "banner": "",
+      "notes": [
+        [
+          "Split tender",
+          "Satu penjualan boleh beberapa metode. Jumlah pembayaran harus memenuhi total; kembalian hanya dari bagian tunai."
+        ],
+        [
+          "Pembayaran elektronik",
+          "Mode offline tidak berarti QRIS/kartu otomatis terverifikasi. Minta bukti/status valid atau tawarkan tunai; jangan menampilkan sukses palsu."
+        ],
+        [
+          "Sesudah commit lokal",
+          "Tampilkan nomor struk unik terminal dan status Tersimpan lokal. Cetak gagal memberi Cetak ulang - Salinan; jangan membuat penjualan kedua."
+        ]
+      ],
+      "entities": [
+        "pos_sales",
+        "pos_tenders",
+        "payment_methods",
+        "sync_outbox"
+      ],
+      "uat": [
+        "U26",
+        "U27",
+        "U29"
+      ],
+      "next": [
+        "PS-02",
+        "PS-08"
+      ]
+    },
+    {
+      "id": "PS-05",
+      "title": "Persetujuan supervisor offline",
+      "module": "POS lokal",
+      "kind": "supervisor",
+      "subtitle": "Diskon khusus, pembatalan, dan refund mengikuti aturan lokal.",
+      "fields": [],
+      "cols": [],
+      "rows": [],
+      "actions": [
+        "Batalkan permintaan",
+        "Setujui tindakan"
+      ],
+      "banner": "",
+      "notes": [
+        [
+          "Terikat transaksi",
+          "Tampilkan tindakan, nilai, alasan, kasir, nomor struk/draft, dan versi kebijakan. PIN tidak berlaku sebagai pembukaan semua akses."
+        ],
+        [
+          "Otorisasi lokal",
+          "Supervisor yang hadir menggunakan akun/PIN tersinkron. Catat identitas, terminal, waktu dan kebijakan pada keputusan."
+        ],
+        [
+          "Jika tidak valid",
+          "Kredensial kedaluwarsa, hak tidak cukup, atau terlalu banyak percobaan menunda tindakan khusus. Penjualan biasa dapat tetap dilanjutkan."
+        ]
+      ],
+      "entities": [
+        "approval_requests",
+        "approval_actions",
+        "approval_rules",
+        "sync_outbox"
+      ],
+      "uat": [
+        "U32",
+        "U33"
+      ],
+      "next": [
+        "PS-02",
+        "PS-06"
+      ]
+    },
+    {
+      "id": "PS-06",
+      "title": "Retur dan refund POS",
+      "module": "POS lokal",
+      "kind": "posreturn",
+      "subtitle": "Cari struk asal, pilih barang dan kondisi, lalu otorisasi.",
+      "fields": [],
+      "cols": [],
+      "rows": [],
+      "actions": [
+        "Simpan draft retur",
+        "Minta persetujuan"
+      ],
+      "banner": "",
+      "notes": [
+        [
+          "Batas offline",
+          "Saat offline hanya transaksi lokal yang tersedia dapat diretur. Struk terminal lain menunggu validasi cloud agar tidak refund ganda."
+        ],
+        [
+          "Jumlah dan kondisi",
+          "Retur kumulatif dibatasi sisa transaksi. Barang layak owned masuk stok toko; rusak tidak menjadi stok layak. Titipan mengikuti pembalikan sumber asal."
+        ],
+        [
+          "Refund sesuai hak",
+          "Harga, potongan, pajak dan biaya mengikuti transaksi asal. Refund tidak boleh melebihi hak tersisa; bukti dana dicatat terpisah dari barang."
+        ]
+      ],
+      "entities": [
+        "returns",
+        "return_lines",
+        "credit_notes",
+        "refunds",
+        "pos_sales",
+        "pos_sale_lines"
+      ],
+      "uat": [
+        "U24",
+        "U25",
+        "U30"
+      ],
+      "next": [
+        "PS-05",
+        "PS-08"
+      ]
+    },
+    {
+      "id": "PS-07",
+      "title": "Tutup shift dan hitung kas",
+      "module": "POS lokal",
+      "kind": "shiftclose",
+      "subtitle": "Pisahkan uang fisik dari pembayaran non-tunai.",
+      "fields": [],
+      "cols": [],
+      "rows": [],
+      "actions": [
+        "Kembali ke shift",
+        "Tutup shift"
+      ],
+      "banner": "",
+      "notes": [
+        [
+          "Perhitungan kas",
+          "Kas diharapkan = kas awal + penjualan tunai - refund tunai + kas masuk - kas keluar - setoran. Non-tunai dilaporkan terpisah."
+        ],
+        [
+          "Selisih wajib dijelaskan",
+          "Jika kas aktual berbeda, alasan dan approval mengikuti konfigurasi. Jangan menyesuaikan transaksi penjualan agar kas tampak cocok."
+        ],
+        [
+          "Tutup ketika offline",
+          "Ringkasan shift disimpan lokal dan masuk antrean. Status belum diterima cloud tetap ditampilkan; shift tidak boleh dihapus untuk mengatasi kegagalan sync."
+        ]
+      ],
+      "entities": [
+        "pos_shifts",
+        "pos_cash_entries",
+        "pos_tenders",
+        "sync_outbox"
+      ],
+      "uat": [
+        "U26",
+        "U29"
+      ],
+      "next": [
+        "PS-01",
+        "PS-08"
+      ]
+    },
+    {
+      "id": "PS-08",
+      "title": "Status lokal dan antrean sync",
+      "module": "POS lokal",
+      "kind": "sync",
+      "subtitle": "Informasi kasir ketika koneksi terputus atau pulih.",
+      "fields": [],
+      "cols": [],
+      "rows": [],
+      "actions": [
+        "Periksa koneksi",
+        "Coba sinkron lagi"
+      ],
+      "banner": "",
+      "notes": [
+        [
+          "Makna status",
+          "Tersimpan lokal berarti aman di database lokal; Diterima cloud hanya setelah ACK. Keduanya tidak boleh diberi label yang sama."
+        ],
+        [
+          "Retry tanpa duplikasi",
+          "Kirim ulang identitas event yang sama. Status Menunggu, Mengirim, Diterima, Coba ulang, dan Perlu tinjauan bisa dibuka per struk."
+        ],
+        [
+          "Dua kasir offline",
+          "Saldo antarterminal bisa berbeda. Cloud merekonsiliasi kejadian setelah tersambung; layar tidak menawarkan unggah saldo untuk menimpa toko."
+        ]
+      ],
+      "entities": [
+        "sync_outbox",
+        "sync_checkpoints",
+        "sync_conflicts",
+        "pos_terminals"
+      ],
+      "uat": [
+        "U26",
+        "U27",
+        "U28",
+        "U29",
+        "U40"
+      ],
+      "next": [
+        "PS-02",
+        "BO-24"
+      ]
+    }
+  ],
+  "flows": [
+    {
+      "id": "F-01",
+      "title": "Pesanan pelanggan sampai terpenuhi",
+      "sub": "Backoffice mengelola SO, kebutuhan, pengiriman, DP dan pelunasan.",
+      "nodes": [
+        [
+          "a",
+          "Buat SO + paket",
+          "BO-03",
+          0,
+          0
+        ],
+        [
+          "b",
+          "Validasi H-1 / snapshot",
+          "Jadwal lengkap",
+          1,
+          0
+        ],
+        [
+          "c",
+          "Konfirmasi + demand",
+          "BO-04 / BO-09",
+          2,
+          0
+        ],
+        [
+          "d",
+          "Produksi",
+          "BO-10 / BO-11",
+          0,
+          1
+        ],
+        [
+          "e",
+          "PO khusus SO",
+          "BO-06 / BO-07",
+          1,
+          1
+        ],
+        [
+          "f",
+          "Stok tersedia",
+          "Reservasi komponen",
+          2,
+          1
+        ],
+        [
+          "g",
+          "Packing + delivery",
+          "BO-12",
+          1,
+          2
+        ],
+        [
+          "h",
+          "Invoice + alokasi DP",
+          "BO-29 / BO-20",
+          2,
+          2
+        ]
+      ],
+      "edges": [
+        [
+          "a",
+          "b",
+          ""
+        ],
+        [
+          "b",
+          "c",
+          "Lolos"
+        ],
+        [
+          "c",
+          "d",
+          "Buat sendiri"
+        ],
+        [
+          "c",
+          "e",
+          "Supplier"
+        ],
+        [
+          "c",
+          "f",
+          "Dari stok"
+        ],
+        [
+          "d",
+          "g",
+          "Transfer FIN"
+        ],
+        [
+          "e",
+          "g",
+          "Terima packing"
+        ],
+        [
+          "f",
+          "g",
+          ""
+        ],
+        [
+          "g",
+          "h",
+          ""
+        ]
+      ],
+      "notes": [
+        "Setelah WO dibuat, tambahan masuk approval produksi; hanya selisih kebutuhan yang ditambahkan.",
+        "DP boleh diterima sebelum delivery melalui BO-04/20. Saat invoice terbentuk, DP dialokasikan tanpa kas masuk kedua.",
+        "Komponen dibeli tidak masuk WO; seluruh komponen harus tersedia sebelum delivery yang bersangkutan."
+      ]
+    },
+    {
+      "id": "F-02",
+      "title": "PO hanya satu kali penerimaan",
+      "sub": "Sisa yang belum datang ditutup, bukan dibuat backorder.",
+      "nodes": [
+        [
+          "a",
+          "PO confirmed",
+          "BO-06",
+          0,
+          0
+        ],
+        [
+          "b",
+          "Input aktual per baris",
+          "BO-07",
+          1,
+          0
+        ],
+        [
+          "c",
+          "Terima 5 dari 10",
+          "Tutup kekurangan 5",
+          2,
+          0
+        ],
+        [
+          "d",
+          "Semua aktual nol",
+          "Catat penolakan",
+          0,
+          1
+        ],
+        [
+          "e",
+          "PO selesai diterima",
+          "Receive kedua terkunci",
+          1,
+          1
+        ],
+        [
+          "f",
+          "Faktur + pembayaran",
+          "BO-29 / BO-20",
+          2,
+          1
+        ],
+        [
+          "g",
+          "Kedatangan berikutnya",
+          "BO-08: kembalikan",
+          0,
+          2
+        ],
+        [
+          "h",
+          "Retur dari receipt",
+          "BO-19: kredit supplier",
+          2,
+          2
+        ]
+      ],
+      "edges": [
+        [
+          "a",
+          "b",
+          ""
+        ],
+        [
+          "b",
+          "c",
+          "Ada aktual > 0"
+        ],
+        [
+          "b",
+          "d",
+          "Semua nol"
+        ],
+        [
+          "c",
+          "e",
+          "Final"
+        ],
+        [
+          "e",
+          "f",
+          ""
+        ],
+        [
+          "e",
+          "g",
+          "Sisa datang"
+        ],
+        [
+          "e",
+          "h",
+          "Barang bermasalah"
+        ]
+      ],
+      "notes": [
+        "Jumlah aktual tidak melebihi pesanan. Baris nol perlu alasan; satu PO tidak dapat diposting oleh dua petugas sekaligus.",
+        "Barang pada kedatangan berikutnya ditolak tanpa mutasi stok/utang. Bukti penolakan disimpan.",
+        "Retur mengurangi stok/kewajiban yang sah, tetapi tidak membuka PO untuk penerimaan kedua."
+      ]
+    },
+    {
+      "id": "F-03",
+      "title": "Transfer 100, diterima 98",
+      "sub": "Selisih 2 pcs tetap terlihat sampai diperiksa dan diselesaikan.",
+      "nodes": [
+        [
+          "a",
+          "Kirim 100",
+          "BO-13: masuk transit",
+          0,
+          0
+        ],
+        [
+          "b",
+          "Terima 98",
+          "BO-14: stok toko +98",
+          1,
+          0
+        ],
+        [
+          "c",
+          "Kasus selisih 2",
+          "BO-15",
+          2,
+          0
+        ],
+        [
+          "d",
+          "Masih di perjalanan",
+          "Tetap transit",
+          0,
+          1
+        ],
+        [
+          "e",
+          "Diterima kemudian",
+          "Receipt tambahan",
+          1,
+          1
+        ],
+        [
+          "f",
+          "Kembali ke packing",
+          "Konfirmasi tiba",
+          2,
+          1
+        ],
+        [
+          "g",
+          "Rusak / hilang",
+          "Approval kerugian",
+          0,
+          2
+        ],
+        [
+          "h",
+          "Salah jumlah kirim",
+          "Koreksi + bukti",
+          2,
+          2
+        ]
+      ],
+      "edges": [
+        [
+          "a",
+          "b",
+          ""
+        ],
+        [
+          "b",
+          "c",
+          "Sisa 2"
+        ],
+        [
+          "c",
+          "d",
+          "Tindak lanjut"
+        ],
+        [
+          "c",
+          "e",
+          ""
+        ],
+        [
+          "c",
+          "f",
+          ""
+        ],
+        [
+          "c",
+          "g",
+          ""
+        ],
+        [
+          "c",
+          "h",
+          ""
+        ]
+      ],
+      "notes": [
+        "Hanya pilihan masih dalam perjalanan yang tidak menyelesaikan kuantitas transit. Catat PIC dan tenggat pemeriksaan.",
+        "Barang kembali dipindahkan ke packing setelah tiba; rusak/hilang mengurangi transit lewat approval.",
+        "Kesalahan jumlah kirim memulihkan sumber hanya bila barang memang tidak berangkat. Jumlah seluruh resolusi tidak boleh melebihi sisa."
+      ]
+    },
+    {
+      "id": "F-04",
+      "title": "Produksi dan hasil samping",
+      "sub": "Pemakaian bahan mengikuti resep; hasil aktual dicatat saat selesai.",
+      "nodes": [
+        [
+          "a",
+          "Kebutuhan + alokasi",
+          "BO-09",
+          0,
+          0
+        ],
+        [
+          "b",
+          "WO + snapshot BOM",
+          "BO-10",
+          1,
+          0
+        ],
+        [
+          "c",
+          "Mulai produksi",
+          "Keluar bahan otomatis",
+          2,
+          0
+        ],
+        [
+          "d",
+          "Hasil utama layak",
+          "Masuk FIN dapur",
+          0,
+          1
+        ],
+        [
+          "e",
+          "Sisa bahan layak",
+          "Kembali RAW / biaya asal",
+          1,
+          1
+        ],
+        [
+          "f",
+          "Putih telur / SKU baru",
+          "Masuk biaya nol",
+          2,
+          1
+        ],
+        [
+          "g",
+          "Produk gagal",
+          "Catat jumlah / alasan",
+          0,
+          2
+        ],
+        [
+          "h",
+          "Selesaikan WO",
+          "BO-11: validasi biaya",
+          2,
+          2
+        ]
+      ],
+      "edges": [
+        [
+          "a",
+          "b",
+          ""
+        ],
+        [
+          "b",
+          "c",
+          "Bahan cukup"
+        ],
+        [
+          "c",
+          "d",
+          "Catat hasil"
+        ],
+        [
+          "c",
+          "e",
+          ""
+        ],
+        [
+          "c",
+          "f",
+          ""
+        ],
+        [
+          "c",
+          "g",
+          ""
+        ],
+        [
+          "d",
+          "h",
+          ""
+        ],
+        [
+          "e",
+          "h",
+          ""
+        ],
+        [
+          "f",
+          "h",
+          ""
+        ],
+        [
+          "g",
+          "h",
+          ""
+        ]
+      ],
+      "notes": [
+        "Pengeluaran bahan strict non-minus. Kekurangan satu bahan membatalkan start seluruh WO.",
+        "Seluruh biaya telur dibebankan pada produk utama; putih telur punya harga jual terpisah dan dapat dipakai sebagai bahan.",
+        "Empat keluaran adalah input form penyelesaian, diposting atomik saat selesai. Hasil utama nol memerlukan approval kerugian."
+      ]
+    },
+    {
+      "id": "F-05",
+      "title": "POS lokal, dua kasir, satu cloud",
+      "sub": "Transaksi aman secara lokal; status penerimaan cloud ditampilkan terpisah.",
+      "nodes": [
+        [
+          "a",
+          "Kasir K01 / database A",
+          "PS-01 - PS-04",
+          0,
+          0
+        ],
+        [
+          "b",
+          "Kasir K02 / database B",
+          "PS-01 - PS-04",
+          2,
+          0
+        ],
+        [
+          "c",
+          "Commit lokal + antrean",
+          "Struk tersimpan",
+          0,
+          1
+        ],
+        [
+          "d",
+          "Commit lokal + antrean",
+          "Struk tersimpan",
+          2,
+          1
+        ],
+        [
+          "e",
+          "Cloud terima event unik",
+          "BO-24",
+          1,
+          1
+        ],
+        [
+          "f",
+          "ACK + sinkron master",
+          "PS-08",
+          0,
+          2
+        ],
+        [
+          "g",
+          "Konflik / periode tutup",
+          "Review backoffice",
+          2,
+          2
+        ]
+      ],
+      "edges": [
+        [
+          "a",
+          "c",
+          "Bayar"
+        ],
+        [
+          "b",
+          "d",
+          "Bayar"
+        ],
+        [
+          "c",
+          "e",
+          "Saat tersambung"
+        ],
+        [
+          "d",
+          "e",
+          "Saat tersambung"
+        ],
+        [
+          "e",
+          "f",
+          "Berhasil"
+        ],
+        [
+          "e",
+          "g",
+          "Perlu tinjauan"
+        ]
+      ],
+      "notes": [
+        "Tidak mengirim saldo lokal untuk menimpa saldo cloud. Stok dua terminal mungkin berbeda saat offline; POS boleh minus dengan penanda.",
+        "Retry memakai identitas event yang sama. ACK hilang tidak boleh menghasilkan penjualan dan jurnal ganda.",
+        "Antrean tidak dibuang saat restart atau error. Tindakan diskon, batal, dan refund offline memakai persetujuan supervisor yang valid."
+      ]
+    },
+    {
+      "id": "F-06",
+      "title": "Pembatalan, retur, dan refund",
+      "sub": "Barang, hak kredit, dan uang mempunyai status masing-masing.",
+      "nodes": [
+        [
+          "a",
+          "Pilih transaksi asal",
+          "SO / POS / receipt",
+          1,
+          0
+        ],
+        [
+          "b",
+          "SO belum delivery",
+          "BO-05: pembatalan",
+          0,
+          1
+        ],
+        [
+          "c",
+          "Penjualan sudah terjadi",
+          "BO-19 / PS-06: retur",
+          1,
+          1
+        ],
+        [
+          "d",
+          "Retur supplier",
+          "BO-19",
+          2,
+          1
+        ],
+        [
+          "e",
+          "Approval + hak refund",
+          "BO-22 / PS-05",
+          0,
+          2
+        ],
+        [
+          "f",
+          "Barang / kredit tercatat",
+          "Disposisi sesuai asal",
+          1,
+          2
+        ],
+        [
+          "g",
+          "Realisasi dana",
+          "BO-20 / POS refund",
+          2,
+          2
+        ]
+      ],
+      "edges": [
+        [
+          "a",
+          "b",
+          ""
+        ],
+        [
+          "a",
+          "c",
+          ""
+        ],
+        [
+          "a",
+          "d",
+          ""
+        ],
+        [
+          "b",
+          "e",
+          ""
+        ],
+        [
+          "c",
+          "f",
+          ""
+        ],
+        [
+          "d",
+          "f",
+          ""
+        ],
+        [
+          "e",
+          "g",
+          ""
+        ],
+        [
+          "f",
+          "g",
+          "Hak tersisa"
+        ]
+      ],
+      "notes": [
+        "SO batal dengan barang supplier diterima: lepas reservasi, transfer ke toko sebagai owned, utang supplier tetap berlaku.",
+        "Retur POS offline hanya untuk struk lokal tersedia. Struk terminal lain membutuhkan validasi cloud.",
+        "Retur tidak selalu langsung refund; boleh kompensasi kredit sesuai dokumen. Jumlah dan uang dibatasi sisa hak setelah tindakan sebelumnya."
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "id": "COVER",
+      "title": "Desain layar, wireframe, dan alur UI"
+    },
+    {
+      "page": 2,
+      "id": "INDEX-1",
+      "title": "Peta layar dan navigasi"
+    },
+    {
+      "page": 3,
+      "id": "INDEX-2",
+      "title": "Peta layar dan navigasi"
+    },
+    {
+      "page": 4,
+      "id": "GUIDE",
+      "title": "Sistem tampilan dan aturan bersama"
+    },
+    {
+      "page": 5,
+      "id": "F-01",
+      "title": "Pesanan pelanggan sampai terpenuhi"
+    },
+    {
+      "page": 6,
+      "id": "F-02",
+      "title": "PO hanya satu kali penerimaan"
+    },
+    {
+      "page": 7,
+      "id": "F-03",
+      "title": "Transfer 100, diterima 98"
+    },
+    {
+      "page": 8,
+      "id": "F-04",
+      "title": "Produksi dan hasil samping"
+    },
+    {
+      "page": 9,
+      "id": "F-05",
+      "title": "POS lokal, dua kasir, satu cloud"
+    },
+    {
+      "page": 10,
+      "id": "F-06",
+      "title": "Pembatalan, retur, dan refund"
+    },
+    {
+      "page": 11,
+      "id": "BO-01",
+      "title": "BO-01  /  Ringkasan operasional"
+    },
+    {
+      "page": 12,
+      "id": "BO-02",
+      "title": "BO-02  /  Sales Order"
+    },
+    {
+      "page": 13,
+      "id": "BO-03",
+      "title": "BO-03  /  Buat pesanan pelanggan"
+    },
+    {
+      "page": 14,
+      "id": "BO-04",
+      "title": "BO-04  /  Detail SO dan pembayaran"
+    },
+    {
+      "page": 15,
+      "id": "BO-05",
+      "title": "BO-05  /  Pembatalan SO dan refund"
+    },
+    {
+      "page": 16,
+      "id": "BO-06",
+      "title": "BO-06  /  Purchase Order"
+    },
+    {
+      "page": 17,
+      "id": "BO-07",
+      "title": "BO-07  /  Penerimaan final PO"
+    },
+    {
+      "page": 18,
+      "id": "BO-08",
+      "title": "BO-08  /  Kedatangan ditolak"
+    },
+    {
+      "page": 19,
+      "id": "BO-09",
+      "title": "BO-09  /  Perencanaan kebutuhan"
+    },
+    {
+      "page": 20,
+      "id": "BO-10",
+      "title": "BO-10  /  Perintah produksi"
+    },
+    {
+      "page": 21,
+      "id": "BO-11",
+      "title": "BO-11  /  Penyelesaian produksi"
+    },
+    {
+      "page": 22,
+      "id": "BO-12",
+      "title": "BO-12  /  Packing dan pengiriman SO"
+    },
+    {
+      "page": 23,
+      "id": "BO-13",
+      "title": "BO-13  /  Kirim transfer antar lokasi"
+    },
+    {
+      "page": 24,
+      "id": "BO-14",
+      "title": "BO-14  /  Terima transfer di toko"
+    },
+    {
+      "page": 25,
+      "id": "BO-15",
+      "title": "BO-15  /  Penyelesaian selisih transit"
+    },
+    {
+      "page": 26,
+      "id": "BO-16",
+      "title": "BO-16  /  Stok dan kartu mutasi"
+    },
+    {
+      "page": 27,
+      "id": "BO-17",
+      "title": "BO-17  /  Permintaan toko dan minimum stok"
+    },
+    {
+      "page": 28,
+      "id": "BO-18",
+      "title": "BO-18  /  Opname dan koreksi stok"
+    },
+    {
+      "page": 29,
+      "id": "BO-19",
+      "title": "BO-19  /  Retur barang"
+    },
+    {
+      "page": 30,
+      "id": "BO-20",
+      "title": "BO-20  /  Pembayaran dan refund"
+    },
+    {
+      "page": 31,
+      "id": "BO-21",
+      "title": "BO-21  /  Tutup periode"
+    },
+    {
+      "page": 32,
+      "id": "BO-22",
+      "title": "BO-22  /  Pusat persetujuan"
+    },
+    {
+      "page": 33,
+      "id": "BO-23",
+      "title": "BO-23  /  Jadwal dan batas pesanan"
+    },
+    {
+      "page": 34,
+      "id": "BO-24",
+      "title": "BO-24  /  Monitor sinkronisasi POS"
+    },
+    {
+      "page": 35,
+      "id": "BO-25",
+      "title": "BO-25  /  Produk dan resep"
+    },
+    {
+      "page": 36,
+      "id": "BO-26",
+      "title": "BO-26  /  Pengguna dan matriks akses"
+    },
+    {
+      "page": 37,
+      "id": "BO-27",
+      "title": "BO-27  /  Titipan dan settlement supplier"
+    },
+    {
+      "page": 38,
+      "id": "BO-28",
+      "title": "BO-28  /  Laporan dan penelusuran"
+    },
+    {
+      "page": 39,
+      "id": "BO-29",
+      "title": "BO-29  /  Faktur, beban, dan jurnal"
+    },
+    {
+      "page": 40,
+      "id": "BO-30",
+      "title": "BO-30  /  Harga, promosi, dan master pendukung"
+    },
+    {
+      "page": 41,
+      "id": "PS-01",
+      "title": "PS-01  /  Masuk dan buka shift"
+    },
+    {
+      "page": 42,
+      "id": "PS-02",
+      "title": "PS-02  /  Penjualan kasir"
+    },
+    {
+      "page": 43,
+      "id": "PS-03",
+      "title": "PS-03  /  Pilih sumber barang"
+    },
+    {
+      "page": 44,
+      "id": "PS-04",
+      "title": "PS-04  /  Pembayaran dan struk"
+    },
+    {
+      "page": 45,
+      "id": "PS-05",
+      "title": "PS-05  /  Persetujuan supervisor offline"
+    },
+    {
+      "page": 46,
+      "id": "PS-06",
+      "title": "PS-06  /  Retur dan refund POS"
+    },
+    {
+      "page": 47,
+      "id": "PS-07",
+      "title": "PS-07  /  Tutup shift dan hitung kas"
+    },
+    {
+      "page": 48,
+      "id": "PS-08",
+      "title": "PS-08  /  Status lokal dan antrean sync"
+    },
+    {
+      "page": 49,
+      "id": "STATES",
+      "title": "Keadaan layar dan pesan yang harus tersedia"
+    },
+    {
+      "page": 50,
+      "id": "HANDOFF",
+      "title": "Handoff desain ke pengembangan"
+    }
+  ]
+}

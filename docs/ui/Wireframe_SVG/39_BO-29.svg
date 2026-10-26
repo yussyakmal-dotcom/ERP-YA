@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000">
+<rect x="0" y="0" width="1440" height="1000" rx="0" fill="#F6F3EB" stroke="#F6F3EB" stroke-width="0.8"/>
+<text x="38" y="42" font-family="DejaVu Sans" font-size="13" font-weight="700" fill="#243E35" text-anchor="start">YUSSY AKMAL</text>
+<text x="1402" y="42" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">WIREFRAME / BACKOFFICE</text>
+<line x1="38" y1="57" x2="1402" y2="57" stroke="#D8E1D9" stroke-width="1"/>
+<text x="38" y="110" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#243E35" text-anchor="start">BO-29  /  Faktur, beban, dan jurnal</text>
+<text x="38" y="145" font-family="DejaVu Sans" font-size="14" font-weight="400" fill="#63756D" text-anchor="start">Dokumen posted ditelusuri dan dikoreksi melalui reversal.</text>
+<rect x="36" y="184" width="1050" height="660" rx="10" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="36" y="184" width="166" height="660" rx="8" fill="#243E35" stroke="#243E35" stroke-width="0.8"/>
+<text x="55" y="216" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#FFFFFF" text-anchor="start">YA</text>
+<text x="55" y="239" font-family="DejaVu Sans" font-size="9" font-weight="700" fill="#B4CDBB" text-anchor="start">BACKOFFICE</text>
+<text x="57" y="281" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Dashboard</text>
+<text x="57" y="323" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Penjualan SO</text>
+<text x="57" y="365" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Pembelian</text>
+<text x="57" y="407" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Gudang &amp; transit</text>
+<text x="57" y="449" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Produksi</text>
+<text x="57" y="491" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Persetujuan</text>
+<rect x="46" y="512" width="146" height="34" rx="5" fill="#456251" stroke="#456251" stroke-width="0.8"/>
+<text x="57" y="533" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="start">Keuangan</text>
+<text x="57" y="575" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Laporan</text>
+<text x="57" y="617" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Master</text>
+<text x="57" y="659" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Sinkronisasi</text>
+<text x="57" y="701" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Pengaturan</text>
+<text x="55" y="801" font-family="DejaVu Sans" font-size="9" font-weight="700" fill="#B4CDBB" text-anchor="start">SEMUA LOKASI</text>
+<rect x="203" y="184" width="883" height="52" rx="8" fill="#FCFDFB" stroke="#FCFDFB" stroke-width="0.8"/>
+<line x1="203" y1="236" x2="1086" y2="236" stroke="#D8E1D9" stroke-width="1"/>
+<text x="224" y="216" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">Yussy Akmal / Keuangan</text>
+<text x="1064" y="216" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">Data ilustrasi   |   Staf operasional</text>
+<text x="224" y="277" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#243E35" text-anchor="start">Faktur, beban, dan jurnal</text>
+<text x="224" y="304" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">Dokumen posted ditelusuri dan dikoreksi melalui reversal.</text>
+<line x1="224" y1="356" x2="1062" y2="356" stroke="#D8E1D9" stroke-width="1"/>
+<text x="234" y="343" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">Faktur supplier</text>
+<text x="357.14892578125" y="343" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">Invoice pelanggan</text>
+<text x="498.7421875" y="343" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">Beban</text>
+<text x="565.71484375" y="343" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#346B50" text-anchor="start">Jurnal</text>
+<rect x="555.71484375" y="354" width="64.373046875" height="3" rx="0" fill="#346B50" stroke="#346B50" stroke-width="0.8"/>
+<text x="630.087890625" y="343" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">COA &amp; pajak</text>
+<text x="224" y="388" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#63756D" text-anchor="start">Dokumen sumber</text>
+<rect x="224" y="398" width="255" height="34" rx="5" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="234" y="420" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">GR-1026-019</text>
+<text x="506" y="388" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#63756D" text-anchor="start">Periode</text>
+<rect x="506" y="398" width="255" height="34" rx="5" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="516" y="420" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Oktober 2026 / terbuka</text>
+<text x="788" y="388" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#63756D" text-anchor="start">Status jurnal</text>
+<rect x="788" y="398" width="274" height="34" rx="5" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="798" y="420" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Preview sebelum posting</text>
+<rect x="224" y="459" width="838" height="34" rx="4" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="234" y="481" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#243E35" text-anchor="start">Akun contoh</text>
+<text x="632" y="481" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#243E35" text-anchor="start">Debit</text>
+<text x="852" y="481" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#243E35" text-anchor="start">Kredit</text>
+<rect x="224" y="493" width="838" height="44" rx="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.8"/>
+<text x="234" y="517" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Persediaan bahan</text>
+<text x="632" y="517" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Rp500.000</text>
+<text x="852" y="517" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">-</text>
+<line x1="224" y1="537" x2="1062" y2="537" stroke="#D8E1D9" stroke-width="1"/>
+<rect x="224" y="537" width="838" height="44" rx="0" fill="#F8FAF7" stroke="#F8FAF7" stroke-width="0.8"/>
+<text x="234" y="561" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Penerimaan belum ditagih</text>
+<text x="632" y="561" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">-</text>
+<text x="852" y="561" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Rp500.000</text>
+<line x1="224" y1="581" x2="1062" y2="581" stroke="#D8E1D9" stroke-width="1"/>
+<rect x="224" y="581" width="838" height="44" rx="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.8"/>
+<text x="234" y="605" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Total</text>
+<text x="632" y="605" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Rp500.000</text>
+<text x="852" y="605" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Rp500.000</text>
+<line x1="224" y1="625" x2="1062" y2="625" stroke="#D8E1D9" stroke-width="1"/>
+<rect x="224" y="654" width="838" height="44" rx="7" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<circle cx="238" cy="671" r="3" fill="#346B50"/>
+<text x="249" y="673" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#346B50" text-anchor="start">Contoh jurnal penerimaan. Akun dan tarif pajak mengikuti konfigurasi yang disetujui perusahaan.</text>
+<text x="224" y="726" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#346B50" text-anchor="start">Baca saja setelah posted  /  Koreksi dengan dokumen pembalik  /  Riwayat lengkap</text>
+<line x1="224" y1="775" x2="1062" y2="775" stroke="#D8E1D9" stroke-width="1"/>
+<rect x="914.115234375" y="789" width="147.884765625" height="40" rx="7" fill="#346B50" stroke="#346B50" stroke-width="0.8"/>
+<text x="988.0576171875" y="814" font-family="DejaVu Sans" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">Posting dokumen</text>
+<rect x="718.244140625" y="789" width="185.87109375" height="40" rx="7" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="811.1796875" y="814" font-family="DejaVu Sans" font-size="12" font-weight="700" fill="#243E35" text-anchor="middle">Lihat dokumen sumber</text>
+<text x="1114" y="204" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#A74E2F" text-anchor="start">PERILAKU LAYAR</text>
+<rect x="1114" y="225" width="35.916015625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="1125" y="242" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">01</text>
+<text x="1158" y="242" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Varian faktur</text>
+<text x="1114" y="275" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Faktur supplier merujuk penerimaan bersih;</text>
+<text x="1114" y="294" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">kumulatif tagihan tidak boleh melebihi</text>
+<text x="1114" y="313" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">penerimaan. Invoice pelanggan merujuk</text>
+<text x="1114" y="332" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">penjualan/pengiriman yang sah.</text>
+<rect x="1114" y="364" width="35.916015625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="1125" y="381" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">02</text>
+<text x="1158" y="381" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Beban periode</text>
+<text x="1114" y="414" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Tab Beban mencatat jasa, tenaga kerja, dan</text>
+<text x="1114" y="433" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">overhead sebagai beban periode. Tidak</text>
+<text x="1114" y="452" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">dialokasikan sebagai biaya produk dalam versi</text>
+<text x="1114" y="471" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">pertama.</text>
+<rect x="1114" y="503" width="35.916015625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="1125" y="520" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">03</text>
+<text x="1158" y="520" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Jurnal dan koreksi</text>
+<text x="1114" y="553" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Debit wajib sama dengan kredit. Setelah</text>
+<text x="1114" y="572" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">posted, aksi edit/hapus diganti Buat koreksi.</text>
+<text x="1114" y="591" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">COA, pajak dan pemetaan akun tetap</text>
+<text x="1114" y="610" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">konfigurasi perusahaan.</text>
+<line x1="1114" y1="866" x2="1400" y2="866" stroke="#D8E1D9" stroke-width="1"/>
+<text x="1114" y="888" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#63756D" text-anchor="start">LANJUT KE</text>
+<text x="1114" y="909" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#346B50" text-anchor="start">BO-20 / BO-21 / BO-28</text>
+<text x="38" y="877" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#A74E2F" text-anchor="start">MODEL DATA</text>
+<text x="150" y="877" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">purchase_invoices, purchase_invoice_lines, sales_invoices, expenses, journal_entries, journal_lines, chart_of_accounts, taxes</text>
+<text x="38" y="918" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#A74E2F" text-anchor="start">UAT TERKAIT</text>
+<text x="150" y="918" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">U22, U36, U39</text>
+<line x1="38" y1="950" x2="1402" y2="950" stroke="#D8E1D9" stroke-width="1"/>
+<text x="38" y="976" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">ERP Yussy Akmal  /  25 Oktober 2026  /  Desain usulan, bukan aplikasi operasional</text>
+<text x="1402" y="976" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">BO-29  /  39</text>
+</svg>

@@ -1,0 +1,17 @@
+%% F-03 - Transfer 100, diterima 98
+flowchart TD
+  a["Kirim 100 / BO-13: masuk transit"]
+  b["Terima 98 / BO-14: stok toko +98"]
+  c["Kasus selisih 2 / BO-15"]
+  d["Masih di perjalanan / Tetap transit"]
+  e["Diterima kemudian / Receipt tambahan"]
+  f["Kembali ke packing / Konfirmasi tiba"]
+  g["Rusak / hilang / Approval kerugian"]
+  h["Salah jumlah kirim / Koreksi + bukti"]
+  a --> b
+  b -->|"Sisa 2"| c
+  c -->|"Tindak lanjut"| d
+  c --> e
+  c --> f
+  c --> g
+  c --> h

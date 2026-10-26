@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000">
+<rect x="0" y="0" width="1440" height="1000" rx="0" fill="#F6F3EB" stroke="#F6F3EB" stroke-width="0.8"/>
+<text x="38" y="42" font-family="DejaVu Sans" font-size="13" font-weight="700" fill="#243E35" text-anchor="start">YUSSY AKMAL</text>
+<text x="1402" y="42" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">PAKET DESAIN / V1.0</text>
+<line x1="38" y1="57" x2="1402" y2="57" stroke="#D8E1D9" stroke-width="1"/>
+<text x="38" y="110" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#243E35" text-anchor="start">Desain layar, wireframe, dan alur UI</text>
+<text x="38" y="145" font-family="DejaVu Sans" font-size="14" font-weight="400" fill="#63756D" text-anchor="start">ERP Bakery Yussy Akmal / Backoffice cloud + POS lokal</text>
+<rect x="38" y="194" width="892" height="654" rx="18" fill="#243E35" stroke="#243E35" stroke-width="0.8"/>
+<text x="78" y="257" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#BDD1C2" text-anchor="start">DARI PESANAN</text>
+<text x="78" y="319" font-family="DejaVu Serif" font-size="49" font-weight="400" fill="#FFFFFF" text-anchor="start">hingga penjualan</text>
+<text x="78" y="383" font-family="DejaVu Serif" font-size="49" font-weight="400" fill="#FFFFFF" text-anchor="start">di kasir.</text>
+<text x="78" y="449" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#DBE7DE" text-anchor="start">Satu operasi bakery yang terhubung, dengan pengalaman</text>
+<text x="78" y="483" font-family="DejaVu Sans" font-size="22" font-weight="400" fill="#DBE7DE" text-anchor="start">kerja berbeda untuk backoffice dan kasir toko.</text>
+<text x="78" y="631" font-family="DejaVu Sans" font-size="57" font-weight="700" fill="#FFFFFF" text-anchor="start">30</text>
+<text x="78" y="670" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#DBE7DE" text-anchor="start">layar Backoffice</text>
+<text x="348" y="631" font-family="DejaVu Sans" font-size="57" font-weight="700" fill="#FFFFFF" text-anchor="start">08</text>
+<text x="348" y="670" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#DBE7DE" text-anchor="start">layar POS lokal</text>
+<text x="618" y="631" font-family="DejaVu Sans" font-size="57" font-weight="700" fill="#FFFFFF" text-anchor="start">06</text>
+<text x="618" y="670" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#DBE7DE" text-anchor="start">alur utama</text>
+<line x1="78" y1="718" x2="890" y2="718" stroke="#708B78" stroke-width="1"/>
+<text x="78" y="754" font-family="DejaVu Sans" font-size="14" font-weight="400" fill="#DBE7DE" text-anchor="start">Wireframe berwarna untuk review proses dan handoff pengembang. Identitas visual dapat disesuaikan</text>
+<text x="78" y="777" font-family="DejaVu Sans" font-size="14" font-weight="400" fill="#DBE7DE" text-anchor="start">setelah aset merek resmi tersedia.</text>
+<text x="980" y="242" font-family="DejaVu Sans" font-size="12" font-weight="700" fill="#A74E2F" text-anchor="start">DALAM PAKET INI</text>
+<text x="980" y="300" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#243E35" text-anchor="start">01  Desain layar</text>
+<text x="980" y="335" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#63756D" text-anchor="start">Layout, tombol, input, dan perilaku penting.</text>
+<text x="980" y="465" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#243E35" text-anchor="start">02  Alur operasional</text>
+<text x="980" y="500" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#63756D" text-anchor="start">Hubungan antar layar dan jalur pengecualian.</text>
+<text x="980" y="630" font-family="DejaVu Sans" font-size="18" font-weight="700" fill="#243E35" text-anchor="start">03  Sumber yang bisa diedit</text>
+<text x="980" y="665" font-family="DejaVu Sans" font-size="15" font-weight="400" fill="#63756D" text-anchor="start">SVG, spesifikasi Markdown, Mermaid, dan DBML.</text>
+<rect x="980" y="771" width="422" height="52" rx="7" fill="#F9EADD" stroke="#F9EADD" stroke-width="0.8"/>
+<circle cx="994" cy="788" r="3" fill="#A74E2F"/>
+<text x="1005" y="790" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#A74E2F" text-anchor="start">Seluruh nama, harga, jumlah, dan transaksi pada layar adalah</text>
+<text x="1005" y="806" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#A74E2F" text-anchor="start">ilustrasi.</text>
+<line x1="38" y1="950" x2="1402" y2="950" stroke="#D8E1D9" stroke-width="1"/>
+<text x="38" y="976" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">ERP Yussy Akmal  /  25 Oktober 2026  /  Desain usulan, bukan aplikasi operasional</text>
+<text x="1402" y="976" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">COVER  /  01</text>
+</svg>

@@ -1,0 +1,20 @@
+%% F-04 - Produksi dan hasil samping
+flowchart TD
+  a["Kebutuhan + alokasi / BO-09"]
+  b["WO + snapshot BOM / BO-10"]
+  c["Mulai produksi / Keluar bahan otomatis"]
+  d["Hasil utama layak / Masuk FIN dapur"]
+  e["Sisa bahan layak / Kembali RAW / biaya asal"]
+  f["Putih telur / SKU baru / Masuk biaya nol"]
+  g["Produk gagal / Catat jumlah / alasan"]
+  h["Selesaikan WO / BO-11: validasi biaya"]
+  a --> b
+  b -->|"Bahan cukup"| c
+  c -->|"Catat hasil"| d
+  c --> e
+  c --> f
+  c --> g
+  d --> h
+  e --> h
+  f --> h
+  g --> h

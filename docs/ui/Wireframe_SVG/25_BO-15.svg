@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000">
+<rect x="0" y="0" width="1440" height="1000" rx="0" fill="#F6F3EB" stroke="#F6F3EB" stroke-width="0.8"/>
+<text x="38" y="42" font-family="DejaVu Sans" font-size="13" font-weight="700" fill="#243E35" text-anchor="start">YUSSY AKMAL</text>
+<text x="1402" y="42" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">WIREFRAME / BACKOFFICE</text>
+<line x1="38" y1="57" x2="1402" y2="57" stroke="#D8E1D9" stroke-width="1"/>
+<text x="38" y="110" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#243E35" text-anchor="start">BO-15  /  Penyelesaian selisih transit</text>
+<text x="38" y="145" font-family="DejaVu Sans" font-size="14" font-weight="400" fill="#63756D" text-anchor="start">SEL-1026-006 / TR-1026-044 / 2 pcs belum selesai</text>
+<rect x="36" y="184" width="1050" height="660" rx="10" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="36" y="184" width="166" height="660" rx="8" fill="#243E35" stroke="#243E35" stroke-width="0.8"/>
+<text x="55" y="216" font-family="DejaVu Sans" font-size="24" font-weight="700" fill="#FFFFFF" text-anchor="start">YA</text>
+<text x="55" y="239" font-family="DejaVu Sans" font-size="9" font-weight="700" fill="#B4CDBB" text-anchor="start">BACKOFFICE</text>
+<text x="57" y="281" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Dashboard</text>
+<text x="57" y="323" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Penjualan SO</text>
+<text x="57" y="365" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Pembelian</text>
+<rect x="46" y="386" width="146" height="34" rx="5" fill="#456251" stroke="#456251" stroke-width="0.8"/>
+<text x="57" y="407" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="start">Gudang &amp; transit</text>
+<text x="57" y="449" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Produksi</text>
+<text x="57" y="491" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Persetujuan</text>
+<text x="57" y="533" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Keuangan</text>
+<text x="57" y="575" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Laporan</text>
+<text x="57" y="617" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Master</text>
+<text x="57" y="659" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Sinkronisasi</text>
+<text x="57" y="701" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#D1DED3" text-anchor="start">Pengaturan</text>
+<text x="55" y="801" font-family="DejaVu Sans" font-size="9" font-weight="700" fill="#B4CDBB" text-anchor="start">SEMUA LOKASI</text>
+<rect x="203" y="184" width="883" height="52" rx="8" fill="#FCFDFB" stroke="#FCFDFB" stroke-width="0.8"/>
+<line x1="203" y1="236" x2="1086" y2="236" stroke="#D8E1D9" stroke-width="1"/>
+<text x="224" y="216" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">Yussy Akmal / Gudang &amp; transit</text>
+<text x="1064" y="216" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">Data ilustrasi   |   Staf operasional</text>
+<text x="224" y="277" font-family="DejaVu Sans" font-size="22" font-weight="700" fill="#243E35" text-anchor="start">Penyelesaian selisih transit</text>
+<text x="224" y="304" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">SEL-1026-006 / TR-1026-044 / 2 pcs belum selesai</text>
+<rect x="224" y="324" width="245" height="108" rx="10" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="224" y="324" width="4" height="108" rx="2" fill="#346B50" stroke="#346B50" stroke-width="0.8"/>
+<text x="242" y="353" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#63756D" text-anchor="start">Dikirim</text>
+<text x="242" y="389" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#243E35" text-anchor="start">100 pcs</text>
+<rect x="488" y="324" width="245" height="108" rx="10" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="488" y="324" width="4" height="108" rx="2" fill="#346B50" stroke="#346B50" stroke-width="0.8"/>
+<text x="506" y="353" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#63756D" text-anchor="start">Diterima toko</text>
+<text x="506" y="389" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#243E35" text-anchor="start">98 pcs</text>
+<rect x="752" y="324" width="310" height="108" rx="10" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="752" y="324" width="4" height="108" rx="2" fill="#A74E2F" stroke="#A74E2F" stroke-width="0.8"/>
+<text x="770" y="353" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#63756D" text-anchor="start">Masih di transit</text>
+<text x="770" y="389" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#243E35" text-anchor="start">2 pcs</text>
+<text x="770" y="412" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">Kasus tetap terbuka</text>
+<text x="224" y="459" font-family="DejaVu Sans" font-size="12" font-weight="700" fill="#243E35" text-anchor="start">Hasil pemeriksaan *</text>
+<rect x="224" y="478" width="402" height="35" rx="5" fill="#EAF1EB" stroke="#D8E1D9" stroke-width="0.8"/>
+<circle cx="240" cy="495" r="5" fill="#346B50"/>
+<text x="256" y="500" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#243E35" text-anchor="start">Masih dalam perjalanan</text>
+<rect x="644" y="478" width="402" height="35" rx="5" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<circle cx="660" cy="495" r="5" fill="#D8E1D9"/>
+<text x="676" y="500" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#243E35" text-anchor="start">Kembali ke packing</text>
+<rect x="224" y="523" width="402" height="35" rx="5" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<circle cx="240" cy="540" r="5" fill="#D8E1D9"/>
+<text x="256" y="545" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#243E35" text-anchor="start">Rusak</text>
+<rect x="644" y="523" width="402" height="35" rx="5" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<circle cx="660" cy="540" r="5" fill="#D8E1D9"/>
+<text x="676" y="545" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#243E35" text-anchor="start">Hilang</text>
+<rect x="224" y="568" width="402" height="35" rx="5" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<circle cx="240" cy="585" r="5" fill="#D8E1D9"/>
+<text x="256" y="590" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#243E35" text-anchor="start">Kesalahan jumlah kirim</text>
+<text x="224" y="638" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#63756D" text-anchor="start">Jumlah ditindaklanjuti *</text>
+<rect x="224" y="648" width="255" height="34" rx="5" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="234" y="670" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">2 pcs</text>
+<text x="504" y="638" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#63756D" text-anchor="start">Penanggung jawab *</text>
+<rect x="504" y="648" width="255" height="34" rx="5" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="514" y="670" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Pilih petugas</text>
+<text x="784" y="638" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#63756D" text-anchor="start">Bukti / catatan *</text>
+<rect x="784" y="648" width="278" height="34" rx="5" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="794" y="670" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Catatan pemeriksaan</text>
+<text x="224" y="713" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#346B50" text-anchor="start">Barang sudah tiba?  Buka penerimaan tambahan (BO-14)</text>
+<line x1="224" y1="775" x2="1062" y2="775" stroke="#D8E1D9" stroke-width="1"/>
+<rect x="891.779296875" y="789" width="170.220703125" height="40" rx="7" fill="#346B50" stroke="#346B50" stroke-width="0.8"/>
+<text x="976.8896484375" y="814" font-family="DejaVu Sans" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">Ajukan penyelesaian</text>
+<rect x="710.7265625" y="789" width="171.052734375" height="40" rx="7" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="796.2529296875" y="814" font-family="DejaVu Sans" font-size="12" font-weight="700" fill="#243E35" text-anchor="middle">Simpan tindak lanjut</text>
+<text x="1114" y="204" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#A74E2F" text-anchor="start">PERILAKU LAYAR</text>
+<rect x="1114" y="225" width="35.916015625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="1125" y="242" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">01</text>
+<text x="1158" y="242" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Masih dalam perjalanan</text>
+<text x="1114" y="275" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Simpan penanggung jawab dan tanggal tindak</text>
+<text x="1114" y="294" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">lanjut. Status kasus tetap terbuka, dua pcs</text>
+<text x="1114" y="313" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">tetap transit.</text>
+<rect x="1114" y="345" width="35.916015625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="1125" y="362" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">02</text>
+<text x="1158" y="362" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Perubahan stok perlu bukti</text>
+<text x="1114" y="395" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Kembali packing membutuhkan konfirmasi</text>
+<text x="1114" y="414" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">tiba. Salah kirim membutuhkan bukti hitung</text>
+<text x="1114" y="433" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">dan koreksi tertaut. Rusak/hilang mengikuti</text>
+<text x="1114" y="452" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">approval kerugian.</text>
+<rect x="1114" y="484" width="35.916015625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="1125" y="501" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">03</text>
+<text x="1158" y="501" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Terima kemudian</text>
+<text x="1114" y="534" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Buka penerimaan tambahan BO-14.</text>
+<text x="1114" y="553" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Penyelesaian sebagian diperbolehkan sampai</text>
+<text x="1114" y="572" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">jumlah seluruh keputusan sama dengan sisa</text>
+<text x="1114" y="591" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">kasus.</text>
+<line x1="1114" y1="866" x2="1400" y2="866" stroke="#D8E1D9" stroke-width="1"/>
+<text x="1114" y="888" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#63756D" text-anchor="start">LANJUT KE</text>
+<text x="1114" y="909" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#346B50" text-anchor="start">BO-14 / BO-22</text>
+<text x="38" y="877" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#A74E2F" text-anchor="start">MODEL DATA</text>
+<text x="150" y="877" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">transfer_discrepancies, transfer_resolutions, approval_requests, stock_movements</text>
+<text x="38" y="918" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#A74E2F" text-anchor="start">UAT TERKAIT</text>
+<text x="150" y="918" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">U08, U09, U10</text>
+<line x1="38" y1="950" x2="1402" y2="950" stroke="#D8E1D9" stroke-width="1"/>
+<text x="38" y="976" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">ERP Yussy Akmal  /  25 Oktober 2026  /  Desain usulan, bukan aplikasi operasional</text>
+<text x="1402" y="976" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">BO-15  /  25</text>
+</svg>

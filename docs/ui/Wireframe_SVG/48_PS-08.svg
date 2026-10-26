@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000">
+<rect x="0" y="0" width="1440" height="1000" rx="0" fill="#F6F3EB" stroke="#F6F3EB" stroke-width="0.8"/>
+<text x="38" y="42" font-family="DejaVu Sans" font-size="13" font-weight="700" fill="#243E35" text-anchor="start">YUSSY AKMAL</text>
+<text x="1402" y="42" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">WIREFRAME / POS LOKAL</text>
+<line x1="38" y1="57" x2="1402" y2="57" stroke="#D8E1D9" stroke-width="1"/>
+<text x="38" y="110" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#243E35" text-anchor="start">PS-08  /  Status lokal dan antrean sync</text>
+<text x="38" y="145" font-family="DejaVu Sans" font-size="14" font-weight="400" fill="#63756D" text-anchor="start">Informasi kasir ketika koneksi terputus atau pulih.</text>
+<rect x="36" y="184" width="1050" height="660" rx="10" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="36" y="184" width="1050" height="58" rx="8" fill="#243E35" stroke="#243E35" stroke-width="0.8"/>
+<text x="58" y="219" font-family="DejaVu Sans" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="start">YA  /  KASIR</text>
+<text x="264" y="219" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#DAE7DD" text-anchor="start">Toko 01  |  K01  |  Kasir A</text>
+<rect x="780" y="200" width="69.4560546875" height="25" rx="12" fill="#F8DDC3" stroke="#F8DDC3" stroke-width="0.8"/>
+<text x="791" y="217" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#A74E2F" text-anchor="start">OFFLINE</text>
+<text x="878" y="220" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#FFFFFF" text-anchor="start">12 antrean  /  09:40 WIB</text>
+<line x1="58" y1="286" x2="1064" y2="286" stroke="#D8E1D9" stroke-width="1"/>
+<text x="68" y="273" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">Jual</text>
+<text x="119.1171875" y="273" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">Riwayat &amp; retur</text>
+<text x="245.44580078125" y="273" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">Shift</text>
+<text x="303.013671875" y="273" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#346B50" text-anchor="start">Sinkronisasi</text>
+<rect x="293.013671875" y="284" width="103.7109375" height="3" rx="0" fill="#346B50" stroke="#346B50" stroke-width="0.8"/>
+<rect x="58" y="310" width="326" height="121" rx="10" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="58" y="310" width="4" height="121" rx="2" fill="#A74E2F" stroke="#A74E2F" stroke-width="0.8"/>
+<text x="76" y="339" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#63756D" text-anchor="start">Belum diterima cloud</text>
+<text x="76" y="375" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#243E35" text-anchor="start">12</text>
+<text x="76" y="398" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">Antrean tersimpan lokal</text>
+<rect x="398" y="310" width="326" height="121" rx="10" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="398" y="310" width="4" height="121" rx="2" fill="#346B50" stroke="#346B50" stroke-width="0.8"/>
+<text x="416" y="339" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#63756D" text-anchor="start">Sinkron terakhir</text>
+<text x="416" y="375" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#243E35" text-anchor="start">09:40 WIB</text>
+<text x="416" y="398" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">Koneksi saat ini offline</text>
+<rect x="738" y="310" width="326" height="121" rx="10" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="738" y="310" width="4" height="121" rx="2" fill="#346B50" stroke="#346B50" stroke-width="0.8"/>
+<text x="756" y="339" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#63756D" text-anchor="start">Terminal</text>
+<text x="756" y="375" font-family="DejaVu Sans" font-size="27" font-weight="700" fill="#243E35" text-anchor="start">T01-K01</text>
+<text x="756" y="398" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">Database lokal siap</text>
+<rect x="58" y="461" width="1006" height="34" rx="4" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="68" y="483" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#243E35" text-anchor="start">Nomor struk</text>
+<text x="338" y="483" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#243E35" text-anchor="start">Waktu asli</text>
+<text x="518" y="483" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#243E35" text-anchor="start">Status</text>
+<text x="738" y="483" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#243E35" text-anchor="start">Tindakan</text>
+<rect x="58" y="495" width="1006" height="44" rx="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.8"/>
+<text x="68" y="519" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">T01-K01-000123</text>
+<text x="338" y="519" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">10:02 WIB</text>
+<text x="518" y="519" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Menunggu</text>
+<text x="738" y="519" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Kirim otomatis saat online</text>
+<line x1="58" y1="539" x2="1064" y2="539" stroke="#D8E1D9" stroke-width="1"/>
+<rect x="58" y="539" width="1006" height="44" rx="0" fill="#F8FAF7" stroke="#F8FAF7" stroke-width="0.8"/>
+<text x="68" y="563" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">T01-K01-000122</text>
+<text x="338" y="563" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">10:00 WIB</text>
+<text x="518" y="563" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Coba ulang</text>
+<text x="738" y="563" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Tidak membuat struk baru</text>
+<line x1="58" y1="583" x2="1064" y2="583" stroke="#D8E1D9" stroke-width="1"/>
+<rect x="58" y="583" width="1006" height="44" rx="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.8"/>
+<text x="68" y="607" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">T01-K01-000121</text>
+<text x="338" y="607" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">09:58 WIB</text>
+<text x="518" y="607" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Perlu tinjauan</text>
+<text x="738" y="607" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#24342F" text-anchor="start">Supervisor / backoffice</text>
+<line x1="58" y1="627" x2="1064" y2="627" stroke="#D8E1D9" stroke-width="1"/>
+<rect x="58" y="672" width="1006" height="44" rx="7" fill="#F9EADD" stroke="#F9EADD" stroke-width="0.8"/>
+<circle cx="72" cy="689" r="3" fill="#A74E2F"/>
+<text x="83" y="691" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#A74E2F" text-anchor="start">Jangan hapus antrean, reset database, atau mengirim saldo untuk menyelesaikan konflik. Buka rincian dan tindak lanjut.</text>
+<line x1="58" y1="775" x2="1064" y2="775" stroke="#D8E1D9" stroke-width="1"/>
+<rect x="916.5078125" y="789" width="147.4921875" height="40" rx="7" fill="#346B50" stroke="#346B50" stroke-width="0.8"/>
+<text x="990.25390625" y="814" font-family="DejaVu Sans" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">Coba sinkron lagi</text>
+<rect x="770.001953125" y="789" width="136.505859375" height="40" rx="7" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<text x="838.2548828125" y="814" font-family="DejaVu Sans" font-size="12" font-weight="700" fill="#243E35" text-anchor="middle">Periksa koneksi</text>
+<text x="1114" y="204" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#A74E2F" text-anchor="start">PERILAKU LAYAR</text>
+<rect x="1114" y="225" width="35.916015625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="1125" y="242" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">01</text>
+<text x="1158" y="242" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Makna status</text>
+<text x="1114" y="275" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Tersimpan lokal berarti aman di database</text>
+<text x="1114" y="294" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">lokal; Diterima cloud hanya setelah ACK.</text>
+<text x="1114" y="313" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Keduanya tidak boleh diberi label yang sama.</text>
+<rect x="1114" y="345" width="35.916015625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="1125" y="362" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">02</text>
+<text x="1158" y="362" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Retry tanpa duplikasi</text>
+<text x="1114" y="395" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Kirim ulang identitas event yang sama. Status</text>
+<text x="1114" y="414" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Menunggu, Mengirim, Diterima, Coba ulang,</text>
+<text x="1114" y="433" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">dan Perlu tinjauan bisa dibuka per struk.</text>
+<rect x="1114" y="465" width="35.916015625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="1125" y="482" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">03</text>
+<text x="1158" y="482" font-family="DejaVu Sans" font-size="14" font-weight="700" fill="#243E35" text-anchor="start">Dua kasir offline</text>
+<text x="1114" y="515" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">Saldo antarterminal bisa berbeda. Cloud</text>
+<text x="1114" y="534" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">merekonsiliasi kejadian setelah tersambung;</text>
+<text x="1114" y="553" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">layar tidak menawarkan unggah saldo untuk</text>
+<text x="1114" y="572" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#24342F" text-anchor="start">menimpa toko.</text>
+<line x1="1114" y1="866" x2="1400" y2="866" stroke="#D8E1D9" stroke-width="1"/>
+<text x="1114" y="888" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#63756D" text-anchor="start">LANJUT KE</text>
+<text x="1114" y="909" font-family="DejaVu Sans" font-size="11" font-weight="700" fill="#346B50" text-anchor="start">PS-02 / BO-24</text>
+<text x="38" y="877" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#A74E2F" text-anchor="start">MODEL DATA</text>
+<text x="150" y="877" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">sync_outbox, sync_checkpoints, sync_conflicts, pos_terminals</text>
+<text x="38" y="918" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#A74E2F" text-anchor="start">UAT TERKAIT</text>
+<text x="150" y="918" font-family="DejaVu Sans" font-size="11" font-weight="400" fill="#63756D" text-anchor="start">U26, U27, U28, U29, U40</text>
+<line x1="38" y1="950" x2="1402" y2="950" stroke="#D8E1D9" stroke-width="1"/>
+<text x="38" y="976" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">ERP Yussy Akmal  /  25 Oktober 2026  /  Desain usulan, bukan aplikasi operasional</text>
+<text x="1402" y="976" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">PS-08  /  48</text>
+</svg>

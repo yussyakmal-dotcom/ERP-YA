@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000">
+<rect x="0" y="0" width="1440" height="1000" rx="0" fill="#F6F3EB" stroke="#F6F3EB" stroke-width="0.8"/>
+<text x="38" y="42" font-family="DejaVu Sans" font-size="13" font-weight="700" fill="#243E35" text-anchor="start">YUSSY AKMAL</text>
+<text x="1402" y="42" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">DESAIN UI / V1.0</text>
+<line x1="38" y1="57" x2="1402" y2="57" stroke="#D8E1D9" stroke-width="1"/>
+<text x="38" y="110" font-family="DejaVu Sans" font-size="31" font-weight="700" fill="#243E35" text-anchor="start">Keadaan layar dan pesan yang harus tersedia</text>
+<text x="38" y="145" font-family="DejaVu Sans" font-size="14" font-weight="400" fill="#63756D" text-anchor="start">Skenario ini wajib dirancang sebelum layar dihubungkan ke API.</text>
+<rect x="38" y="197" width="670" height="155" rx="9" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="56" y="213" width="110.4228515625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="67" y="230" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">Belum ada data</text>
+<text x="56" y="263" font-family="DejaVu Sans" font-size="15" font-weight="700" fill="#243E35" text-anchor="start">Belum ada SO pada filter ini.</text>
+<text x="56" y="308" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#63756D" text-anchor="start">Tampilkan Ubah filter atau Buat SO sesuai hak.</text>
+<rect x="733" y="197" width="670" height="155" rx="9" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="751" y="213" width="96.716796875" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="762" y="230" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">Memuat data</text>
+<text x="751" y="263" font-family="DejaVu Sans" font-size="15" font-weight="700" fill="#243E35" text-anchor="start">Memuat penerimaan dan saldo stok...</text>
+<text x="751" y="308" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#63756D" text-anchor="start">Jangan menampilkan angka nol sementara seolah saldo final.</text>
+<rect x="38" y="371" width="670" height="155" rx="9" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="56" y="387" width="114.9052734375" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="67" y="404" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">Input tidak valid</text>
+<text x="56" y="437" font-family="DejaVu Sans" font-size="15" font-weight="700" fill="#243E35" text-anchor="start">Jumlah terima 11 melebihi pesanan 10 dus.</text>
+<text x="56" y="482" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#63756D" text-anchor="start">Sorot field, pertahankan input lain, jelaskan batas yang benar.</text>
+<rect x="733" y="371" width="670" height="155" rx="9" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="751" y="387" width="113.4697265625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="762" y="404" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">Hak tidak cukup</text>
+<text x="751" y="437" font-family="DejaVu Sans" font-size="15" font-weight="700" fill="#243E35" text-anchor="start">Anda belum memiliki hak posting penerimaan.</text>
+<text x="751" y="482" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#63756D" text-anchor="start">Jelaskan aksi yang dibatasi; jangan menyembunyikan dokumen seluruhnya.</text>
+<rect x="38" y="545" width="670" height="155" rx="9" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="56" y="561" width="125.759765625" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="67" y="578" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">Dokumen berubah</text>
+<text x="56" y="611" font-family="DejaVu Sans" font-size="15" font-weight="700" fill="#243E35" text-anchor="start">Dokumen telah direvisi oleh petugas lain.</text>
+<text x="56" y="656" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#63756D" text-anchor="start">Muat ulang versi terbaru sebelum mengajukan atau posting.</text>
+<rect x="733" y="545" width="670" height="155" rx="9" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="751" y="561" width="115.8818359375" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="762" y="578" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">Sedang diproses</text>
+<text x="751" y="611" font-family="DejaVu Sans" font-size="15" font-weight="700" fill="#243E35" text-anchor="start">Menyimpan penjualan lokal...</text>
+<text x="751" y="656" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#63756D" text-anchor="start">Kunci tombol yang sama sampai hasil diketahui. Retry memakai ID sama.</text>
+<rect x="38" y="719" width="670" height="155" rx="9" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="56" y="735" width="98.6162109375" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="67" y="752" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">Berhasil lokal</text>
+<text x="56" y="785" font-family="DejaVu Sans" font-size="15" font-weight="700" fill="#243E35" text-anchor="start">Struk tersimpan lokal; menunggu sinkronisasi.</text>
+<text x="56" y="830" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#63756D" text-anchor="start">Kasir dapat melanjutkan. Jangan menyatakan telah diterima cloud.</text>
+<rect x="733" y="719" width="670" height="155" rx="9" fill="#FFFFFF" stroke="#D8E1D9" stroke-width="0.8"/>
+<rect x="751" y="735" width="144.294921875" height="25" rx="12" fill="#EAF1EB" stroke="#EAF1EB" stroke-width="0.8"/>
+<text x="762" y="752" font-family="DejaVu Sans" font-size="10" font-weight="700" fill="#346B50" text-anchor="start">Gagal / perlu tinjauan</text>
+<text x="751" y="785" font-family="DejaVu Sans" font-size="15" font-weight="700" fill="#243E35" text-anchor="start">Transaksi tersimpan, tetapi perlu tinjauan sinkronisasi.</text>
+<text x="751" y="830" font-family="DejaVu Sans" font-size="12" font-weight="400" fill="#63756D" text-anchor="start">Jangan hapus antrean. Tampilkan rincian dan pemilik tindak lanjut.</text>
+<line x1="38" y1="950" x2="1402" y2="950" stroke="#D8E1D9" stroke-width="1"/>
+<text x="38" y="976" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="start">ERP Yussy Akmal  /  25 Oktober 2026  /  Desain usulan, bukan aplikasi operasional</text>
+<text x="1402" y="976" font-family="DejaVu Sans" font-size="10" font-weight="400" fill="#63756D" text-anchor="end">STATES  /  49</text>
+</svg>

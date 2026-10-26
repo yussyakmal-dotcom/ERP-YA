@@ -1,0 +1,724 @@
+[
+  {
+    "title": "D01 Organisasi dan persediaan",
+    "entities": [
+      "companies",
+      "outlets",
+      "kitchens",
+      "warehouses",
+      "products",
+      "stock_balances"
+    ],
+    "relationships": [
+      {
+        "child": "outlets",
+        "fk": "company_id",
+        "parent": "companies",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "kitchens",
+        "fk": "company_id",
+        "parent": "companies",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "warehouses",
+        "fk": "outlet_id",
+        "parent": "outlets",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "0..1"
+      },
+      {
+        "child": "warehouses",
+        "fk": "kitchen_id",
+        "parent": "kitchens",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "0..1"
+      },
+      {
+        "child": "stock_balances",
+        "fk": "warehouse_id",
+        "parent": "warehouses",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "stock_balances",
+        "fk": "product_id",
+        "parent": "products",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      }
+    ]
+  },
+  {
+    "title": "D02 Persetujuan dokumen",
+    "entities": [
+      "documents",
+      "approval_rules",
+      "approval_requests",
+      "approval_steps",
+      "approval_actions",
+      "users"
+    ],
+    "relationships": [
+      {
+        "child": "approval_requests",
+        "fk": "document_id",
+        "parent": "documents",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "approval_requests",
+        "fk": "rule_id",
+        "parent": "approval_rules",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "approval_steps",
+        "fk": "rule_id",
+        "parent": "approval_rules",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "approval_actions",
+        "fk": "request_id",
+        "parent": "approval_requests",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "approval_actions",
+        "fk": "step_id",
+        "parent": "approval_steps",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "approval_actions",
+        "fk": "actor_id",
+        "parent": "users",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      }
+    ]
+  },
+  {
+    "title": "D03 Stok dan reservasi",
+    "entities": [
+      "products",
+      "warehouses",
+      "stock_balances",
+      "stock_movements",
+      "demand_lines",
+      "stock_reservations"
+    ],
+    "relationships": [
+      {
+        "child": "stock_balances",
+        "fk": "product_id",
+        "parent": "products",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "stock_balances",
+        "fk": "warehouse_id",
+        "parent": "warehouses",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "stock_movements",
+        "fk": "product_id",
+        "parent": "products",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "stock_movements",
+        "fk": "warehouse_id",
+        "parent": "warehouses",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "stock_reservations",
+        "fk": "demand_id",
+        "parent": "demand_lines",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "stock_reservations",
+        "fk": "warehouse_id",
+        "parent": "warehouses",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      }
+    ]
+  },
+  {
+    "title": "D04 Transfer dan penyelesaian transit",
+    "entities": [
+      "transfer_orders",
+      "transfer_receipts",
+      "transfer_lines",
+      "transfer_receipt_lines",
+      "transfer_discrepancies",
+      "transfer_resolutions"
+    ],
+    "relationships": [
+      {
+        "child": "transfer_lines",
+        "fk": "transfer_id",
+        "parent": "transfer_orders",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "transfer_receipts",
+        "fk": "transfer_id",
+        "parent": "transfer_orders",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "transfer_receipt_lines",
+        "fk": "receipt_id",
+        "parent": "transfer_receipts",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "transfer_receipt_lines",
+        "fk": "transfer_line_id",
+        "parent": "transfer_lines",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "transfer_discrepancies",
+        "fk": "transfer_line_id",
+        "parent": "transfer_lines",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "transfer_resolutions",
+        "fk": "discrepancy_id",
+        "parent": "transfer_discrepancies",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      }
+    ]
+  },
+  {
+    "title": "D05 Pembelian dan penerimaan tunggal",
+    "entities": [
+      "purchase_orders",
+      "goods_receipts",
+      "purchase_order_lines",
+      "goods_receipt_lines",
+      "purchase_invoices",
+      "purchase_invoice_lines"
+    ],
+    "relationships": [
+      {
+        "child": "purchase_order_lines",
+        "fk": "purchase_order_id",
+        "parent": "purchase_orders",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "goods_receipts",
+        "fk": "purchase_order_id",
+        "parent": "purchase_orders",
+        "child_cardinality": "0..1",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "goods_receipt_lines",
+        "fk": "receipt_id",
+        "parent": "goods_receipts",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "goods_receipt_lines",
+        "fk": "po_line_id",
+        "parent": "purchase_order_lines",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "purchase_invoices",
+        "fk": "goods_receipt_id",
+        "parent": "goods_receipts",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "purchase_invoice_lines",
+        "fk": "invoice_id",
+        "parent": "purchase_invoices",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "purchase_invoice_lines",
+        "fk": "receipt_line_id",
+        "parent": "goods_receipt_lines",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      }
+    ]
+  },
+  {
+    "title": "D06 Titipan POS dan settlement",
+    "entities": [
+      "consignment_agreements",
+      "pos_sale_lines",
+      "consignment_sales",
+      "return_lines",
+      "consignment_settlements",
+      "consignment_settlement_lines"
+    ],
+    "relationships": [
+      {
+        "child": "pos_sale_lines",
+        "fk": "agreement_id",
+        "parent": "consignment_agreements",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "0..1"
+      },
+      {
+        "child": "consignment_sales",
+        "fk": "pos_sale_line_id",
+        "parent": "pos_sale_lines",
+        "child_cardinality": "0..1",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "consignment_sales",
+        "fk": "agreement_id",
+        "parent": "consignment_agreements",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "return_lines",
+        "fk": "pos_sale_line_id",
+        "parent": "pos_sale_lines",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "0..1"
+      },
+      {
+        "child": "consignment_settlement_lines",
+        "fk": "settlement_id",
+        "parent": "consignment_settlements",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "consignment_settlement_lines",
+        "fk": "consignment_sale_id",
+        "parent": "consignment_sales",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "consignment_settlement_lines",
+        "fk": "return_line_id",
+        "parent": "return_lines",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "0..1"
+      }
+    ]
+  },
+  {
+    "title": "D07 SO paket dan pengiriman",
+    "entities": [
+      "sales_orders",
+      "deliveries",
+      "sales_order_lines",
+      "delivery_lines",
+      "sales_order_components",
+      "sales_invoices"
+    ],
+    "relationships": [
+      {
+        "child": "sales_order_lines",
+        "fk": "sales_order_id",
+        "parent": "sales_orders",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "sales_order_components",
+        "fk": "sales_order_line_id",
+        "parent": "sales_order_lines",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "deliveries",
+        "fk": "sales_order_id",
+        "parent": "sales_orders",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "delivery_lines",
+        "fk": "delivery_id",
+        "parent": "deliveries",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "delivery_lines",
+        "fk": "so_component_id",
+        "parent": "sales_order_components",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "sales_invoices",
+        "fk": "sales_order_id",
+        "parent": "sales_orders",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      }
+    ]
+  },
+  {
+    "title": "D08 Resep dan hasil produksi",
+    "entities": [
+      "boms",
+      "bom_lines",
+      "production_orders",
+      "production_materials",
+      "production_outputs",
+      "production_material_returns"
+    ],
+    "relationships": [
+      {
+        "child": "bom_lines",
+        "fk": "bom_id",
+        "parent": "boms",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "production_orders",
+        "fk": "bom_id",
+        "parent": "boms",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "production_materials",
+        "fk": "production_order_id",
+        "parent": "production_orders",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "production_materials",
+        "fk": "bom_line_id",
+        "parent": "bom_lines",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "production_outputs",
+        "fk": "production_order_id",
+        "parent": "production_orders",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "production_material_returns",
+        "fk": "production_material_id",
+        "parent": "production_materials",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      }
+    ]
+  },
+  {
+    "title": "D09 Permintaan toko dan WO gabungan",
+    "entities": [
+      "store_requests",
+      "replenishment_policies",
+      "store_request_lines",
+      "production_orders",
+      "demand_lines",
+      "wo_demand_allocations"
+    ],
+    "relationships": [
+      {
+        "child": "store_request_lines",
+        "fk": "store_request_id",
+        "parent": "store_requests",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "store_request_lines",
+        "fk": "policy_id",
+        "parent": "replenishment_policies",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "0..1"
+      },
+      {
+        "child": "demand_lines",
+        "fk": "store_request_line_id",
+        "parent": "store_request_lines",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "0..1"
+      },
+      {
+        "child": "wo_demand_allocations",
+        "fk": "demand_id",
+        "parent": "demand_lines",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "wo_demand_allocations",
+        "fk": "production_order_id",
+        "parent": "production_orders",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      }
+    ]
+  },
+  {
+    "title": "D10 Retur kredit dan refund",
+    "entities": [
+      "returns",
+      "credit_notes",
+      "return_lines",
+      "refund_allocations",
+      "refunds",
+      "payments"
+    ],
+    "relationships": [
+      {
+        "child": "return_lines",
+        "fk": "return_id",
+        "parent": "returns",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "credit_notes",
+        "fk": "return_id",
+        "parent": "returns",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "0..1"
+      },
+      {
+        "child": "refund_allocations",
+        "fk": "credit_note_id",
+        "parent": "credit_notes",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "0..1"
+      },
+      {
+        "child": "refund_allocations",
+        "fk": "refund_id",
+        "parent": "refunds",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "refunds",
+        "fk": "return_id",
+        "parent": "returns",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "0..1"
+      },
+      {
+        "child": "refunds",
+        "fk": "payment_id",
+        "parent": "payments",
+        "child_cardinality": "0..1",
+        "parent_cardinality": "1"
+      }
+    ]
+  },
+  {
+    "title": "D11 DP dan penyelesaian tagihan SO",
+    "entities": [
+      "sales_orders",
+      "payments",
+      "customer_deposits",
+      "sales_invoices",
+      "deposit_applications",
+      "payment_allocations"
+    ],
+    "relationships": [
+      {
+        "child": "customer_deposits",
+        "fk": "sales_order_id",
+        "parent": "sales_orders",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "customer_deposits",
+        "fk": "receipt_payment_id",
+        "parent": "payments",
+        "child_cardinality": "0..1",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "sales_invoices",
+        "fk": "sales_order_id",
+        "parent": "sales_orders",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "deposit_applications",
+        "fk": "deposit_id",
+        "parent": "customer_deposits",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "deposit_applications",
+        "fk": "invoice_id",
+        "parent": "sales_invoices",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "payment_allocations",
+        "fk": "payment_id",
+        "parent": "payments",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      }
+    ]
+  },
+  {
+    "title": "D12 Jurnal dan tutup periode",
+    "entities": [
+      "documents",
+      "fiscal_periods",
+      "journal_entries",
+      "account_period_balances",
+      "journal_lines",
+      "chart_of_accounts"
+    ],
+    "relationships": [
+      {
+        "child": "journal_entries",
+        "fk": "source_document_id",
+        "parent": "documents",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "journal_entries",
+        "fk": "period_id",
+        "parent": "fiscal_periods",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "journal_lines",
+        "fk": "journal_id",
+        "parent": "journal_entries",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "journal_lines",
+        "fk": "account_id",
+        "parent": "chart_of_accounts",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "account_period_balances",
+        "fk": "period_id",
+        "parent": "fiscal_periods",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "account_period_balances",
+        "fk": "account_id",
+        "parent": "chart_of_accounts",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      }
+    ]
+  },
+  {
+    "title": "D13 POS dan sinkronisasi",
+    "entities": [
+      "pos_terminals",
+      "pos_shifts",
+      "pos_sales",
+      "pos_sale_lines",
+      "sync_outbox",
+      "sync_inbox"
+    ],
+    "relationships": [
+      {
+        "child": "pos_shifts",
+        "fk": "terminal_id",
+        "parent": "pos_terminals",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "pos_sales",
+        "fk": "terminal_id",
+        "parent": "pos_terminals",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "pos_sales",
+        "fk": "shift_id",
+        "parent": "pos_shifts",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "pos_sale_lines",
+        "fk": "pos_sale_id",
+        "parent": "pos_sales",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "sync_outbox",
+        "fk": "terminal_id",
+        "parent": "pos_terminals",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      },
+      {
+        "child": "sync_inbox",
+        "fk": "terminal_id",
+        "parent": "pos_terminals",
+        "child_cardinality": "0..N",
+        "parent_cardinality": "1"
+      }
+    ]
+  }
+]

@@ -1,0 +1,15 @@
+%% F-05 - POS lokal, dua kasir, satu cloud
+flowchart TD
+  a["Kasir K01 / database A / PS-01 - PS-04"]
+  b["Kasir K02 / database B / PS-01 - PS-04"]
+  c["Commit lokal + antrean / Struk tersimpan"]
+  d["Commit lokal + antrean / Struk tersimpan"]
+  e["Cloud terima event unik / BO-24"]
+  f["ACK + sinkron master / PS-08"]
+  g["Konflik / periode tutup / Review backoffice"]
+  a -->|"Bayar"| c
+  b -->|"Bayar"| d
+  c -->|"Saat tersambung"| e
+  d -->|"Saat tersambung"| e
+  e -->|"Berhasil"| f
+  e -->|"Perlu tinjauan"| g

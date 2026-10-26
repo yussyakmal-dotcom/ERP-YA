@@ -1,0 +1,19 @@
+{
+  "tables": 104,
+  "foreign_keys": 282,
+  "diagram_count": 13,
+  "pages": 61,
+  "checks": [
+    "FK target exists",
+    "FK type matches",
+    "No duplicate field names",
+    "Unique indexes reference real fields",
+    "Diagram edges reference real FKs"
+  ],
+  "not_run": [
+    "SQL migration",
+    "Application tests",
+    "Concurrency tests",
+    "UAT"
+  ]
+}

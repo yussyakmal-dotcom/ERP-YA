@@ -1,0 +1,17 @@
+%% F-02 - PO hanya satu kali penerimaan
+flowchart TD
+  a["PO confirmed / BO-06"]
+  b["Input aktual per baris / BO-07"]
+  c["Terima 5 dari 10 / Tutup kekurangan 5"]
+  d["Semua aktual nol / Catat penolakan"]
+  e["PO selesai diterima / Receive kedua terkunci"]
+  f["Faktur + pembayaran / BO-29 / BO-20"]
+  g["Kedatangan berikutnya / BO-08: kembalikan"]
+  h["Retur dari receipt / BO-19: kredit supplier"]
+  a --> b
+  b -->|"Ada aktual > 0"| c
+  b -->|"Semua nol"| d
+  c -->|"Final"| e
+  e --> f
+  e -->|"Sisa datang"| g
+  e -->|"Barang bermasalah"| h

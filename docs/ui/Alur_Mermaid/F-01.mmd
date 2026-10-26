@@ -1,0 +1,19 @@
+%% F-01 - Pesanan pelanggan sampai terpenuhi
+flowchart TD
+  a["Buat SO + paket / BO-03"]
+  b["Validasi H-1 / snapshot / Jadwal lengkap"]
+  c["Konfirmasi + demand / BO-04 / BO-09"]
+  d["Produksi / BO-10 / BO-11"]
+  e["PO khusus SO / BO-06 / BO-07"]
+  f["Stok tersedia / Reservasi komponen"]
+  g["Packing + delivery / BO-12"]
+  h["Invoice + alokasi DP / BO-29 / BO-20"]
+  a --> b
+  b -->|"Lolos"| c
+  c -->|"Buat sendiri"| d
+  c -->|"Supplier"| e
+  c -->|"Dari stok"| f
+  d -->|"Transfer FIN"| g
+  e -->|"Terima packing"| g
+  f --> g
+  g --> h

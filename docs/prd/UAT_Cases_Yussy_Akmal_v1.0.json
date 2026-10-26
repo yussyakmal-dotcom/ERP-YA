@@ -1,0 +1,202 @@
+[
+  [
+    "U01",
+    "PO 10 dus diterima 5",
+    "Stok +5; kekurangan ditutup; receive kedua ditolak tanpa menambah stok/utang."
+  ],
+  [
+    "U02",
+    "Dua petugas receive PO bersamaan",
+    "Hanya satu commit; tidak ada penerimaan atau jurnal ganda."
+  ],
+  [
+    "U03",
+    "PO SO berisi barang supplier",
+    "PO terikat satu SO, masuk packing, komponen dibeli tidak dibuat WO."
+  ],
+  [
+    "U04",
+    "SO batal setelah penerimaan supplier",
+    "Reservasi lepas; barang dapat ditransfer ke toko; utang tetap."
+  ],
+  [
+    "U05",
+    "Barang U04 dijual POS",
+    "Sumber owned; stok keluar sekali tanpa pengakuan titipan/utang baru."
+  ],
+  [
+    "U06",
+    "Titipan 120 fisik dan 20 terjual",
+    "Fisik 120 di kartu manual; hanya 20 masuk dan 20 keluar sistem; kewajiban untuk 20."
+  ],
+  [
+    "U07",
+    "Titipan offline dikirim ulang",
+    "Pasangan mutasi dan kewajiban supplier tidak berganda."
+  ],
+  [
+    "U08",
+    "Transfer kirim 100 terima 98",
+    "Sumber -100, tujuan +98, transit 2; selisih terbuka."
+  ],
+  [
+    "U09",
+    "Dua unit transit dinyatakan hilang",
+    "Approval tercatat; transit -2; kerugian tercatat sekali."
+  ],
+  [
+    "U10",
+    "Selisih ternyata salah jumlah kirim",
+    "Koreksi tertaut; saldo sumber dipulihkan sesuai bukti; riwayat tetap ada."
+  ],
+  [
+    "U11",
+    "SO dan POS pada hari yang sama",
+    "SO same-day ditolak; POS hari yang sama tetap berhasil."
+  ],
+  [
+    "U12",
+    "Jam jadwal diubah",
+    "Pesanan baru memakai versi baru; SO terkonfirmasi mempertahankan snapshot."
+  ],
+  [
+    "U13",
+    "Tambahan SO setelah WO",
+    "Tanpa approval ditolak; setelah approval hanya kebutuhan tambahan diproduksi."
+  ],
+  [
+    "U14",
+    "Permintaan toko plus minimum stok",
+    "Kebutuhan yang sudah tercakup tidak dihitung dua kali; transit diperhitungkan."
+  ],
+  [
+    "U15",
+    "Paket SO dan komponen satuan",
+    "Invoice paket satu harga; kebutuhan dan stok komponen dihitung tepat sekali."
+  ],
+  [
+    "U16",
+    "Snack box POS",
+    "Produk dan kemasan mempunyai harga baris masing-masing; tidak memakai harga paket SO."
+  ],
+  [
+    "U17",
+    "BOM berubah setelah WO",
+    "WO tetap memakai snapshot lama; perubahan berikutnya memakai versi baru."
+  ],
+  [
+    "U18",
+    "Bahan produksi tidak cukup",
+    "Seluruh start dibatalkan atomik; stok tidak minus dan WO belum mulai."
+  ],
+  [
+    "U19",
+    "Sisa bahan dikembalikan",
+    "Stok RAW bertambah dengan biaya asal; biaya bersih WO berkurang."
+  ],
+  [
+    "U20",
+    "100 telur menghasilkan putih telur",
+    "Biaya telur seluruhnya ke utama; putih telur masuk biaya nol dan dapat dijual/dipakai."
+  ],
+  [
+    "U21",
+    "Seluruh hasil utama gagal",
+    "Tidak membagi dengan nol; approval menutup WO dan mencatat kerugian."
+  ],
+  [
+    "U22",
+    "DP sebagian lalu invoice dan pelunasan",
+    "Saldo DP/piutang benar; alokasi tidak menggandakan kas atau pendapatan."
+  ],
+  [
+    "U23",
+    "SO batal dengan DP",
+    "Refund backoffice tertaut; nilai tidak melebihi saldo yang berhak dikembalikan."
+  ],
+  [
+    "U24",
+    "Retur POS sebagian berulang",
+    "Akumulasi retur tidak melebihi penjualan; diskon/pajak/biaya mengikuti asal."
+  ],
+  [
+    "U25",
+    "Retur titipan setelah settlement",
+    "Kredit/klaim supplier tercatat; tidak membayar kewajiban yang sama dua kali."
+  ],
+  [
+    "U26",
+    "Dua POS offline menjual SKU sama",
+    "Keduanya tersimpan; cloud menggabungkan mutasi, tidak menimpa saldo."
+  ],
+  [
+    "U27",
+    "Koneksi putus setelah cloud commit",
+    "Retry memberi hasil lama; satu struk, satu efek stok dan jurnal."
+  ],
+  [
+    "U28",
+    "Event ID sama payload berbeda",
+    "Masuk conflict; tidak mengganti transaksi yang sudah diterima."
+  ],
+  [
+    "U29",
+    "Restart Docker dengan antrean",
+    "Transaksi dan outbox tetap ada, sinkronisasi dapat dilanjutkan."
+  ],
+  [
+    "U30",
+    "Refund transaksi terminal lain offline",
+    "Ditunda sampai validasi cloud; tidak terjadi refund ganda."
+  ],
+  [
+    "U31",
+    "Stok POS minus lalu barang masuk",
+    "HPP provisional dan penyesuaian tertaut; tidak ada rata-rata negatif/NaN."
+  ],
+  [
+    "U32",
+    "Approval dokumen lalu isi berubah",
+    "Approval revisi lama tidak dapat dipakai untuk memposting revisi baru."
+  ],
+  [
+    "U33",
+    "Pengguna tanpa hak posting",
+    "Ditolak meskipun boleh melihat semua toko/dapur."
+  ],
+  [
+    "U34",
+    "Tutup periode ketika POS belum sync",
+    "Peringatan/gate pengecualian muncul; keputusan terotorisasi tercatat."
+  ],
+  [
+    "U35",
+    "Event datang dari periode tertutup",
+    "Tanggal asli dipertahankan; koreksi periode terbuka mengikuti otorisasi."
+  ],
+  [
+    "U36",
+    "Retur supplier setelah PO received",
+    "Stok/kredit berkurang; PO tidak terbuka untuk receive ulang."
+  ],
+  [
+    "U37",
+    "Opname saat ada penjualan",
+    "Mutasi sesudah waktu hitung diperhitungkan; saldo tidak ditimpa."
+  ],
+  [
+    "U38",
+    "Bootstrap atau upgrade dijalankan ulang",
+    "Migrasi idempotent; data transaksi tidak hilang atau terduplikasi."
+  ],
+  [
+    "U39",
+    "Jurnal dan laporan satu periode",
+    "Debit= kredit; laporan hanya memakai jurnal sah dan rentang benar."
+  ],
+  [
+    "U40",
+    "Restore backup dan reconnect terminal",
+    "Saldo serta event konsisten; tidak membuat transaksi duplikat setelah pemulihan."
+  ]
+]

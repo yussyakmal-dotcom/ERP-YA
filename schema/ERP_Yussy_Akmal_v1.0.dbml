@@ -1,0 +1,1904 @@
+Project ERP_Yussy_Akmal {
+  database_type: 'PostgreSQL'
+  Note: 'Model logis v1.0 25 Oktober 2026. Bukan DDL produksi. Ketentuan PRD dan catatan integritas wajib diterapkan dalam migrasi/service.'
+}
+
+Table companies {
+  id uuid [pk, not null]
+  code varchar(30) [not null]
+  name varchar(150) [not null]
+  timezone varchar(50) [not null]
+  currency_code char(3) [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (code) [unique]
+  }
+  Note: 'Satu perusahaan pemilik seluruh transaksi. Versi pertama hanya satu perusahaan aktif; bukan desain konsolidasi multi company.'
+}
+
+Table outlets {
+  id uuid [pk, not null]
+  company_id uuid [not null]
+  code varchar(30) [not null]
+  name varchar(150) [not null]
+  kind varchar(20) [not null]
+  pos_enabled boolean [not null]
+  active boolean [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (code) [unique]
+  }
+  Note: 'Toko fisik dan outlet virtual Dahlia. kind store atau virtual; virtual tidak memiliki POS.'
+}
+
+Table kitchens {
+  id uuid [pk, not null]
+  company_id uuid [not null]
+  code varchar(30) [not null]
+  name varchar(150) [not null]
+  kind varchar(20) [not null]
+  active boolean [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (code) [unique]
+  }
+  Note: 'Dapur produksi dan bagian packing. '
+}
+
+Table warehouses {
+  id uuid [pk, not null]
+  company_id uuid [not null]
+  code varchar(40) [not null]
+  name varchar(150) [not null]
+  kind varchar(25) [not null]
+  outlet_id uuid [null]
+  kitchen_id uuid [null]
+  active boolean [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (code) [unique]
+  }
+  Note: 'Lokasi fisik atau virtual untuk saldo stok. kind central, kitchen_raw, kitchen_finished, packing, store, transit. Transit bukan stok toko dan bukan entitas perusahaan baru; owner FK mengikuti kind.'
+}
+
+Table uoms {
+  id uuid [pk, not null]
+  code varchar(20) [not null]
+  name varchar(80) [not null]
+  dimension varchar(20) [not null]
+  allow_decimal boolean [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (code) [unique]
+  }
+  Note: 'Satuan dasar dan satuan transaksi. '
+}
+
+Table categories {
+  id uuid [pk, not null]
+  name varchar(100) [not null]
+  parent_id uuid [null]
+  active boolean [not null]
+  created_at timestamptz [not null]
+  Note: 'Pengelompokan SKU. Tidak boleh siklus parent.'
+}
+
+Table products {
+  id uuid [pk, not null]
+  sku varchar(60) [not null]
+  name varchar(200) [not null]
+  category_id uuid [null]
+  base_uom_id uuid [not null]
+  is_saleable boolean [not null]
+  is_purchasable boolean [not null]
+  is_manufacturable boolean [not null]
+  is_phantom boolean [not null]
+  intermediate_type varchar(20) [null]
+  default_purchase_cost decimal(20,6) [not null]
+  default_sale_price decimal(20,4) [not null]
+  active boolean [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (sku) [unique]
+  }
+  Note: 'SKU bahan, produk, kemasan, turunan atau paket. intermediate_type premik atau wip. Phantom tidak memiliki stock_balances; stok komponen digunakan. Produk turunan menggunakan SKU biasa.'
+}
+
+Table product_uoms {
+  id uuid [pk, not null]
+  product_id uuid [not null]
+  uom_id uuid [not null]
+  factor_to_base decimal(20,6) [not null]
+  barcode varchar(80) [null]
+  is_base boolean [not null]
+  allow_sale boolean [not null]
+  allow_purchase boolean [not null]
+  active boolean [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (product_id, uom_id) [unique]
+    (barcode) [unique]
+  }
+  Note: 'Konversi SKU per satuan dan barcode. Faktor >0; tepat satu satuan dasar bernilai 1 per SKU. Transaksi menyimpan snapshot, bukan lookup historis.'
+}
+
+Table product_kitchen_routes {
+  id uuid [pk, not null]
+  product_id uuid [not null]
+  kitchen_id uuid [not null]
+  raw_warehouse_id uuid [not null]
+  output_warehouse_id uuid [not null]
+  is_default boolean [not null]
+  active boolean [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (product_id, kitchen_id) [unique]
+  }
+  Note: 'Pemetaan SKU yang dapat dibuat per dapur. Maksimal satu default aktif per SKU; sumber WIP dapat ditentukan pada komponen BOM.'
+}
+
+Table suppliers {
+  id uuid [pk, not null]
+  code varchar(40) [not null]
+  name varchar(150) [not null]
+  contact jsonb [not null]
+  payment_terms_days int [not null]
+  active boolean [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (code) [unique]
+  }
+  Note: 'Master supplier. '
+}
+
+Table customers {
+  id uuid [pk, not null]
+  code varchar(40) [not null]
+  name varchar(150) [not null]
+  phone varchar(40) [null]
+  contact jsonb [not null]
+  active boolean [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (code) [unique]
+  }
+  Note: 'Pelanggan SO dan member POS. '
+}
+
+Table users {
+  id uuid [pk, not null]
+  username varchar(100) [not null]
+  name varchar(150) [not null]
+  password_hash text [not null]
+  pin_hash text [null]
+  credential_version int [not null]
+  active boolean [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (username) [unique]
+  }
+  Note: 'Pengguna backoffice dan kasir. Tidak menyimpan PIN/password polos. Tidak ada pembatasan akses toko/dapur pada user.'
+}
+
+Table roles {
+  id uuid [pk, not null]
+  code varchar(50) [not null]
+  name varchar(100) [not null]
+  permissions jsonb [not null]
+  active boolean [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (code) [unique]
+  }
+  Note: 'Peran dan kumpulan hak tindakan. permissions berupa daftar kode hak tervalidasi.'
+}
+
+Table user_roles {
+  id uuid [pk, not null]
+  user_id uuid [not null]
+  role_id uuid [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (user_id, role_id) [unique]
+  }
+  Note: 'Hubungan pengguna dan peran. '
+}
+
+Table documents {
+  id uuid [pk, not null]
+  company_id uuid [not null]
+  document_type varchar(40) [not null]
+  document_no varchar(80) [not null]
+  business_date date [not null]
+  status varchar(30) [not null]
+  revision int [not null]
+  created_by uuid [not null]
+  posted_by uuid [null]
+  posted_at timestamptz [null]
+  reversal_of_id uuid [null]
+  idempotency_key varchar(120) [null]
+  created_at timestamptz [not null]
+  indexes {
+    (document_type, document_no) [unique]
+    (idempotency_key) [unique]
+  }
+  Note: 'Identitas lintas modul untuk audit dan posting. Tabel subtype memakai id yang sama. Constraint/layanan memastikan tepat satu subtype yang sesuai document_type. Posted immutable.'
+}
+
+Table settings {
+  id uuid [pk, not null]
+  key varchar(120) [not null]
+  version int [not null]
+  value jsonb [not null]
+  effective_from timestamptz [not null]
+  changed_by uuid [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (key, version) [unique]
+  }
+  Note: 'Pengaturan berversi dan tanggal efektif. '
+}
+
+Table approval_rules {
+  id uuid [pk, not null]
+  action_code varchar(80) [not null]
+  version int [not null]
+  min_amount decimal(20,4) [null]
+  max_amount decimal(20,4) [null]
+  conditions jsonb [not null]
+  offline_allowed boolean [not null]
+  effective_from timestamptz [not null]
+  active boolean [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (action_code, version) [unique]
+  }
+  Note: 'Aturan persetujuan tindakan. Kondisi harus deterministik; rule yang tumpang tindih perlu prioritas di conditions atau ditolak saat konfigurasi.'
+}
+
+Table approval_steps {
+  id uuid [pk, not null]
+  rule_id uuid [not null]
+  step_no int [not null]
+  approver_user_id uuid [null]
+  approver_role_id uuid [null]
+  required_count int [not null]
+  allow_self_approval boolean [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (rule_id, step_no) [unique]
+  }
+  Note: 'Penyetuju per langkah rule. Tepat satu approver_user_id atau approver_role_id; required_count >0.'
+}
+
+Table approval_requests {
+  id uuid [pk, not null]
+  document_id uuid [not null]
+  document_revision int [not null]
+  rule_id uuid [not null]
+  requested_by uuid [not null]
+  status varchar(30) [not null]
+  rule_snapshot jsonb [not null]
+  reason text [not null]
+  created_at timestamptz [not null]
+  Note: 'Permintaan persetujuan revisi dokumen. Perubahan revisi material membuat approval lama tidak berlaku.'
+}
+
+Table approval_actions {
+  id uuid [pk, not null]
+  request_id uuid [not null]
+  step_id uuid [not null]
+  actor_id uuid [not null]
+  terminal_id uuid [null]
+  decision varchar(20) [not null]
+  decided_at timestamptz [not null]
+  credential_version int [not null]
+  evidence jsonb [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (request_id, step_id, actor_id) [unique]
+  }
+  Note: 'Keputusan penyetuju online atau offline. Offline signature/evidence serta rule version diverifikasi saat sync; replay tidak membuat keputusan ganda.'
+}
+
+Table audit_logs {
+  id uuid [pk, not null]
+  actor_id uuid [null]
+  document_id uuid [null]
+  entity_name varchar(80) [not null]
+  entity_id uuid [not null]
+  action varchar(50) [not null]
+  before_data jsonb [null]
+  after_data jsonb [null]
+  occurred_at timestamptz [not null]
+  created_at timestamptz [not null]
+  Note: 'Riwayat aksi dan perubahan. Append-only; entity_name/entity_id referensi audit umum, bukan sumber pembukuan.'
+}
+
+Table attachments {
+  id uuid [pk, not null]
+  document_id uuid [not null]
+  uploaded_by uuid [not null]
+  storage_key text [not null]
+  file_name varchar(255) [not null]
+  content_hash varchar(80) [not null]
+  created_at timestamptz [not null]
+  Note: 'Lampiran dokumen bisnis. '
+}
+
+Table production_schedules {
+  id uuid [pk, not null]
+  code varchar(30) [not null]
+  name varchar(100) [not null]
+  active boolean [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (code) [unique]
+  }
+  Note: 'Identitas jadwal yang dapat dikonfigurasi. '
+}
+
+Table schedule_versions {
+  id uuid [pk, not null]
+  schedule_id uuid [not null]
+  version int [not null]
+  cutoff_day_offset int [not null]
+  cutoff_time time [not null]
+  delivery_time time [not null]
+  effective_from date [not null]
+  effective_to date [null]
+  created_at timestamptz [not null]
+  indexes {
+    (schedule_id, version) [unique]
+  }
+  Note: 'Jam batas H-1 dan jam pengiriman berversi. cutoff_day_offset = -1 untuk versi pertama; interval versi aktif tidak tumpang tindih. Tidak seed jam fiktif.'
+}
+
+Table price_lists {
+  id uuid [pk, not null]
+  code varchar(40) [not null]
+  name varchar(100) [not null]
+  is_default boolean [not null]
+  active boolean [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (code) [unique]
+  }
+  Note: 'Daftar harga berdasarkan kanal/kebutuhan. '
+}
+
+Table price_list_items {
+  id uuid [pk, not null]
+  price_list_id uuid [not null]
+  product_uom_id uuid [not null]
+  price decimal(20,4) [not null]
+  valid_from timestamptz [not null]
+  valid_to timestamptz [null]
+  created_at timestamptz [not null]
+  Note: 'Harga SKU dan satuan pada periode tertentu. Tidak ada dua harga efektif tumpang tindih untuk daftar dan satuan yang sama.'
+}
+
+Table promotion_rules {
+  id uuid [pk, not null]
+  code varchar(50) [not null]
+  version int [not null]
+  scope varchar(20) [not null]
+  discount_type varchar(20) [not null]
+  value decimal(20,4) [not null]
+  conditions jsonb [not null]
+  valid_from timestamptz [not null]
+  valid_to timestamptz [null]
+  active boolean [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (code, version) [unique]
+  }
+  Note: 'Diskon item/global yang tervalidasi. '
+}
+
+Table vouchers {
+  id uuid [pk, not null]
+  code varchar(60) [not null]
+  promotion_rule_id uuid [not null]
+  max_uses int [null]
+  valid_from timestamptz [not null]
+  valid_to timestamptz [not null]
+  active boolean [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (code) [unique]
+  }
+  Note: 'Voucher dengan kontrol penggunaan bersama. '
+}
+
+Table voucher_redemptions {
+  id uuid [pk, not null]
+  voucher_id uuid [not null]
+  sale_document_id uuid [not null]
+  customer_id uuid [null]
+  amount decimal(20,4) [not null]
+  status varchar(20) [not null]
+  reversal_of_id uuid [null]
+  created_at timestamptz [not null]
+  indexes {
+    (voucher_id, sale_document_id) [unique]
+  }
+  Note: 'Penggunaan voucher tertaut penjualan. Quota diperiksa atomik online. Koreksi tidak menghapus penggunaan asal.'
+}
+
+Table loyalty_accounts {
+  id uuid [pk, not null]
+  customer_id uuid [not null]
+  points_balance decimal(20,4) [not null]
+  version bigint [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (customer_id) [unique]
+  }
+  Note: 'Akun poin pelanggan. '
+}
+
+Table loyalty_entries {
+  id uuid [pk, not null]
+  account_id uuid [not null]
+  source_document_id uuid [not null]
+  kind varchar(20) [not null]
+  points_delta decimal(20,4) [not null]
+  reversal_of_id uuid [null]
+  created_at timestamptz [not null]
+  Note: 'Ledger poin diperoleh dan ditukar. Earn offline diterapkan sekali setelah sync; redeem saldo bersama memerlukan koneksi.'
+}
+
+Table stock_balances {
+  id uuid [pk, not null]
+  product_id uuid [not null]
+  warehouse_id uuid [not null]
+  quantity decimal(20,6) [not null]
+  reserved_quantity decimal(20,6) [not null]
+  inventory_value decimal(20,4) [not null]
+  avg_cost decimal(20,6) [not null]
+  version bigint [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (product_id, warehouse_id) [unique]
+  }
+  Note: 'Saldo cepat per SKU dan lokasi. Saldo cache dari ledger. quantity boleh minus akibat POS; reserved >=0. Phantom tidak boleh memiliki baris saldo.'
+}
+
+Table stock_movements {
+  id uuid [pk, not null]
+  source_document_id uuid [not null]
+  source_line_key varchar(120) [not null]
+  product_id uuid [not null]
+  warehouse_id uuid [not null]
+  movement_kind varchar(40) [not null]
+  qty_input decimal(20,6) [not null]
+  uom_id uuid [not null]
+  factor_snapshot decimal(20,6) [not null]
+  qty_delta decimal(20,6) [not null]
+  unit_cost decimal(20,6) [not null]
+  value_delta decimal(20,4) [not null]
+  effective_at timestamptz [not null]
+  posted_at timestamptz [not null]
+  is_provisional boolean [not null]
+  negative_reason varchar(80) [null]
+  reversal_of_id uuid [null]
+  created_at timestamptz [not null]
+  indexes {
+    (source_document_id, source_line_key, movement_kind, warehouse_id) [unique]
+  }
+  Note: 'Ledger append-only semua mutasi stok. source_line_key stabil dan tervalidasi pada subtype. Nilai bertanda mengikuti arah. Tidak UPDATE/DELETE posted.'
+}
+
+Table stock_reservations {
+  id uuid [pk, not null]
+  demand_id uuid [not null]
+  product_id uuid [not null]
+  warehouse_id uuid [not null]
+  qty_reserved decimal(20,6) [not null]
+  qty_consumed decimal(20,6) [not null]
+  qty_released decimal(20,6) [not null]
+  status varchar(20) [not null]
+  created_at timestamptz [not null]
+  Note: 'Alokasi stok untuk kebutuhan yang pasti. Sisa reservasi >=0; produk demand dan stock wajib sama. Konsumsi delivery mengurangi saldo dan reservasi atomik.'
+}
+
+Table inventory_adjustments {
+  id uuid [pk, not null]
+  warehouse_id uuid [not null]
+  reason varchar(30) [not null]
+  counted_at timestamptz [null]
+  notes text [not null]
+  created_at timestamptz [not null]
+  Note: 'Header koreksi, scrap, atau opname. '
+}
+
+Table inventory_adjustment_lines {
+  id uuid [pk, not null]
+  adjustment_id uuid [not null]
+  product_id uuid [not null]
+  qty_input decimal(20,6) [not null]
+  uom_id uuid [not null]
+  factor_snapshot decimal(20,6) [not null]
+  qty_delta decimal(20,6) [not null]
+  counted_qty decimal(20,6) [null]
+  baseline_qty decimal(20,6) [null]
+  movement_watermark bigint [null]
+  unit_cost decimal(20,6) [not null]
+  created_at timestamptz [not null]
+  Note: 'Baris selisih stok dan nilai koreksi. Untuk opname rekonsiliasi mutasi setelah counted_at; jangan menimpa saldo terkini.'
+}
+
+Table negative_stock_cases {
+  id uuid [pk, not null]
+  out_movement_id uuid [not null]
+  product_id uuid [not null]
+  warehouse_id uuid [not null]
+  qty_short decimal(20,6) [not null]
+  qty_settled decimal(20,6) [not null]
+  provisional_unit_cost decimal(20,6) [not null]
+  status varchar(20) [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (out_movement_id) [unique]
+  }
+  Note: 'Kekurangan stok POS dengan HPP sementara. Penerimaan penutup kekurangan dialokasikan ke kasus ini, tanpa rumus rata-rata dengan penyebut nonpositif.'
+}
+
+Table inventory_cost_adjustments {
+  id uuid [pk, not null]
+  source_document_id uuid [not null]
+  negative_case_id uuid [null]
+  receipt_movement_id uuid [null]
+  qty_settled decimal(20,6) [not null]
+  value_delta decimal(20,4) [not null]
+  journal_id uuid [not null]
+  reason text [not null]
+  created_at timestamptz [not null]
+  Note: 'Koreksi nilai tertaut penerimaan dan kekurangan. Tidak mengubah movement historis; jumlah settlement tidak melebihi kekurangan atau penerimaan tersedia.'
+}
+
+Table transfer_orders {
+  id uuid [pk, not null]
+  from_warehouse_id uuid [not null]
+  to_warehouse_id uuid [not null]
+  transit_warehouse_id uuid [not null]
+  dispatch_at timestamptz [null]
+  expected_arrival timestamptz [null]
+  notes text [not null]
+  created_at timestamptz [not null]
+  Note: 'Dokumen perpindahan antarlokasi. Sumber, tujuan dan transit berbeda. Status di documents: draft, dispatched, partial_received, discrepancy, completed, cancelled.'
+}
+
+Table transfer_lines {
+  id uuid [pk, not null]
+  transfer_id uuid [not null]
+  product_id uuid [not null]
+  demand_id uuid [null]
+  qty_input decimal(20,6) [not null]
+  uom_id uuid [not null]
+  factor_snapshot decimal(20,6) [not null]
+  qty_dispatched decimal(20,6) [not null]
+  unit_cost_snapshot decimal(20,6) [not null]
+  created_at timestamptz [not null]
+  Note: 'Kuantitas dikirim dan biaya yang dibawa. '
+}
+
+Table transfer_receipts {
+  id uuid [pk, not null]
+  transfer_id uuid [not null]
+  received_at timestamptz [not null]
+  received_by uuid [not null]
+  created_at timestamptz [not null]
+  Note: 'Penerimaan aktual satu kiriman. Satu transfer boleh beberapa penerimaan sampai terselesaikan.'
+}
+
+Table transfer_receipt_lines {
+  id uuid [pk, not null]
+  receipt_id uuid [not null]
+  transfer_line_id uuid [not null]
+  qty_received decimal(20,6) [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (receipt_id, transfer_line_id) [unique]
+  }
+  Note: 'Jumlah aktual diterima per baris kiriman. Akumulasi diterima dan disposisi tidak boleh melebihi jumlah dikirim.'
+}
+
+Table transfer_discrepancies {
+  id uuid [pk, not null]
+  transfer_line_id uuid [not null]
+  qty_disputed decimal(20,6) [not null]
+  qty_resolved decimal(20,6) [not null]
+  reason text [not null]
+  status varchar(30) [not null]
+  responsible_user_id uuid [null]
+  created_at timestamptz [not null]
+  Note: 'Kasus selisih yang masih berada dalam transit. Kasus tidak menciptakan mutasi tambahan; sisa transit dihitung dari ledger.'
+}
+
+Table transfer_resolutions {
+  id uuid [pk, not null]
+  discrepancy_id uuid [not null]
+  resolution_type varchar(30) [not null]
+  qty_base decimal(20,6) [not null]
+  destination_warehouse_id uuid [null]
+  related_receipt_line_id uuid [null]
+  notes text [not null]
+  created_at timestamptz [not null]
+  Note: 'Keputusan dan mutasi penyelesaian selisih. Jenis waiting, received_later, returned, damaged, lost, dispatch_correction. Waiting tidak mengurangi transit; received_later merujuk penerimaan tanpa posting ganda.'
+}
+
+Table purchase_orders {
+  id uuid [pk, not null]
+  supplier_id uuid [not null]
+  receiving_warehouse_id uuid [not null]
+  sales_order_id uuid [null]
+  purpose varchar(25) [not null]
+  order_date date [not null]
+  expected_date date [null]
+  original_total decimal(20,4) [not null]
+  actual_total decimal(20,4) [null]
+  created_at timestamptz [not null]
+  Note: 'PO reguler atau khusus satu SO. purpose regular atau so_fulfillment; so_fulfillment wajib sales_order_id dan lokasi packing.'
+}
+
+Table purchase_order_lines {
+  id uuid [pk, not null]
+  purchase_order_id uuid [not null]
+  product_id uuid [not null]
+  demand_id uuid [null]
+  qty_input decimal(20,6) [not null]
+  uom_id uuid [not null]
+  factor_snapshot decimal(20,6) [not null]
+  qty_ordered_base decimal(20,6) [not null]
+  unit_price_input decimal(20,4) [not null]
+  unit_cost_base decimal(20,6) [not null]
+  tax_snapshot jsonb [not null]
+  created_at timestamptz [not null]
+  Note: 'Baris pesanan dan sumber kebutuhan SO. Demand SO yang dirujuk harus berasal dari sales_order_id header.'
+}
+
+Table goods_receipts {
+  id uuid [pk, not null]
+  purchase_order_id uuid [not null]
+  warehouse_id uuid [not null]
+  receipt_at timestamptz [not null]
+  supplier_reference varchar(100) [null]
+  created_at timestamptz [not null]
+  indexes {
+    (purchase_order_id) [unique]
+  }
+  Note: 'Penerimaan supplier final sekali per PO. Satu slot receipt per PO termasuk setelah koreksi; draft boleh diedit, posted tidak dibuat ulang. Terima kurang menutup sisa.'
+}
+
+Table goods_receipt_lines {
+  id uuid [pk, not null]
+  receipt_id uuid [not null]
+  po_line_id uuid [not null]
+  qty_received_base decimal(20,6) [not null]
+  qty_closed_short decimal(20,6) [not null]
+  unit_cost_snapshot decimal(20,6) [not null]
+  variance_reason varchar(50) [null]
+  created_at timestamptz [not null]
+  indexes {
+    (receipt_id, po_line_id) [unique]
+  }
+  Note: 'Kuantitas aktual dan nilai penerimaan. received >=0 dan <= ordered; seluruh PO lines tercakup; minimal satu positif.'
+}
+
+Table supplier_arrival_rejections {
+  id uuid [pk, not null]
+  purchase_order_id uuid [not null]
+  arrival_at timestamptz [not null]
+  items jsonb [not null]
+  reason text [not null]
+  recorded_by uuid [not null]
+  created_at timestamptz [not null]
+  Note: 'Kedatangan terlambat yang ditolak setelah receive. Audit fisik saja; tidak menambah stok atau kewajiban supplier. Items menyimpan SKU/satuan/jumlah ditolak.'
+}
+
+Table purchase_invoices {
+  id uuid [pk, not null]
+  supplier_id uuid [not null]
+  goods_receipt_id uuid [not null]
+  supplier_invoice_no varchar(100) [not null]
+  invoice_date date [not null]
+  due_date date [null]
+  subtotal decimal(20,4) [not null]
+  tax_total decimal(20,4) [not null]
+  total decimal(20,4) [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (supplier_id, supplier_invoice_no) [unique]
+  }
+  Note: 'Tagihan supplier berdasarkan penerimaan. '
+}
+
+Table purchase_invoice_lines {
+  id uuid [pk, not null]
+  invoice_id uuid [not null]
+  receipt_line_id uuid [not null]
+  qty_base decimal(20,6) [not null]
+  unit_price_base decimal(20,6) [not null]
+  net_amount decimal(20,4) [not null]
+  tax_snapshot jsonb [not null]
+  created_at timestamptz [not null]
+  Note: 'Detail tagihan dan selisih harga. Kuantitas kumulatif invoice valid tidak melampaui penerimaan bersih yang dapat ditagih.'
+}
+
+Table consignment_agreements {
+  id uuid [pk, not null]
+  supplier_id uuid [not null]
+  product_id uuid [not null]
+  warehouse_id uuid [not null]
+  version int [not null]
+  unit_cost_base decimal(20,6) [not null]
+  valid_from timestamptz [not null]
+  valid_to timestamptz [null]
+  settlement_terms jsonb [not null]
+  active boolean [not null]
+  created_at timestamptz [not null]
+  Note: 'Harga supplier untuk titipan POS per lokasi. Tidak ada perjanjian aktif ambigu untuk pilihan supplier/SKU/lokasi. Tidak mencatat penerimaan fisik belum terjual.'
+}
+
+Table consignment_sales {
+  id uuid [pk, not null]
+  pos_sale_line_id uuid [not null]
+  agreement_id uuid [not null]
+  supplier_id uuid [not null]
+  qty_base decimal(20,6) [not null]
+  unit_cost_snapshot decimal(20,6) [not null]
+  recognized_in_movement_id uuid [not null]
+  recognized_out_movement_id uuid [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (pos_sale_line_id) [unique]
+  }
+  Note: 'Pengakuan titipan saat baris POS terjual. Kedua movement, sale, dan kewajiban diposting atomik. Sumber owned tidak memiliki baris ini.'
+}
+
+Table consignment_settlements {
+  id uuid [pk, not null]
+  supplier_id uuid [not null]
+  period_from date [not null]
+  period_to date [not null]
+  due_date date [null]
+  total decimal(20,4) [not null]
+  created_at timestamptz [not null]
+  Note: 'Dokumen utang supplier dari titipan terjual. '
+}
+
+Table consignment_settlement_lines {
+  id uuid [pk, not null]
+  settlement_id uuid [not null]
+  consignment_sale_id uuid [not null]
+  return_line_id uuid [null]
+  qty_signed decimal(20,6) [not null]
+  amount_signed decimal(20,4) [not null]
+  created_at timestamptz [not null]
+  Note: 'Alokasi penjualan bersih ke settlement. Penjualan/retur dialokasikan sekali; batas kumulatif mencegah tagih ganda. Retur sesudah settlement dapat menjadi credit note supplier.'
+}
+
+Table sales_orders {
+  id uuid [pk, not null]
+  outlet_id uuid [not null]
+  customer_id uuid [not null]
+  fulfillment_warehouse_id uuid [not null]
+  order_date date [not null]
+  delivery_date date [not null]
+  schedule_version_id uuid [not null]
+  cutoff_at_snapshot timestamptz [not null]
+  delivery_at_snapshot timestamptz [not null]
+  price_list_id uuid [not null]
+  sales_user_id uuid [null]
+  sales_group_name varchar(100) [null]
+  subtotal decimal(20,4) [not null]
+  discount_total decimal(20,4) [not null]
+  tax_total decimal(20,4) [not null]
+  total decimal(20,4) [not null]
+  created_at timestamptz [not null]
+  Note: 'Pesanan pelanggan hanya dari backoffice. delivery_date > order_date. Warehouse packing. Satu jadwal per SO; semua transaksi terkait ada di backoffice.'
+}
+
+Table sales_order_lines {
+  id uuid [pk, not null]
+  sales_order_id uuid [not null]
+  product_id uuid [not null]
+  qty_input decimal(20,6) [not null]
+  uom_id uuid [not null]
+  factor_snapshot decimal(20,6) [not null]
+  qty_base decimal(20,6) [not null]
+  unit_price_input decimal(20,4) [not null]
+  discount_amount decimal(20,4) [not null]
+  tax_snapshot jsonb [not null]
+  line_total decimal(20,4) [not null]
+  is_package_snapshot boolean [not null]
+  created_at timestamptz [not null]
+  Note: 'Baris harga pelanggan termasuk paket. Paket memiliki satu harga pelanggan. Komponen tidak dijumlah ulang sebagai pendapatan.'
+}
+
+Table sales_order_components {
+  id uuid [pk, not null]
+  sales_order_line_id uuid [not null]
+  product_id uuid [not null]
+  bom_line_id uuid [null]
+  qty_per_parent_base decimal(20,6) [not null]
+  qty_required_base decimal(20,6) [not null]
+  source_method varchar(20) [not null]
+  version int [not null]
+  created_at timestamptz [not null]
+  Note: 'Snapshot barang fisik yang memenuhi baris SO. Semua baris SO memiliki komponen: standalone satu self; paket produk+kemasan. source stock, manufacture, purchase. Tidak explode ulang snapshot saat delivery.'
+}
+
+Table deliveries {
+  id uuid [pk, not null]
+  sales_order_id uuid [not null]
+  warehouse_id uuid [not null]
+  delivery_at timestamptz [not null]
+  recipient_name varchar(150) [null]
+  created_at timestamptz [not null]
+  Note: 'Pengiriman penjualan pelanggan. Berbeda dari transfer internal. Bisa beberapa delivery per SO; stok tidak boleh minus.'
+}
+
+Table delivery_lines {
+  id uuid [pk, not null]
+  delivery_id uuid [not null]
+  so_component_id uuid [not null]
+  reservation_id uuid [null]
+  qty_base decimal(20,6) [not null]
+  unit_cost_snapshot decimal(20,6) [not null]
+  stock_movement_id uuid [not null]
+  created_at timestamptz [not null]
+  Note: 'Barang fisik yang keluar untuk SO. Cumulative qty <= kebutuhan tersisa; komponen paket lengkap sesuai rasio untuk paket yang diserahkan.'
+}
+
+Table sales_invoices {
+  id uuid [pk, not null]
+  sales_order_id uuid [not null]
+  customer_id uuid [not null]
+  invoice_date date [not null]
+  due_date date [null]
+  subtotal decimal(20,4) [not null]
+  discount_total decimal(20,4) [not null]
+  tax_total decimal(20,4) [not null]
+  total decimal(20,4) [not null]
+  created_at timestamptz [not null]
+  Note: 'Tagihan SO pelanggan. Satu SO dapat beberapa invoice untuk delivery parsial; batas kuantitas ditagih dijaga.'
+}
+
+Table sales_invoice_lines {
+  id uuid [pk, not null]
+  invoice_id uuid [not null]
+  so_line_id uuid [not null]
+  qty_parent_base decimal(20,6) [not null]
+  unit_price_base decimal(20,6) [not null]
+  discount_amount decimal(20,4) [not null]
+  tax_snapshot jsonb [not null]
+  line_total decimal(20,4) [not null]
+  created_at timestamptz [not null]
+  Note: 'Baris tagihan produk atau paket satu harga. Tidak menagih komponen paket sebagai baris tambahan. Cumulative invoice qty <= delivered parent equivalent.'
+}
+
+Table customer_deposits {
+  id uuid [pk, not null]
+  sales_order_id uuid [not null]
+  customer_id uuid [not null]
+  receipt_payment_id uuid [not null]
+  amount decimal(20,4) [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (receipt_payment_id) [unique]
+  }
+  Note: 'Penerimaan DP yang terikat SO. DP adalah kewajiban sampai diaplikasikan; refund DP tercatat melalui refund_allocations.'
+}
+
+Table deposit_applications {
+  id uuid [pk, not null]
+  deposit_id uuid [not null]
+  invoice_id uuid [not null]
+  amount decimal(20,4) [not null]
+  reversal_of_id uuid [null]
+  created_at timestamptz [not null]
+  Note: 'Pemakaian DP untuk melunasi invoice SO. Invoice harus satu pelanggan/SO; batas saldo DP dan outstanding invoice divalidasi atomik.'
+}
+
+Table boms {
+  id uuid [pk, not null]
+  product_id uuid [not null]
+  version int [not null]
+  purpose varchar(20) [not null]
+  kitchen_id uuid [null]
+  output_qty_base decimal(20,6) [not null]
+  valid_from date [not null]
+  valid_to date [null]
+  active boolean [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (product_id, version, purpose) [unique]
+  }
+  Note: 'Resep produksi atau susunan paket berversi. purpose manufacturing atau package; versi aktif efektif tidak ambigu; output >0.'
+}
+
+Table bom_lines {
+  id uuid [pk, not null]
+  bom_id uuid [not null]
+  component_product_id uuid [not null]
+  qty_input decimal(20,6) [not null]
+  uom_id uuid [not null]
+  factor_snapshot decimal(20,6) [not null]
+  qty_base decimal(20,6) [not null]
+  source_warehouse_id uuid [null]
+  sequence int [not null]
+  created_at timestamptz [not null]
+  Note: 'Bahan atau komponen paket. Tidak ada siklus resep. Pada package hanya satu level. Kuantitas resep eksplisit termasuk kebutuhan normal; tidak menambahkan waste dua kali.'
+}
+
+Table bom_byproducts {
+  id uuid [pk, not null]
+  bom_id uuid [not null]
+  product_id uuid [not null]
+  expected_qty_base decimal(20,6) [null]
+  cost_policy varchar(20) [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (bom_id, product_id) [unique]
+  }
+  Note: 'Hasil turunan yang diharapkan pada resep. cost_policy zero; aktual ditimbang pada production_outputs, tidak menggunakan hasil perkiraan sebagai stok otomatis.'
+}
+
+Table replenishment_policies {
+  id uuid [pk, not null]
+  product_id uuid [not null]
+  warehouse_id uuid [not null]
+  source_warehouse_id uuid [not null]
+  min_qty decimal(20,6) [not null]
+  target_qty decimal(20,6) [not null]
+  order_multiple decimal(20,6) [not null]
+  active boolean [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (product_id, warehouse_id) [unique]
+  }
+  Note: 'Minimum dan target stok toko. target >= min >=0; kelipatan >0; perhitungan net termasuk kiriman dan permintaan terbuka.'
+}
+
+Table store_requests {
+  id uuid [pk, not null]
+  outlet_id uuid [not null]
+  warehouse_id uuid [not null]
+  required_date date [not null]
+  schedule_version_id uuid [not null]
+  origin varchar(20) [not null]
+  created_at timestamptz [not null]
+  Note: 'Permintaan barang toko manual atau hasil minimum. origin manual atau minimum; usulan minimum tidak otomatis posted.'
+}
+
+Table store_request_lines {
+  id uuid [pk, not null]
+  store_request_id uuid [not null]
+  product_id uuid [not null]
+  qty_base decimal(20,6) [not null]
+  policy_id uuid [null]
+  created_at timestamptz [not null]
+  indexes {
+    (store_request_id, product_id) [unique]
+  }
+  Note: 'Baris kebutuhan etalase toko. '
+}
+
+Table demand_lines {
+  id uuid [pk, not null]
+  product_id uuid [not null]
+  so_component_id uuid [null]
+  store_request_line_id uuid [null]
+  source_document_id uuid [null]
+  origin varchar(25) [not null]
+  required_at timestamptz [not null]
+  schedule_version_id uuid [null]
+  revision int [not null]
+  qty_required decimal(20,6) [not null]
+  status varchar(25) [not null]
+  created_at timestamptz [not null]
+  Note: 'Kebutuhan terstruktur lintas stok produksi pembelian. Tepat satu sumber: komponen SO, permintaan toko, atau manual replenishment terdokumentasi. Net shortfall dikurangi stok/alokasi/produksi/pembelian aktif tanpa duplikasi.'
+}
+
+Table production_orders {
+  id uuid [pk, not null]
+  product_id uuid [not null]
+  bom_id uuid [not null]
+  kitchen_id uuid [not null]
+  output_warehouse_id uuid [not null]
+  schedule_version_id uuid [null]
+  plan_date date [not null]
+  planned_qty_base decimal(20,6) [not null]
+  actual_good_qty_base decimal(20,6) [null]
+  material_net_cost decimal(20,4) [not null]
+  parent_wo_id uuid [null]
+  started_at timestamptz [null]
+  completed_at timestamptz [null]
+  created_at timestamptz [not null]
+  Note: 'WO gabungan atau replenishment. Konsolidasi SKU+dapur+BOM+jadwal+tanggal dan revisi. Retry generate tidak membuat kebutuhan/WO ganda; WO tambahan merujuk parent setelah approval.'
+}
+
+Table wo_demand_allocations {
+  id uuid [pk, not null]
+  production_order_id uuid [not null]
+  demand_id uuid [not null]
+  qty_planned decimal(20,6) [not null]
+  qty_fulfilled decimal(20,6) [not null]
+  qty_cancelled decimal(20,6) [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (production_order_id, demand_id) [unique]
+  }
+  Note: 'Kuantitas demand yang dicover satu WO. Alokasi banyak SO ke WO dan satu SO ke beberapa WO; jangan simpan hanya di notes.'
+}
+
+Table production_materials {
+  id uuid [pk, not null]
+  production_order_id uuid [not null]
+  bom_line_id uuid [not null]
+  product_id uuid [not null]
+  warehouse_id uuid [not null]
+  planned_qty_base decimal(20,6) [not null]
+  issued_qty_base decimal(20,6) [not null]
+  unit_cost_snapshot decimal(20,6) [not null]
+  issue_movement_id uuid [null]
+  created_at timestamptz [not null]
+  Note: 'Snapshot resep dan bahan dikeluarkan saat mulai. Start mengeluarkan sesuai snapshot otomatis; non-minus; perubahan setelah start melalui koreksi terotorisasi.'
+}
+
+Table production_material_returns {
+  id uuid [pk, not null]
+  production_material_id uuid [not null]
+  warehouse_id uuid [not null]
+  qty_base decimal(20,6) [not null]
+  unit_cost_snapshot decimal(20,6) [not null]
+  stock_movement_id uuid [not null]
+  created_at timestamptz [not null]
+  Note: 'Sisa layak dikembalikan dari WO ke bahan baku. Biaya sama dengan pengeluaran asal; akumulasi kembali <= issued; mengurangi biaya material bersih.'
+}
+
+Table production_outputs {
+  id uuid [pk, not null]
+  production_order_id uuid [not null]
+  product_id uuid [not null]
+  warehouse_id uuid [not null]
+  kind varchar(20) [not null]
+  qty_base decimal(20,6) [not null]
+  unit_cost decimal(20,6) [not null]
+  stock_movement_id uuid [not null]
+  created_at timestamptz [not null]
+  Note: 'Hasil utama atau produk turunan aktual. kind main atau byproduct. Byproduct cost=0; biaya bersih WO dibebankan seluruhnya ke main layak.'
+}
+
+Table production_failures {
+  id uuid [pk, not null]
+  production_order_id uuid [not null]
+  product_id uuid [not null]
+  qty_base decimal(20,6) [not null]
+  reason text [not null]
+  disposition varchar(30) [not null]
+  loss_amount decimal(20,4) [not null]
+  created_at timestamptz [not null]
+  Note: 'Jumlah gagal dan disposisi produksi. Gagal normal tidak membuat stok jual/biaya kedua; total gagal diposting loss melalui approval jika tidak ada hasil utama layak.'
+}
+
+Table pos_terminals {
+  id uuid [pk, not null]
+  code varchar(40) [not null]
+  outlet_id uuid [not null]
+  warehouse_id uuid [not null]
+  device_public_key text [null]
+  active boolean [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (code) [unique]
+  }
+  Note: 'Identitas mesin kasir yang unik. Satu instalasi satu terminal UUID. Lokasi gudang menentukan sumber stok POS, bukan pembatasan akses staf.'
+}
+
+Table pos_shifts {
+  id uuid [pk, not null]
+  terminal_id uuid [not null]
+  opened_by uuid [not null]
+  closed_by uuid [null]
+  opened_at timestamptz [not null]
+  closed_at timestamptz [null]
+  opening_cash decimal(20,4) [not null]
+  actual_closing_cash decimal(20,4) [null]
+  expected_closing_cash decimal(20,4) [null]
+  variance decimal(20,4) [null]
+  created_at timestamptz [not null]
+  Note: 'Sesi kas per terminal. Unique partial terminal_id WHERE closed_at IS NULL.'
+}
+
+Table pos_sales {
+  id uuid [pk, not null]
+  terminal_id uuid [not null]
+  shift_id uuid [not null]
+  customer_id uuid [null]
+  price_list_id uuid [not null]
+  local_sequence bigint [not null]
+  sold_at timestamptz [not null]
+  subtotal decimal(20,4) [not null]
+  discount_total decimal(20,4) [not null]
+  tax_total decimal(20,4) [not null]
+  total decimal(20,4) [not null]
+  offline boolean [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (terminal_id, local_sequence) [unique]
+  }
+  Note: 'Struk penjualan barang toko. Tidak mempunyai sales_order_id; POS tidak menerima DP/pelunasan SO. Struk unik terminal+sequence.'
+}
+
+Table pos_sale_lines {
+  id uuid [pk, not null]
+  pos_sale_id uuid [not null]
+  product_id uuid [not null]
+  qty_input decimal(20,6) [not null]
+  uom_id uuid [not null]
+  factor_snapshot decimal(20,6) [not null]
+  qty_base decimal(20,6) [not null]
+  unit_price_input decimal(20,4) [not null]
+  discount_amount decimal(20,4) [not null]
+  tax_snapshot jsonb [not null]
+  line_total decimal(20,4) [not null]
+  stock_source varchar(20) [not null]
+  agreement_id uuid [null]
+  cost_snapshot decimal(20,6) [null]
+  negative_reason varchar(80) [null]
+  created_at timestamptz [not null]
+  Note: 'Baris barang atau kemasan dan sumber kepemilikan. stock_source owned atau consignment; agreement wajib hanya untuk consignment. Phantom SO tidak dijual sebagai baris paket POS.'
+}
+
+Table payment_methods {
+  id uuid [pk, not null]
+  code varchar(30) [not null]
+  name varchar(100) [not null]
+  is_cash boolean [not null]
+  active boolean [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (code) [unique]
+  }
+  Note: 'Jenis pembayaran tunai dan elektronik. '
+}
+
+Table pos_tenders {
+  id uuid [pk, not null]
+  pos_sale_id uuid [not null]
+  method_id uuid [not null]
+  amount_applied decimal(20,4) [not null]
+  amount_received decimal(20,4) [not null]
+  change_amount decimal(20,4) [not null]
+  provider_reference varchar(150) [null]
+  verification_status varchar(30) [not null]
+  cash_bank_account_id uuid [not null]
+  created_at timestamptz [not null]
+  Note: 'Pembayaran satu struk termasuk split tender. SUM applied = sale total; kembalian hanya tunai. Pembayaran tidak diakui provider verified tanpa bukti.'
+}
+
+Table pos_cash_entries {
+  id uuid [pk, not null]
+  shift_id uuid [not null]
+  document_id uuid [not null]
+  kind varchar(25) [not null]
+  amount_signed decimal(20,4) [not null]
+  reason text [not null]
+  created_at timestamptz [not null]
+  Note: 'Kas masuk keluar di luar penjualan pada shift. Untuk setoran/petty cash; refund yang sudah tercatat tidak ditambahkan lagi sebagai kas keluar kedua.'
+}
+
+Table returns {
+  id uuid [pk, not null]
+  side varchar(20) [not null]
+  channel varchar(20) [not null]
+  source_document_id uuid [not null]
+  supplier_id uuid [null]
+  customer_id uuid [null]
+  warehouse_id uuid [not null]
+  terminal_id uuid [null]
+  reason text [not null]
+  created_at timestamptz [not null]
+  Note: 'Retur pelanggan atau supplier dengan dokumen asal. side customer/supplier; channel pos/backoffice. SO dan purchase returns selalu backoffice.'
+}
+
+Table return_lines {
+  id uuid [pk, not null]
+  return_id uuid [not null]
+  pos_sale_line_id uuid [null]
+  delivery_line_id uuid [null]
+  goods_receipt_line_id uuid [null]
+  product_id uuid [not null]
+  qty_base decimal(20,6) [not null]
+  condition varchar(30) [not null]
+  stock_disposition varchar(30) [not null]
+  original_unit_cost decimal(20,6) [not null]
+  refund_basis_amount decimal(20,4) [not null]
+  created_at timestamptz [not null]
+  Note: 'Baris barang retur dengan sumber pasti. Tepat satu sumber FK sesuai jenis retur. Kuantitas kumulatif <= transaksi asal. Retur komponen paket tidak otomatis refund penuh paket.'
+}
+
+Table credit_notes {
+  id uuid [pk, not null]
+  return_id uuid [null]
+  source_document_id uuid [not null]
+  direction varchar(20) [not null]
+  customer_id uuid [null]
+  supplier_id uuid [null]
+  amount decimal(20,4) [not null]
+  reason text [not null]
+  created_at timestamptz [not null]
+  Note: 'Hak kredit pelanggan atau klaim supplier. Juga mendukung koreksi pembatalan/selisih. Hanya posted menjadi hak refund atau pengurang outstanding.'
+}
+
+Table credit_applications {
+  id uuid [pk, not null]
+  credit_note_id uuid [not null]
+  invoice_document_id uuid [not null]
+  amount decimal(20,4) [not null]
+  reversal_of_id uuid [null]
+  created_at timestamptz [not null]
+  Note: 'Penggunaan kredit terhadap tagihan. Partner/arah harus cocok; tidak melampaui saldo kredit atau tagihan.'
+}
+
+Table refunds {
+  id uuid [pk, not null]
+  payment_id uuid [not null]
+  return_id uuid [null]
+  terminal_id uuid [null]
+  shift_id uuid [null]
+  reason text [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (payment_id) [unique]
+  }
+  Note: 'Pengembalian uang customer atau penerimaan dari supplier. Uang berada pada payments; refunds hanya konteks, tidak menciptakan pembayaran kedua. POS refund wajib shift/terminal.'
+}
+
+Table refund_allocations {
+  id uuid [pk, not null]
+  refund_id uuid [not null]
+  credit_note_id uuid [null]
+  deposit_id uuid [null]
+  amount decimal(20,4) [not null]
+  created_at timestamptz [not null]
+  Note: 'Hak yang dipakai untuk refund. Tepat satu credit note atau deposit. SUM alokasi = refund payment amount; saldo hak tidak boleh negatif.'
+}
+
+Table chart_of_accounts {
+  id uuid [pk, not null]
+  code varchar(40) [not null]
+  name varchar(150) [not null]
+  account_type varchar(20) [not null]
+  normal_balance varchar(10) [not null]
+  parent_id uuid [null]
+  is_postable boolean [not null]
+  active boolean [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (code) [unique]
+  }
+  Note: 'Daftar akun keuangan. '
+}
+
+Table fiscal_periods {
+  id uuid [pk, not null]
+  name varchar(30) [not null]
+  start_date date [not null]
+  end_date date [not null]
+  status varchar(20) [not null]
+  closed_at timestamptz [null]
+  closed_by uuid [null]
+  closing_document_id uuid [null]
+  created_at timestamptz [not null]
+  indexes {
+    (name) [unique]
+  }
+  Note: 'Periode pembukuan dan penguncian. Rentang tidak tumpang tindih. Buka kembali memerlukan approval; close memeriksa late sync.'
+}
+
+Table cash_bank_accounts {
+  id uuid [pk, not null]
+  code varchar(40) [not null]
+  name varchar(150) [not null]
+  account_id uuid [not null]
+  currency_code char(3) [not null]
+  active boolean [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (code) [unique]
+  }
+  Note: 'Rekening kas bank atau clearing pembayaran. '
+}
+
+Table taxes {
+  id uuid [pk, not null]
+  code varchar(40) [not null]
+  version int [not null]
+  rate decimal(12,6) [not null]
+  price_inclusive boolean [not null]
+  input_account_id uuid [null]
+  output_account_id uuid [null]
+  effective_from date [not null]
+  effective_to date [null]
+  created_at timestamptz [not null]
+  indexes {
+    (code, version) [unique]
+  }
+  Note: 'Tarif dan pemetaan pajak terkonfigurasi. Tarif tidak hardcode; snapshot tarif/nominal disimpan pada transaksi.'
+}
+
+Table journal_entries {
+  id uuid [pk, not null]
+  source_document_id uuid [not null]
+  posting_event varchar(50) [not null]
+  period_id uuid [not null]
+  entry_date date [not null]
+  status varchar(20) [not null]
+  reversal_of_id uuid [null]
+  posted_at timestamptz [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (source_document_id, posting_event) [unique]
+  }
+  Note: 'Header jurnal otomatis atau koreksi. Exactly once per kejadian. Jurnal reversal terpisah; laporan menghitung efek asal dan pembalik tanpa membuang asal secara salah.'
+}
+
+Table journal_lines {
+  id uuid [pk, not null]
+  journal_id uuid [not null]
+  account_id uuid [not null]
+  outlet_id uuid [null]
+  warehouse_id uuid [null]
+  debit decimal(20,4) [not null]
+  credit decimal(20,4) [not null]
+  description text [not null]
+  created_at timestamptz [not null]
+  Note: 'Debit kredit per akun. Debit/credit >=0, tepat satu sisi positif; SUM debit=credit pada jurnal posted. Append-only.'
+}
+
+Table payments {
+  id uuid [pk, not null]
+  direction varchar(10) [not null]
+  customer_id uuid [null]
+  supplier_id uuid [null]
+  method_id uuid [not null]
+  cash_bank_account_id uuid [not null]
+  payment_date date [not null]
+  amount decimal(20,4) [not null]
+  purpose varchar(30) [not null]
+  reference varchar(150) [null]
+  created_at timestamptz [not null]
+  Note: 'Arus kas non-penjualan POS langsung dan refund. POS sale biasa memakai pos_tenders. Payments untuk invoice, DP, settlement, refund dan biaya; jangan menduplikasi tender POS.'
+}
+
+Table payment_allocations {
+  id uuid [pk, not null]
+  payment_id uuid [not null]
+  target_document_id uuid [not null]
+  amount decimal(20,4) [not null]
+  reversal_of_id uuid [null]
+  created_at timestamptz [not null]
+  Note: 'Alokasi pembayaran ke tagihan atau settlement. Target purchase invoice, sales invoice atau settlement; tipe/partner/arah divalidasi. DP dicatat sekali pada customer_deposits, bukan alokasi tagihan sebelum invoice.'
+}
+
+Table expenses {
+  id uuid [pk, not null]
+  supplier_id uuid [null]
+  account_id uuid [not null]
+  amount decimal(20,4) [not null]
+  description text [not null]
+  payment_id uuid [null]
+  created_at timestamptz [not null]
+  Note: 'Beban periode termasuk tenaga kerja dan jasa. Beban tidak otomatis dimasukkan ke unit_output_cost produksi.'
+}
+
+Table account_period_balances {
+  id uuid [pk, not null]
+  period_id uuid [not null]
+  account_id uuid [not null]
+  opening_balance decimal(20,4) [not null]
+  debit_total decimal(20,4) [not null]
+  credit_total decimal(20,4) [not null]
+  closing_balance decimal(20,4) [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (period_id, account_id) [unique]
+  }
+  Note: 'Snapshot saldo akun saat tutup periode. Snapshot dapat dibangun ulang dari jurnal sah; bukan ledger utama.'
+}
+
+Table sync_outbox {
+  id uuid [pk, not null]
+  terminal_id uuid [not null]
+  local_sequence bigint [not null]
+  aggregate_document_id uuid [not null]
+  event_type varchar(50) [not null]
+  schema_version int [not null]
+  occurred_at timestamptz [not null]
+  payload jsonb [not null]
+  payload_hash varchar(80) [not null]
+  status varchar(20) [not null]
+  attempt_count int [not null]
+  acknowledged_at timestamptz [null]
+  created_at timestamptz [not null]
+  indexes {
+    (terminal_id, local_sequence) [unique]
+  }
+  Note: 'Antrean durable pada masing-masing terminal. id adalah event_id UUID yang dipertahankan saat retry. Disimpan atomik dengan transaksi lokal.'
+}
+
+Table sync_inbox {
+  id uuid [pk, not null]
+  terminal_id uuid [not null]
+  local_sequence bigint [not null]
+  aggregate_document_id uuid [null]
+  event_type varchar(50) [not null]
+  schema_version int [not null]
+  occurred_at timestamptz [not null]
+  received_at timestamptz [not null]
+  applied_at timestamptz [null]
+  payload_hash varchar(80) [not null]
+  payload jsonb [not null]
+  status varchar(20) [not null]
+  result jsonb [not null]
+  created_at timestamptz [not null]
+  indexes {
+    (terminal_id, local_sequence) [unique]
+  }
+  Note: 'Penerimaan event di cloud dengan deduplikasi. id sama dengan event_id outbox, bukan FK lintas database. ACK sesudah applied commit; event sebelum dokumen memakai aggregate UUID di payload.'
+}
+
+Table sync_checkpoints {
+  id uuid [pk, not null]
+  terminal_id uuid [not null]
+  stream varchar(50) [not null]
+  cursor_value text [not null]
+  last_ack_sequence bigint [not null]
+  last_success_at timestamptz [null]
+  created_at timestamptz [not null]
+  indexes {
+    (terminal_id, stream) [unique]
+  }
+  Note: 'Cursor master dan ACK per terminal/stream. Watermark snapshot stok harus mencakup local sequence yang sudah masuk agar saldo lokal tidak double count.'
+}
+
+Table sync_conflicts {
+  id uuid [pk, not null]
+  inbox_event_id uuid [not null]
+  conflict_type varchar(50) [not null]
+  details jsonb [not null]
+  status varchar(20) [not null]
+  resolved_by uuid [null]
+  resolution_document_id uuid [null]
+  resolved_at timestamptz [null]
+  created_at timestamptz [not null]
+  Note: 'Pengecualian yang perlu penyelesaian cloud. Tidak menghapus event asli. Resolusi/replay harus idempotent dan mempertahankan transaksi kasir.'
+}
+
+Ref: outlets.company_id > companies.id
+Ref: kitchens.company_id > companies.id
+Ref: warehouses.company_id > companies.id
+Ref: warehouses.outlet_id > outlets.id
+Ref: warehouses.kitchen_id > kitchens.id
+Ref: categories.parent_id > categories.id
+Ref: products.category_id > categories.id
+Ref: products.base_uom_id > uoms.id
+Ref: product_uoms.product_id > products.id
+Ref: product_uoms.uom_id > uoms.id
+Ref: product_kitchen_routes.product_id > products.id
+Ref: product_kitchen_routes.kitchen_id > kitchens.id
+Ref: product_kitchen_routes.raw_warehouse_id > warehouses.id
+Ref: product_kitchen_routes.output_warehouse_id > warehouses.id
+Ref: user_roles.user_id > users.id
+Ref: user_roles.role_id > roles.id
+Ref: documents.company_id > companies.id
+Ref: documents.created_by > users.id
+Ref: documents.posted_by > users.id
+Ref: documents.reversal_of_id > documents.id
+Ref: settings.changed_by > users.id
+Ref: approval_steps.rule_id > approval_rules.id
+Ref: approval_steps.approver_user_id > users.id
+Ref: approval_steps.approver_role_id > roles.id
+Ref: approval_requests.document_id > documents.id
+Ref: approval_requests.rule_id > approval_rules.id
+Ref: approval_requests.requested_by > users.id
+Ref: approval_actions.request_id > approval_requests.id
+Ref: approval_actions.step_id > approval_steps.id
+Ref: approval_actions.actor_id > users.id
+Ref: approval_actions.terminal_id > pos_terminals.id
+Ref: audit_logs.actor_id > users.id
+Ref: audit_logs.document_id > documents.id
+Ref: attachments.document_id > documents.id
+Ref: attachments.uploaded_by > users.id
+Ref: schedule_versions.schedule_id > production_schedules.id
+Ref: price_list_items.price_list_id > price_lists.id
+Ref: price_list_items.product_uom_id > product_uoms.id
+Ref: vouchers.promotion_rule_id > promotion_rules.id
+Ref: voucher_redemptions.voucher_id > vouchers.id
+Ref: voucher_redemptions.sale_document_id > documents.id
+Ref: voucher_redemptions.customer_id > customers.id
+Ref: voucher_redemptions.reversal_of_id > voucher_redemptions.id
+Ref: loyalty_accounts.customer_id > customers.id
+Ref: loyalty_entries.account_id > loyalty_accounts.id
+Ref: loyalty_entries.source_document_id > documents.id
+Ref: loyalty_entries.reversal_of_id > loyalty_entries.id
+Ref: stock_balances.product_id > products.id
+Ref: stock_balances.warehouse_id > warehouses.id
+Ref: stock_movements.source_document_id > documents.id
+Ref: stock_movements.product_id > products.id
+Ref: stock_movements.warehouse_id > warehouses.id
+Ref: stock_movements.uom_id > uoms.id
+Ref: stock_movements.reversal_of_id > stock_movements.id
+Ref: stock_reservations.demand_id > demand_lines.id
+Ref: stock_reservations.product_id > products.id
+Ref: stock_reservations.warehouse_id > warehouses.id
+Ref: inventory_adjustments.id > documents.id
+Ref: inventory_adjustments.warehouse_id > warehouses.id
+Ref: inventory_adjustment_lines.adjustment_id > inventory_adjustments.id
+Ref: inventory_adjustment_lines.product_id > products.id
+Ref: inventory_adjustment_lines.uom_id > uoms.id
+Ref: negative_stock_cases.out_movement_id > stock_movements.id
+Ref: negative_stock_cases.product_id > products.id
+Ref: negative_stock_cases.warehouse_id > warehouses.id
+Ref: inventory_cost_adjustments.source_document_id > documents.id
+Ref: inventory_cost_adjustments.negative_case_id > negative_stock_cases.id
+Ref: inventory_cost_adjustments.receipt_movement_id > stock_movements.id
+Ref: inventory_cost_adjustments.journal_id > journal_entries.id
+Ref: transfer_orders.id > documents.id
+Ref: transfer_orders.from_warehouse_id > warehouses.id
+Ref: transfer_orders.to_warehouse_id > warehouses.id
+Ref: transfer_orders.transit_warehouse_id > warehouses.id
+Ref: transfer_lines.transfer_id > transfer_orders.id
+Ref: transfer_lines.product_id > products.id
+Ref: transfer_lines.demand_id > demand_lines.id
+Ref: transfer_lines.uom_id > uoms.id
+Ref: transfer_receipts.id > documents.id
+Ref: transfer_receipts.transfer_id > transfer_orders.id
+Ref: transfer_receipts.received_by > users.id
+Ref: transfer_receipt_lines.receipt_id > transfer_receipts.id
+Ref: transfer_receipt_lines.transfer_line_id > transfer_lines.id
+Ref: transfer_discrepancies.transfer_line_id > transfer_lines.id
+Ref: transfer_discrepancies.responsible_user_id > users.id
+Ref: transfer_resolutions.id > documents.id
+Ref: transfer_resolutions.discrepancy_id > transfer_discrepancies.id
+Ref: transfer_resolutions.destination_warehouse_id > warehouses.id
+Ref: transfer_resolutions.related_receipt_line_id > transfer_receipt_lines.id
+Ref: purchase_orders.id > documents.id
+Ref: purchase_orders.supplier_id > suppliers.id
+Ref: purchase_orders.receiving_warehouse_id > warehouses.id
+Ref: purchase_orders.sales_order_id > sales_orders.id
+Ref: purchase_order_lines.purchase_order_id > purchase_orders.id
+Ref: purchase_order_lines.product_id > products.id
+Ref: purchase_order_lines.demand_id > demand_lines.id
+Ref: purchase_order_lines.uom_id > uoms.id
+Ref: goods_receipts.id > documents.id
+Ref: goods_receipts.purchase_order_id > purchase_orders.id
+Ref: goods_receipts.warehouse_id > warehouses.id
+Ref: goods_receipt_lines.receipt_id > goods_receipts.id
+Ref: goods_receipt_lines.po_line_id > purchase_order_lines.id
+Ref: supplier_arrival_rejections.purchase_order_id > purchase_orders.id
+Ref: supplier_arrival_rejections.recorded_by > users.id
+Ref: purchase_invoices.id > documents.id
+Ref: purchase_invoices.supplier_id > suppliers.id
+Ref: purchase_invoices.goods_receipt_id > goods_receipts.id
+Ref: purchase_invoice_lines.invoice_id > purchase_invoices.id
+Ref: purchase_invoice_lines.receipt_line_id > goods_receipt_lines.id
+Ref: consignment_agreements.supplier_id > suppliers.id
+Ref: consignment_agreements.product_id > products.id
+Ref: consignment_agreements.warehouse_id > warehouses.id
+Ref: consignment_sales.pos_sale_line_id > pos_sale_lines.id
+Ref: consignment_sales.agreement_id > consignment_agreements.id
+Ref: consignment_sales.supplier_id > suppliers.id
+Ref: consignment_sales.recognized_in_movement_id > stock_movements.id
+Ref: consignment_sales.recognized_out_movement_id > stock_movements.id
+Ref: consignment_settlements.id > documents.id
+Ref: consignment_settlements.supplier_id > suppliers.id
+Ref: consignment_settlement_lines.settlement_id > consignment_settlements.id
+Ref: consignment_settlement_lines.consignment_sale_id > consignment_sales.id
+Ref: consignment_settlement_lines.return_line_id > return_lines.id
+Ref: sales_orders.id > documents.id
+Ref: sales_orders.outlet_id > outlets.id
+Ref: sales_orders.customer_id > customers.id
+Ref: sales_orders.fulfillment_warehouse_id > warehouses.id
+Ref: sales_orders.schedule_version_id > schedule_versions.id
+Ref: sales_orders.price_list_id > price_lists.id
+Ref: sales_orders.sales_user_id > users.id
+Ref: sales_order_lines.sales_order_id > sales_orders.id
+Ref: sales_order_lines.product_id > products.id
+Ref: sales_order_lines.uom_id > uoms.id
+Ref: sales_order_components.sales_order_line_id > sales_order_lines.id
+Ref: sales_order_components.product_id > products.id
+Ref: sales_order_components.bom_line_id > bom_lines.id
+Ref: deliveries.id > documents.id
+Ref: deliveries.sales_order_id > sales_orders.id
+Ref: deliveries.warehouse_id > warehouses.id
+Ref: delivery_lines.delivery_id > deliveries.id
+Ref: delivery_lines.so_component_id > sales_order_components.id
+Ref: delivery_lines.reservation_id > stock_reservations.id
+Ref: delivery_lines.stock_movement_id > stock_movements.id
+Ref: sales_invoices.id > documents.id
+Ref: sales_invoices.sales_order_id > sales_orders.id
+Ref: sales_invoices.customer_id > customers.id
+Ref: sales_invoice_lines.invoice_id > sales_invoices.id
+Ref: sales_invoice_lines.so_line_id > sales_order_lines.id
+Ref: customer_deposits.id > documents.id
+Ref: customer_deposits.sales_order_id > sales_orders.id
+Ref: customer_deposits.customer_id > customers.id
+Ref: customer_deposits.receipt_payment_id > payments.id
+Ref: deposit_applications.id > documents.id
+Ref: deposit_applications.deposit_id > customer_deposits.id
+Ref: deposit_applications.invoice_id > sales_invoices.id
+Ref: deposit_applications.reversal_of_id > deposit_applications.id
+Ref: boms.product_id > products.id
+Ref: boms.kitchen_id > kitchens.id
+Ref: bom_lines.bom_id > boms.id
+Ref: bom_lines.component_product_id > products.id
+Ref: bom_lines.uom_id > uoms.id
+Ref: bom_lines.source_warehouse_id > warehouses.id
+Ref: bom_byproducts.bom_id > boms.id
+Ref: bom_byproducts.product_id > products.id
+Ref: replenishment_policies.product_id > products.id
+Ref: replenishment_policies.warehouse_id > warehouses.id
+Ref: replenishment_policies.source_warehouse_id > warehouses.id
+Ref: store_requests.id > documents.id
+Ref: store_requests.outlet_id > outlets.id
+Ref: store_requests.warehouse_id > warehouses.id
+Ref: store_requests.schedule_version_id > schedule_versions.id
+Ref: store_request_lines.store_request_id > store_requests.id
+Ref: store_request_lines.product_id > products.id
+Ref: store_request_lines.policy_id > replenishment_policies.id
+Ref: demand_lines.product_id > products.id
+Ref: demand_lines.so_component_id > sales_order_components.id
+Ref: demand_lines.store_request_line_id > store_request_lines.id
+Ref: demand_lines.source_document_id > documents.id
+Ref: demand_lines.schedule_version_id > schedule_versions.id
+Ref: production_orders.id > documents.id
+Ref: production_orders.product_id > products.id
+Ref: production_orders.bom_id > boms.id
+Ref: production_orders.kitchen_id > kitchens.id
+Ref: production_orders.output_warehouse_id > warehouses.id
+Ref: production_orders.schedule_version_id > schedule_versions.id
+Ref: production_orders.parent_wo_id > production_orders.id
+Ref: wo_demand_allocations.production_order_id > production_orders.id
+Ref: wo_demand_allocations.demand_id > demand_lines.id
+Ref: production_materials.production_order_id > production_orders.id
+Ref: production_materials.bom_line_id > bom_lines.id
+Ref: production_materials.product_id > products.id
+Ref: production_materials.warehouse_id > warehouses.id
+Ref: production_materials.issue_movement_id > stock_movements.id
+Ref: production_material_returns.production_material_id > production_materials.id
+Ref: production_material_returns.warehouse_id > warehouses.id
+Ref: production_material_returns.stock_movement_id > stock_movements.id
+Ref: production_outputs.production_order_id > production_orders.id
+Ref: production_outputs.product_id > products.id
+Ref: production_outputs.warehouse_id > warehouses.id
+Ref: production_outputs.stock_movement_id > stock_movements.id
+Ref: production_failures.production_order_id > production_orders.id
+Ref: production_failures.product_id > products.id
+Ref: pos_terminals.outlet_id > outlets.id
+Ref: pos_terminals.warehouse_id > warehouses.id
+Ref: pos_shifts.terminal_id > pos_terminals.id
+Ref: pos_shifts.opened_by > users.id
+Ref: pos_shifts.closed_by > users.id
+Ref: pos_sales.id > documents.id
+Ref: pos_sales.terminal_id > pos_terminals.id
+Ref: pos_sales.shift_id > pos_shifts.id
+Ref: pos_sales.customer_id > customers.id
+Ref: pos_sales.price_list_id > price_lists.id
+Ref: pos_sale_lines.pos_sale_id > pos_sales.id
+Ref: pos_sale_lines.product_id > products.id
+Ref: pos_sale_lines.uom_id > uoms.id
+Ref: pos_sale_lines.agreement_id > consignment_agreements.id
+Ref: pos_tenders.pos_sale_id > pos_sales.id
+Ref: pos_tenders.method_id > payment_methods.id
+Ref: pos_tenders.cash_bank_account_id > cash_bank_accounts.id
+Ref: pos_cash_entries.shift_id > pos_shifts.id
+Ref: pos_cash_entries.document_id > documents.id
+Ref: returns.id > documents.id
+Ref: returns.source_document_id > documents.id
+Ref: returns.supplier_id > suppliers.id
+Ref: returns.customer_id > customers.id
+Ref: returns.warehouse_id > warehouses.id
+Ref: returns.terminal_id > pos_terminals.id
+Ref: return_lines.return_id > returns.id
+Ref: return_lines.pos_sale_line_id > pos_sale_lines.id
+Ref: return_lines.delivery_line_id > delivery_lines.id
+Ref: return_lines.goods_receipt_line_id > goods_receipt_lines.id
+Ref: return_lines.product_id > products.id
+Ref: credit_notes.id > documents.id
+Ref: credit_notes.return_id > returns.id
+Ref: credit_notes.source_document_id > documents.id
+Ref: credit_notes.customer_id > customers.id
+Ref: credit_notes.supplier_id > suppliers.id
+Ref: credit_applications.id > documents.id
+Ref: credit_applications.credit_note_id > credit_notes.id
+Ref: credit_applications.invoice_document_id > documents.id
+Ref: credit_applications.reversal_of_id > credit_applications.id
+Ref: refunds.id > documents.id
+Ref: refunds.payment_id > payments.id
+Ref: refunds.return_id > returns.id
+Ref: refunds.terminal_id > pos_terminals.id
+Ref: refunds.shift_id > pos_shifts.id
+Ref: refund_allocations.refund_id > refunds.id
+Ref: refund_allocations.credit_note_id > credit_notes.id
+Ref: refund_allocations.deposit_id > customer_deposits.id
+Ref: chart_of_accounts.parent_id > chart_of_accounts.id
+Ref: fiscal_periods.closed_by > users.id
+Ref: fiscal_periods.closing_document_id > documents.id
+Ref: cash_bank_accounts.account_id > chart_of_accounts.id
+Ref: taxes.input_account_id > chart_of_accounts.id
+Ref: taxes.output_account_id > chart_of_accounts.id
+Ref: journal_entries.source_document_id > documents.id
+Ref: journal_entries.period_id > fiscal_periods.id
+Ref: journal_entries.reversal_of_id > journal_entries.id
+Ref: journal_lines.journal_id > journal_entries.id
+Ref: journal_lines.account_id > chart_of_accounts.id
+Ref: journal_lines.outlet_id > outlets.id
+Ref: journal_lines.warehouse_id > warehouses.id
+Ref: payments.id > documents.id
+Ref: payments.customer_id > customers.id
+Ref: payments.supplier_id > suppliers.id
+Ref: payments.method_id > payment_methods.id
+Ref: payments.cash_bank_account_id > cash_bank_accounts.id
+Ref: payment_allocations.payment_id > payments.id
+Ref: payment_allocations.target_document_id > documents.id
+Ref: payment_allocations.reversal_of_id > payment_allocations.id
+Ref: expenses.id > documents.id
+Ref: expenses.supplier_id > suppliers.id
+Ref: expenses.account_id > chart_of_accounts.id
+Ref: expenses.payment_id > payments.id
+Ref: account_period_balances.period_id > fiscal_periods.id
+Ref: account_period_balances.account_id > chart_of_accounts.id
+Ref: sync_outbox.terminal_id > pos_terminals.id
+Ref: sync_outbox.aggregate_document_id > documents.id
+Ref: sync_inbox.terminal_id > pos_terminals.id
+Ref: sync_inbox.aggregate_document_id > documents.id
+Ref: sync_checkpoints.terminal_id > pos_terminals.id
+Ref: sync_conflicts.inbox_event_id > sync_inbox.id
+Ref: sync_conflicts.resolved_by > users.id
+Ref: sync_conflicts.resolution_document_id > documents.id
+
+TableGroup G01_Organisasi_dan_produk {
+  companies
+  outlets
+  kitchens
+  warehouses
+  uoms
+  categories
+  products
+  product_uoms
+  product_kitchen_routes
+  suppliers
+  customers
+}
+
+TableGroup G02_Dokumen_akses_dan_persetujuan {
+  users
+  roles
+  user_roles
+  documents
+  settings
+  approval_rules
+  approval_steps
+  approval_requests
+  approval_actions
+  audit_logs
+  attachments
+}
+
+TableGroup G03_Jadwal_harga_dan_promosi {
+  production_schedules
+  schedule_versions
+  price_lists
+  price_list_items
+  promotion_rules
+  vouchers
+  voucher_redemptions
+  loyalty_accounts
+  loyalty_entries
+}
+
+TableGroup G04_Persediaan_dan_reservasi {
+  stock_balances
+  stock_movements
+  stock_reservations
+  inventory_adjustments
+  inventory_adjustment_lines
+  negative_stock_cases
+  inventory_cost_adjustments
+}
+
+TableGroup G05_Transfer_dan_transit {
+  transfer_orders
+  transfer_lines
+  transfer_receipts
+  transfer_receipt_lines
+  transfer_discrepancies
+  transfer_resolutions
+}
+
+TableGroup G06_Pembelian_dan_titipan {
+  purchase_orders
+  purchase_order_lines
+  goods_receipts
+  goods_receipt_lines
+  supplier_arrival_rejections
+  purchase_invoices
+  purchase_invoice_lines
+  consignment_agreements
+  consignment_sales
+  consignment_settlements
+  consignment_settlement_lines
+}
+
+TableGroup G07_Sales_Order_dan_pemenuhan {
+  sales_orders
+  sales_order_lines
+  sales_order_components
+  deliveries
+  delivery_lines
+  sales_invoices
+  sales_invoice_lines
+  customer_deposits
+  deposit_applications
+}
+
+TableGroup G08_Resep_kebutuhan_dan_produksi {
+  boms
+  bom_lines
+  bom_byproducts
+  replenishment_policies
+  store_requests
+  store_request_lines
+  demand_lines
+  production_orders
+  wo_demand_allocations
+  production_materials
+  production_material_returns
+  production_outputs
+  production_failures
+}
+
+TableGroup G09_POS_lokal {
+  pos_terminals
+  pos_shifts
+  pos_sales
+  pos_sale_lines
+  payment_methods
+  pos_tenders
+  pos_cash_entries
+}
+
+TableGroup G10_Retur_kredit_dan_refund {
+  returns
+  return_lines
+  credit_notes
+  credit_applications
+  refunds
+  refund_allocations
+}
+
+TableGroup G11_Keuangan {
+  chart_of_accounts
+  fiscal_periods
+  cash_bank_accounts
+  taxes
+  journal_entries
+  journal_lines
+  payments
+  payment_allocations
+  expenses
+  account_period_balances
+}
+
+TableGroup G12_Sinkronisasi {
+  sync_outbox
+  sync_inbox
+  sync_checkpoints
+  sync_conflicts
+}
