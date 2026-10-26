@@ -1,0 +1,10 @@
+.git
+.env
+.env.*
+.venv
+data
+backups
+tests
+docs/ui/Wireframe_SVG
+**/__pycache__
+.pytest_cache

@@ -1,0 +1,35 @@
+name: erp-ya-pos
+services:
+  database:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: erp_ya_pos
+      POSTGRES_USER: erp
+      POSTGRES_PASSWORD: ${POS_DB_PASSWORD:?Run python3 scripts/configure.py pos first}
+    volumes:
+      - pos_database:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U erp -d erp_ya_pos']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  pos:
+    build: .
+    image: erp-ya:0.1.0
+    restart: unless-stopped
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      APP_MODE: pos
+      DATABASE_URL: postgresql+psycopg://erp:${POS_DB_PASSWORD}@database:5432/erp_ya_pos
+      ALLOW_INSECURE_CLOUD: ${ALLOW_INSECURE_CLOUD:-0}
+      COOKIE_SECURE: '0'
+    ports:
+      - '127.0.0.1:${POS_PORT:-8081}:8000'
+    volumes:
+      - pos_files:/srv/erp/data
+volumes:
+  pos_database:
+  pos_files:

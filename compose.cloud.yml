@@ -1,0 +1,35 @@
+name: erp-ya-cloud
+services:
+  database:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: erp_ya
+      POSTGRES_USER: erp
+      POSTGRES_PASSWORD: ${CLOUD_DB_PASSWORD:?Run python3 scripts/configure.py cloud first}
+    volumes:
+      - cloud_database:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U erp -d erp_ya']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  backoffice:
+    build: .
+    image: erp-ya:0.1.0
+    restart: unless-stopped
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      APP_MODE: backoffice
+      DATABASE_URL: postgresql+psycopg://erp:${CLOUD_DB_PASSWORD}@database:5432/erp_ya
+      SETUP_TOKEN: ${SETUP_TOKEN:?Run configure.py first}
+      COOKIE_SECURE: ${COOKIE_SECURE:-0}
+    ports:
+      - '${BACKOFFICE_BIND:-127.0.0.1}:8080:8000'
+    volumes:
+      - cloud_files:/srv/erp/data
+volumes:
+  cloud_database:
+  cloud_files:

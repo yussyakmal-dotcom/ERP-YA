@@ -1,0 +1,58 @@
+name: ERP integrity and offline transactions
+on: [push, pull_request]
+jobs:
+  sqlite:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements-dev.txt
+      - run: python -m pytest -q
+      - run: node --check app/static/app.js
+      - run: node --check app/static/pos.js
+      - run: node --check app/static/settings.js
+  containers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build application image
+        run: docker build -t erp-ya:0.1.0 .
+      - name: Start cloud with persistent PostgreSQL
+        run: |
+          python3 scripts/configure.py cloud --output .env.cloud
+          docker compose --env-file .env.cloud -f compose.cloud.yml up -d --no-build --wait --wait-timeout 120
+          curl --fail http://127.0.0.1:8080/healthz
+      - name: Start local POS with its own PostgreSQL
+        run: |
+          python3 scripts/configure.py pos --output .env.pos
+          docker compose --env-file .env.pos -f compose.pos.yml up -d --no-build --wait --wait-timeout 120
+          curl --fail http://127.0.0.1:8081/healthz
+      - name: Container logs on failure
+        if: failure()
+        run: |
+          docker compose --env-file .env.cloud -f compose.cloud.yml logs --no-color || true
+          docker compose --env-file .env.pos -f compose.pos.yml logs --no-color || true
+  postgres:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: erp
+          POSTGRES_PASSWORD: ephemeral-ci-only
+          POSTGRES_DB: erp_ya_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd 'pg_isready -U erp -d erp_ya_test'
+          --health-interval 5s --health-timeout 5s --health-retries 20
+    env:
+      TEST_DATABASE_URL: postgresql+psycopg://erp:ephemeral-ci-only@localhost:5432/erp_ya_test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements-dev.txt
+      - run: python -m pytest -q
