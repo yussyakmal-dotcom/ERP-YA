@@ -1,0 +1,589 @@
+/* Backoffice theme: navy navigation, cyan accents, compact operational tables.
+   Mode scope keeps the local POS's touch controls and receipts unchanged. */
+body[data-mode="backoffice"] {
+  --nav-width: 224px;
+  --ink: #294365;
+  --muted: #617791;
+  --line: #dce6f0;
+  --navy: #264770;
+  --blue: #087fc9;
+  --cyan: #00b9df;
+  color: var(--ink);
+  background: #edf4fb;
+  font-size: 13px;
+}
+body[data-mode="backoffice"] button {
+  min-height: 34px;
+  padding: 7px 12px;
+  border-radius: 3px;
+  border-color: #d3deed;
+  background: #f7faff;
+  color: #3e5b7d;
+  font-size: 12px;
+  font-weight: 500;
+}
+body[data-mode="backoffice"] button:hover {
+  background: #e6f3fc;
+  border-color: #8bc9e9;
+}
+body[data-mode="backoffice"] button.primary {
+  color: #fff;
+  background: #087fc9;
+  border-color: #087fc9;
+}
+body[data-mode="backoffice"] button.primary:hover {
+  background: #006bad;
+}
+body[data-mode="backoffice"] button.danger {
+  color: #b13c39;
+}
+body[data-mode="backoffice"] a {
+  color: #0075b9;
+}
+body[data-mode="backoffice"] :is(input, select, textarea) {
+  min-height: 36px;
+  padding: 8px 10px;
+  border-radius: 3px;
+  border-color: #ccd9e8;
+  color: var(--ink);
+}
+body[data-mode="backoffice"] textarea {
+  min-height: 84px;
+}
+body[data-mode="backoffice"]
+  :is(input, select, textarea, button):focus-visible {
+  outline: 2px solid #0089c5;
+  outline-offset: 2px;
+}
+body[data-mode="backoffice"]
+  :is(label, small, .muted, .subtitle, .detail-grid dt) {
+  color: var(--muted);
+}
+body[data-mode="backoffice"] .sidebar {
+  width: var(--nav-width);
+  padding: 0;
+  background: linear-gradient(170deg, #294c78 0%, #203b61 100%);
+  color: #e1eafa;
+  box-shadow: 3px 0 12px #203b6114;
+  z-index: 30;
+}
+body[data-mode="backoffice"] .side-brand {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 17px;
+  border-bottom: 1px solid #ffffff18;
+}
+body[data-mode="backoffice"] .brand-mark {
+  flex: 0 0 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  color: white;
+  font-size: 14px;
+  font-weight: 800;
+  border-radius: 4px 12px 4px 12px;
+  background: linear-gradient(135deg, #00c5df, #078bdf);
+}
+body[data-mode="backoffice"] .brand {
+  font-size: 17px;
+  letter-spacing: -0.4px;
+  margin: 0 0 4px;
+  white-space: nowrap;
+}
+body[data-mode="backoffice"] .brand-sub {
+  color: #b5cee8;
+  font-size: 8px;
+  letter-spacing: 1.4px;
+  margin: 0;
+  white-space: nowrap;
+}
+body[data-mode="backoffice"] .nav-caption {
+  padding: 24px 20px 10px;
+  color: #a6bedc;
+  font-size: 9px;
+  letter-spacing: 1.8px;
+}
+body[data-mode="backoffice"] .nav button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 43px;
+  border: 0;
+  border-left: 3px solid transparent;
+  border-radius: 0;
+  padding: 10px 17px;
+  margin: 0;
+  background: transparent;
+  color: #e0e9f7;
+  text-align: left;
+}
+body[data-mode="backoffice"] .nav svg {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+  color: #b9d2ed;
+}
+body[data-mode="backoffice"] .nav-label {
+  flex: 1;
+}
+body[data-mode="backoffice"] .nav-chevron {
+  color: #8faecf;
+  font-size: 17px;
+}
+body[data-mode="backoffice"] .nav button:hover {
+  background: #ffffff10;
+}
+body[data-mode="backoffice"] .nav button.active {
+  background: #ffffff19;
+  border-left-color: var(--cyan);
+  color: white;
+}
+body[data-mode="backoffice"] .nav button.active svg {
+  color: #40d7f0;
+}
+body[data-mode="backoffice"] .nav button:focus-visible {
+  outline: 2px solid #65dafa;
+  outline-offset: -3px;
+}
+body[data-mode="backoffice"] .side-foot {
+  margin: 26px 18px;
+  padding-top: 18px;
+  border-top: 1px solid #ffffff20;
+  color: #b6cce5;
+  font-size: 10px;
+  line-height: 1.9;
+}
+body[data-mode="backoffice"] .side-location {
+  padding-left: 12px;
+}
+body[data-mode="backoffice"] .status-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00b9df;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+body[data-mode="backoffice"] .workspace {
+  margin-left: var(--nav-width);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+body[data-mode="backoffice"] .topbar {
+  height: 54px;
+  min-height: 54px;
+  padding: 0 22px 0 14px;
+  border-bottom-color: var(--line);
+  background: white;
+}
+body[data-mode="backoffice"] .topbar-context {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+body[data-mode="backoffice"] .company-name {
+  color: #6d829b;
+  font-size: 12px;
+  white-space: nowrap;
+}
+body[data-mode="backoffice"] .crumb-divider {
+  color: #b6c6d9;
+}
+body[data-mode="backoffice"] #breadcrumb {
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+body[data-mode="backoffice"] #sidebar-toggle {
+  background: transparent;
+  border: 0;
+  font-size: 19px;
+  min-width: 36px;
+  padding: 4px;
+}
+body[data-mode="backoffice"] .topbar .right {
+  gap: 10px;
+  flex-shrink: 0;
+}
+body[data-mode="backoffice"] .cloud-label {
+  padding-right: 16px;
+  border-right: 1px solid var(--line);
+  font-size: 10px;
+}
+body[data-mode="backoffice"] .user-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #e6f3fc;
+  color: #087fc9;
+  font-size: 11px;
+  font-weight: 700;
+}
+body[data-mode="backoffice"] .user-name {
+  font-size: 12px;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+body[data-mode="backoffice"] #logout {
+  background: white;
+  border: 0;
+  border-left: 1px solid var(--line);
+  border-radius: 0;
+  padding-left: 15px;
+}
+body[data-mode="backoffice"] .main {
+  width: 100%;
+  padding: 24px;
+  max-width: none;
+  flex: 1;
+  min-width: 0;
+}
+body[data-mode="backoffice"] h1 {
+  font-size: 23px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+body[data-mode="backoffice"] h2 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+body[data-mode="backoffice"] h3 {
+  font-size: 14px;
+}
+body[data-mode="backoffice"] .subtitle {
+  font-size: 12px;
+  margin-bottom: 22px;
+}
+body[data-mode="backoffice"] .toolbar {
+  gap: 6px;
+  margin-bottom: 12px;
+}
+body[data-mode="backoffice"] .toolbar input {
+  max-width: 300px;
+}
+body[data-mode="backoffice"] .module-tabs {
+  background: linear-gradient(100deg, #0a8cdf, #00b9df);
+  padding: 5px 6px 0;
+  border-radius: 4px 4px 0 0;
+  margin-bottom: 0;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 3px;
+  scrollbar-width: thin;
+  scrollbar-color: #8ad9ee transparent;
+}
+body[data-mode="backoffice"] .module-tabs button {
+  flex: 0 0 auto;
+  min-height: 33px;
+  color: #fff;
+  background: #ffffff12;
+  border: 0;
+  border-radius: 3px 3px 0 0;
+  padding: 8px 12px;
+  white-space: nowrap;
+}
+body[data-mode="backoffice"] .module-tabs button:hover {
+  background: #ffffff30;
+}
+body[data-mode="backoffice"] .module-tabs button.primary {
+  background: #fff;
+  color: #096fae;
+  font-weight: 600;
+}
+body[data-mode="backoffice"] .module-tabs + .toolbar {
+  padding: 10px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-top: 0;
+  margin-bottom: 12px;
+}
+body[data-mode="backoffice"] .panel {
+  border-color: var(--line);
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 5px #29436504;
+}
+body[data-mode="backoffice"] .panel.flush {
+  padding: 0;
+}
+body[data-mode="backoffice"] .cards {
+  gap: 16px;
+  margin-bottom: 20px;
+}
+body[data-mode="backoffice"] .metric {
+  padding: 19px;
+  border: 1px solid var(--line);
+  border-top: 3px solid #00acd8;
+  border-radius: 4px;
+  cursor: pointer;
+}
+body[data-mode="backoffice"] .metric:nth-child(2) {
+  border-top-color: #148bda;
+}
+body[data-mode="backoffice"] .metric:nth-child(3) {
+  border-top-color: #e2a436;
+}
+body[data-mode="backoffice"] .metric:nth-child(4) {
+  border-top-color: #6b8abb;
+}
+body[data-mode="backoffice"] .metric:hover {
+  box-shadow: 0 4px 14px #29436512;
+}
+body[data-mode="backoffice"] .metric strong {
+  font-size: 30px;
+  font-weight: 600;
+  color: #23486e;
+  margin: 14px 0 8px;
+}
+body[data-mode="backoffice"] .metric small:last-child {
+  font-size: 10px;
+  color: #087bb9;
+}
+body[data-mode="backoffice"] .badge {
+  color: #176b85;
+  background: #e5f5fa;
+  padding: 4px 9px;
+  border-radius: 12px;
+  font-size: 10px;
+}
+body[data-mode="backoffice"] .badge.warn {
+  color: #87560f;
+  background: #fff2d7;
+}
+body[data-mode="backoffice"] .notice {
+  background: #e7f5fc;
+  border-left: 3px solid #16a4d8;
+  border-radius: 3px;
+  color: #365c79;
+  font-size: 12px;
+}
+body[data-mode="backoffice"] .notice.warn {
+  color: #805b24;
+  background: #fff7e7;
+  border-left-color: #dfad4c;
+}
+body[data-mode="backoffice"] .notice.error {
+  color: #a33934;
+  background: #fff0ef;
+  border-left-color: #c65a54;
+}
+body[data-mode="backoffice"] th {
+  color: #526b89;
+  background: #f1f6fc;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--line);
+}
+body[data-mode="backoffice"] td {
+  padding: 10px 14px;
+  border-bottom-color: #edf2f8;
+  font-size: 12px;
+}
+body[data-mode="backoffice"] tbody tr:nth-child(even) {
+  background: #f7faff;
+}
+body[data-mode="backoffice"] tbody tr:hover {
+  background: #dcf3fc;
+}
+body[data-mode="backoffice"] tbody tr:focus-visible {
+  outline: 2px solid #098bc8;
+  outline-offset: -2px;
+  background: #dcf3fc;
+}
+body[data-mode="backoffice"] .empty {
+  color: #71869e;
+  padding: 58px 20px;
+}
+body[data-mode="backoffice"] .pager {
+  padding: 10px 14px;
+  gap: 8px;
+  background: #fcfdff;
+  font-size: 11px;
+  color: #617791;
+  flex-wrap: wrap;
+}
+body[data-mode="backoffice"] .pager button {
+  min-height: 30px;
+  padding: 5px 10px;
+}
+body[data-mode="backoffice"] .form-grid {
+  gap: 18px;
+}
+body[data-mode="backoffice"] :is(.form-footer, .section) {
+  border-color: var(--line);
+}
+body[data-mode="backoffice"] dialog {
+  color: var(--ink);
+  border-color: #c5d9eb;
+  border-radius: 6px;
+  box-shadow: 0 24px 80px #203b613d;
+  padding: 24px;
+}
+body[data-mode="backoffice"] dialog::backdrop {
+  background: #18345080;
+}
+body[data-mode="backoffice"] .modal-top {
+  padding-bottom: 16px;
+  border-bottom: 2px solid #0badd6;
+  margin-bottom: 20px;
+}
+body[data-mode="backoffice"] pre {
+  background: #f1f6fc;
+  border-radius: 3px;
+}
+body[data-mode="backoffice"] #toast {
+  background: #264770;
+  border-radius: 4px;
+  border-left: 3px solid #00bddf;
+}
+body[data-mode="backoffice"] .tab-button.active {
+  background: #e5f4fc;
+  color: #0877b8;
+}
+body[data-mode="backoffice"] .workspace-footer {
+  padding: 12px 24px;
+  border-top: 1px solid var(--line);
+  color: #6a8099;
+  background: #f8fbfe;
+  font-size: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+body[data-mode="backoffice"] .login-brand {
+  background: linear-gradient(145deg, #203b61, #29517f);
+  color: #eff8ff;
+}
+body[data-mode="backoffice"] .login-brand .brand {
+  font-size: 26px;
+}
+body[data-mode="backoffice"] .login-brand h1 {
+  font:
+    46px/1.15 Georgia,
+    serif;
+}
+body[data-mode="backoffice"] .login-panel {
+  background: #f5f9fe;
+}
+body[data-mode="backoffice"].menu-collapsed {
+  --nav-width: 64px;
+}
+body[data-mode="backoffice"].menu-collapsed
+  :is(.brand-copy, .nav-caption, .nav-label, .nav-chevron, .side-foot) {
+  display: none;
+}
+body[data-mode="backoffice"].menu-collapsed .side-brand {
+  padding: 0 15px;
+}
+body[data-mode="backoffice"].menu-collapsed .nav {
+  padding-top: 16px;
+}
+body[data-mode="backoffice"].menu-collapsed .nav button {
+  padding-left: 20px;
+}
+@media (max-width: 1100px) {
+  body[data-mode="backoffice"] {
+    --nav-width: 200px;
+  }
+  body[data-mode="backoffice"] .main {
+    padding: 20px;
+  }
+  body[data-mode="backoffice"] .company-name {
+    display: none;
+  }
+  body[data-mode="backoffice"] .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  body[data-mode="backoffice"] {
+    --nav-width: 224px;
+  }
+  body[data-mode="backoffice"] .sidebar {
+    position: fixed;
+    inset: 54px auto 0 0;
+    display: none;
+    width: 224px;
+  }
+  body[data-mode="backoffice"].menu-open .sidebar {
+    display: block;
+    box-shadow: 12px 0 25px #203b6140;
+  }
+  body[data-mode="backoffice"] .brand-sub {
+    display: block;
+  }
+  body[data-mode="backoffice"] .nav {
+    display: block;
+    overflow: visible;
+  }
+  body[data-mode="backoffice"] .nav button {
+    width: 100%;
+    min-width: 0;
+  }
+  body[data-mode="backoffice"] .workspace {
+    margin-left: 0;
+  }
+  body[data-mode="backoffice"] .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    padding: 0 10px;
+    gap: 8px;
+  }
+  body[data-mode="backoffice"] .topbar-context {
+    gap: 7px;
+  }
+  body[data-mode="backoffice"] :is(.cloud-label, .user-name, .crumb-divider) {
+    display: none;
+  }
+  body[data-mode="backoffice"] .topbar .right {
+    gap: 5px;
+  }
+  body[data-mode="backoffice"] .main {
+    padding: 18px 12px;
+  }
+  body[data-mode="backoffice"] h1 {
+    font-size: 21px;
+  }
+  body[data-mode="backoffice"] .toolbar input {
+    max-width: none;
+    flex-basis: 100%;
+  }
+  body[data-mode="backoffice"] .metric {
+    padding: 14px;
+  }
+  body[data-mode="backoffice"] .metric strong {
+    font-size: 26px;
+  }
+  body[data-mode="backoffice"] .workspace-footer {
+    padding: 12px;
+    flex-wrap: wrap;
+  }
+  body[data-mode="backoffice"] button {
+    min-height: 40px;
+  }
+  body[data-mode="backoffice"] .module-tabs button {
+    min-height: 40px;
+  }
+}
+@media print {
+  body[data-mode="backoffice"] dialog {
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+}

@@ -28,7 +28,8 @@ let user = null,
   shift = null,
   posTab = "jual",
   searchTimer,
-  automaticRefresh;
+  automaticRefresh,
+  menuMedia;
 const names = {
   products: "Produk",
   product_uoms: "Konversi satuan",
@@ -475,14 +476,59 @@ const menus = [
   ["sync_conflicts", "Sinkronisasi"],
   ["settings", "Pengaturan"],
 ];
+const navPaths = {
+  dashboard: "M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h7v7h-7z",
+  sales_orders: "M6 3h12v18H6z M9 8h6 M9 12h6 M9 16h4",
+  purchase_orders: "M3 4h2l3 12h10l3-9H6 M9 20h.01 M18 20h.01",
+  transfer_orders: "M3 9l9-6 9 6v12H3z M9 21v-8h6v8",
+  production_orders: "M3 21V9l6 4V9l6 4V3h4l2 18z M7 17h1 M12 17h1 M17 17h1",
+  approval_requests: "M12 3l8 3v6c0 5-8 9-8 9s-8-4-8-9V6z M8 12l3 3 5-6",
+  payments: "M3 6h18v14H3z M3 10h18 M16 15h2",
+  reports: "M4 3v18h17 M8 16v-5 M13 16V7 M18 16v-8",
+  products: "M3 7l9-4 9 4v10l-9 4-9-4z M3 7l9 4 9-4 M12 11v10",
+  sync_conflicts:
+    "M20 8a8 8 0 0 0-14-3L3 8 M3 3v5h5 M4 16a8 8 0 0 0 14 3l3-3 M16 16h5v5",
+  settings:
+    "M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8 M12 2v3 M12 19v3 M2 12h3 M19 12h3 M5 5l2 2 M17 17l2 2 M5 19l2-2 M17 7l2-2",
+};
+function navIcon(id) {
+  return `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="${navPaths[id] || navPaths.dashboard}"/></svg>`;
+}
 function shell() {
   const root = $("#app");
-  root.innerHTML = `<aside class="sidebar"><div class="brand">YA</div><div class="brand-sub">BACKOFFICE</div><nav class="nav"></nav><div class="side-foot">Yussy Akmal<br>Semua lokasi · WIB</div></aside><div class="workspace"><header class="topbar"><span>Yussy Akmal / <strong id="breadcrumb"></strong></span><div class="right"><small>Backoffice cloud</small><span>${escape(user.name)}</span><button id="logout">Keluar</button></div></header><main class="main" id="main"></main></div>`;
+  root.innerHTML = `<aside class="sidebar" id="sidebar"><div class="side-brand"><span class="brand-mark" aria-hidden="true">YA</span><div class="brand-copy"><div class="brand">Yussy Akmal</div><div class="brand-sub">BAKERY · BACKOFFICE</div></div></div><div class="nav-caption">RUANG KERJA</div><nav class="nav" aria-label="Menu utama"></nav><div class="side-foot"><span class="status-dot"></span> Backoffice cloud<br><span class="side-location">Semua lokasi · WIB</span></div></aside><div class="workspace"><header class="topbar"><div class="topbar-context"><button id="sidebar-toggle" type="button" aria-label="Ciutkan menu" aria-controls="sidebar" aria-expanded="true">☰</button><span class="company-name">Yussy Akmal</span><span class="crumb-divider">/</span><strong id="breadcrumb"></strong></div><div class="right"><small class="cloud-label"><span class="status-dot"></span> Backoffice</small><span class="user-avatar" aria-hidden="true">${escape((user.name || "A").slice(0, 1).toUpperCase())}</span><span class="user-name">${escape(user.name)}</span><button id="logout">Keluar</button></div></header><main class="main" id="main"></main><footer class="workspace-footer">Yussy Akmal · Sistem operasional bakery<span>Zona waktu: WIB</span></footer></div>`;
   for (const [id, l] of menus) {
     const b = button(l, () => navigate(id));
     b.dataset.page = id;
+    b.title = l;
+    b.setAttribute("aria-label", l);
+    b.innerHTML =
+      navIcon(id) +
+      `<span class="nav-label">${escape(l)}</span><span class="nav-chevron" aria-hidden="true">›</span>`;
     $(".nav").append(b);
   }
+  const toggle = $("#sidebar-toggle");
+  if (menuMedia) menuMedia.onchange = null;
+  const narrow = (menuMedia = window.matchMedia("(max-width: 760px)"));
+  const resetMenu = () => {
+    document.body.classList.remove("menu-collapsed", "menu-open");
+    toggle.setAttribute("aria-expanded", String(!narrow.matches));
+    toggle.setAttribute(
+      "aria-label",
+      narrow.matches ? "Buka menu" : "Ciutkan menu",
+    );
+  };
+  resetMenu();
+  toggle.onclick = () => {
+    const active = document.body.classList.toggle(
+      narrow.matches ? "menu-open" : "menu-collapsed",
+    );
+    const expanded = narrow.matches ? active : !active;
+    toggle.setAttribute("aria-expanded", String(expanded));
+    toggle.setAttribute("aria-label", expanded ? "Ciutkan menu" : "Buka menu");
+  };
+  // Reassign rather than accumulating listeners after a logout/login.
+  narrow.onchange = resetMenu;
   $("#logout").onclick = logout;
 }
 async function logout() {
@@ -529,11 +575,21 @@ async function start() {
 async function navigate(id) {
   page = id;
   selected = null;
+  if (window.matchMedia("(max-width: 760px)").matches) {
+    document.body.classList.remove("menu-open");
+    $("#sidebar-toggle")?.setAttribute("aria-expanded", "false");
+    $("#sidebar-toggle")?.setAttribute("aria-label", "Buka menu");
+  }
   $("#breadcrumb").textContent =
     names[id] || menus.find((a) => a[0] === id)?.[1] || title(id);
   $(".nav")
     ?.querySelectorAll("button")
-    .forEach((b) => b.classList.toggle("active", b.dataset.page === id));
+    .forEach((b) => {
+      const active = b.dataset.page === id;
+      b.classList.toggle("active", active);
+      if (active) b.setAttribute("aria-current", "page");
+      else b.removeAttribute("aria-current");
+    });
   if (id === "dashboard") return dashboard();
   if (id === "settings") return settings();
   if (id === "reports") return reports();
@@ -672,6 +728,17 @@ const createActions = {
 };
 async function listing(t, offset = 0, q = "") {
   const m = $("#main");
+  const parent =
+    Object.entries(groups).find(([, tables]) => tables.includes(t))?.[0] || t;
+  $("#breadcrumb").textContent = names[t] || title(t);
+  $(".nav")
+    ?.querySelectorAll("button")
+    .forEach((b) => {
+      const active = b.dataset.page === parent;
+      b.classList.toggle("active", active);
+      if (active) b.setAttribute("aria-current", "page");
+      else b.removeAttribute("aria-current");
+    });
   m.replaceChildren();
   m.append(
     el("h1", { textContent: names[t] || title(t) }),
@@ -683,7 +750,7 @@ async function listing(t, offset = 0, q = "") {
   );
   const group = Object.values(groups).find((a) => a.includes(t));
   if (group) {
-    const tabs = el("div", { className: "toolbar" });
+    const tabs = el("div", { className: "toolbar module-tabs" });
     for (const it of group) {
       const b = button(names[it] || title(it), () => listing(it));
       b.classList.toggle("primary", it === t);
@@ -729,7 +796,11 @@ async function listing(t, offset = 0, q = "") {
   if (t === "production_orders")
     tools.append(button("Lihat kebutuhan", () => listing("demand_lines")));
   if ((model.csv_tables || []).includes(t)) {
-    tools.append(button("Template CSV", () => csvDownload(t, "template")), button("Ekspor seluruh master", () => csvDownload(t, "export")), button("Impor CSV", () => csvImport(t)));
+    tools.append(
+      button("Template CSV", () => csvDownload(t, "template")),
+      button("Ekspor seluruh master", () => csvDownload(t, "export")),
+      button("Impor CSV", () => csvImport(t)),
+    );
   } else tools.append(button("Ekspor CSV", () => exportCSV(t, currentRows)));
   m.append(tools);
   const result = await api(
@@ -1701,6 +1772,7 @@ async function init() {
   try {
     const s = await api("/bootstrap");
     mode = s.mode;
+    document.body.dataset.mode = mode;
     if (!s.initialized) {
       renderLogin(s);
       return;
